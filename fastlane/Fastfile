@@ -37,7 +37,7 @@ platform :ios do
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
-    test
+###test
     version = version_bump_podspec(path: "MockNRoll.podspec", version_number: options[:name])
     increment_version_number(version_number: version)
     increment_build_number(build_number: `date "+%y%m%d%H%M"`)
