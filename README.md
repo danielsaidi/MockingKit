@@ -24,9 +24,9 @@
 
 ## <a name="about"></a>About Mock 'n' Roll
 
-Mock 'n' Roll is a tiny mocking library for Swift. It comes with a `Mock` class that helps you create mock classes for your unit tests. You can `invoke` method calls with full argument support, `register` return values for any function and `inspect` executions on your mocks.
+Mock 'n' Roll is a mock library for Swift, that helps you mock functionality when unit testing. You can `invoke` method calls with full argument support, `register` return values for any function and `inspect` executions on your mocks.
 
-Mock 'n' Roll supports mocking functions with optional and non-optional return values, as well as void functions. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
+Mock 'n' Roll supports mocking functions with optional and non-optional return values, as well as resultless functions. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
 
 
 ## Creating a mock
