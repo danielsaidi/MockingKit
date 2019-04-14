@@ -22,32 +22,11 @@
 </p>
 
 
-## <a name="about"></a>About MockNRoll
+## <a name="about"></a>About Mock 'n' Roll
 
-MockNRoll is a tiny Swift mocking library. It comes with a `Mock` class, that helps you create powerful mock classes for your unit tests.
+Mock 'n' Roll is a tiny mocking library for Swift. It comes with a `Mock` class that helps you create mock classes for your unit tests. You can `invoke` method calls with full argument support, `register` return values for any function and `inspect` executions on your mocks.
 
-
-## <a name="installation"></a>Installation
-
-### <a name="cocoapods"></a>CocoaPods
-
-To install MockNRoll with [CocoaPods][CocoaPods], add this to your `Podfile`:
-
-```ruby
-pod 'MockNRoll'
-```
-
-### <a name="carthage"></a>Carthage
-
-To install MockNRoll with [Carthage][Carthage], add this to your `Cartfile`:
-
-```ruby
-github "danielsaidi/MockNRoll"
-```
-
-### <a name="manual-installation"></a>Manual installation
-
-To add `MockNRoll` to your app without using Carthage or CocoaPods, clone this repository and place it somewhere on disk, then add `MockNRoll.xcodeproj` to your project and add `MockNRoll.framework` as an embedded app binary and target dependency.
+Mock 'n' Roll supports mocking functions with optional and non-optional return values, as well as void functions. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
 
 
 ## Creating a mock
@@ -71,34 +50,34 @@ protocol TestProtocol {
 }
 ```
 
-To create a mocked `TestProtocol`, you just have to inherit `Mock` and implement `TestProtocol`, for instance:
+To mock `TestProtocol`, you just have to create a class that inherits `Mock` and implements `TestProtocol`:
 
 ```swift
 class TestClass: Mock, TestProtocol {
     
-    func functionWithIntResult(arg1: String, arg2: Int) -> Int {}
-    func functionWithStringResult(arg1: String, arg2: Int) -> String {}
-    func functionWithStructResult(arg1: String, arg2: Int) -> User {}
-    func functionWithClassResult(arg1: String, arg2: Int) -> Thing {}
+    func functionWithIntResult(arg1: String, arg2: Int) -> Int { ... }
+    func functionWithStringResult(arg1: String, arg2: Int) -> String { ... }
+    func functionWithStructResult(arg1: String, arg2: Int) -> User { ... }
+    func functionWithClassResult(arg1: String, arg2: Int) -> Thing { ... }
     
-    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int? {}
-    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String? {}
-    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User? {}
-    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing? {}
+    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int? { ... }
+    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String? { ... }
+    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User? { ... }
+    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing? { ... }
     
     func functionWithVoidResult(arg1: String, arg2: Int) {}
 ```
 
-However, this does not do anything yet. To make use of the mock class, we must:
+To make use of the mock class, you must then:
 
-* `invoke` each function to make the mock record the function call, including the input arguments and return value
-* make the test class `register` return values for the functions we want to test
-* check the invoked `executions` to assert that the test was successful
+* call `invoke` in each function to record all function calls as well as their arguments and return values
+* make your tests `register` any required return values for any functions you want to test
+* make your tests check the mock's `executions` to assert that the tests were successfully executed
 
 
 ## Invoking function calls
 
-Each mock class function must call `invoke` to make the mock record the function call, including the input arguments and return value. For the `TestClass` above, it would look something like this:
+Each mocked function must call `invoke` to record the function call, including the input arguments and return value. For the `TestClass` above, it would look something like this:
 
 ```swift
 class TestClass: Mock, TestProtocol {
@@ -145,12 +124,12 @@ class TestClass: Mock, TestProtocol {
 
 Void functions just have to call `invoke` while returning functions must call `return invoke`.
 
-Whenever your unit tests touch any of these functions, we will be able to control the result value and check that the mock is called as expected.
+Whenever your unit tests touch any of these functions, you will now be able to inspect the recorded function calls to verify that the mock is called as expected.
 
 
 ## Registering values
 
-For functions that return a value, your tests must register the actual return values before the tests touch the mock functions. Failing to do so will make your tests crash with a `preconditionFailure`.
+For functions that return a non-optional value, your tests must register the actual return values before touching the mocked functions. Failing to do so will make your tests crash with a `preconditionFailure`.
 
 You register return values by calling the mock's `registerResult(for:result:)` function, like this:
 
@@ -167,12 +146,12 @@ mock.registerResult(for: mock.functionWithIntResult) { _, arg2 in  return arg2 }
 mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in  return arg1 }
 ```
 
-You don't have to do this for void functions or functions that return an optional value.
+You don't have to register a return value for void functions or functions that return an optional value, but you should do so whenever you want to affect your tests.
 
 
 ## Asserting mock executions
 
-To check that a mock receives the expected function calls in a test suite, you can check the `executions(for:)` function to get information about how many times a functions received a call, with which input arguments and the returned result:
+To verify that a mock receives the expected function calls, you can use `executions(for:)` to get information on how many times a function did receive a call, with which input arguments and what result it returned:
 
 ```swift
 _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
@@ -200,6 +179,34 @@ expect(stringExecutions[1].arguments.1).to(equal(123))
 Note that the code above uses [Quick/Nimble][Quick], in case you don't recognize the syntax.
 
 
+## Registering and throwing errors
+
+There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values. Until this is implemented, you can use the `Mock` class' `error` property.
+
+
+## <a name="installation"></a>Installation
+
+### <a name="cocoapods"></a>CocoaPods
+
+To install Mock 'n' Roll with [CocoaPods][CocoaPods], add this to your `Podfile`:
+
+```ruby
+pod 'MockNRoll'
+```
+
+### <a name="carthage"></a>Carthage
+
+To install Mock 'n' Roll with [Carthage][Carthage], add this to your `Cartfile`:
+
+```ruby
+github "danielsaidi/MockNRoll"
+```
+
+### <a name="manual-installation"></a>Manual installation
+
+To add Mock 'n' Roll to your app without using Carthage or CocoaPods, clone this repository and place it somewhere on disk, then add `MockNRoll.xcodeproj` to your project and add `MockNRoll.framework` as an embedded app binary and target dependency.
+
+
 ## Contact me
 
 I hope you like this library. Feel free to reach out if you have questions or if you want to contribute in any way:
@@ -209,9 +216,14 @@ I hope you like this library. Feel free to reach out if you have questions or if
 * Web site: [danielsaidi.com](http://www.danielsaidi.com)
 
 
+## Acknowledgements
+
+Mock 'n' Roll is based on [Stubber][Stubber], but has its completely separate code base. While Stubber uses global functions (which requires you to empty the execution store every now and then), Mock 'n' Roll moves the mock logic to the a specific `Mock` class, which means that any recorded exeuctions are automatically cleared when the mock class is disposed. Mock 'n' Roll also adds some features, like optional and void result support.
+
+
 ## License
 
-MockNRoll is available under the MIT license. See LICENSE file for more info.
+Mock 'n' Roll is available under the MIT license. See the [LICENSE][License] file for more info.
 
 
 [Carthage]: https://github.com/Carthage
@@ -219,4 +231,5 @@ MockNRoll is available under the MIT license. See LICENSE file for more info.
 [GitHub]: https://github.com/danielsaidi/MockNRoll
 [Pod]: http://cocoapods.org/pods/MockNRoll
 [Quick]: https://github.com/Quick/Quick
+[Stubber]: https://github.com/devxoul/Stubber
 [License]: https://github.com/danielsaidi/MockNRoll/blob/master/LICENSE
