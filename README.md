@@ -218,7 +218,7 @@ I hope you like this library. Feel free to reach out if you have questions or if
 
 ## Acknowledgements
 
-Mock 'n' Roll is based on [Stubber][Stubber], but has its completely separate code base. While Stubber uses global functions (which requires you to empty the execution store every now and then), Mock 'n' Roll moves the mock logic to the a specific `Mock` class, which means that any recorded exeuctions are automatically cleared when the mock class is disposed. Mock 'n' Roll also adds some features, like optional and void result support.
+Mock 'n' Roll is based on [Stubber][Stubber], but has its completely separate code base. While Stubber uses global functions (which requires you to empty the execution store every now and then), Mock 'n' Roll moves this logic to each mock, which means that any recorded exeuctions are automatically cleared when the mock is disposed. Mock 'n' Roll also adds some extra functionality, like optional and void result support.
 
 
 ## License
