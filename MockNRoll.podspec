@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MockNRoll'
-  s.version          = '0.0.0'
+  s.version          = '0.0.1'
   s.summary          = 'MockNRoll is a Swift mocking library.'
   s.description      = 'MockNRoll contains mock utils for Swift.'
 
