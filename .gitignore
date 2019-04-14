@@ -21,7 +21,7 @@ xcuserdata/
 *.dSYM
 
 .build/
-Carthage/Build
+Carthage
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
