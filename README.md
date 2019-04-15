@@ -6,7 +6,6 @@
     <a href="https://github.com/danielsaidi/MockNRoll">
         <img src="https://badge.fury.io/gh/danielsaidi%2FMockNRoll.svg?style=flat" alt="Version" />
     </a>
-    <img src="https://api.travis-ci.org/danielsaidi/MockNRoll.svg" alt="Build Status" />
     <a href="https://cocoapods.org/pods/MockNRoll">
         <img src="https://img.shields.io/cocoapods/v/MockNRoll.svg?style=flat" alt="CocoaPods" />
     </a>
