@@ -63,7 +63,7 @@ public extension Mock {
     func registerResult<Arguments, Result>(
         for function: @escaping (Arguments) throws -> Result,
         resultBlock: @escaping (Arguments) throws -> Result) {
-        let address = functionAddress(of: function)
+        let address = self.address(of: function)
         registeredResults[address] = resultBlock
     }
 }
@@ -77,30 +77,30 @@ public extension Mock {
         _ function: @escaping (Arguments) throws -> Result,
         args: Arguments,
         file: StaticString = #file, line: UInt = #line, functionCall: StaticString = #function) rethrows -> Result {
-        let address = functionAddress(of: function)
-        let closure = registeredResults[address] as? (Arguments) throws -> Result
+        let address = self.address(of: function)
         
-        let isVoid = Result.self == Void.self
-        if isVoid {
+        if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            registeredExecutions[address] = (registeredExecutions[address] ?? []) + [Execution<Arguments, Result>(arguments: args, result: void)]
+            register(Execution(arguments: args, result: void), at: address)
             return void
         }
         
+        let closure = registeredResults[address] as? (Arguments) throws -> Result
         guard let result = try? closure?(args) else {
-            preconditionFailure("⚠️ '\(functionCall)' is not stubbed.", file: file, line: line)
+            let message = "'\(functionCall)' has no registered result. You must register one with `registerResult(for:)` before calling this function."
+            preconditionFailure(message, file: file, line: line)
         }
-        registeredExecutions[address] = (registeredExecutions[address] ?? []) + [Execution<Arguments, Result>(arguments: args, result: result)]
+        register(Execution(arguments: args, result: result), at: address)
         return result
     }
     
     func invoke<Arguments, Result>(
         _ function: @escaping (Arguments) throws -> Result?,
         args: Arguments) rethrows -> Result? {
-        let address = functionAddress(of: function)
+        let address = self.address(of: function)
         let closure = registeredResults[address] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
-        registeredExecutions[address] = (registeredExecutions[address] ?? []) + [Execution<Arguments, Result?>(arguments: args, result: result)]
+        register(Execution(arguments: args, result: result), at: address)
         return result
     }
     
@@ -108,10 +108,10 @@ public extension Mock {
         _ function: @escaping (Arguments) throws -> Result,
         args: Arguments,
         default: @autoclosure () -> Result) rethrows -> Result {
-        let address = functionAddress(of: function)
+        let address = self.address(of: function)
         let closure = registeredResults[address] as? (Arguments) throws -> Result
         let result = (try? closure?(args)) ?? `default`()
-        registeredExecutions[address] = (registeredExecutions[address] ?? []) + [Execution<Arguments, Result>(arguments: args, result: result)]
+        register(Execution(arguments: args, result: result), at: address)
         return result
     }
 }
@@ -122,8 +122,8 @@ public extension Mock {
 public extension Mock {
     
     func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Execution<Arguments, Result>] {
-        let address = functionAddress(of: function)
-        return (registeredExecutions[address] as? [Execution<Arguments, Result>]) ?? []
+        let address = self.address(of: function)
+        return registeredExecutions(at: address)
     }
 }
 
@@ -132,10 +132,18 @@ public extension Mock {
 
 private extension Mock {
     
-    func functionAddress<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> Int {
+    func address<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> Int {
         let (_, lo) = unsafeBitCast(function, to: (Int, Int).self)
         let offset = MemoryLayout<Int>.size == 8 ? 16 : 12
         let pointer = UnsafePointer<Int>(bitPattern: lo + offset)!
         return pointer.pointee
+    }
+    
+    func register<Arguments, Result>(_ execution: Execution<Arguments, Result>, at address: Int) {
+        registeredExecutions[address] = (registeredExecutions[address] ?? []) + [execution]
+    }
+    
+    func registeredExecutions<Arguments, Result>(at address: Int) -> [Execution<Arguments, Result>] {
+        return (registeredExecutions[address] as? [Execution<Arguments, Result>]) ?? []
     }
 }
