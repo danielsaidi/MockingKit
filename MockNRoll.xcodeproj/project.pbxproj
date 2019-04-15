@@ -14,8 +14,9 @@
 		8482084F2263AC38007BC632 /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482084E2263AC38007BC632 /* MockTests.swift */; };
 		848208532264BC85007BC632 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; };
 		848208542264BC85007BC632 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; };
-		848208552264BC8A007BC632 /* Nimble.framework in Resources */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; };
-		848208562264BC8A007BC632 /* Quick.framework in Resources */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; };
+		84820865226507DB007BC632 /* MockNRoll.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208002263A8F3007BC632 /* MockNRoll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84820866226507DB007BC632 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84820867226507DB007BC632 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,21 @@
 			remoteInfo = MockNRoll;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84820864226507D0007BC632 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84820865226507DB007BC632 /* MockNRoll.framework in CopyFiles */,
+				84820866226507DB007BC632 /* Nimble.framework in CopyFiles */,
+				84820867226507DB007BC632 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		848208002263A8F3007BC632 /* MockNRoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MockNRoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,9 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8482080A2263A8F3007BC632 /* MockNRoll.framework in Frameworks */,
 				848208532264BC85007BC632 /* Nimble.framework in Frameworks */,
 				848208542264BC85007BC632 /* Quick.framework in Frameworks */,
-				8482080A2263A8F3007BC632 /* MockNRoll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +207,7 @@
 				848208052263A8F3007BC632 /* Sources */,
 				848208062263A8F3007BC632 /* Frameworks */,
 				848208072263A8F3007BC632 /* Resources */,
+				84820864226507D0007BC632 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -251,8 +268,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848208552264BC8A007BC632 /* Nimble.framework in Resources */,
-				848208562264BC8A007BC632 /* Quick.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

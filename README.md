@@ -206,6 +206,11 @@ github "danielsaidi/MockNRoll"
 To add Mock 'n' Roll to your app without using Carthage or CocoaPods, clone this repository and place it somewhere on disk, then add `MockNRoll.xcodeproj` to your project and add `MockNRoll.framework` as an embedded app binary and target dependency.
 
 
+## Important device limitations
+
+Mock 'n' Roll uses unsafe bit casts to get the memory address of mocked functions. This only works on 64-bit devices, which means that mock-based unit tests will not function correctly on old devices or simulators like iPad 2, iPad Retina etc.
+
+
 ## Contact me
 
 I hope you like this library. Feel free to reach out if you have questions or if you want to contribute in any way:
