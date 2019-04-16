@@ -17,6 +17,8 @@
 		84820865226507DB007BC632 /* MockNRoll.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208002263A8F3007BC632 /* MockNRoll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84820866226507DB007BC632 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84820867226507DB007BC632 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8482087022661BC9007BC632 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482086F22661BC9007BC632 /* MockProtocol.swift */; };
+		8482087222662A8C007BC632 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482087122662A8B007BC632 /* MockClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		8482084E2263AC38007BC632 /* MockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTests.swift; sourceTree = "<group>"; };
 		848208512264BC85007BC632 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		848208522264BC85007BC632 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		8482086F22661BC9007BC632 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
+		8482087122662A8B007BC632 /* MockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 		8482080D2263A8F3007BC632 /* MockNRollTests */ = {
 			isa = PBXGroup;
 			children = (
+				8482087122662A8B007BC632 /* MockClass.swift */,
+				8482086F22661BC9007BC632 /* MockProtocol.swift */,
 				8482084E2263AC38007BC632 /* MockTests.swift */,
 				848208492263ABD8007BC632 /* Supporting Files */,
 			);
@@ -288,6 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8482084F2263AC38007BC632 /* MockTests.swift in Sources */,
+				8482087222662A8C007BC632 /* MockClass.swift in Sources */,
+				8482087022661BC9007BC632 /* MockProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +344,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1904152112;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -400,7 +407,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1904152112;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -430,11 +436,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1904152112;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = PMEDFW438U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1904152112;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MockNRoll/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -458,11 +462,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1904152112;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = PMEDFW438U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1904152112;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MockNRoll/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

@@ -6,10 +6,10 @@ class MockTests: QuickSpec {
     
     override func spec() {
         
-        var mock: TestClass!
+        var mock: MockClass!
         
         beforeEach {
-            mock = TestClass()
+            mock = MockClass()
         }
         
         describe("invoking function with non-optional result") {
@@ -168,75 +168,5 @@ class MockTests: QuickSpec {
                 expect(voidExecutions[2].arguments.1).to(equal(789))
             }
         }
-    }
-}
-
-private struct User: Equatable {
-    
-    var name: String
-}
-
-private class Thing {
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    var name: String
-}
-
-private protocol TestProtocol {
-    
-    func functionWithIntResult(arg1: String, arg2: Int) -> Int
-    func functionWithStringResult(arg1: String, arg2: Int) -> String
-    func functionWithStructResult(arg1: String, arg2: Int) -> User
-    func functionWithClassResult(arg1: String, arg2: Int) -> Thing
-    
-    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int?
-    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String?
-    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User?
-    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing?
-    
-    func functionWithVoidResult(arg1: String, arg2: Int)
-}
-
-private class TestClass: Mock, TestProtocol {
-    
-    func functionWithIntResult(arg1: String, arg2: Int) -> Int {
-        return invoke(functionWithIntResult, args: (arg1, arg2))
-    }
-    
-    func functionWithStringResult(arg1: String, arg2: Int) -> String {
-        return invoke(functionWithStringResult, args: (arg1, arg2))
-    }
-    
-    func functionWithStructResult(arg1: String, arg2: Int) -> User {
-        return invoke(functionWithStructResult, args: (arg1, arg2))
-    }
-    
-    func functionWithClassResult(arg1: String, arg2: Int) -> Thing {
-        return invoke(functionWithClassResult, args: (arg1, arg2))
-    }
-    
-    
-    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int? {
-        return invoke(functionWithOptionalIntResult, args: (arg1, arg2))
-    }
-    
-    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String? {
-        return invoke(functionWithOptionalStringResult, args: (arg1, arg2))
-    }
-    
-    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User? {
-        return invoke(functionWithOptionalStructResult, args: (arg1, arg2))
-    }
-    
-    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing? {
-        return invoke(functionWithOptionalClassResult, args: (arg1, arg2))
-    }
-    
-    
-    func functionWithVoidResult(arg1: String, arg2: Int) {
-        invoke(functionWithVoidResult, args: (arg1, arg2))
     }
 }
