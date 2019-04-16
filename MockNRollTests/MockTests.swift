@@ -1,3 +1,11 @@
+//
+//  MockTests.swift
+//  MockNRollTests
+//
+//  Created by Daniel Saidi on 2019-04-16.
+//  Copyright © 2019 Daniel Saidi. All rights reserved.
+//
+
 import Quick
 import Nimble
 import MockNRoll

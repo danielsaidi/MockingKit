@@ -3,6 +3,8 @@
  An execution represents a function call. A function that is
  of return type `void` has `Void` as result type.
  
+ Original implementation: https://github.com/devxoul/Stubber
+ 
  */
 
 import Foundation

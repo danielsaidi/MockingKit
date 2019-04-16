@@ -19,6 +19,7 @@
 		84820867226507DB007BC632 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8482087022661BC9007BC632 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482086F22661BC9007BC632 /* MockProtocol.swift */; };
 		8482087222662A8C007BC632 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482087122662A8B007BC632 /* MockClass.swift */; };
+		84820874226662E7007BC632 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84820873226662E7007BC632 /* Escaping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		848208522264BC85007BC632 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		8482086F22661BC9007BC632 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
 		8482087122662A8B007BC632 /* MockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClass.swift; sourceTree = "<group>"; };
+		84820873226662E7007BC632 /* Escaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		848208022263A8F3007BC632 /* MockNRoll */ = {
 			isa = PBXGroup;
 			children = (
+				84820873226662E7007BC632 /* Escaping.swift */,
 				8482084B2263ABED007BC632 /* Execution.swift */,
 				8482084A2263ABED007BC632 /* Mock.swift */,
 				848208482263ABCD007BC632 /* Supporting Files */,
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8482084D2263ABED007BC632 /* Execution.swift in Sources */,
+				84820874226662E7007BC632 /* Escaping.swift in Sources */,
 				8482084C2263ABED007BC632 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
