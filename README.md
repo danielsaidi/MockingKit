@@ -23,9 +23,9 @@
 
 ## <a name="about"></a>About Mock 'n' Roll
 
-Mock 'n' Roll is a mock library for Swift, that helps you mock functionality when unit testing. You can `invoke` method calls with full argument support, `register` return values for any function and `inspect` executions on your mocks.
+Mock 'n' Roll is a mocking library for Swift, that helps you mock functionality when unit testing. You can `register` return values, `invoke` method calls and `inspect` function executions on your mocks.
 
-Mock 'n' Roll supports mocking functions with optional and non-optional return values, as well as resultless functions. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
+Mock 'n' Roll supports functions with optional and non-optional return values, as well as resultless ones. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
 
 
 ## Creating a mock
@@ -49,34 +49,18 @@ protocol TestProtocol {
 }
 ```
 
-To mock `TestProtocol`, you just have to create a class that inherits `Mock` and implements `TestProtocol`:
+To mock `TestProtocol`, you just have to create a class that inherits `Mock` and implements `TestProtocol` and then:
 
-```swift
-class TestClass: Mock, TestProtocol {
-    
-    func functionWithIntResult(arg1: String, arg2: Int) -> Int { ... }
-    func functionWithStringResult(arg1: String, arg2: Int) -> String { ... }
-    func functionWithStructResult(arg1: String, arg2: Int) -> User { ... }
-    func functionWithClassResult(arg1: String, arg2: Int) -> Thing { ... }
-    
-    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int? { ... }
-    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String? { ... }
-    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User? { ... }
-    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing? { ... }
-    
-    func functionWithVoidResult(arg1: String, arg2: Int) {}
-```
-
-To make use of the mock class, you must then:
-
-* call `invoke` in each function to record all function calls as well as their arguments and return values
-* make your tests `register` any required return values for any functions you want to test
-* make your tests check the mock's `executions` to assert that the tests were successfully executed
+* `register` any required return values for any non-optionaö functions you want to test
+* call `invoke` in each function, to record all function calls together with the input arguments and return values
+* check the mock's `executions`. to assert that the tests were successfully executed
 
 
 ## Invoking function calls
 
-Each mocked function must call `invoke` to record the function call, including the input arguments and return value. For the `TestClass` above, it would look something like this:
+Each mocked function must call `invoke` to record the function call together with the input arguments and possible return value. 
+
+For the `TestClass` above, it would look something like this:
 
 ```swift
 class TestClass: Mock, TestProtocol {
@@ -148,7 +132,7 @@ mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in  return arg
 You don't have to register a return value for void functions or functions that return an optional value, but you should do so whenever you want to affect your tests.
 
 
-## Asserting mock executions
+## Inspecting executions
 
 To verify that a mock receives the expected function calls, you can use `executions(for:)` to get information on how many times a function did receive a call, with which input arguments and what result it returned:
 
@@ -208,7 +192,7 @@ To add Mock 'n' Roll to your app without using Carthage or CocoaPods, clone this
 
 ## Important device limitations
 
-Mock 'n' Roll uses unsafe bit casts to get the memory address of mocked functions. This only works on 64-bit devices, which means that mock-based unit tests will not function correctly on old devices or simulators like iPad 2, iPad Retina etc.
+Mock 'n' Roll uses unsafe bit casts to get the memory address of mocked functions. This only works on 64-bit devices, which means that mock-based unit tests will not work on old devices or simulators like iPad 2, iPad Retina etc.
 
 
 ## Contact me
@@ -222,7 +206,9 @@ I hope you like this library. Feel free to reach out if you have questions or if
 
 ## Acknowledgements
 
-Mock 'n' Roll is inspired by [Stubber][Stubber], but has a completely separate code base. While Stubber uses global functions (which requires you to empty the execution store every now and then), Mock 'n' Roll moves this logic to each mock, which means that any recorded exeuctions are automatically cleared when the mock is disposed. Mock 'n' Roll also adds some extra functionality, like optional and void result support.
+Mock 'n' Roll is inspired by [Stubber][Stubber], and would not have been possible without it. The entire function address approach and escape support etc. comes from Stubber, and this mock implementation comes from there as well.
+
+However, while Stubber uses global functions (which requires you to reset the global state every now and then), Mock 'n' Roll moves this logic to each mock, which means that any recorded exeuctions are automatically reset when the mock is disposed. Mock 'n' Roll also adds some extra functionality, like support for optional and void results.
 
 
 ## License
