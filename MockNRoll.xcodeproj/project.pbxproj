@@ -63,8 +63,9 @@
 		848208022263A8F3007BC632 /* MockNRoll */ = {
 			isa = PBXGroup;
 			children = (
+				848208032263A8F3007BC632 /* MockNRoll.h */,
+				848208042263A8F3007BC632 /* Info.plist */,
 				84BD8A462302B44F0020610B /* Sources */,
-				848208482263ABCD007BC632 /* Supporting Files */,
 			);
 			path = MockNRoll;
 			sourceTree = "<group>";
@@ -81,15 +82,6 @@
 				848208472263AA9F007BC632 /* RELEASE_NOTES.md */,
 			);
 			name = "Project Files";
-			sourceTree = "<group>";
-		};
-		848208482263ABCD007BC632 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				848208032263A8F3007BC632 /* MockNRoll.h */,
-				848208042263A8F3007BC632 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		848208502264BC85007BC632 /* Frameworks */ = {
