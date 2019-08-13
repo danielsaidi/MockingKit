@@ -5,29 +5,11 @@ default_platform :ios
 
 platform :ios do
 
-  # Carthage ===================
-
-  desc "Bootstrap Carthage"
-  lane :carthage_bootstrap do
-    carthage(platform: "iOS", cache_builds: true)
-  end
-
-  desc "Update Carthage"
-  lane :cu do carthage_update end
-  lane :carthage_update do
-    carthage(command: "update", platform: "iOS", cache_builds: true)
-  end
-
-
   # Unit Tests =================
 
   desc "Run unit tests"
   lane :test do
-    carthage_bootstrap
-    scan(
-      project: "MockNRoll.xcodeproj",
-      scheme: "MockNRoll"
-    )
+    spm(command: "test")
   end
 
 
@@ -37,7 +19,7 @@ platform :ios do
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
-###test
+    test
     version = version_bump_podspec(path: "MockNRoll.podspec", version_number: options[:name])
     increment_version_number(version_number: version)
     increment_build_number(build_number: `date "+%y%m%d%H%M"`)
