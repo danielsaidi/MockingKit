@@ -9,10 +9,7 @@ platform :ios do
 
   desc "Run unit tests"
   lane :test do
-    scan(
-      project: "MockNRoll.xcodeproj",
-      scheme: "MockNRoll"
-    )
+    spm(command: "test")
   end
 
 
