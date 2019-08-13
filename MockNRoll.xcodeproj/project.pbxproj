@@ -7,69 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8482080A2263A8F3007BC632 /* MockNRoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848208002263A8F3007BC632 /* MockNRoll.framework */; };
 		848208112263A8F3007BC632 /* MockNRoll.h in Headers */ = {isa = PBXBuildFile; fileRef = 848208032263A8F3007BC632 /* MockNRoll.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8482084C2263ABED007BC632 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482084A2263ABED007BC632 /* Mock.swift */; };
-		8482084D2263ABED007BC632 /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482084B2263ABED007BC632 /* Execution.swift */; };
-		8482084F2263AC38007BC632 /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482084E2263AC38007BC632 /* MockTests.swift */; };
-		848208532264BC85007BC632 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; };
-		848208542264BC85007BC632 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; };
-		84820865226507DB007BC632 /* MockNRoll.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208002263A8F3007BC632 /* MockNRoll.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84820866226507DB007BC632 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208512264BC85007BC632 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84820867226507DB007BC632 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 848208522264BC85007BC632 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8482087022661BC9007BC632 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482086F22661BC9007BC632 /* MockProtocol.swift */; };
-		8482087222662A8C007BC632 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482087122662A8B007BC632 /* MockClass.swift */; };
-		84820874226662E7007BC632 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84820873226662E7007BC632 /* Escaping.swift */; };
+		84BD8A4B2302B44F0020610B /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD8A482302B44F0020610B /* Execution.swift */; };
+		84BD8A4C2302B44F0020610B /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD8A492302B44F0020610B /* Escaping.swift */; };
+		84BD8A4D2302B44F0020610B /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD8A4A2302B44F0020610B /* Mock.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8482080B2263A8F3007BC632 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 848207F72263A8F3007BC632 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 848207FF2263A8F3007BC632;
-			remoteInfo = MockNRoll;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		84820864226507D0007BC632 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				84820865226507DB007BC632 /* MockNRoll.framework in CopyFiles */,
-				84820866226507DB007BC632 /* Nimble.framework in CopyFiles */,
-				84820867226507DB007BC632 /* Quick.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		848208002263A8F3007BC632 /* MockNRoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MockNRoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		848208032263A8F3007BC632 /* MockNRoll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockNRoll.h; sourceTree = "<group>"; };
 		848208042263A8F3007BC632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		848208092263A8F3007BC632 /* MockNRollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockNRollTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		848208102263A8F3007BC632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8482083F2263A9B1007BC632 /* MockNRoll.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockNRoll.podspec; sourceTree = "<group>"; };
-		848208402263A9B1007BC632 /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
-		848208412263A9B1007BC632 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		848208422263A9B1007BC632 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = "<group>"; };
 		848208432263A9B1007BC632 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		848208442263A9B1007BC632 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		848208452263A9B1007BC632 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		848208462263A9B1007BC632 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		848208472263AA9F007BC632 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
-		8482084A2263ABED007BC632 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
-		8482084B2263ABED007BC632 /* Execution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
-		8482084E2263AC38007BC632 /* MockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTests.swift; sourceTree = "<group>"; };
 		848208512264BC85007BC632 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		848208522264BC85007BC632 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		8482086F22661BC9007BC632 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
-		8482087122662A8B007BC632 /* MockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClass.swift; sourceTree = "<group>"; };
-		84820873226662E7007BC632 /* Escaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
+		84BD8A482302B44F0020610B /* Execution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
+		84BD8A492302B44F0020610B /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
+		84BD8A4A2302B44F0020610B /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,16 +39,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		848208062263A8F3007BC632 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8482080A2263A8F3007BC632 /* MockNRoll.framework in Frameworks */,
-				848208532264BC85007BC632 /* Nimble.framework in Frameworks */,
-				848208542264BC85007BC632 /* Quick.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				848208022263A8F3007BC632 /* MockNRoll */,
-				8482080D2263A8F3007BC632 /* MockNRollTests */,
 				848208012263A8F3007BC632 /* Products */,
 				8482083E2263A997007BC632 /* Project Files */,
 				848208502264BC85007BC632 /* Frameworks */,
@@ -108,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				848208002263A8F3007BC632 /* MockNRoll.framework */,
-				848208092263A8F3007BC632 /* MockNRollTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,23 +63,10 @@
 		848208022263A8F3007BC632 /* MockNRoll */ = {
 			isa = PBXGroup;
 			children = (
-				84820873226662E7007BC632 /* Escaping.swift */,
-				8482084B2263ABED007BC632 /* Execution.swift */,
-				8482084A2263ABED007BC632 /* Mock.swift */,
+				84BD8A462302B44F0020610B /* Sources */,
 				848208482263ABCD007BC632 /* Supporting Files */,
 			);
 			path = MockNRoll;
-			sourceTree = "<group>";
-		};
-		8482080D2263A8F3007BC632 /* MockNRollTests */ = {
-			isa = PBXGroup;
-			children = (
-				8482087122662A8B007BC632 /* MockClass.swift */,
-				8482086F22661BC9007BC632 /* MockProtocol.swift */,
-				8482084E2263AC38007BC632 /* MockTests.swift */,
-				848208492263ABD8007BC632 /* Supporting Files */,
-			);
-			path = MockNRollTests;
 			sourceTree = "<group>";
 		};
 		8482083E2263A997007BC632 /* Project Files */ = {
@@ -141,8 +75,6 @@
 				848208462263A9B1007BC632 /* .gitignore */,
 				848208452263A9B1007BC632 /* .swiftlint.yml */,
 				8482083F2263A9B1007BC632 /* MockNRoll.podspec */,
-				848208402263A9B1007BC632 /* Cartfile.private */,
-				848208412263A9B1007BC632 /* Cartfile.resolved */,
 				848208422263A9B1007BC632 /* Fastfile */,
 				848208432263A9B1007BC632 /* LICENSE */,
 				848208442263A9B1007BC632 /* README.md */,
@@ -160,14 +92,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		848208492263ABD8007BC632 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				848208102263A8F3007BC632 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		848208502264BC85007BC632 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +99,24 @@
 				848208522264BC85007BC632 /* Quick.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84BD8A462302B44F0020610B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				84BD8A472302B44F0020610B /* MockNRoll */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		84BD8A472302B44F0020610B /* MockNRoll */ = {
+			isa = PBXGroup;
+			children = (
+				84BD8A482302B44F0020610B /* Execution.swift */,
+				84BD8A492302B44F0020610B /* Escaping.swift */,
+				84BD8A4A2302B44F0020610B /* Mock.swift */,
+			);
+			path = MockNRoll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,25 +151,6 @@
 			productReference = 848208002263A8F3007BC632 /* MockNRoll.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		848208082263A8F3007BC632 /* MockNRollTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 848208172263A8F3007BC632 /* Build configuration list for PBXNativeTarget "MockNRollTests" */;
-			buildPhases = (
-				848208052263A8F3007BC632 /* Sources */,
-				848208062263A8F3007BC632 /* Frameworks */,
-				848208072263A8F3007BC632 /* Resources */,
-				84820864226507D0007BC632 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8482080C2263A8F3007BC632 /* PBXTargetDependency */,
-			);
-			name = MockNRollTests;
-			productName = MockNRollTests;
-			productReference = 848208092263A8F3007BC632 /* MockNRollTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -241,9 +164,6 @@
 					848207FF2263A8F3007BC632 = {
 						CreatedOnToolsVersion = 10.2;
 						LastSwiftMigration = 1020;
-					};
-					848208082263A8F3007BC632 = {
-						CreatedOnToolsVersion = 10.2;
 					};
 				};
 			};
@@ -260,20 +180,12 @@
 			projectRoot = "";
 			targets = (
 				848207FF2263A8F3007BC632 /* MockNRoll */,
-				848208082263A8F3007BC632 /* MockNRollTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		848207FE2263A8F3007BC632 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		848208072263A8F3007BC632 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,31 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8482084D2263ABED007BC632 /* Execution.swift in Sources */,
-				84820874226662E7007BC632 /* Escaping.swift in Sources */,
-				8482084C2263ABED007BC632 /* Mock.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		848208052263A8F3007BC632 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8482084F2263AC38007BC632 /* MockTests.swift in Sources */,
-				8482087222662A8C007BC632 /* MockClass.swift in Sources */,
-				8482087022661BC9007BC632 /* MockProtocol.swift in Sources */,
+				84BD8A4B2302B44F0020610B /* Execution.swift in Sources */,
+				84BD8A4C2302B44F0020610B /* Escaping.swift in Sources */,
+				84BD8A4D2302B44F0020610B /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8482080C2263A8F3007BC632 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 848207FF2263A8F3007BC632 /* MockNRoll */;
-			targetProxy = 8482080B2263A8F3007BC632 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		848208122263A8F3007BC632 /* Debug */ = {
@@ -485,54 +379,6 @@
 			};
 			name = Release;
 		};
-		848208182263A8F3007BC632 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1904162135;
-				DEVELOPMENT_TEAM = PMEDFW438U;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = MockNRollTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockNRollTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		848208192263A8F3007BC632 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1904162135;
-				DEVELOPMENT_TEAM = PMEDFW438U;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = MockNRollTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockNRollTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,15 +396,6 @@
 			buildConfigurations = (
 				848208152263A8F3007BC632 /* Debug */,
 				848208162263A8F3007BC632 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		848208172263A8F3007BC632 /* Build configuration list for PBXNativeTarget "MockNRollTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				848208182263A8F3007BC632 /* Debug */,
-				848208192263A8F3007BC632 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
