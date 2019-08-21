@@ -169,28 +169,36 @@ There is currently no support for registering and throwing errors, which means t
 
 ## <a name="installation"></a>Installation
 
+### <a name="spm"></a>Swift Package Manager
+
+In Xcode 11 and later, the easiest way to add Mock 'n' Roll to your project is to use Swift Package Manager:
+```
+.package(url: "git@github.com:danielsaidi/MockNRoll.git" ...)
+```
+
 ### <a name="cocoapods"></a>CocoaPods
 
-To install Mock 'n' Roll with [CocoaPods][CocoaPods], add this to your `Podfile`:
-
+Add this to your `Podfile` and run `pod install`:
 ```ruby
 pod 'MockNRoll'
 ```
+After that, remember to use the generated workspace instead of the project file.
 
 ### <a name="carthage"></a>Carthage
 
 To install Mock 'n' Roll with [Carthage][Carthage], add this to your `Cartfile`:
 
-```ruby
+```
 github "danielsaidi/MockNRoll"
 ```
+After that, check the Carthage docs for info on how to add the library to your app.
 
 ### <a name="manual-installation"></a>Manual installation
 
-To add Mock 'n' Roll to your app without using Carthage or CocoaPods, clone this repository and place it somewhere on disk, then add `MockNRoll.xcodeproj` to your project and add `MockNRoll.framework` as an embedded app binary and target dependency.
+To add `Mock 'n' Roll` to your app without a dependency manager, clone this repository and place it somewhere on disk, then add `MockNRoll.xcodeproj` to the project and `MockNRoll.framework` as an embedded app binary and target dependency.
 
 
-## Important device limitations
+## Device limitations
 
 Mock 'n' Roll uses unsafe bit casts to get the memory address of mocked functions. This only works on 64-bit devices, which means that mock-based unit tests will not work on old devices or simulators like iPad 2, iPad Retina etc.
 

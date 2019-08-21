@@ -1,4 +1,4 @@
-fastlane_version "1.32.3"
+fastlane_version "2.129.0"
 
 default_platform :ios
 
@@ -27,8 +27,6 @@ platform :ios do
     git_commit(
       path: [
         "MockNRoll.podspec",
-        "*/Info.plist",
-        "*/*.pbxproj",
         "fastlane/"],
       message: "Bump to #{version}"
     )

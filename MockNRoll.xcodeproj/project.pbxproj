@@ -24,8 +24,6 @@
 		848208452263A9B1007BC632 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		848208462263A9B1007BC632 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		848208472263AA9F007BC632 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
-		848208512264BC85007BC632 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		848208522264BC85007BC632 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		84BD8A482302B44F0020610B /* Execution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
 		84BD8A492302B44F0020610B /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
 		84BD8A4A2302B44F0020610B /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -49,7 +47,6 @@
 				848208022263A8F3007BC632 /* MockNRoll */,
 				848208012263A8F3007BC632 /* Products */,
 				8482083E2263A997007BC632 /* Project Files */,
-				848208502264BC85007BC632 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,15 +81,6 @@
 				848208472263AA9F007BC632 /* RELEASE_NOTES.md */,
 			);
 			name = "Project Files";
-			sourceTree = "<group>";
-		};
-		848208502264BC85007BC632 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				848208512264BC85007BC632 /* Nimble.framework */,
-				848208522264BC85007BC632 /* Quick.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		84BD8A462302B44F0020610B /* Sources */ = {
@@ -339,6 +327,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockNRoll;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -365,6 +354,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockNRoll;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
