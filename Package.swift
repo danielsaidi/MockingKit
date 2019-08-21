@@ -4,11 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "MockNRoll",
+    name: "Mockery",
     products: [
         .library(
-            name: "MockNRoll",
-            targets: ["MockNRoll"]),
+            name: "Mockery",
+            targets: ["Mockery"]),
     ],
     dependencies: [
         .package(url: "git@github.com:Quick/Quick.git", from: "2.1.0"),
@@ -16,10 +16,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MockNRoll",
+            name: "Mockery",
             dependencies: []),
         .testTarget(
-            name: "MockNRollTests",
-            dependencies: ["MockNRoll", "Quick", "Nimble"]),
+            name: "MockeryTests",
+            dependencies: ["Mockery", "Quick", "Nimble"]),
     ]
 )

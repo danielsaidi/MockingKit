@@ -1,7 +1,7 @@
 import XCTest
 
-import MockNRollTests
+import MockeryTests
 
 var tests = [XCTestCaseEntry]()
-tests += MockNRollTests.allTests()
+tests += MockeryTests.allTests()
 XCTMain(tests)
