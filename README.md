@@ -1,12 +1,11 @@
 <p align="center">
-    <img src ="Resources/Logo.png" width=400 />
+    <img src ="Resources/Logo.png" />
 </p>
 
 <p align="center">
     <a href="https://github.com/danielsaidi/Mockery">
         <img src="https://badge.fury.io/gh/danielsaidi%2FMockery.svg?style=flat" alt="Version" />
     </a>
-    <img src="https://img.shields.io/cocoapods/p/Mockery.svg?style=flat" alt="Platform" />
     <img src="https://img.shields.io/badge/Swift-5.1-orange.svg" alt="Swift 5.0" />
     <img src="https://badges.frapsoft.com/os/mit/mit.svg?style=flat&v=102" alt="License" />
     <a href="https://twitter.com/danielsaidi">
