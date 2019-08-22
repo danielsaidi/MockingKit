@@ -51,6 +51,11 @@ After that, check the Carthage docs for info on how to add the library to your a
 To add `Mockery` to your app without a dependency manager, clone this repository and place it somewhere on disk, then add `Mockery.xcodeproj` to the project and `Mockery.framework` as an embedded app binary and target dependency.
 
 
+## Demo App
+
+This repository contains a demo app. To try it out, open and run the `Mockery` project. The demo app is just a white screen that prints and alerts the result of using and inspecting some mocks.
+
+
 ## Creating a mock
 
 Consider that you have the following protocol:
