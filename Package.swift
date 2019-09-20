@@ -5,14 +5,17 @@ import PackageDescription
 
 let package = Package(
     name: "Mockery",
+    platforms: [
+        .iOS(.v9)
+    ],
     products: [
         .library(
             name: "Mockery",
             targets: ["Mockery"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:Quick/Quick.git", from: "2.1.0"),
-        .package(url: "git@github.com:Quick/Nimble.git", from: "8.0.2"),
+//        .package(url: "git@github.com:Quick/Quick.git", from: "2.1.0"),
+//        .package(url: "git@github.com:Quick/Nimble.git", from: "8.0.2"),
     ],
     targets: [
         .target(
@@ -20,6 +23,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "MockeryTests",
-            dependencies: ["Mockery", "Quick", "Nimble"]),
+            dependencies: ["Mockery"/*, "Quick", "Nimble"*/]),
     ]
 )
