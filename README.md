@@ -1,8 +1,7 @@
-<p align="center">
-    <img src ="Resources/Logo.png" />
-</p>
+<h1>Mockery</h1>
 
 <p align="center">
+    <img src ="Resources/Logo.png" width=200 alt="Mockery Icon" /><br/>
     <a href="https://github.com/danielsaidi/Mockery">
         <img src="https://badge.fury.io/gh/danielsaidi%2FMockery.svg?style=flat" alt="Version" />
     </a>
