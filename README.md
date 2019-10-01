@@ -15,7 +15,9 @@
 
 ## <a name="about"></a>About Mockery
 
-Mockery is a mocking library for Swift that helps you mock functionality e.g. when unit testing or developing new functionality. With Mockery, you can easily `register` return values, `invoke` method calls, `return` mocked return values and `inspect` function executions.
+Mockery is a mocking library for Swift. It helps you mock functionality e.g. when you unit test or develop new functionality.
+
+With Mockery, you can easily `register` return values, `invoke` method calls, `return` mocked return values and `inspect` function executions.
 
 Mockery supports mocking functions with optional and non-optional return values as well as resultless ones. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
 
@@ -26,24 +28,20 @@ Mockery supports mocking functions with optional and non-optional return values 
 
 In Xcode 11 and later, the easiest way to add Mockery to your project is to use Swift Package Manager:
 ```
-.package(url: "git@github.com:danielsaidi/Mockery.git" ...)
+https://github.com/danielsaidi/Mockery.git
 ```
 
 ### <a name="cocoapods"></a>CocoaPods
 
-Add this to your `Podfile` and run `pod install`:
 ```ruby
 pod 'Mockery'
 ```
-After that, remember to use the generated workspace instead of the project file.
 
 ### <a name="carthage"></a>Carthage
 
-Add this to your `Cartfile` and run `carthage update`:
 ```
 github "danielsaidi/Mockery"
 ```
-After that, check the Carthage docs for info on how to add the library to your app.
 
 ### <a name="manual-installation"></a>Manual installation
 
@@ -52,7 +50,7 @@ To add `Mockery` to your app without a dependency manager, clone this repository
 
 ## Demo App
 
-This repository contains a demo app. To try it out, open and run the `Mockery` project. The demo app is just a white screen that prints and alerts the result of using and inspecting some mocks.
+This repository contains a demo app. To try it out, open and run the `MockeryDemo` project. The app is just a white screen that prints and alerts the result of using and inspecting some mocks.
 
 
 ## Creating a mock
@@ -118,27 +116,23 @@ When you call these functions, the class will use its recorder torecord the invo
 
 ## Invoking function calls
 
-Each mocked function must call `invoke` to record the function call together with the input arguments and possible return value. 
+Each mocked function must call `invoke` to record the function call, together with the input arguments and possible return value.  Void functions just have to call `invoke`. Functions with return values must call `return invoke`. 
 
-Void functions just have to call `invoke`. Functions with return values must call `return invoke`. If you haven't registered a return value, your app will crash.
-
-After calling the mocked functions, you will be able to inspect the recorded function calls.
+After calling the mocked functions, you will be able to inspect the recorded function calls. If you haven't registered a return value for a mocked function, your app will crash.
 
 
 ## Registering return values
 
 If a mocked function returns a value, you must register the return value before invoking it. Failing to do so will make your tests crash with a `preconditionFailure`.
 
-You register return values by calling the mock's (or recorder's) `registerResult(for:result:)` function, like this:
+You register return values by calling the mock's (or recorder's) `registerResult(for:result:)` function:
 
 ```swift
 let mock = TestMock()
 mock.registerResult(for: mock.functionWithIntResult) { _ in return 123 }
 ```
 
-Since the result block takes in the same arguments as the actual function, you can return different result values depending on the input arguments.
-
-You don't have to register a return value for functions that return an optional value. Invoking such a function will returnjust return `nil`.
+Since the result block takes in the same arguments as the actual function, you can return different result values depending on the input arguments. You don't have to register a return value for functions that return an optional value.
 
 
 ## Inspecting executions
@@ -162,9 +156,7 @@ In case you don't recognize the syntax above, the test uses [Quick/Nimble][Quick
 
 ## Registering and throwing errors
 
-There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values. 
-
-Until this is implemented, you can use the `Mock` class' `error` property.
+There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values. Until this is implemented, you can use the `Mock` `error` property.
 
 
 ## Device limitations
@@ -174,11 +166,11 @@ Mockery uses unsafe bit casts to get the memory address of mocked functions. Thi
 
 ## Contact me
 
-I hope you like this library. Feel free to reach out if you have questions or if you want to contribute in any way:
+Feel free to reach out if you have questions or if you want to contribute in any way:
 
-* E-mail: [daniel.saidi@gmail.com](mailto:daniel.saidi@gmail.com)
-* Twitter: [@danielsaidi](http://www.twitter.com/danielsaidi)
-* Web site: [danielsaidi.com](http://www.danielsaidi.com)
+* E-mail: [daniel.saidi@gmail.com][Email]
+* Twitter: [@danielsaidi][Twitter]
+* Web site: [danielsaidi.com][Website]
 
 
 ## Acknowledgements
@@ -192,6 +184,10 @@ However, while Stubber uses global functions (which requires you to reset the gl
 
 Mockery is available under the MIT license. See the [LICENSE][License] file for more info.
 
+
+[Email]: mailto:daniel.saidi@gmail.com
+[Twitter]: http://www.twitter.com/danielsaidi
+[Website]: http://www.danielsaidi.com
 
 [Carthage]: https://github.com/Carthage
 [CocoaPods]: http://cocoapods.org
