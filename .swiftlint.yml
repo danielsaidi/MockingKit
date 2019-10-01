@@ -1,5 +1,12 @@
 disabled_rules:
+  - function_body_length
+  - function_parameter_count
+  - identifier_name
+  - large_tuple
+  - line_length
   - todo
+  - trailing_whitespace
+  - vertical_whitespace
 
 included:
   - Sources

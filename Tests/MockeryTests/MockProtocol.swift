@@ -22,7 +22,7 @@ protocol MockProtocol {
     
     func functionWithVoidResult(arg1: String, arg2: Int)
     
-    func asyncFunction(arg1: String, completion: @escaping (Error?) -> ())
+    func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void)
 }
 
 

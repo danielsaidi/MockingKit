@@ -70,7 +70,6 @@
 		OBJ_109 /* Stringers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stringers.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		OBJ_110 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/admin/Projects/Mockery/.build/checkouts/Nimble/Package.swift; sourceTree = "<group>"; };
-		OBJ_120 /* __MockeryDemo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __MockeryDemo; sourceTree = SOURCE_ROOT; };
 		OBJ_121 /* Mockery.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mockery.podspec; sourceTree = "<group>"; };
 		OBJ_122 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_123 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -321,7 +320,7 @@
 			path = include;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -330,9 +329,7 @@
 				OBJ_18 /* Dependencies */,
 				OBJ_111 /* Products */,
 				84F42F8A2343F56C00F09426 /* Project Files */,
-				OBJ_120 /* __MockeryDemo */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_52 /* Nimble 8.0.2 */ = {
@@ -514,7 +511,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			packageReferences = (
 				84F42F8F2343F60A00F09426 /* XCRemoteSwiftPackageReference "Quick" */,
 				84F42F922343F61F00F09426 /* XCRemoteSwiftPackageReference "Nimble" */,
@@ -548,7 +545,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if which swiftlint >/dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "#if which swiftlint >/dev/null; then\nswiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -41,8 +41,8 @@ class MockTests: QuickSpec {
             }
 
             it("it can register different return values for different argument values") {
-                mock.registerResult(for: mock.functionWithIntResult) { arg1, arg2 in return arg2 }
-                mock.registerResult(for: mock.functionWithStringResult) { arg1, arg2 in return arg1 }
+                mock.registerResult(for: mock.functionWithIntResult) { _, arg2 in return arg2 }
+                mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in return arg1 }
 
                 expect(mock.functionWithIntResult(arg1: "abc", arg2: 123)).to(equal(123))
                 expect(mock.functionWithIntResult(arg1: "abc", arg2: 456)).to(equal(456))
@@ -101,8 +101,8 @@ class MockTests: QuickSpec {
             }
 
             it("it can register different return values for different argument values") {
-                mock.registerResult(for: mock.functionWithOptionalIntResult) { arg1, arg2 in return arg2 }
-                mock.registerResult(for: mock.functionWithOptionalStringResult) { arg1, arg2 in return arg1 }
+                mock.registerResult(for: mock.functionWithOptionalIntResult) { _, arg2 in return arg2 }
+                mock.registerResult(for: mock.functionWithOptionalStringResult) { arg1, _ in return arg1 }
 
                 expect(mock.functionWithOptionalIntResult(arg1: "abc", arg2: 123)).to(equal(123))
                 expect(mock.functionWithOptionalIntResult(arg1: "abc", arg2: 456)).to(equal(456))

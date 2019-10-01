@@ -48,7 +48,7 @@ class MockClass: Mock, MockProtocol {
         invoke(functionWithVoidResult, args: (arg1, arg2))
     }
     
-    func asyncFunction(arg1: String, completion: @escaping (Error?) -> ()) {
+    func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void) {
         invoke(asyncFunction, args: escaping(arg1, completion))
     }
 }

@@ -87,7 +87,10 @@ public extension Mock {
         
         let closure = registeredResults[address] as? (Arguments) throws -> Result
         guard let result = try? closure?(args) else {
-            let message = "'\(functionCall)' has no registered result. You must register one with `registerResult(for:)` before calling this function."
+            let message = """
+            '\(functionCall)' has no registered result.
+            You must register one with `registerResult(for:)` before calling this function.
+            """
             preconditionFailure(message, file: file, line: line)
         }
         register(Execution(arguments: args, result: result), at: address)
