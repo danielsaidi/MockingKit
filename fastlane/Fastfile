@@ -19,6 +19,7 @@ platform :ios do
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
+    swiftlint
     test
     version = version_bump_podspec(path: "Mockery.podspec", version_number: options[:name])
     increment_version_number(version_number: version)
@@ -27,7 +28,9 @@ platform :ios do
     git_commit(
       path: [
         "Mockery.podspec",
-        "fastlane/"],
+        "fastlane/",
+        "MockeryDemo/Info.plist",
+      ],
       message: "Bump to #{version}"
     )
 

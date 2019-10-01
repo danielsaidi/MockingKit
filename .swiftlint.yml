@@ -1,5 +1,6 @@
 disabled_rules:
   - todo
 
-excluded:
-  - Carthage
+included:
+  - Sources
+  - Tests
