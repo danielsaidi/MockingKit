@@ -5,38 +5,44 @@ default_platform :ios
 
 platform :ios do
 
-  # Unit Tests =================
+  # Dependencies ***********************
 
-  desc "Run unit tests"
-  lane :test do
-    spm(command: "test")
+  desc "Resolve External Dependencies (the shell script makes Bitrise work)"
+  lane :resolve_dependencies do
+    sh("cd .. && xcodebuild -showBuildSettings -project Mockery.xcodeproj -scheme Mockery")
+    spm(command: "resolve")
   end
 
 
-  # Version =====================
+  # Test =======================
+  
+  desc "Run unit tests"
+  lane :test do
+    swiftlint(strict: true)
+    resolve_dependencies
+    run_tests(scheme: "Mockery")
+  end
+
+
+  # Version ================
 
   desc "Create a new version"
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
-    swiftlint
     test
-    version = version_bump_podspec(path: "Mockery.podspec", version_number: options[:name])
+    version = version_bump_podspec(path: "Mockery.podspec", bump_type: bump_type)
     increment_version_number(version_number: version)
-    increment_build_number(build_number: `date "+%y%m%d%H%M"`)
-
+  
     git_commit(
-      path: [
-        "Mockery.podspec",
-        "fastlane/",
-        "MockeryDemo/Info.plist",
-      ],
+      path: "*",
       message: "Bump to #{version}"
     )
-
+  
     add_git_tag(tag: version)
     push_git_tags()
-    reset_git_repo(skip_clean: true)
     push_to_git_remote()
+    pod_push()
   end
+  
 end

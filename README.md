@@ -15,18 +15,16 @@
 
 ## <a name="about"></a>About Mockery
 
-Mockery is a mocking library for Swift. It helps you mock functionality e.g. when you unit test or develop new functionality.
+Mockery is a mocking library for Swift. It helps you mock functionality e.g. when unit testing or developing new functionality. With Mockery, you can `register` return values, `invoke` method calls, `return` mocked return values and `inspect` function executions.
 
-With Mockery, you can easily `register` return values, `invoke` method calls, `return` mocked return values and `inspect` function executions.
-
-Mockery supports mocking functions with optional and non-optional return values as well as resultless ones. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
+Mockery supports mocking functions with void, optional and non-optional results. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
 
 
 ## <a name="installation"></a>Installation
 
 ### <a name="spm"></a>Swift Package Manager
 
-In Xcode 11 and later, the easiest way to add Mockery to your project is to use Swift Package Manager:
+The easiest way to add Mockery to your project is to use Swift Package Manager:
 ```
 https://github.com/danielsaidi/Mockery.git
 ```
@@ -50,7 +48,7 @@ To add `Mockery` to your app without a dependency manager, clone this repository
 
 ## Demo App
 
-This repository contains a demo app. To try it out, open and run the `MockeryDemo` project. The app is just a white screen that prints and alerts the result of using and inspecting some mocks.
+This repository contains a demo app that wires up a couple of mocks and invokes various functions. To try it out, open and run the `Mockery.xcodeproj` project.
 
 
 ## Creating a mock
@@ -72,11 +70,11 @@ To mock `TestProtocol`, you just have to create a mock class that inherits `Mock
 class TestMock: Mock, TestProtocol {
     
     func functionWithResult(arg1: String, arg2: Int) -> Int {
-        return invoke(functionWithResult, args: (arg1, arg2))
+        invoke(functionWithResult, args: (arg1, arg2))
     }
 
     func functionWithOptionalResult(arg1: String, arg2: Int) -> Int? {
-        return invoke(functionWithOptionalResult, args: (arg1, arg2))
+        invoke(functionWithOptionalResult, args: (arg1, arg2))
     }
     
     func functionWithoutResult(arg: String) {
@@ -98,11 +96,11 @@ class TestMock: TestClass, TestProtocol {
     var recorder = Mock()
     
     func functionWithResult(arg1: String, arg2: Int) -> Int {
-        return recorder.invoke(functionWithResult, args: (arg1, arg2))
+        recorder.invoke(functionWithResult, args: (arg1, arg2))
     }
 
     func functionWithOptionalResult(arg1: String, arg2: Int) -> Int? {
-        return recorder.invoke(functionWithOptionalResult, args: (arg1, arg2))
+        recorder.invoke(functionWithOptionalResult, args: (arg1, arg2))
     }
     
     func functionWithoutResult(arg: String) {
@@ -111,33 +109,29 @@ class TestMock: TestClass, TestProtocol {
 }
 ```
 
-When you call these functions, the class will use its recorder torecord the invoked method calls and return any registered return values (or crash if...).
+When you call these functions, the class will use its recorder to record the invoked method calls and return any registered return values.
 
 
 ## Invoking function calls
 
-Each mocked function must call `invoke` to record the function call, together with the input arguments and possible return value.  Void functions just have to call `invoke`. Functions with return values must call `return invoke`. 
-
-After calling the mocked functions, you will be able to inspect the recorded function calls. If you haven't registered a return value for a mocked function, your app will crash.
+Each mocked function must call `invoke` to record the function call. After calling the mocked functions, you can inspect the recorded function calls. If you haven't registered a return value, your app will crash.
 
 
 ## Registering return values
 
-If a mocked function returns a value, you must register the return value before invoking it. Failing to do so will make your tests crash with a `preconditionFailure`.
-
-You register return values by calling the mock's (or recorder's) `registerResult(for:result:)` function:
+You can register return values by calling the mock's (or recorder's) `registerResult(for:result:)` function:
 
 ```swift
 let mock = TestMock()
 mock.registerResult(for: mock.functionWithIntResult) { _ in return 123 }
 ```
 
-Since the result block takes in the same arguments as the actual function, you can return different result values depending on the input arguments. You don't have to register a return value for functions that return an optional value.
+The result block takes the same arguments as the actual function, so you can adjust the function logic depending on the input arguments. You don't have to register a return value for functions that return an optional value.
 
 
 ## Inspecting executions
 
-To inspect a mock, you can use `executions(for:)` to get information on how many times a function did receive a call, with which input arguments and what result it returned:
+To inspect the performed exeuctions of a mock, you can use `executions(for:)`. It contains information on how many times a function was executed, with which input arguments and the returned result:
 
 ```swift
 _ = mock.functionWithResult(arg1: "abc", arg2: 123)
@@ -151,7 +145,7 @@ expect(executions[1].arguments.0).to(equal("abc"))
 expect(executions[1].arguments.1).to(equal(456))
 ```
 
-In case you don't recognize the syntax above, the test uses [Quick/Nimble][Quick].
+In case you don't recognize the syntax above, the test uses [Quick/Nimble][Quick]. You can use any unit test framework you like.
 
 
 ## Registering and throwing errors

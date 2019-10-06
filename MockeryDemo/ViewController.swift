@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Mockery
 
 class ViewController: UIViewController {
 

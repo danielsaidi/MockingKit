@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
 		"Mockery::MockeryPackageTests::ProductTarget" /* MockeryPackageTests */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = OBJ_141 /* Build configuration list for PBXAggregateTarget "MockeryPackageTests" */;
+			buildConfigurationList = OBJ_140 /* Build configuration list for PBXAggregateTarget "MockeryPackageTests" */;
 			buildPhases = (
 			);
 			dependencies = (
-				OBJ_144 /* PBXTargetDependency */,
+				OBJ_143 /* PBXTargetDependency */,
 			);
 			name = MockeryPackageTests;
 			productName = MockeryPackageTests;
@@ -21,43 +21,190 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		84F42F912343F60A00F09426 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 84F42F902343F60A00F09426 /* Quick */; };
-		84F42F942343F61F00F09426 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 84F42F932343F61F00F09426 /* Nimble */; };
-		OBJ_130 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Escaping.swift */; };
-		OBJ_131 /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Execution.swift */; };
-		OBJ_132 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Mock.swift */; };
-		OBJ_139 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_150 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MockClass.swift */; };
-		OBJ_151 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MockProtocol.swift */; };
-		OBJ_152 /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* MockTests.swift */; };
-		OBJ_153 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* XCTestManifests.swift */; };
-		OBJ_158 /* Mockery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; };
+		842BE89B234A91E800ED2260 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE89A234A91E800ED2260 /* AppDelegate.swift */; };
+		842BE89D234A91E800ED2260 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE89C234A91E800ED2260 /* SceneDelegate.swift */; };
+		842BE89F234A91E800ED2260 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE89E234A91E800ED2260 /* ViewController.swift */; };
+		842BE8A2234A91E800ED2260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842BE8A0234A91E800ED2260 /* Main.storyboard */; };
+		842BE8A4234A91E900ED2260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842BE8A3234A91E900ED2260 /* Assets.xcassets */; };
+		842BE8A7234A91E900ED2260 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842BE8A5234A91E900ED2260 /* LaunchScreen.storyboard */; };
+		842BE8B0234A950900ED2260 /* Mockery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; };
+		842BE8B1234A950900ED2260 /* Mockery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		842BE8D8234A988600ED2260 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE8D7234A988600ED2260 /* Mocks.swift */; };
+		OBJ_129 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Escaping.swift */; };
+		OBJ_130 /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Execution.swift */; };
+		OBJ_131 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Mock.swift */; };
+		OBJ_138 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_149 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MockClass.swift */; };
+		OBJ_150 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MockProtocol.swift */; };
+		OBJ_151 /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* MockTests.swift */; };
+		OBJ_152 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* XCTestManifests.swift */; };
+		OBJ_154 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Nimble::Nimble::Product" /* Nimble.framework */; };
+		OBJ_155 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Quick::Quick::Product" /* Quick.framework */; };
+		OBJ_156 /* QuickSpecBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Quick::QuickSpecBase::Product" /* QuickSpecBase.framework */; };
+		OBJ_157 /* Mockery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; };
+		OBJ_169 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* AdapterProtocols.swift */; };
+		OBJ_170 /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* AssertionDispatcher.swift */; };
+		OBJ_171 /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* AssertionRecorder.swift */; };
+		OBJ_172 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* NMBExpectation.swift */; };
+		OBJ_173 /* NMBObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* NMBObjCMatcher.swift */; };
+		OBJ_174 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* NimbleEnvironment.swift */; };
+		OBJ_175 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* NimbleXCTestHandler.swift */; };
+		OBJ_176 /* ExceptionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* ExceptionCapture.swift */; };
+		OBJ_177 /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* DSL+Wait.swift */; };
+		OBJ_178 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* DSL.swift */; };
+		OBJ_179 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Expectation.swift */; };
+		OBJ_180 /* ExpectationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* ExpectationMessage.swift */; };
+		OBJ_181 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Expression.swift */; };
+		OBJ_182 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* FailureMessage.swift */; };
+		OBJ_183 /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* AllPass.swift */; };
+		OBJ_184 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* Async.swift */; };
+		OBJ_185 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* BeAKindOf.swift */; };
+		OBJ_186 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* BeAnInstanceOf.swift */; };
+		OBJ_187 /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* BeCloseTo.swift */; };
+		OBJ_188 /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* BeEmpty.swift */; };
+		OBJ_189 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* BeGreaterThan.swift */; };
+		OBJ_190 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* BeGreaterThanOrEqualTo.swift */; };
+		OBJ_191 /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* BeIdenticalTo.swift */; };
+		OBJ_192 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* BeLessThan.swift */; };
+		OBJ_193 /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* BeLessThanOrEqual.swift */; };
+		OBJ_194 /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* BeLogical.swift */; };
+		OBJ_195 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* BeNil.swift */; };
+		OBJ_196 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* BeVoid.swift */; };
+		OBJ_197 /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* BeginWith.swift */; };
+		OBJ_198 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* Contain.swift */; };
+		OBJ_199 /* ContainElementSatisfying.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* ContainElementSatisfying.swift */; };
+		OBJ_200 /* ElementsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* ElementsEqual.swift */; };
+		OBJ_201 /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* EndWith.swift */; };
+		OBJ_202 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* Equal.swift */; };
+		OBJ_203 /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* HaveCount.swift */; };
+		OBJ_204 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Match.swift */; };
+		OBJ_205 /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* MatchError.swift */; };
+		OBJ_206 /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* MatcherFunc.swift */; };
+		OBJ_207 /* MatcherProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* MatcherProtocols.swift */; };
+		OBJ_208 /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* PostNotification.swift */; };
+		OBJ_209 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Predicate.swift */; };
+		OBJ_210 /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* RaisesException.swift */; };
+		OBJ_211 /* SatisfyAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* SatisfyAllOf.swift */; };
+		OBJ_212 /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* SatisfyAnyOf.swift */; };
+		OBJ_213 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* ThrowAssertion.swift */; };
+		OBJ_214 /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* ThrowError.swift */; };
+		OBJ_215 /* ToSucceed.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* ToSucceed.swift */; };
+		OBJ_216 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* Await.swift */; };
+		OBJ_217 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* Errors.swift */; };
+		OBJ_218 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Functional.swift */; };
+		OBJ_219 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* SourceLocation.swift */; };
+		OBJ_220 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* Stringers.swift */; };
+		OBJ_227 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* Package.swift */; };
+		OBJ_232 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Behavior.swift */; };
+		OBJ_233 /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Callsite.swift */; };
+		OBJ_234 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Configuration.swift */; };
+		OBJ_235 /* QuickConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* QuickConfiguration.swift */; };
+		OBJ_236 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* DSL.swift */; };
+		OBJ_237 /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* World+DSL.swift */; };
+		OBJ_238 /* ErrorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* ErrorUtility.swift */; };
+		OBJ_239 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Example.swift */; };
+		OBJ_240 /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* ExampleGroup.swift */; };
+		OBJ_241 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* ExampleMetadata.swift */; };
+		OBJ_242 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* Filter.swift */; };
+		OBJ_243 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Closures.swift */; };
+		OBJ_244 /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* ExampleHooks.swift */; };
+		OBJ_245 /* HooksPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* HooksPhase.swift */; };
+		OBJ_246 /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* SuiteHooks.swift */; };
+		OBJ_247 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* NSBundle+CurrentTestBundle.swift */; };
+		OBJ_248 /* QuickMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* QuickMain.swift */; };
+		OBJ_249 /* QuickSelectedTestSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* QuickSelectedTestSuiteBuilder.swift */; };
+		OBJ_250 /* QuickSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* QuickSpec.swift */; };
+		OBJ_251 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* QuickTestSuite.swift */; };
+		OBJ_252 /* String+C99ExtendedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* String+C99ExtendedIdentifier.swift */; };
+		OBJ_253 /* URL+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* URL+FileName.swift */; };
+		OBJ_254 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* World.swift */; };
+		OBJ_256 /* QuickSpecBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Quick::QuickSpecBase::Product" /* QuickSpecBase.framework */; };
+		OBJ_263 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* Package.swift */; };
+		OBJ_268 /* QuickSpecBase.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* QuickSpecBase.m */; };
+		OBJ_270 /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84F42F882343F43300F09426 /* PBXContainerItemProxy */ = {
+		842BE88A234A8E7F00ED2260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Nimble::Nimble";
+			remoteInfo = Nimble;
+		};
+		842BE88B234A8E7F00ED2260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Quick::Quick";
+			remoteInfo = Quick;
+		};
+		842BE88C234A8E7F00ED2260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Quick::QuickSpecBase";
+			remoteInfo = QuickSpecBase;
+		};
+		842BE88D234A8E7F00ED2260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Quick::QuickSpecBase";
+			remoteInfo = QuickSpecBase;
+		};
+		842BE88E234A8E7F00ED2260 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Mockery::Mockery";
 			remoteInfo = Mockery;
 		};
-		84F42F892343F43400F09426 /* PBXContainerItemProxy */ = {
+		842BE88F234A8E8200ED2260 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Mockery::MockeryTests";
 			remoteInfo = MockeryTests;
 		};
+		842BE8B2234A950900ED2260 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Mockery::Mockery";
+			remoteInfo = Mockery;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		842BE8B4234A950900ED2260 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				842BE8B1234A950900ED2260 /* Mockery.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		84F42F8B2343F5A800F09426 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		84F42F8C2343F5A800F09426 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
-		84F42F8D2343F5A800F09426 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		84F42F8E2343F5B300F09426 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = "<group>"; };
+		842BE891234A8E9D00ED2260 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		842BE892234A8E9D00ED2260 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		842BE898234A91E800ED2260 /* MockeryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockeryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842BE89A234A91E800ED2260 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		842BE89C234A91E800ED2260 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		842BE89E234A91E800ED2260 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		842BE8A1234A91E800ED2260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		842BE8A3234A91E900ED2260 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		842BE8A6234A91E900ED2260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		842BE8A8234A91E900ED2260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842BE8D7234A988600ED2260 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		"Mockery::Mockery::Product" /* Mockery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mockery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Mockery::MockeryTests::Product" /* MockeryTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = MockeryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Nimble::Nimble::Product" /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Execution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
 		OBJ_100 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		OBJ_101 /* ThrowAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowAssertion.swift; sourceTree = "<group>"; };
@@ -70,10 +217,12 @@
 		OBJ_109 /* Stringers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stringers.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		OBJ_110 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/admin/Projects/Mockery/.build/checkouts/Nimble/Package.swift; sourceTree = "<group>"; };
-		OBJ_121 /* Mockery.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mockery.podspec; sourceTree = "<group>"; };
-		OBJ_122 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_123 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_124 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
+		OBJ_117 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
+		OBJ_119 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = SOURCE_ROOT; };
+		OBJ_120 /* Mockery.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mockery.podspec; sourceTree = "<group>"; };
+		OBJ_121 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_122 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_123 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
 		OBJ_14 /* MockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClass.swift; sourceTree = "<group>"; };
 		OBJ_15 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
 		OBJ_16 /* MockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTests.swift; sourceTree = "<group>"; };
@@ -149,42 +298,103 @@
 		OBJ_97 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		OBJ_98 /* RaisesException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisesException.swift; sourceTree = "<group>"; };
 		OBJ_99 /* SatisfyAllOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatisfyAllOf.swift; sourceTree = "<group>"; };
+		"Quick::Quick::Product" /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Quick::QuickSpecBase::Product" /* QuickSpecBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuickSpecBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_133 /* Frameworks */ = {
+		842BE895234A91E800ED2260 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842BE8B0234A950900ED2260 /* Mockery.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_132 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_154 /* Frameworks */ = {
+		OBJ_153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				84F42F942343F61F00F09426 /* Nimble in Frameworks */,
-				84F42F912343F60A00F09426 /* Quick in Frameworks */,
-				OBJ_158 /* Mockery.framework in Frameworks */,
+				OBJ_154 /* Nimble.framework in Frameworks */,
+				OBJ_155 /* Quick.framework in Frameworks */,
+				OBJ_156 /* QuickSpecBase.framework in Frameworks */,
+				OBJ_157 /* Mockery.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_221 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_256 /* QuickSpecBase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_271 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84F42F8A2343F56C00F09426 /* Project Files */ = {
+		842BE890234A8E8900ED2260 /* Project Files */ = {
 			isa = PBXGroup;
 			children = (
-				84F42F8D2343F5A800F09426 /* .gitignore */,
-				84F42F8C2343F5A800F09426 /* .swift-version */,
-				84F42F8B2343F5A800F09426 /* .swiftlint.yml */,
-				84F42F8E2343F5B300F09426 /* Fastfile */,
-				OBJ_122 /* LICENSE */,
-				OBJ_121 /* Mockery.podspec */,
-				OBJ_123 /* README.md */,
-				OBJ_124 /* RELEASE_NOTES.md */,
+				842BE891234A8E9D00ED2260 /* .gitignore */,
+				842BE892234A8E9D00ED2260 /* .swiftlint.yml */,
+				OBJ_120 /* Mockery.podspec */,
+				OBJ_121 /* LICENSE */,
+				OBJ_122 /* README.md */,
+				OBJ_123 /* RELEASE_NOTES.md */,
 			);
 			name = "Project Files";
+			sourceTree = "<group>";
+		};
+		842BE899234A91E800ED2260 /* MockeryDemo */ = {
+			isa = PBXGroup;
+			children = (
+				842BE8A3234A91E900ED2260 /* Assets.xcassets */,
+				842BE8AE234A927D00ED2260 /* Supporting Files */,
+				842BE8D7234A988600ED2260 /* Mocks.swift */,
+				842BE89E234A91E800ED2260 /* ViewController.swift */,
+			);
+			path = MockeryDemo;
+			sourceTree = "<group>";
+		};
+		842BE8AE234A927D00ED2260 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				842BE89A234A91E800ED2260 /* AppDelegate.swift */,
+				842BE8A8234A91E900ED2260 /* Info.plist */,
+				842BE8A5234A91E900ED2260 /* LaunchScreen.storyboard */,
+				842BE8A0234A91E800ED2260 /* Main.storyboard */,
+				842BE89C234A91E800ED2260 /* SceneDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		842BE8AF234A950900ED2260 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		OBJ_104 /* Utils */ = {
@@ -202,8 +412,12 @@
 		OBJ_111 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"Mockery::MockeryTests::Product" /* MockeryTests.xctest */,
 				"Mockery::Mockery::Product" /* Mockery.framework */,
+				"Nimble::Nimble::Product" /* Nimble.framework */,
+				"Quick::QuickSpecBase::Product" /* QuickSpecBase.framework */,
+				"Mockery::MockeryTests::Product" /* MockeryTests.xctest */,
+				"Quick::Quick::Product" /* Quick.framework */,
+				842BE898234A91E800ED2260 /* MockeryDemo.app */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -327,8 +541,12 @@
 				OBJ_7 /* Sources */,
 				OBJ_12 /* Tests */,
 				OBJ_18 /* Dependencies */,
+				842BE899234A91E800ED2260 /* MockeryDemo */,
 				OBJ_111 /* Products */,
-				84F42F8A2343F56C00F09426 /* Project Files */,
+				OBJ_117 /* Resources */,
+				OBJ_119 /* fastlane */,
+				842BE890234A8E8900ED2260 /* Project Files */,
+				842BE8AF234A950900ED2260 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -442,14 +660,44 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		OBJ_269 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_270 /* QuickSpecBase.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		842BE897234A91E800ED2260 /* MockeryDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842BE8A9234A91E900ED2260 /* Build configuration list for PBXNativeTarget "MockeryDemo" */;
+			buildPhases = (
+				842BE894234A91E800ED2260 /* Sources */,
+				842BE895234A91E800ED2260 /* Frameworks */,
+				842BE896234A91E800ED2260 /* Resources */,
+				842BE8B4234A950900ED2260 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842BE8B3234A950900ED2260 /* PBXTargetDependency */,
+			);
+			name = MockeryDemo;
+			productName = MockeryDemo;
+			productReference = 842BE898234A91E800ED2260 /* MockeryDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		"Mockery::Mockery" /* Mockery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_126 /* Build configuration list for PBXNativeTarget "Mockery" */;
+			buildConfigurationList = OBJ_125 /* Build configuration list for PBXNativeTarget "Mockery" */;
 			buildPhases = (
-				84F42F952343F64B00F09426 /* SwiftLint */,
-				OBJ_129 /* Sources */,
-				OBJ_133 /* Frameworks */,
+				842BE893234A919700ED2260 /* SwiftLint */,
+				OBJ_128 /* Sources */,
+				OBJ_132 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -462,30 +710,29 @@
 		};
 		"Mockery::MockeryTests" /* MockeryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_146 /* Build configuration list for PBXNativeTarget "MockeryTests" */;
+			buildConfigurationList = OBJ_145 /* Build configuration list for PBXNativeTarget "MockeryTests" */;
 			buildPhases = (
-				OBJ_149 /* Sources */,
-				OBJ_154 /* Frameworks */,
+				OBJ_148 /* Sources */,
+				OBJ_153 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_165 /* PBXTargetDependency */,
+				OBJ_158 /* PBXTargetDependency */,
+				OBJ_160 /* PBXTargetDependency */,
+				OBJ_162 /* PBXTargetDependency */,
+				OBJ_164 /* PBXTargetDependency */,
 			);
 			name = MockeryTests;
-			packageProductDependencies = (
-				84F42F902343F60A00F09426 /* Quick */,
-				84F42F932343F61F00F09426 /* Nimble */,
-			);
 			productName = MockeryTests;
 			productReference = "Mockery::MockeryTests::Product" /* MockeryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"Mockery::SwiftPMPackageDescription" /* MockeryPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_135 /* Build configuration list for PBXNativeTarget "MockeryPackageDescription" */;
+			buildConfigurationList = OBJ_134 /* Build configuration list for PBXNativeTarget "MockeryPackageDescription" */;
 			buildPhases = (
-				OBJ_138 /* Sources */,
+				OBJ_137 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -495,6 +742,84 @@
 			productName = MockeryPackageDescription;
 			productType = "com.apple.product-type.framework";
 		};
+		"Nimble::Nimble" /* Nimble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_165 /* Build configuration list for PBXNativeTarget "Nimble" */;
+			buildPhases = (
+				OBJ_168 /* Sources */,
+				OBJ_221 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nimble;
+			productName = Nimble;
+			productReference = "Nimble::Nimble::Product" /* Nimble.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Nimble::SwiftPMPackageDescription" /* NimblePackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_223 /* Build configuration list for PBXNativeTarget "NimblePackageDescription" */;
+			buildPhases = (
+				OBJ_226 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NimblePackageDescription;
+			productName = NimblePackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"Quick::Quick" /* Quick */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_228 /* Build configuration list for PBXNativeTarget "Quick" */;
+			buildPhases = (
+				OBJ_231 /* Sources */,
+				OBJ_255 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_257 /* PBXTargetDependency */,
+			);
+			name = Quick;
+			productName = Quick;
+			productReference = "Quick::Quick::Product" /* Quick.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Quick::QuickSpecBase" /* QuickSpecBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_264 /* Build configuration list for PBXNativeTarget "QuickSpecBase" */;
+			buildPhases = (
+				OBJ_267 /* Sources */,
+				OBJ_269 /* Headers */,
+				OBJ_271 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickSpecBase;
+			productName = QuickSpecBase;
+			productReference = "Quick::QuickSpecBase::Product" /* QuickSpecBase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Quick::SwiftPMPackageDescription" /* QuickPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_259 /* Build configuration list for PBXNativeTarget "QuickPackageDescription" */;
+			buildPhases = (
+				OBJ_262 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickPackageDescription;
+			productName = QuickPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -502,7 +827,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 9999;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					842BE897234A91E800ED2260 = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Mockery" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -510,12 +842,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = OBJ_5;
-			packageReferences = (
-				84F42F8F2343F60A00F09426 /* XCRemoteSwiftPackageReference "Quick" */,
-				84F42F922343F61F00F09426 /* XCRemoteSwiftPackageReference "Nimble" */,
-			);
 			productRefGroup = OBJ_111 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -524,12 +853,31 @@
 				"Mockery::SwiftPMPackageDescription" /* MockeryPackageDescription */,
 				"Mockery::MockeryPackageTests::ProductTarget" /* MockeryPackageTests */,
 				"Mockery::MockeryTests" /* MockeryTests */,
+				842BE897234A91E800ED2260 /* MockeryDemo */,
+				"Nimble::Nimble" /* Nimble */,
+				"Nimble::SwiftPMPackageDescription" /* NimblePackageDescription */,
+				"Quick::Quick" /* Quick */,
+				"Quick::SwiftPMPackageDescription" /* QuickPackageDescription */,
+				"Quick::QuickSpecBase" /* QuickSpecBase */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		842BE896234A91E800ED2260 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842BE8A7234A91E900ED2260 /* LaunchScreen.storyboard in Resources */,
+				842BE8A4234A91E900ED2260 /* Assets.xcassets in Resources */,
+				842BE8A2234A91E800ED2260 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
-		84F42F952343F64B00F09426 /* SwiftLint */ = {
+		842BE893234A919700ED2260 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -545,57 +893,347 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if which swiftlint >/dev/null; then\nswiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_129 /* Sources */ = {
+		842BE894234A91E800ED2260 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
+			buildActionMask = 2147483647;
 			files = (
-				OBJ_130 /* Escaping.swift in Sources */,
-				OBJ_131 /* Execution.swift in Sources */,
-				OBJ_132 /* Mock.swift in Sources */,
+				842BE89F234A91E800ED2260 /* ViewController.swift in Sources */,
+				842BE89B234A91E800ED2260 /* AppDelegate.swift in Sources */,
+				842BE89D234A91E800ED2260 /* SceneDelegate.swift in Sources */,
+				842BE8D8234A988600ED2260 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_138 /* Sources */ = {
+		OBJ_128 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_139 /* Package.swift in Sources */,
+				OBJ_129 /* Escaping.swift in Sources */,
+				OBJ_130 /* Execution.swift in Sources */,
+				OBJ_131 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_149 /* Sources */ = {
+		OBJ_137 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_150 /* MockClass.swift in Sources */,
-				OBJ_151 /* MockProtocol.swift in Sources */,
-				OBJ_152 /* MockTests.swift in Sources */,
-				OBJ_153 /* XCTestManifests.swift in Sources */,
+				OBJ_138 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_148 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_149 /* MockClass.swift in Sources */,
+				OBJ_150 /* MockProtocol.swift in Sources */,
+				OBJ_151 /* MockTests.swift in Sources */,
+				OBJ_152 /* XCTestManifests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_168 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_169 /* AdapterProtocols.swift in Sources */,
+				OBJ_170 /* AssertionDispatcher.swift in Sources */,
+				OBJ_171 /* AssertionRecorder.swift in Sources */,
+				OBJ_172 /* NMBExpectation.swift in Sources */,
+				OBJ_173 /* NMBObjCMatcher.swift in Sources */,
+				OBJ_174 /* NimbleEnvironment.swift in Sources */,
+				OBJ_175 /* NimbleXCTestHandler.swift in Sources */,
+				OBJ_176 /* ExceptionCapture.swift in Sources */,
+				OBJ_177 /* DSL+Wait.swift in Sources */,
+				OBJ_178 /* DSL.swift in Sources */,
+				OBJ_179 /* Expectation.swift in Sources */,
+				OBJ_180 /* ExpectationMessage.swift in Sources */,
+				OBJ_181 /* Expression.swift in Sources */,
+				OBJ_182 /* FailureMessage.swift in Sources */,
+				OBJ_183 /* AllPass.swift in Sources */,
+				OBJ_184 /* Async.swift in Sources */,
+				OBJ_185 /* BeAKindOf.swift in Sources */,
+				OBJ_186 /* BeAnInstanceOf.swift in Sources */,
+				OBJ_187 /* BeCloseTo.swift in Sources */,
+				OBJ_188 /* BeEmpty.swift in Sources */,
+				OBJ_189 /* BeGreaterThan.swift in Sources */,
+				OBJ_190 /* BeGreaterThanOrEqualTo.swift in Sources */,
+				OBJ_191 /* BeIdenticalTo.swift in Sources */,
+				OBJ_192 /* BeLessThan.swift in Sources */,
+				OBJ_193 /* BeLessThanOrEqual.swift in Sources */,
+				OBJ_194 /* BeLogical.swift in Sources */,
+				OBJ_195 /* BeNil.swift in Sources */,
+				OBJ_196 /* BeVoid.swift in Sources */,
+				OBJ_197 /* BeginWith.swift in Sources */,
+				OBJ_198 /* Contain.swift in Sources */,
+				OBJ_199 /* ContainElementSatisfying.swift in Sources */,
+				OBJ_200 /* ElementsEqual.swift in Sources */,
+				OBJ_201 /* EndWith.swift in Sources */,
+				OBJ_202 /* Equal.swift in Sources */,
+				OBJ_203 /* HaveCount.swift in Sources */,
+				OBJ_204 /* Match.swift in Sources */,
+				OBJ_205 /* MatchError.swift in Sources */,
+				OBJ_206 /* MatcherFunc.swift in Sources */,
+				OBJ_207 /* MatcherProtocols.swift in Sources */,
+				OBJ_208 /* PostNotification.swift in Sources */,
+				OBJ_209 /* Predicate.swift in Sources */,
+				OBJ_210 /* RaisesException.swift in Sources */,
+				OBJ_211 /* SatisfyAllOf.swift in Sources */,
+				OBJ_212 /* SatisfyAnyOf.swift in Sources */,
+				OBJ_213 /* ThrowAssertion.swift in Sources */,
+				OBJ_214 /* ThrowError.swift in Sources */,
+				OBJ_215 /* ToSucceed.swift in Sources */,
+				OBJ_216 /* Await.swift in Sources */,
+				OBJ_217 /* Errors.swift in Sources */,
+				OBJ_218 /* Functional.swift in Sources */,
+				OBJ_219 /* SourceLocation.swift in Sources */,
+				OBJ_220 /* Stringers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_226 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_227 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_231 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_232 /* Behavior.swift in Sources */,
+				OBJ_233 /* Callsite.swift in Sources */,
+				OBJ_234 /* Configuration.swift in Sources */,
+				OBJ_235 /* QuickConfiguration.swift in Sources */,
+				OBJ_236 /* DSL.swift in Sources */,
+				OBJ_237 /* World+DSL.swift in Sources */,
+				OBJ_238 /* ErrorUtility.swift in Sources */,
+				OBJ_239 /* Example.swift in Sources */,
+				OBJ_240 /* ExampleGroup.swift in Sources */,
+				OBJ_241 /* ExampleMetadata.swift in Sources */,
+				OBJ_242 /* Filter.swift in Sources */,
+				OBJ_243 /* Closures.swift in Sources */,
+				OBJ_244 /* ExampleHooks.swift in Sources */,
+				OBJ_245 /* HooksPhase.swift in Sources */,
+				OBJ_246 /* SuiteHooks.swift in Sources */,
+				OBJ_247 /* NSBundle+CurrentTestBundle.swift in Sources */,
+				OBJ_248 /* QuickMain.swift in Sources */,
+				OBJ_249 /* QuickSelectedTestSuiteBuilder.swift in Sources */,
+				OBJ_250 /* QuickSpec.swift in Sources */,
+				OBJ_251 /* QuickTestSuite.swift in Sources */,
+				OBJ_252 /* String+C99ExtendedIdentifier.swift in Sources */,
+				OBJ_253 /* URL+FileName.swift in Sources */,
+				OBJ_254 /* World.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_262 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_263 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_267 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_268 /* QuickSpecBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_144 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Mockery::MockeryTests" /* MockeryTests */;
-			targetProxy = 84F42F892343F43400F09426 /* PBXContainerItemProxy */;
-		};
-		OBJ_165 /* PBXTargetDependency */ = {
+		842BE8B3234A950900ED2260 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Mockery::Mockery" /* Mockery */;
-			targetProxy = 84F42F882343F43300F09426 /* PBXContainerItemProxy */;
+			targetProxy = 842BE8B2234A950900ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_143 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Mockery::MockeryTests" /* MockeryTests */;
+			targetProxy = 842BE88F234A8E8200ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_158 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Nimble::Nimble" /* Nimble */;
+			targetProxy = 842BE88A234A8E7F00ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_160 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Quick::Quick" /* Quick */;
+			targetProxy = 842BE88B234A8E7F00ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_162 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Quick::QuickSpecBase" /* QuickSpecBase */;
+			targetProxy = 842BE88D234A8E7F00ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_164 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Mockery::Mockery" /* Mockery */;
+			targetProxy = 842BE88E234A8E7F00ED2260 /* PBXContainerItemProxy */;
+		};
+		OBJ_257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Quick::QuickSpecBase" /* QuickSpecBase */;
+			targetProxy = 842BE88C234A8E7F00ED2260 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		842BE8A0234A91E800ED2260 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842BE8A1234A91E800ED2260 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		842BE8A5234A91E900ED2260 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842BE8A6234A91E900ED2260 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		OBJ_127 /* Debug */ = {
+		842BE8AA234A91E900ED2260 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = MockeryDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockeryDemo;
+				PRODUCT_NAME = MockeryDemo;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		842BE8AB234A91E900ED2260 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = MockeryDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielsaidi.MockeryDemo;
+				PRODUCT_NAME = MockeryDemo;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		OBJ_126 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -606,10 +1244,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mockery.xcodeproj/Mockery_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -626,7 +1261,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_128 /* Release */ = {
+		OBJ_127 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -637,10 +1272,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Mockery.xcodeproj/Mockery_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -657,7 +1289,7 @@
 			};
 			name = Release;
 		};
-		OBJ_136 /* Debug */ = {
+		OBJ_135 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -666,7 +1298,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_137 /* Release */ = {
+		OBJ_136 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -675,19 +1307,19 @@
 			};
 			name = Release;
 		};
-		OBJ_142 /* Debug */ = {
+		OBJ_141 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		OBJ_143 /* Release */ = {
+		OBJ_142 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Release;
 		};
-		OBJ_147 /* Debug */ = {
+		OBJ_146 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -702,11 +1334,7 @@
 				);
 				INFOPLIST_FILE = Mockery.xcodeproj/MockeryTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -719,7 +1347,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_148 /* Release */ = {
+		OBJ_147 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -734,11 +1362,7 @@
 				);
 				INFOPLIST_FILE = Mockery.xcodeproj/MockeryTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -746,6 +1370,234 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = MockeryTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Mockery.xcodeproj/Nimble_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Nimble;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Nimble;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Mockery.xcodeproj/Nimble_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Nimble;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Nimble;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_224 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_225 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_229 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Quick/Sources/QuickSpecBase/include",
+				);
+				INFOPLIST_FILE = Mockery.xcodeproj/Quick_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Quick;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Quick;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_230 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Quick/Sources/QuickSpecBase/include",
+				);
+				INFOPLIST_FILE = Mockery.xcodeproj/Quick_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Quick;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Quick;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_260 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_261 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Quick/Sources/QuickSpecBase/include",
+				);
+				INFOPLIST_FILE = Mockery.xcodeproj/QuickSpecBase_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = QuickSpecBase;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				TARGET_NAME = QuickSpecBase;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_266 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/Quick/Sources/QuickSpecBase/include",
+				);
+				INFOPLIST_FILE = Mockery.xcodeproj/QuickSpecBase_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = QuickSpecBase;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_SUPPRESS_WARNINGS = YES;
+				TARGET_NAME = QuickSpecBase;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -797,8 +1649,7 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -806,38 +1657,56 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_126 /* Build configuration list for PBXNativeTarget "Mockery" */ = {
+		842BE8A9234A91E900ED2260 /* Build configuration list for PBXNativeTarget "MockeryDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_127 /* Debug */,
-				OBJ_128 /* Release */,
+				842BE8AA234A91E900ED2260 /* Debug */,
+				842BE8AB234A91E900ED2260 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_135 /* Build configuration list for PBXNativeTarget "MockeryPackageDescription" */ = {
+		OBJ_125 /* Build configuration list for PBXNativeTarget "Mockery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_136 /* Debug */,
-				OBJ_137 /* Release */,
+				OBJ_126 /* Debug */,
+				OBJ_127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_141 /* Build configuration list for PBXAggregateTarget "MockeryPackageTests" */ = {
+		OBJ_134 /* Build configuration list for PBXNativeTarget "MockeryPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_142 /* Debug */,
-				OBJ_143 /* Release */,
+				OBJ_135 /* Debug */,
+				OBJ_136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_146 /* Build configuration list for PBXNativeTarget "MockeryTests" */ = {
+		OBJ_140 /* Build configuration list for PBXAggregateTarget "MockeryPackageTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_147 /* Debug */,
-				OBJ_148 /* Release */,
+				OBJ_141 /* Debug */,
+				OBJ_142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_145 /* Build configuration list for PBXNativeTarget "MockeryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_146 /* Debug */,
+				OBJ_147 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_165 /* Build configuration list for PBXNativeTarget "Nimble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_166 /* Debug */,
+				OBJ_167 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -851,39 +1720,43 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		OBJ_223 /* Build configuration list for PBXNativeTarget "NimblePackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_224 /* Debug */,
+				OBJ_225 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_228 /* Build configuration list for PBXNativeTarget "Quick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_229 /* Debug */,
+				OBJ_230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_259 /* Build configuration list for PBXNativeTarget "QuickPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_260 /* Debug */,
+				OBJ_261 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_264 /* Build configuration list for PBXNativeTarget "QuickSpecBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_265 /* Debug */,
+				OBJ_266 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		84F42F8F2343F60A00F09426 /* XCRemoteSwiftPackageReference "Quick" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Quick.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-		84F42F922343F61F00F09426 /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble.git";
-			requirement = {
-				kind = exactVersion;
-				version = 8.0.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		84F42F902343F60A00F09426 /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84F42F8F2343F60A00F09426 /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
-		};
-		84F42F932343F61F00F09426 /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84F42F922343F61F00F09426 /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }
