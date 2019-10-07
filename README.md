@@ -43,7 +43,7 @@ github "danielsaidi/Mockery"
 
 ### <a name="manual-installation"></a>Manual installation
 
-To add `Mockery` to your app without a dependency manager, clone this repository and place it somewhere on disk, then add `Mockery.xcodeproj` to the project and `Mockery.framework` as an embedded app binary and target dependency.
+To manually add `Mockery` to your app, clone this repository, add `Mockery.xcodeproj` to your project and `Mockery.framework` as an embedded app binary and target dependency.
 
 
 ## Demo App
