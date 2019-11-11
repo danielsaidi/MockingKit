@@ -50,7 +50,7 @@ class MockTests: QuickSpec {
                 expect(mock.functionWithStringResult(arg1: "def", arg2: 123)).to(equal("def"))
             }
 
-            it("it registers executions") {
+            it("it registers invokations") {
                 mock.registerResult(for: mock.functionWithIntResult) { _, arg2 in return arg2 }
                 mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in return arg1 }
 
@@ -110,7 +110,7 @@ class MockTests: QuickSpec {
                 expect(mock.functionWithOptionalStringResult(arg1: "def", arg2: 123)).to(equal("def"))
             }
 
-            it("it registers executions") {
+            it("it registers invokations") {
                 mock.registerResult(for: mock.functionWithOptionalIntResult) { _, arg2 in return arg2 }
                 mock.registerResult(for: mock.functionWithOptionalStringResult) { arg1, _ in return arg1 }
 
@@ -158,7 +158,7 @@ class MockTests: QuickSpec {
                 expect(mock.functionWithVoidResult(arg1: "abc", arg2: 123)).to(beVoid())
             }
 
-            it("it registers executions") {
+            it("it registers invokations") {
                 mock.registerResult(for: mock.functionWithOptionalIntResult) { _, arg2 in return arg2 }
                 mock.registerResult(for: mock.functionWithOptionalStringResult) { arg1, _ in return arg1 }
 

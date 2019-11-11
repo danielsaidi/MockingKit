@@ -30,9 +30,11 @@
 		842BE8B0234A950900ED2260 /* Mockery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; };
 		842BE8B1234A950900ED2260 /* Mockery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		842BE8D8234A988600ED2260 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE8D7234A988600ED2260 /* Mocks.swift */; };
-		OBJ_129 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Escaping.swift */; };
-		OBJ_130 /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Execution.swift */; };
-		OBJ_131 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Mock.swift */; };
+		84EFEF362379B94100D4ACD8 /* Invokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF312379B94100D4ACD8 /* Invokation.swift */; };
+		84EFEF372379B94100D4ACD8 /* AnyInvokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */; };
+		84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF332379B94100D4ACD8 /* Escaping.swift */; };
+		84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */; };
+		84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF352379B94100D4ACD8 /* Mock.swift */; };
 		OBJ_138 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_149 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MockClass.swift */; };
 		OBJ_150 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MockProtocol.swift */; };
@@ -202,10 +204,14 @@
 		842BE8A6234A91E900ED2260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842BE8A8234A91E900ED2260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842BE8D7234A988600ED2260 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		84EFEF312379B94100D4ACD8 /* Invokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invokation.swift; sourceTree = "<group>"; };
+		84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyInvokation.swift; sourceTree = "<group>"; };
+		84EFEF332379B94100D4ACD8 /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
+		84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
+		84EFEF352379B94100D4ACD8 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		"Mockery::Mockery::Product" /* Mockery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Mockery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Mockery::MockeryTests::Product" /* MockeryTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = MockeryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Mockery::MockeryTests::Product" /* MockeryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MockeryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Nimble::Nimble::Product" /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* Execution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
 		OBJ_100 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		OBJ_101 /* ThrowAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowAssertion.swift; sourceTree = "<group>"; };
 		OBJ_102 /* ThrowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowError.swift; sourceTree = "<group>"; };
@@ -215,7 +221,6 @@
 		OBJ_107 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		OBJ_108 /* SourceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLocation.swift; sourceTree = "<group>"; };
 		OBJ_109 /* Stringers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stringers.swift; sourceTree = "<group>"; };
-		OBJ_11 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		OBJ_110 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/admin/Projects/Mockery/.build/checkouts/Nimble/Package.swift; sourceTree = "<group>"; };
 		OBJ_117 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
 		OBJ_119 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = SOURCE_ROOT; };
@@ -287,7 +292,6 @@
 		OBJ_87 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		OBJ_88 /* ElementsEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsEqual.swift; sourceTree = "<group>"; };
 		OBJ_89 /* EndWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndWith.swift; sourceTree = "<group>"; };
-		OBJ_9 /* Escaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
 		OBJ_90 /* Equal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equal.swift; sourceTree = "<group>"; };
 		OBJ_91 /* HaveCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaveCount.swift; sourceTree = "<group>"; };
 		OBJ_92 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -650,9 +654,11 @@
 		OBJ_8 /* Mockery */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Escaping.swift */,
-				OBJ_10 /* Execution.swift */,
-				OBJ_11 /* Mock.swift */,
+				84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */,
+				84EFEF332379B94100D4ACD8 /* Escaping.swift */,
+				84EFEF312379B94100D4ACD8 /* Invokation.swift */,
+				84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */,
+				84EFEF352379B94100D4ACD8 /* Mock.swift */,
 			);
 			name = Mockery;
 			path = Sources/Mockery;
@@ -834,6 +840,9 @@
 						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Automatic;
 					};
+					"Mockery::Mockery" = {
+						LastSwiftMigration = 1120;
+					};
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Mockery" */;
@@ -913,9 +922,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_129 /* Escaping.swift in Sources */,
-				OBJ_130 /* Execution.swift in Sources */,
-				OBJ_131 /* Mock.swift in Sources */,
+				84EFEF372379B94100D4ACD8 /* AnyInvokation.swift in Sources */,
+				84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */,
+				84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */,
+				84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */,
+				84EFEF362379B94100D4ACD8 /* Invokation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1125,7 @@
 		842BE8AA234A91E900ED2260 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1177,6 +1189,7 @@
 		842BE8AB234A91E900ED2260 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1236,7 +1249,9 @@
 		OBJ_126 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1255,6 +1270,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = Mockery;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -1265,7 +1281,9 @@
 		OBJ_127 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1324,6 +1342,7 @@
 		OBJ_146 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1352,6 +1371,7 @@
 		OBJ_147 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (

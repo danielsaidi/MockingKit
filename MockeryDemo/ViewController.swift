@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         let result1 = mock.funcWithResult(arg: "Call 1")
         let result2 = mock.funcWithResult(arg: "Call 2")
         mock.funcWithoutResult(arg: "Call 3")
-        let resultExecutions = mock.executions(of: mock.funcWithResult)
-        let voidExecutions = mock.executions(of: mock.funcWithoutResult)
+        let resultInvokations = mock.invokations(of: mock.funcWithResult)
+        let voidInvokations = mock.invokations(of: mock.funcWithoutResult)
         
         return """
         
@@ -40,11 +40,11 @@ MyMock Test Result
         
 result1: \(result1)
 result2: \(result2)
-funcWithResult calls: \(resultExecutions.count)
-funcWithResult args: \(resultExecutions.map { $0.arguments }.joined(separator: ", "))
-funcWithResult results: \(resultExecutions.map { $0.result }.joined(separator: ", "))
-funcWithoutResult calls: \(voidExecutions.count)
-funcWithoutResult args: \(voidExecutions.map { $0.arguments }.joined(separator: ", "))
+funcWithResult calls: \(resultInvokations.count)
+funcWithResult args: \(resultInvokations.map { $0.arguments }.joined(separator: ", "))
+funcWithResult results: \(resultInvokations.map { $0.result }.joined(separator: ", "))
+funcWithoutResult calls: \(voidInvokations.count)
+funcWithoutResult args: \(voidInvokations.map { $0.arguments }.joined(separator: ", "))
         
 """
     }
@@ -55,8 +55,8 @@ funcWithoutResult args: \(voidExecutions.map { $0.arguments }.joined(separator: 
         let result1 = mock.funcWithResult(arg: "Call 1")
         let result2 = mock.funcWithResult(arg: "Call 2")
         mock.funcWithoutResult(arg: "Call 3")
-        let resultExecutions = mock.recorder.executions(of: mock.funcWithResult)
-        let voidExecutions = mock.recorder.executions(of: mock.funcWithoutResult)
+        let resultInvokations = mock.recorder.invokations(of: mock.funcWithResult)
+        let voidInvokations = mock.recorder.invokations(of: mock.funcWithoutResult)
         
         return """
         
@@ -66,11 +66,11 @@ MyMock Test Result
         
 result1: \(result1)
 result2: \(result2)
-funcWithResult calls: \(resultExecutions.count)
-funcWithResult args: \(resultExecutions.map { $0.arguments }.joined(separator: ", "))
-funcWithResult results: \(resultExecutions.map { $0.result }.joined(separator: ", "))
-funcWithoutResult calls: \(voidExecutions.count)
-funcWithoutResult args: \(voidExecutions.map { $0.arguments }.joined(separator: ", "))
+funcWithResult calls: \(resultInvokations.count)
+funcWithResult args: \(resultInvokations.map { $0.arguments }.joined(separator: ", "))
+funcWithResult results: \(resultInvokations.map { $0.result }.joined(separator: ", "))
+funcWithoutResult calls: \(voidInvokations.count)
+funcWithoutResult args: \(voidInvokations.map { $0.arguments }.joined(separator: ", "))
         
 """
     }

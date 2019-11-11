@@ -285,14 +285,14 @@ private extension Mock {
     }
     
     /**
-     Register a function execution at a memory address.
+     Register a function invokation at a memory address.
      */
-    func register<Arguments, Result>(_ execution: Invokation<Arguments, Result>, at address: MemoryAddress) {
-        registeredInvokations[address] = (registeredInvokations[address] ?? []) + [execution]
+    func register<Arguments, Result>(_ invokation: Invokation<Arguments, Result>, at address: MemoryAddress) {
+        registeredInvokations[address] = (registeredInvokations[address] ?? []) + [invokation]
     }
     
     /**
-     Get all registered function executions for a certain memory address.
+     Get all registered function invokation for a certain memory address.
     */
     func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
         return (registeredInvokations[address] as? [Invokation<Arguments, Result>]) ?? []
@@ -300,7 +300,7 @@ private extension Mock {
 }
 
 
-// MARK: - Executions
+// MARK: - Deprecation
 
 public extension Mock {
     
