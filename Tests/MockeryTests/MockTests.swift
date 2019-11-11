@@ -60,8 +60,8 @@ class MockTests: QuickSpec {
                 _ = mock.functionWithStringResult(arg1: "abc", arg2: 123)
                 _ = mock.functionWithStringResult(arg1: "def", arg2: 123)
 
-                let intExecutions = mock.executions(of: mock.functionWithIntResult)
-                let stringExecutions = mock.executions(of: mock.functionWithStringResult)
+                let intExecutions = mock.invokations(of: mock.functionWithIntResult)
+                let stringExecutions = mock.invokations(of: mock.functionWithStringResult)
                 expect(intExecutions.count).to(equal(3))
                 expect(stringExecutions.count).to(equal(2))
                 expect(intExecutions[0].arguments.0).to(equal("abc"))
@@ -120,8 +120,8 @@ class MockTests: QuickSpec {
                 _ = mock.functionWithOptionalStringResult(arg1: "abc", arg2: 123)
                 _ = mock.functionWithOptionalStringResult(arg1: "def", arg2: 123)
 
-                let intExecutions = mock.executions(of: mock.functionWithOptionalIntResult)
-                let stringExecutions = mock.executions(of: mock.functionWithOptionalStringResult)
+                let intExecutions = mock.invokations(of: mock.functionWithOptionalIntResult)
+                let stringExecutions = mock.invokations(of: mock.functionWithOptionalStringResult)
                 expect(intExecutions.count).to(equal(3))
                 expect(stringExecutions.count).to(equal(2))
                 expect(intExecutions[0].arguments.0).to(equal("abc"))
@@ -140,15 +140,15 @@ class MockTests: QuickSpec {
         describe("invoking function with default result") {
 
             it("returns default value if no value is registered") {
-                expect(mock.invoke(mock.functionWithIntResult, args: ("abc", 123), default: 456)).to(equal(456))
-                expect(mock.invoke(mock.functionWithStringResult, args: ("abc", 123), default: "def")).to(equal("def"))
+                expect(mock.invoke(mock.functionWithIntResult, args: ("abc", 123), fallback: 456)).to(equal(456))
+                expect(mock.invoke(mock.functionWithStringResult, args: ("abc", 123), fallback: "def")).to(equal("def"))
             }
 
             it("returns registered value if a value is registered") {
                 mock.registerResult(for: mock.functionWithIntResult) { _ in return 123 }
                 mock.registerResult(for: mock.functionWithStringResult) { _ in return "a string" }
-                expect(mock.invoke(mock.functionWithIntResult, args: ("abc", 123), default: 456)).to(equal(123))
-                expect(mock.invoke(mock.functionWithStringResult, args: ("abc", 123), default: "def")).to(equal("a string"))
+                expect(mock.invoke(mock.functionWithIntResult, args: ("abc", 123), fallback: 456)).to(equal(123))
+                expect(mock.invoke(mock.functionWithStringResult, args: ("abc", 123), fallback: "def")).to(equal("a string"))
             }
         }
 
@@ -166,7 +166,7 @@ class MockTests: QuickSpec {
                 _ = mock.functionWithVoidResult(arg1: "abc", arg2: 456)
                 _ = mock.functionWithVoidResult(arg1: "abc", arg2: 789)
 
-                let voidExecutions = mock.executions(of: mock.functionWithVoidResult)
+                let voidExecutions = mock.invokations(of: mock.functionWithVoidResult)
                 expect(voidExecutions.count).to(equal(3))
                 expect(voidExecutions[0].arguments.0).to(equal("abc"))
                 expect(voidExecutions[0].arguments.1).to(equal(123))

@@ -6,6 +6,11 @@
 This version renames some methods and introduces new typealiases to make the api more readable.
 
 * The new typealias `MemoryAddress`  is used instead of `Int`, which is the underlying type.
+* `AnyExecution` has been renamed to `AnyInvokation`
+* `Execution` has been renamed to `Invokation`
+* `executions(of:)` has been renamed to `invocations(of:)`
+* There are new `didInvoke` functions that help simplify inspections.
+* The `default` invoke argument has been renamed to `fallback` 
 
 
 ## 0.1.0

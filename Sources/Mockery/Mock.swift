@@ -10,31 +10,39 @@ import Foundation
  
  ```swift
  class MockPrinter: Printer {
-     func print(text: String) {
+     func print(_ text: String) {
          invoke(print, arguments: (text))
      }
  }
  ```
  
  By calling `invoke`, the mock will record the function call
- so that you can inspect it later.
- 
- You can use `calls(to:)` to check how many times a function
- was called, with which arguments and what it returned:
+ so that you can inspect it later:
  
  ```swift
  let printer = MockPrinter()
- let service = MyService(printer: printer)
- service.doSomething()
- // Let's say that the service now calls print with "Hello!"
- let calls = printer.calls(to: printer.print)
- expect(calls.count).to(equal(1))
- expect(calls[0].arguments.0).to(equal("Hello!"))
+ printer.print("Hello!")
+ let invokations = printer.invokations(of: printer.print)   // => 1 item
+ invokations[0].arguments.0                                 // => "Hello!"
+ printer.didInvoke(printer.print)                           // => true
+ printer.didInvoke(printer.print, numberOfTimes: 1)         // => true
+ printer.didInvoke(printer.print, numberOfTimes: 2)         // => false
  ```
  
- You use `invoke` the same way if a function returns a value.
- Make sure to register a result before you call the function,
- otherwise the test suite will crash:
+ You call `invoke` in the same way for functions that return
+ a result. For returning functions, `invoke` will return any
+ pre-registered return value.
+ 
+ ```swift
+ class MockConverter: Converter {
+     func convert(_ text: String) -> String {
+         invoke(convert, arguments: (text))
+     }
+ }
+ ```
+ 
+ Make sure to register a result before calling the returning
+ functions, otherwise they will crash when being called:
  
  ```swift
  let converter = MockStringConverter()
@@ -47,7 +55,7 @@ import Foundation
  
  If a class that you want to mock must inherit another class
  (e.g. a view controller) and therefore can't inherit `Mock`,
- you can add a mock to it and proxy any calls to it:
+ you can create a mock and proxy any invokations to it:
  
  ```swift
  class TestConverter: BaseStringConverter {
@@ -60,41 +68,38 @@ import Foundation
  }
  ```
  
- Then inspect the `recorder` instead of the class:
+ You can then inspect the `recorder` instead of the class:
  
  ```swift
- let calls = converter.recorder.calls(to: converter.convert)
- expect(calls.count).to(equal(1))
- expect(calls[0].arguments.0).to(equal("Hello!"))
+ let converter = TestConverter()
+ converter.convert("Good evening!")
+ converter.recorder.invokations(of: converter.convert)
  ```
  
- Please have a look at the unit tests and docs for some more
- examples and use cases.
+ Have a look at the unit tests and readmes for more examples
+ and use cases.
  
  TODO: For now, this class has no error registration for all
  functions that do not return a value. This means that async
  functions can't register custom completion errors. Until it
  is implemented, you can use the single `error` property.
+ 
+ TODO: The function address approach does not work when unit
+ test are run on a 32 bit device or simulator.
+ 
+ TODO: The function address approach does not work when your
+ mock class is defined in another target than the test suite.
  */
 open class Mock {
     
-    
-    // MARK: - Initialization
-    
     public init() {}
-    
-    
-    // MARK: - Types
     
     typealias Function = Any
     typealias FunctionAddress = Int
     
-    
-    // MARK: - Properties
-    
     public var error: Error?
     
-    var registeredExecutions: [FunctionAddress: [AnyExecution]] = [:]
+    var registeredInvokations: [FunctionAddress: [AnyInvokation]] = [:]
     var registeredResults: [FunctionAddress: Function] = [:]
 }
 
@@ -116,15 +121,23 @@ public extension Mock {
 
 public extension Mock {
     
+    /**
+     Invoke a function that has a non-optional return value.
+     
+     This will return a registered return value, if any, or
+     crash if no return value has been registered.
+    */
     func invoke<Arguments, Result>(
         _ function: @escaping (Arguments) throws -> Result,
         args: Arguments,
-        file: StaticString = #file, line: UInt = #line, functionCall: StaticString = #function) rethrows -> Result {
+        file: StaticString = #file,
+        line: UInt = #line,
+        functionCall: StaticString = #function) rethrows -> Result {
         let address = self.address(of: function)
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            register(Execution(arguments: args, result: void), at: address)
+            register(Invokation(arguments: args, result: void), at: address)
             return void
         }
         
@@ -136,66 +149,105 @@ public extension Mock {
             """
             preconditionFailure(message, file: file, line: line)
         }
-        register(Execution(arguments: args, result: result), at: address)
+        register(Invokation(arguments: args, result: result), at: address)
         return result
     }
     
+    /**
+     Invoke a function that has a non-optional return value.
+     
+     This function will return a registered return value or
+     the provided fallback if no value has been registered.
+    */
+    func invoke<Arguments, Result>(
+        _ function: @escaping (Arguments) throws -> Result,
+        args: Arguments,
+        fallback: @autoclosure () -> Result) rethrows -> Result {
+        let address = self.address(of: function)
+        let closure = registeredResults[address] as? (Arguments) throws -> Result
+        let result = (try? closure?(args)) ?? fallback()
+        register(Invokation(arguments: args, result: result), at: address)
+        return result
+    }
+
+    /**
+     Invoke a function that has an optional return value.
+     
+     This will return a registered return value, if any, or
+     `nil` if no return value has been registered.
+    */
     func invoke<Arguments, Result>(
         _ function: @escaping (Arguments) throws -> Result?,
         args: Arguments) rethrows -> Result? {
         let address = self.address(of: function)
         let closure = registeredResults[address] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
-        register(Execution(arguments: args, result: result), at: address)
+        register(Invokation(arguments: args, result: result), at: address)
         return result
-    }
-    
-    func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
-        args: Arguments,
-        default: @autoclosure () -> Result) rethrows -> Result {
-        let address = self.address(of: function)
-        let closure = registeredResults[address] as? (Arguments) throws -> Result
-        let result = (try? closure?(args)) ?? `default`()
-        register(Execution(arguments: args, result: result), at: address)
-        return result
-    }
-}
+    }}
 
 
 // MARK: - Escaping Invokes
 
 public extension Mock {
     
+    /**
+     Invoke a function that has a non-optional return value
+     and one or many escaping parameters.
+     
+     This will return a registered return value, if any, or
+     crash if no return value has been registered.
+    */
     func invoke<Arguments, Result>(
         _ function: @escaping (Arguments) throws -> Result,
         args: Arguments!,
         file: StaticString = #file, line: UInt = #line, functionCall: StaticString = #function) rethrows -> Result {
-        return try invoke(function, args: args, file: file, line: line, functionCall: functionCall)
+        try invoke(function, args: args, file: file, line: line, functionCall: functionCall)
     }
     
-    func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result?,
-        args: Arguments!) rethrows -> Result? {
-        return try invoke(function, args: args)
-    }
-    
+    /**
+     Invoke a function that has a non-optional return value
+     and one or many escaping parameters.
+     
+     This will return a registered return value, if any, or
+     the provided fallback if no result has been registered.
+    */
     func invoke<Arguments, Result>(
         _ function: @escaping (Arguments) throws -> Result,
         args: Arguments!,
-        default: @autoclosure () -> Result) rethrows -> Result {
-        return try invoke(function, args: args, default: `default`())
+        fallback: @autoclosure () -> Result) rethrows -> Result {
+        try invoke(function, args: args, fallback: fallback())
+    }
+    
+    /**
+     Invoke a function that has an optional return value and
+     one or many escaping parameters.
+     
+     This will return a registered return value, if any, or
+     `nil` if no return value has been registered.
+    */
+    func invoke<Arguments, Result>(
+        _ function: @escaping (Arguments) throws -> Result?,
+        args: Arguments!) rethrows -> Result? {
+        try invoke(function, args: args)
     }
 }
 
 
-// MARK: - Executions
+// MARK: - Inspection
 
 public extension Mock {
     
-    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Execution<Arguments, Result>] {
-        let address = self.address(of: function)
-        return registeredExecutions(at: address)
+    func invokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
+        registeredCalls(at: address(of: function))
+    }
+    
+    func didInvoke<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result) -> Bool {
+        invokations(of: function).count > 0
+    }
+    
+    func didInvoke<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result, numberOfTimes: Int) -> Bool {
+        invokations(of: function).count == numberOfTimes
     }
 }
 
@@ -204,6 +256,9 @@ public extension Mock {
 
 private extension Mock {
     
+    /**
+     Resolve the memory address of a function reference.
+     */
     func address<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> MemoryAddress {
         let (_, lo) = unsafeBitCast(function, to: (Int, Int).self)
         let offset = MemoryLayout<Int>.size == 8 ? 16 : 12
@@ -211,11 +266,28 @@ private extension Mock {
         return pointer.pointee
     }
     
-    func register<Arguments, Result>(_ execution: Execution<Arguments, Result>, at address: MemoryAddress) {
-        registeredExecutions[address] = (registeredExecutions[address] ?? []) + [execution]
+    /**
+     Register a function execution at a memory address.
+     */
+    func register<Arguments, Result>(_ execution: Invokation<Arguments, Result>, at address: MemoryAddress) {
+        registeredInvokations[address] = (registeredInvokations[address] ?? []) + [execution]
     }
     
-    func registeredExecutions<Arguments, Result>(at address: MemoryAddress) -> [Execution<Arguments, Result>] {
-        return (registeredExecutions[address] as? [Execution<Arguments, Result>]) ?? []
+    /**
+     Get all registered function executions for a certain memory address.
+    */
+    func registeredCalls<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
+        return (registeredInvokations[address] as? [Invokation<Arguments, Result>]) ?? []
+    }
+}
+
+
+// MARK: - Executions
+
+public extension Mock {
+    
+    @available(*, deprecated, renamed: "calls(to:)")
+    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
+        invokations(of: function)
     }
 }
