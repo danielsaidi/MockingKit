@@ -25,7 +25,6 @@ protocol MockProtocol {
     func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void)
 }
 
-
 struct User: Equatable {
     
     var name: String

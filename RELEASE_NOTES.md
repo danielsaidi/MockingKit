@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 0.2.0
+
+This version renames some methods and introduces new typealiases to make the api more readable.
+
+* The new typealias `MemoryAddress`  is used instead of `Int`, which is the underlying type.
+
+
 ## 0.1.0
 
 This version renames Mock n Roll to Mockery and adds support for Xcode 11 and SPM.
