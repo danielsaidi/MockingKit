@@ -202,7 +202,7 @@
 		842BE8A6234A91E900ED2260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842BE8A8234A91E900ED2260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842BE8D7234A988600ED2260 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
-		"Mockery::Mockery::Product" /* Mockery.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mockery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Mockery::Mockery::Product" /* Mockery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Mockery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Mockery::MockeryTests::Product" /* MockeryTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = MockeryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Nimble::Nimble::Product" /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Execution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Execution.swift; sourceTree = "<group>"; };
@@ -1236,6 +1236,7 @@
 		OBJ_126 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1264,6 +1265,7 @@
 		OBJ_127 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

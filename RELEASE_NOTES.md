@@ -12,6 +12,8 @@ This version renames some methods and introduces new typealiases to make the api
 * There are new `didInvoke` functions that help simplify inspections.
 * The `default` invoke argument has been renamed to `fallback` 
 
+This version also specifies an explicit "current project version", to avoid some Carthage problems. 
+
 
 ## 0.1.0
 
