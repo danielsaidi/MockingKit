@@ -156,6 +156,22 @@ public extension Mock {
     /**
      Invoke a function that has a non-optional return value.
      
+     This will return a registered return value, if any, or
+     crash if no return value has been registered.
+    */
+    func invoke<Arguments, Result>(
+        _ function: @escaping (Arguments) throws -> Result,
+        args: Arguments!,
+        file: StaticString = #file,
+        line: UInt = #line,
+        functionCall: StaticString = #function) rethrows -> Result {
+        try invoke(function, args: args, file: file, line: line, functionCall: functionCall)
+    }
+    
+    /**
+     Invoke a function that has a non-optional return value,
+     using a fallback value if no value has been registered.
+     
      This function will return a registered return value or
      the provided fallback if no value has been registered.
     */
@@ -168,6 +184,20 @@ public extension Mock {
         let result = (try? closure?(args)) ?? fallback()
         register(Invokation(arguments: args, result: result), at: address)
         return result
+    }
+    
+    /**
+     Invoke a function that has a non-optional return value,
+     using a fallback value if no value has been registered.
+     
+     This will return a registered return value, if any, or
+     the provided fallback if no result has been registered.
+    */
+    func invoke<Arguments, Result>(
+        _ function: @escaping (Arguments) throws -> Result,
+        args: Arguments!,
+        fallback: @autoclosure () -> Result) rethrows -> Result {
+        try invoke(function, args: args, fallback: fallback())
     }
 
     /**
@@ -184,44 +214,10 @@ public extension Mock {
         let result = try? closure?(args)
         register(Invokation(arguments: args, result: result), at: address)
         return result
-    }}
-
-
-// MARK: - Escaping Invokes
-
-public extension Mock {
-    
-    /**
-     Invoke a function that has a non-optional return value
-     and one or many escaping parameters.
-     
-     This will return a registered return value, if any, or
-     crash if no return value has been registered.
-    */
-    func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
-        args: Arguments!,
-        file: StaticString = #file, line: UInt = #line, functionCall: StaticString = #function) rethrows -> Result {
-        try invoke(function, args: args, file: file, line: line, functionCall: functionCall)
     }
     
     /**
-     Invoke a function that has a non-optional return value
-     and one or many escaping parameters.
-     
-     This will return a registered return value, if any, or
-     the provided fallback if no result has been registered.
-    */
-    func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
-        args: Arguments!,
-        fallback: @autoclosure () -> Result) rethrows -> Result {
-        try invoke(function, args: args, fallback: fallback())
-    }
-    
-    /**
-     Invoke a function that has an optional return value and
-     one or many escaping parameters.
+     Invoke a function that has an optional return value.
      
      This will return a registered return value, if any, or
      `nil` if no return value has been registered.
@@ -242,11 +238,11 @@ public extension Mock {
         registeredCalls(at: address(of: function))
     }
     
-    func didInvoke<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result) -> Bool {
+    func hasInvoked<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result) -> Bool {
         invokations(of: function).count > 0
     }
     
-    func didInvoke<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result, numberOfTimes: Int) -> Bool {
+    func hasInvoked<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result, numberOfTimes: Int) -> Bool {
         invokations(of: function).count == numberOfTimes
     }
 }

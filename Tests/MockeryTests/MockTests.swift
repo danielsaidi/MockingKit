@@ -22,7 +22,7 @@ class MockTests: QuickSpec {
         
         describe("invoking function with non-optional result") {
             
-            it("it fails with precondition failure if no result is registered") {
+            it("fails with precondition failure if no result is registered") {
                 //expect { _ = mock.functionWithIntResult(arg1: "abc", arg2: 123) }.to(throwAssertion())
             }
 
@@ -137,7 +137,7 @@ class MockTests: QuickSpec {
             }
         }
 
-        describe("invoking function with default result") {
+        describe("invoking function with fallback") {
 
             it("returns default value if no value is registered") {
                 expect(mock.invoke(mock.functionWithIntResult, args: ("abc", 123), fallback: 456)).to(equal(456))
@@ -174,6 +174,33 @@ class MockTests: QuickSpec {
                 expect(voidExecutions[1].arguments.1).to(equal(456))
                 expect(voidExecutions[2].arguments.0).to(equal("abc"))
                 expect(voidExecutions[2].arguments.1).to(equal(789))
+            }
+        }
+        
+        describe("inspecting invokations") {
+            
+            it("registers all invokations") {
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 123)
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 456)
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 789)
+                let inv = mock.invokations(of: mock.functionWithVoidResult)
+                expect(inv.count).to(equal(3))
+            }
+            
+            it("can verify if at least one invokation has been made") {
+                expect(mock.hasInvoked(mock.functionWithVoidResult)).to(beFalse())
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 123)
+                expect(mock.hasInvoked(mock.functionWithVoidResult)).to(beTrue())
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 456)
+                expect(mock.hasInvoked(mock.functionWithVoidResult)).to(beTrue())
+            }
+            
+            it("can verify if an exact number or invokations have been made") {
+                expect(mock.hasInvoked(mock.functionWithVoidResult, numberOfTimes: 2)).to(beFalse())
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 123)
+                expect(mock.hasInvoked(mock.functionWithVoidResult, numberOfTimes: 2)).to(beFalse())
+                _ = mock.functionWithVoidResult(arg1: "abc", arg2: 456)
+                expect(mock.hasInvoked(mock.functionWithVoidResult, numberOfTimes: 2)).to(beTrue())
             }
         }
     }
