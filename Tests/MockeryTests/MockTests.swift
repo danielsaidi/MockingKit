@@ -203,5 +203,28 @@ class MockTests: QuickSpec {
                 expect(mock.hasInvoked(mock.functionWithVoidResult, numberOfTimes: 2)).to(beTrue())
             }
         }
+        
+        describe("resetting invokations") {
+            
+            it("can reset all invokations") {
+                mock.registerResult(for: mock.functionWithIntResult) { _, arg2 in return arg2 }
+                mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in return arg1 }
+                _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
+                _ = mock.functionWithStringResult(arg1: "abc", arg2: 123)
+                mock.resetInvokations()
+                expect(mock.hasInvoked(mock.functionWithIntResult)).to(beFalse())
+                expect(mock.hasInvoked(mock.functionWithStringResult)).to(beFalse())
+            }
+            
+            it("can reset all invokations for a certain function") {
+                mock.registerResult(for: mock.functionWithIntResult) { _, arg2 in return arg2 }
+                mock.registerResult(for: mock.functionWithStringResult) { arg1, _ in return arg1 }
+                _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
+                _ = mock.functionWithStringResult(arg1: "abc", arg2: 123)
+                mock.resetInvokations(of: mock.functionWithIntResult)
+                expect(mock.hasInvoked(mock.functionWithIntResult)).to(beFalse())
+                expect(mock.hasInvoked(mock.functionWithStringResult)).to(beTrue())
+            }
+        }
     }
 }

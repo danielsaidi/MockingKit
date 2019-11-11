@@ -32,9 +32,9 @@ import Foundation
  printer.print("Hello!")
  let invokations = printer.invokations(of: printer.print)   // => 1 item
  invokations[0].arguments.0                                 // => "Hello!"
- printer.didInvoke(printer.print)                           // => true
- printer.didInvoke(printer.print, numberOfTimes: 1)         // => true
- printer.didInvoke(printer.print, numberOfTimes: 2)         // => false
+ printer.hasInvoked(printer.print)                          // => true
+ printer.hasInvoked(printer.print, numberOfTimes: 1)        // => true
+ printer.hasInvoked(printer.print, numberOfTimes: 2)        // => false
  ```
  
  You call `invoke` in the same way for functions that return
@@ -235,6 +235,20 @@ public extension Mock {
         args: Arguments!) rethrows -> Result? {
         try invoke(function, args: args)
     }
+    
+    /**
+     Reset all registered invokations.
+     */
+    func resetInvokations() {
+        registeredInvokations = [:]
+    }
+    
+    /**
+     Reset all registered invokations.
+     */
+    func resetInvokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) {
+        registeredInvokations[address(of: function)] = []
+    }
 }
 
 
@@ -243,7 +257,7 @@ public extension Mock {
 public extension Mock {
     
     func invokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
-        registeredCalls(at: address(of: function))
+        registeredInvokations(at: address(of: function))
     }
     
     func hasInvoked<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result) -> Bool {
@@ -280,7 +294,7 @@ private extension Mock {
     /**
      Get all registered function executions for a certain memory address.
     */
-    func registeredCalls<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
+    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
         return (registeredInvokations[address] as? [Invokation<Arguments, Result>]) ?? []
     }
 }
