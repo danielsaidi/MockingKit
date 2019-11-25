@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.3.0
+
+This version adds a `Mockable` protocol, which removes the need for the previous recorder approach. `Mock` implements `Mockable` by providing itself as mock.
+
+
 ## 0.2.0
 
 This version renames some methods and introduces new typealiases to make the api more readable.
