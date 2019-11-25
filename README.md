@@ -15,16 +15,43 @@
 
 ## <a name="about"></a>About Mockery
 
-Mockery is a mocking library for Swift. It helps you mock functionality e.g. when unit testing or developing new functionality. With Mockery, you can `register` return values, `invoke` method calls, `return` mocked return values and `inspect` function executions.
+Mockery is a mocking library for Swift. Mockery lets you `invoke` method calls, `register` function results and `inspect` function invokations.
 
-Mockery supports mocking functions with void, optional and non-optional results. It supports values, structs, classes and enums and doesn't put any restrains on the code you write.
+Example:
+
+```swift
+protocol Printer {
+    func print(_ text: String)
+}
+ 
+// Inheriting `Mock`
+class MockPrinter: Mock, Printer {
+    func print(_ text: String) {
+        invoke(print, arguments: (text))
+    }
+}
+
+let printer = MockPrinter()
+printer.print("Hello!")
+let invokations = printer.invokations(of: printer.print)   
+    // => 1 item
+invokations[0].arguments.0
+    // => "Hello!"
+printer.hasInvoked(printer.print)
+    // => true
+printer.hasInvoked(printer.print, numberOfTimes: 1)
+    // => true
+printer.hasInvoked(printer.print, numberOfTimes: 2)
+    // => false
+```
+
+Mockery supports mocking functions with `void`, `optional` and `non-optional` results. It supports `values`, `structs`, `classes` and `enums` and doesn't put any restrains on the code you write.
 
 
 ## <a name="installation"></a>Installation
 
 ### <a name="spm"></a>Swift Package Manager
 
-The easiest way to add Mockery to your project is to use Swift Package Manager:
 ```
 https://github.com/danielsaidi/Mockery.git
 ```
@@ -41,14 +68,10 @@ pod 'Mockery'
 github "danielsaidi/Mockery"
 ```
 
-### <a name="manual-installation"></a>Manual installation
-
-To manually add `Mockery` to your app, clone this repository, add `Mockery.xcodeproj` to your project and `Mockery.framework` as an embedded app binary and target dependency.
-
 
 ## Demo App
 
-This repository contains a demo app that wires up a couple of mocks and invokes various functions. To try it out, open and run the `Mockery.xcodeproj` project.
+This repository contains a demo app that invokes various mock functions. To try it out, open and run the `Mockery.xcodeproj` project.
 
 
 ## Creating a mock
@@ -60,11 +83,11 @@ protocol TestProtocol {
     
     func functionWithResult(arg1: String, arg2: Int) -> Int
     func functionWithOptionalResult(arg1: String, arg2: Int) -> Int?
-    func functionWithoutResult(arg: String)
+    func functionWithVoidResult(arg: String)
 }
 ```
 
-To mock `TestProtocol`, you just have to create a mock class that inherits `Mock` and implements `TestProtocol`:
+To mock `TestProtocol`, just create a class that inherits `Mock` and implements `TestProtocol`:
 
 ```swift
 class TestMock: Mock, TestProtocol {
@@ -77,80 +100,53 @@ class TestMock: Mock, TestProtocol {
         invoke(functionWithOptionalResult, args: (arg1, arg2))
     }
     
-    func functionWithoutResult(arg: String) {
-        invoke(functionWithoutResult, args: (arg))
+    func functionWithVoidResult(arg: String) {
+        invoke(functionWithVoidResult, args: (arg))
     }
 }
 ```
 
-When you call these functions, the mock will record the invoked method calls and return any registered return values (or crash if you haven't registered any).
+If your test class must inherit another class and therefore can't inherit `Mock`, you can let it implement `Mockable` instead. The rest is identical to using `Mock`.
 
-
-## Using a mock recorder
-
-If your mock has to inherit another class (e.g. a mocked view controller), you can use a mock recorder under the hood, like this:
-
-```swift
-class TestMock: TestClass, TestProtocol {
-
-    var recorder = Mock()
-    
-    func functionWithResult(arg1: String, arg2: Int) -> Int {
-        recorder.invoke(functionWithResult, args: (arg1, arg2))
-    }
-
-    func functionWithOptionalResult(arg1: String, arg2: Int) -> Int? {
-        recorder.invoke(functionWithOptionalResult, args: (arg1, arg2))
-    }
-    
-    func functionWithoutResult(arg: String) {
-        recorder.invoke(functionWithoutResult, args: (arg))
-    }
-}
-```
-
-When you call these functions, the class will use its recorder to record the invoked method calls and return any registered return values.
-
-
-## Invoking function calls
-
-Each mocked function must call `invoke` to record the function call. After calling the mocked functions, you can inspect the recorded function calls. If you haven't registered a return value, your app will crash.
+The mock will now record the function calls and return any registered return values (or crash if you haven't registered any return values for non-optional functions).
 
 
 ## Registering return values
 
-You can register return values by calling the mock's (or recorder's) `registerResult(for:result:)` function:
+You can register return values by calling `registerResult(for:)`:
 
 ```swift
 let mock = TestMock()
 mock.registerResult(for: mock.functionWithIntResult) { _ in return 123 }
 ```
 
-The result block takes the same arguments as the actual function, so you can adjust the function logic depending on the input arguments. You don't have to register a return value for functions that return an optional value.
+The result block takes the same arguments as the actual function, so you can adjust the function logic depending on the input arguments.
+
+You don't have to register a return value for optional result functions. However, non-optional functions will crash if you fail to register a result before calling them.
 
 
-## Inspecting executions
+## Inspecting invokations
 
-To inspect the performed exeuctions of a mock, you can use `executions(for:)`. It contains information on how many times a function was executed, with which input arguments and the returned result:
+Use `invokations(of:)` to inspect a mock's performed invokations. An invokation reference contains information on how many times the function was executed, with which input arguments and the result:
 
 ```swift
 _ = mock.functionWithResult(arg1: "abc", arg2: 123)
 _ = mock.functionWithResult(arg1: "abc", arg2: 456)
 
-let executions = mock.executions(of: mock.functionWithIntResult)
-expect(executions.count).to(equal(3))
-expect(executions[0].arguments.0).to(equal("abc"))
-expect(executions[0].arguments.1).to(equal(123))
-expect(executions[1].arguments.0).to(equal("abc"))
-expect(executions[1].arguments.1).to(equal(456))
+let inv = mock.invokations(of: mock.functionWithResult)
+expect(inv.count).to(equal(2))
+expect(inv[0].arguments.0).to(equal("abc"))
+expect(inv[0].arguments.1).to(equal(123))
+expect(inv[1].arguments.0).to(equal("abc"))
+expect(inv[1].arguments.1).to(equal(456))
 ```
 
-In case you don't recognize the syntax above, the test uses [Quick/Nimble][Quick]. You can use any unit test framework you like.
+The syntax above uses [Quick/Nimble][Quick]. You can use any test framework you like.
 
 
 ## Registering and throwing errors
 
-There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values. Until this is implemented, you can use the `Mock` `error` property.
+There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values.
 
 
 ## Device limitations
@@ -169,9 +165,7 @@ Feel free to reach out if you have questions or if you want to contribute in any
 
 ## Acknowledgements
 
-Mockery is inspired by [Stubber][Stubber], and would not have been possible without it. The entire function address approach and escape support etc. comes from Stubber, and this mock implementation comes from there as well.
-
-However, while Stubber uses global functions (which requires you to reset the global state every now and then), Mockery moves this logic to each mock, which means that any recorded exeuctions are automatically reset when the mock is disposed. Mockery also adds some extra functionality, like support for optional and void results.
+Mockery is inspired by [Stubber][Stubber], and would not have been possible without it. However, Stubber uses global functions, which requires you to reset the global state every now and then. Mockery moves this logic to each mock, which means that any recorded exeuctions are automatically reset when the mock is disposed. Mockery also adds some extra functionality, like support for optional and void results and convenient inspection utilities.
 
 
 ## License
