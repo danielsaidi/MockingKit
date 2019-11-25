@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This typealias represents a memory address. This is used by
- `Mock` to register function invokations.
+ This typealias represents a memory address. This is used to
+ register function invokations in mocks.
  */
 typealias MemoryAddress = Int

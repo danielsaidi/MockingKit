@@ -1,5 +1,5 @@
 //
-//  MockProtocol.swift
+//  TestProtocol.swift
 //  MockeryTests
 //
 //  Created by Daniel Saidi on 2019-04-16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MockProtocol {
+protocol TestProtocol {
     
     func functionWithIntResult(arg1: String, arg2: Int) -> Int
     func functionWithStringResult(arg1: String, arg2: Int) -> String

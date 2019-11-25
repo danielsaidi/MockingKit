@@ -1,14 +1,16 @@
 //
-//  MockClass.swift
-//  MockeryTests
+//  TestMockable.swift
+//  Mockery
 //
-//  Created by Daniel Saidi on 2019-04-16.
+//  Created by Daniel Saidi on 2019-11-25.
 //  Copyright © 2019 Daniel Saidi. All rights reserved.
 //
 
 import Mockery
 
-class MockClass: Mock, MockProtocol {
+class TestMockable: TestProtocol, Mockable {
+    
+    var mock = Mock()
     
     func functionWithIntResult(arg1: String, arg2: Int) -> Int {
         invoke(functionWithIntResult, args: (arg1, arg2))

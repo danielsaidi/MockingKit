@@ -30,14 +30,17 @@
 		842BE8B0234A950900ED2260 /* Mockery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; };
 		842BE8B1234A950900ED2260 /* Mockery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "Mockery::Mockery::Product" /* Mockery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		842BE8D8234A988600ED2260 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE8D7234A988600ED2260 /* Mocks.swift */; };
+		8431187B238BD75500A0D2E7 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431187A238BD75500A0D2E7 /* Mockable.swift */; };
+		8431187E238BF7F200A0D2E7 /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431187C238BF7E500A0D2E7 /* TestMockable.swift */; };
+		84311880238BF83300A0D2E7 /* MockableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431187F238BF83300A0D2E7 /* MockableTests.swift */; };
 		84EFEF362379B94100D4ACD8 /* Invokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF312379B94100D4ACD8 /* Invokation.swift */; };
 		84EFEF372379B94100D4ACD8 /* AnyInvokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */; };
 		84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF332379B94100D4ACD8 /* Escaping.swift */; };
 		84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */; };
 		84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF352379B94100D4ACD8 /* Mock.swift */; };
 		OBJ_138 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_149 /* MockClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MockClass.swift */; };
-		OBJ_150 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* MockProtocol.swift */; };
+		OBJ_149 /* TestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* TestMock.swift */; };
+		OBJ_150 /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* TestProtocol.swift */; };
 		OBJ_151 /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* MockTests.swift */; };
 		OBJ_152 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* XCTestManifests.swift */; };
 		OBJ_154 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Nimble::Nimble::Product" /* Nimble.framework */; };
@@ -204,6 +207,9 @@
 		842BE8A6234A91E900ED2260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842BE8A8234A91E900ED2260 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842BE8D7234A988600ED2260 /* Mocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		8431187A238BD75500A0D2E7 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		8431187C238BF7E500A0D2E7 /* TestMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMockable.swift; sourceTree = "<group>"; };
+		8431187F238BF83300A0D2E7 /* MockableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockableTests.swift; sourceTree = "<group>"; };
 		84EFEF312379B94100D4ACD8 /* Invokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invokation.swift; sourceTree = "<group>"; };
 		84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyInvokation.swift; sourceTree = "<group>"; };
 		84EFEF332379B94100D4ACD8 /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
@@ -228,8 +234,8 @@
 		OBJ_121 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_122 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_123 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
-		OBJ_14 /* MockClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClass.swift; sourceTree = "<group>"; };
-		OBJ_15 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
+		OBJ_14 /* TestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMock.swift; sourceTree = "<group>"; };
+		OBJ_15 /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 		OBJ_16 /* MockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_21 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
@@ -437,9 +443,11 @@
 		OBJ_13 /* MockeryTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* MockClass.swift */,
-				OBJ_15 /* MockProtocol.swift */,
+				OBJ_14 /* TestMock.swift */,
+				8431187C238BF7E500A0D2E7 /* TestMockable.swift */,
+				OBJ_15 /* TestProtocol.swift */,
 				OBJ_16 /* MockTests.swift */,
+				8431187F238BF83300A0D2E7 /* MockableTests.swift */,
 				OBJ_17 /* XCTestManifests.swift */,
 			);
 			name = MockeryTests;
@@ -659,6 +667,7 @@
 				84EFEF312379B94100D4ACD8 /* Invokation.swift */,
 				84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */,
 				84EFEF352379B94100D4ACD8 /* Mock.swift */,
+				8431187A238BD75500A0D2E7 /* Mockable.swift */,
 			);
 			name = Mockery;
 			path = Sources/Mockery;
@@ -926,6 +935,7 @@
 				84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */,
 				84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */,
 				84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */,
+				8431187B238BD75500A0D2E7 /* Mockable.swift in Sources */,
 				84EFEF362379B94100D4ACD8 /* Invokation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -942,8 +952,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_149 /* MockClass.swift in Sources */,
-				OBJ_150 /* MockProtocol.swift in Sources */,
+				8431187E238BF7F200A0D2E7 /* TestMockable.swift in Sources */,
+				84311880238BF83300A0D2E7 /* MockableTests.swift in Sources */,
+				OBJ_149 /* TestMock.swift in Sources */,
+				OBJ_150 /* TestProtocol.swift in Sources */,
 				OBJ_151 /* MockTests.swift in Sources */,
 				OBJ_152 /* XCTestManifests.swift in Sources */,
 			);
