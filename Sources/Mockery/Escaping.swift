@@ -6,12 +6,13 @@
 //  Copyright © 2019 Daniel Saidi. All rights reserved.
 //
 
-/**
+/*
  These functions are used to wrap invoke arguments where one
  or several arguments are escaping blocks.
  
  Original implementation: https://github.com/devxoul/Stubber
  */
+
 import Foundation
 
 public func escaping<Arg1>(_ arg1: Arg1) -> (Arg1)! { return (arg1) }
