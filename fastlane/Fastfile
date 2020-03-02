@@ -30,7 +30,7 @@ platform :ios do
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
-    test
+    # test
 
     bump_type = options[:type]
     if bump_type == nil or bump_type.empty?
