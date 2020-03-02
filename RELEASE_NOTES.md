@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.3.1
+
+This version fixes a typo in the `executions(of:)` deprecation.
+
+
 ## 0.3.0
 
 This version adds a `Mockable` protocol, which removes the need for the previous recorder approach. `Mock` implements `Mockable` by providing itself as mock.
