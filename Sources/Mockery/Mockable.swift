@@ -83,12 +83,9 @@ import Foundation
  Since the result block is called with the original argument
  collection, you can vary the result based on the arguments.
  
- `TODO` For now, this protocok has no error registration for
+ `TODO` For now, this protocol has no error registration for
  functions that do not return a value. This means that async
  functions can't register custom completion errors.
- 
- `TODO` The function address approach doesn't work when unit
- test are run on a 32 bit device.
  
  `TODO` The function address approach doesn't work when your
  mock class is defined in another target than the test.
@@ -293,7 +290,7 @@ private extension Mockable {
 
 public extension Mockable {
     
-    @available(*, deprecated, renamed: "calls(to:)")
+    @available(*, deprecated, renamed: "invokations(of:)")
     func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
         invokations(of: function)
     }
