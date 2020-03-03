@@ -34,7 +34,6 @@
 		8431187E238BF7F200A0D2E7 /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431187C238BF7E500A0D2E7 /* TestMockable.swift */; };
 		84311880238BF83300A0D2E7 /* MockableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431187F238BF83300A0D2E7 /* MockableTests.swift */; };
 		84EFEF362379B94100D4ACD8 /* Invokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF312379B94100D4ACD8 /* Invokation.swift */; };
-		84EFEF372379B94100D4ACD8 /* AnyInvokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */; };
 		84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF332379B94100D4ACD8 /* Escaping.swift */; };
 		84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */; };
 		84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFEF352379B94100D4ACD8 /* Mock.swift */; };
@@ -211,7 +210,6 @@
 		8431187C238BF7E500A0D2E7 /* TestMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMockable.swift; sourceTree = "<group>"; };
 		8431187F238BF83300A0D2E7 /* MockableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockableTests.swift; sourceTree = "<group>"; };
 		84EFEF312379B94100D4ACD8 /* Invokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invokation.swift; sourceTree = "<group>"; };
-		84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyInvokation.swift; sourceTree = "<group>"; };
 		84EFEF332379B94100D4ACD8 /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
 		84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
 		84EFEF352379B94100D4ACD8 /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -662,7 +660,6 @@
 		OBJ_8 /* Mockery */ = {
 			isa = PBXGroup;
 			children = (
-				84EFEF322379B94100D4ACD8 /* AnyInvokation.swift */,
 				84EFEF332379B94100D4ACD8 /* Escaping.swift */,
 				84EFEF312379B94100D4ACD8 /* Invokation.swift */,
 				84EFEF342379B94100D4ACD8 /* MemoryAddress.swift */,
@@ -931,7 +928,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				84EFEF372379B94100D4ACD8 /* AnyInvokation.swift in Sources */,
 				84EFEF3A2379B94100D4ACD8 /* Mock.swift in Sources */,
 				84EFEF392379B94100D4ACD8 /* MemoryAddress.swift in Sources */,
 				84EFEF382379B94100D4ACD8 /* Escaping.swift in Sources */,

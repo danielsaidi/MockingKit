@@ -1,5 +1,5 @@
 //
-//  AnyInvokation.swift
+//  Invokation.swift
 //  Mockery
 //
 //  Created by Daniel Saidi on 2019-11-11.
@@ -18,3 +18,9 @@ public struct Invokation<Arguments, Result>: AnyInvokation {
     public let arguments: Arguments
     public let result: Result
 }
+
+/**
+ This protocol represents any kind of invocation and is used
+ to internally type erase the generic `Invokation` struct.
+ */
+public protocol AnyInvokation {}
