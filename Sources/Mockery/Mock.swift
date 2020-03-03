@@ -9,11 +9,13 @@
 import Foundation
 
 /**
- Inheriting `Mock` makes it easily to create mocked protocol
- implementations, provided that the test class does not have
- to inherit another class. Classes that must inherit another
- class (e.g. notification center) should implement `Mockable`
- instead and fulfull that protocol.
+ This class can be inherited by mock classes that don't have
+ to inherit another base class.
+ 
+ Classes that must inherit another base class (e.g. a mocked
+ system class) should implement `Mockable` and create a mock
+ instance instead. This class implements `Mockable` by using
+ itself as the mock.
  
  See `Mockable` for more information about what mocks can do.
  */

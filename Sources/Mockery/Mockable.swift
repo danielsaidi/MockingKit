@@ -13,37 +13,34 @@ import Foundation
  used to record function calls and return any pre-registered
  return values.
  
- When you implement this protocol, you must provide a `mock`,
- which will then be used by the mock functionality. Whenever
- possible, you should inherit `Mock` instead, since it takes
- care of setting up everything. However, the api:s for `Mock`
- and `Mockable` are identical.
- 
- To create mocks, inherit the `Mock` base class or implement
- `Mockable` like this:
+ When you implement this protocol, you must provide a `mock`.
+ If a mock does not have to inherit another class, it should
+ inherit `Mock`, since it implements `Mockable` by providing
+ itself as the mock:
  
  ```swift
  protocol Printer {
-     func print(_ text: String)
+    func print(_ text: String)
  }
  
- // Inheriting `Mock`
+ // Inherit `Mock` if you don't have to inherit a base class
  class MockPrinter: Mock, Printer {
-     func print(_ text: String) {
-         invoke(print, arguments: (text))
-     }
+    func print(_ text: String) {
+        invoke(print, arguments: (text))
+    }
  }
  
- // Implementing `Mockable`
+ // Implement `Mockable` if you have to inherit a base class
  class MockPrinter: BasePrinter, Mockable {
-     func print(_ text: String) {
-         invoke(print, arguments: (text))
-     }
+    let mock = Mock()
+    func print(_ text: String) {
+        invoke(print, arguments: (text))
+    }
  }
  ```
 
- Calling `invoke` records the function call, so that you can
- inspect it later:
+ Calling `invoke` records functions calls so you can inspect
+ them later:
  
  ```swift
  let printer = MockPrinter()
@@ -55,9 +52,9 @@ import Foundation
  printer.hasInvoked(printer.print, numberOfTimes: 2)        // => false
  ```
  
- You use `invoke` in the same way for void functions and for
- functions that return a result. For functions that return a
- result, `invoke` will return a pre-registered return value:
+ You can use `invoke` in the same way for void functions and
+ for functions that return a result. For returning functions,
+ `invoke` will return any pre-registered return value:
  
  ```swift
  protocol Converter {
@@ -71,13 +68,14 @@ import Foundation
  }
  ```
  
- Make sure to register a result before calling any returning
- functions, otherwise they will crash when being called:
+ Make sure to register non-optional results before calling a
+ returning function, or it will crash when it's being called:
  
  ```swift
  let converter = MockStringConverter()
+ let result = converter.convert("banana")                   // => Crash!
  converter.registerResult(for: convert) { input in input.reversed() }
- return converter.convert("banana")                         // => Returns "ananab"
+ let result = converter.convert("banana")                   // => Returns "ananab"
  ```
  
  Since the result block is called with the original argument
@@ -282,16 +280,5 @@ private extension Mockable {
     */
     func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
         return (mock.registeredInvokations[address] as? [Invokation<Arguments, Result>]) ?? []
-    }
-}
-
-
-// MARK: - Deprecation
-
-public extension Mockable {
-    
-    @available(*, deprecated, renamed: "invokations(of:)")
-    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
-        invokations(of: function)
     }
 }
