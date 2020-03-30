@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.3.2
+
+This version updates Nimble to `8.0.7`.
+
+
 ## 0.3.1
 
 This version fixes a typo in the `executions(of:)` deprecation.
