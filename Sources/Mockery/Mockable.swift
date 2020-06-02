@@ -259,16 +259,6 @@ public extension Mockable {
 private extension Mockable {
     
     /**
-     Resolve the memory address of a function reference.
-     */
-    func address<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> MemoryAddress {
-        let (_, lo) = unsafeBitCast(function, to: (Int, Int).self)
-        let offset = MemoryLayout<Int>.size == 8 ? 16 : 12
-        let pointer = UnsafePointer<Int>(bitPattern: lo + offset)!
-        return pointer.pointee
-    }
-    
-    /**
      Register a function invokation at a memory address.
      */
     func register<Arguments, Result>(_ invokation: Invokation<Arguments, Result>, at address: MemoryAddress) {

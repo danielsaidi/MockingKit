@@ -13,8 +13,21 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let result = testMock() + testMockRecorder()
-        print(result)
+        addImage()
         alert(result)
+    }
+}
+
+private extension ViewController {
+    
+    func addImage() {
+        let image = UIImage(named: "Icon")
+        let imageView = UIImageView(image: image)
+        imageView.frame.size = CGSize(width: 250, height: 250)
+        view.addSubview(imageView)
+        imageView.center = view.center
+        imageView.layer.cornerRadius = 125
+        imageView.clipsToBounds = true
     }
     
     func alert(_ result: String) {
@@ -74,7 +87,4 @@ funcWithoutResult args: \(voidInvokations.map { $0.arguments }.joined(separator:
         
 """
     }
-
-
 }
-
