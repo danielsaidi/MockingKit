@@ -33,16 +33,11 @@ class MockPrinter: Mock, Printer {
 
 let printer = MockPrinter()
 printer.print("Hello!")
-let invokations = printer.invokations(of: printer.print)   
-    // => 1 item
-invokations[0].arguments.0
-    // => "Hello!"
-printer.hasInvoked(printer.print)
-    // => true
-printer.hasInvoked(printer.print, numberOfTimes: 1)
-    // => true
-printer.hasInvoked(printer.print, numberOfTimes: 2)
-    // => false
+let inv = printer.invokations(of: printer.print)    // => 1 item
+inv[0].arguments.0                                  // => "Hello!"
+printer.hasInvoked(printer.print)                   // => true
+printer.hasInvoked(printer.print, numberOfTimes: 1) // => true
+printer.hasInvoked(printer.print, numberOfTimes: 2) // => false
 ```
 
 Mockery supports mocking functions with `void`, `optional` and `non-optional` results. It supports `values`, `structs`, `classes` and `enums` and doesn't put any restrains on the code you write.
