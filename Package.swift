@@ -14,8 +14,8 @@ let package = Package(
             targets: ["Mockery"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:Quick/Quick.git", from: "2.1.0"),
-        .package(url: "git@github.com:Quick/Nimble.git", from: "8.0.2")
+        .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "3.0.0")),
+        .package(url: "git@github.com:Quick/Nimble.git", .upToNextMajor(from: "8.1.0"))
     ],
     targets: [
         .target(
