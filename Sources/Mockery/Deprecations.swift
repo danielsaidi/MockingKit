@@ -18,7 +18,7 @@ public extension Mockable {
     }
     
     @available(*, deprecated, renamed: "invokations(of:)")
-    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
+    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [MockInvokation<Arguments, Result>] {
         invokations(of: function)
     }
 }

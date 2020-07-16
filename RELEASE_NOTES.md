@@ -5,6 +5,13 @@
 
 This version removes deprecations and updates to latest Quick and Nimble.
 
+This version also introduces `MockReference`, which replaces the brittle memory address-based approach from previous functions.
+
+
+## 0.3.3
+
+This version removes deprecations and updates to latest Quick and Nimble.
+
 
 ## 0.3.2
 

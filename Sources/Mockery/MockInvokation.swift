@@ -13,7 +13,7 @@ import Foundation
  result information. A function that doesn't return anything
  has a `Void` result.
 */
-public struct Invokation<Arguments, Result>: AnyInvokation {
+public struct MockInvokation<Arguments, Result>: AnyInvokation {
     
     public let arguments: Arguments
     public let result: Result

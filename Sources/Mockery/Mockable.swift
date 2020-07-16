@@ -129,7 +129,7 @@ public extension Mockable {
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            register(Invokation(arguments: args, result: void), at: address)
+            register(MockInvokation(arguments: args, result: void), at: address)
             return void
         }
         
@@ -141,7 +141,7 @@ public extension Mockable {
             """
             preconditionFailure(message, file: file, line: line)
         }
-        register(Invokation(arguments: args, result: result), at: address)
+        register(MockInvokation(arguments: args, result: result), at: address)
         return result
     }
     
@@ -174,7 +174,7 @@ public extension Mockable {
         let address = self.address(of: function)
         let closure = mock.registeredResults[address] as? (Arguments) throws -> Result
         let result = (try? closure?(args)) ?? fallback()
-        register(Invokation(arguments: args, result: result), at: address)
+        register(MockInvokation(arguments: args, result: result), at: address)
         return result
     }
     
@@ -204,7 +204,7 @@ public extension Mockable {
         let address = self.address(of: function)
         let closure = mock.registeredResults[address] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
-        register(Invokation(arguments: args, result: result), at: address)
+        register(MockInvokation(arguments: args, result: result), at: address)
         return result
     }
     
@@ -240,7 +240,7 @@ public extension Mockable {
 
 public extension Mockable {
     
-    func invokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [Invokation<Arguments, Result>] {
+    func invokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [MockInvokation<Arguments, Result>] {
         registeredInvokations(at: address(of: function))
     }
     
@@ -261,14 +261,14 @@ private extension Mockable {
     /**
      Register a function invokation at a memory address.
      */
-    func register<Arguments, Result>(_ invokation: Invokation<Arguments, Result>, at address: MemoryAddress) {
+    func register<Arguments, Result>(_ invokation: MockInvokation<Arguments, Result>, at address: MemoryAddress) {
         mock.registeredInvokations[address] = (mock.registeredInvokations[address] ?? []) + [invokation]
     }
     
     /**
      Get all registered function invokation for a certain memory address.
     */
-    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [Invokation<Arguments, Result>] {
-        return (mock.registeredInvokations[address] as? [Invokation<Arguments, Result>]) ?? []
+    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [MockInvokation<Arguments, Result>] {
+        return (mock.registeredInvokations[address] as? [MockInvokation<Arguments, Result>]) ?? []
     }
 }
