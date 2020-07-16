@@ -100,10 +100,9 @@ public protocol Mockable {
 public extension Mockable {
     
     func registerResult<Arguments, Result>(
-        for function: @escaping (Arguments) throws -> Result,
+        for ref: MockReference<Arguments, Result>,
         resultBlock: @escaping (Arguments) throws -> Result) {
-        let address = self.address(of: function)
-        mock.registeredResults[UUID()] = resultBlock
+        mock.registeredResults[ref.id] = resultBlock
     }
 }
 
