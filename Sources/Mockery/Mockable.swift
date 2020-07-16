@@ -131,7 +131,7 @@ public extension Mockable {
             return void
         }
         
-        let resultBlock = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
+        let resultBlock = mock.registeredResults[ref.id] as? (Arguments) throws -> Result
         guard let result = try? resultBlock?(args) else {
             let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
