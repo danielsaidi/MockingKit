@@ -150,15 +150,15 @@ class MockableTests: QuickSpec {
         describe("invoking function with fallback") {
             
             it("returns default value if no value is registered") {
-                expect(try! mock.invoke(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)).to(equal(456))
-                expect(try! mock.invoke(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")).to(equal("def"))
+                expect(mock.invoke(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)).to(equal(456))
+                expect(mock.invoke(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")).to(equal("def"))
             }
             
             it("returns registered value if a value is registered") {
                 mock.registerResult(for: mock.functionWithIntResultRef) { _ in 123 }
                 mock.registerResult(for: mock.functionWithStringResultRef) { _ in "a string" }
-                expect(try! mock.invoke(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)).to(equal(123))
-                expect(try! mock.invoke(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")).to(equal("a string"))
+                expect(mock.invoke(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)).to(equal(123))
+                expect(mock.invoke(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")).to(equal("a string"))
             }
         }
         
@@ -184,6 +184,17 @@ class MockableTests: QuickSpec {
                 expect(invokations[1].arguments.1).to(equal(456))
                 expect(invokations[2].arguments.0).to(equal("abc"))
                 expect(invokations[2].arguments.1).to(equal(789))
+            }
+        }
+        
+        describe("invoking async function") {
+            
+            it("it registers invokations") {
+                mock.asyncFunction(arg1: "async", completion: { _ in })
+                
+                let invokations = mock.invokations(of: mock.asyncFunctionRef)
+                expect(invokations.count).to(equal(1))
+                expect(invokations[0].arguments.0).to(equal("async"))                
             }
         }
         

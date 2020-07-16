@@ -116,13 +116,18 @@ public extension Mockable {
      
      This will return a registered return value, if any, or
      crash if no return value has been registered.
+     
+     `IMPORTANT` The class will still compile if this invoke
+     function would be removed, but it would cause the other
+     invoke functions to call themselves over and over. This
+     function is what makes it all work.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
         file: StaticString = #file,
         line: UInt = #line,
-        functionCall: StaticString = #function) throws -> Result {
+        functionCall: StaticString = #function) -> Result {
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
@@ -142,21 +147,6 @@ public extension Mockable {
     }
     
     /**
-     Invoke a function that has a non-optional return value.
-     
-     This will return a registered return value, if any, or
-     crash if no return value has been registered.
-    */
-    func invoke<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>,
-        args: Arguments!,
-        file: StaticString = #file,
-        line: UInt = #line,
-        functionCall: StaticString = #function) throws -> Result {
-        try invoke(ref, args: args, file: file, line: line, functionCall: functionCall)
-    }
-    
-    /**
      Invoke a function that has a non-optional return value,
      using a fallback value if no value has been registered.
      
@@ -166,7 +156,7 @@ public extension Mockable {
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
-        fallback: @autoclosure () -> Result) throws -> Result {
+        fallback: @autoclosure () -> Result) -> Result {
         let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result
         let result = (try? closure?(args)) ?? fallback()
         registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
@@ -195,7 +185,7 @@ public extension Mockable {
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
-        args: Arguments) throws -> Result? {
+        args: Arguments) -> Result? {
         let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
         registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
@@ -212,6 +202,21 @@ public extension Mockable {
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments!) throws -> Result? {
         try invoke(ref, args: args)
+    }
+    
+    /**
+     Invoke a function that has a non-optional return value.
+     
+     This will return a registered return value, if any, or
+     crash if no return value has been registered.
+    */
+    func invokeAsync<Arguments, Result>(
+        _ ref: MockReference<Arguments, Result>,
+        args: Arguments!,
+        file: StaticString = #file,
+        line: UInt = #line,
+        functionCall: StaticString = #function) -> Result {
+        invoke(ref, args: args, file: file, line: line, functionCall: functionCall)
     }
     
     /**

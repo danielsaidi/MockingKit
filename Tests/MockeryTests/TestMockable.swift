@@ -24,44 +24,44 @@ class TestMockable: TestProtocol, Mockable {
     lazy var asyncFunctionRef = MockReference(asyncFunction)
     
     func functionWithIntResult(arg1: String, arg2: Int) -> Int {
-        try! invoke(functionWithIntResultRef, args: (arg1, arg2))
+        invoke(functionWithIntResultRef, args: (arg1, arg2))
     }
     
     func functionWithStringResult(arg1: String, arg2: Int) -> String {
-        try! invoke(functionWithStringResultRef, args: (arg1, arg2))
+        invoke(functionWithStringResultRef, args: (arg1, arg2))
     }
 
     func functionWithStructResult(arg1: String, arg2: Int) -> User {
-        try! invoke(functionWithStructResultRef, args: (arg1, arg2))
+        invoke(functionWithStructResultRef, args: (arg1, arg2))
     }
 
     func functionWithClassResult(arg1: String, arg2: Int) -> Thing {
-        try! invoke(functionWithClassResultRef, args: (arg1, arg2))
+        invoke(functionWithClassResultRef, args: (arg1, arg2))
     }
 
 
     func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int? {
-        try! invoke(functionWithOptionalIntResultRef, args: (arg1, arg2))
+        invoke(functionWithOptionalIntResultRef, args: (arg1, arg2))
     }
 
     func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String? {
-        try! invoke(functionWithOptionalStringResultRef, args: (arg1, arg2))
+        invoke(functionWithOptionalStringResultRef, args: (arg1, arg2))
     }
 
     func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User? {
-        try! invoke(functionWithOptionalStructResultRef, args: (arg1, arg2))
+        invoke(functionWithOptionalStructResultRef, args: (arg1, arg2))
     }
 
     func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing? {
-        try! invoke(functionWithOptionalClassResultRef, args: (arg1, arg2))
+        invoke(functionWithOptionalClassResultRef, args: (arg1, arg2))
     }
 
 
     func functionWithVoidResult(arg1: String, arg2: Int) {
-        try! invoke(functionWithVoidResultRef, args: (arg1, arg2))
+        invoke(functionWithVoidResultRef, args: (arg1, arg2))
     }
 
     func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void) {
-        try! invoke(asyncFunctionRef, args: escaping(arg1, completion))
+        invokeAsync(asyncFunctionRef, args: escaping(arg1, completion))
     }
 }
