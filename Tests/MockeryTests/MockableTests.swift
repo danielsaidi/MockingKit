@@ -7,18 +7,29 @@
 
 import Quick
 import Nimble
-import Mockery
+@testable import Mockery
 
-//class MockableTests: QuickSpec {
-//
-//    override func spec() {
-//        
-//        var mock: TestMockable!
-//
-//        beforeEach {
-//            mock = TestMockable()
-//        }
-//        
+class MockableTests: QuickSpec {
+
+    override func spec() {
+        
+        var mock: TestMockable!
+
+        beforeEach {
+            mock = TestMockable()
+        }
+        
+        describe("registering result") {
+            
+            it("registers function with reference id") {
+                let ref = mock.functionWithIntResultRef
+                let result: (String, Int) throws -> Int = { str, int in int * 2 }
+                mock.registerResult(for: ref, result: result)
+                let obj = mock.mock.registeredResults[ref.id]
+                expect(obj).toNot(beNil())
+            }
+        }
+        
 //        describe("invoking function with non-optional result") {
 //            
 //            it("fails with precondition failure if no result is registered") {
@@ -225,5 +236,5 @@ import Mockery
 //                expect(mock.hasInvoked(mock.functionWithStringResult)).to(beTrue())
 //            }
 //        }
-//    }
-//}
+    }
+}

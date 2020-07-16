@@ -13,7 +13,7 @@ import Foundation
  */
 public struct MockReference<Arguments, Result>: Identifiable {
     
-    public init(function: @escaping (Arguments) throws -> Result) {
+    public init(_ function: @escaping (Arguments) throws -> Result) {
         self.id = UUID()
         self.function = function
     }

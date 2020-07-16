@@ -8,14 +8,17 @@
 
 import Mockery
 
-//class TestMockable: TestProtocol, Mockable {
-//    
-//    var mock = Mock()
-//    
-//    func functionWithIntResult(arg1: String, arg2: Int) -> Int {
+class TestMockable: TestProtocol, Mockable {
+    
+    var mock = Mock()
+    
+    lazy var functionWithIntResultRef = MockReference(functionWithIntResult)
+    
+    func functionWithIntResult(arg1: String, arg2: Int) -> Int {
+        return 1
 //        invoke(functionWithIntResult, args: (arg1, arg2))
-//    }
-//    
+    }
+    
 //    func functionWithStringResult(arg1: String, arg2: Int) -> String {
 //        invoke(functionWithStringResult, args: (arg1, arg2))
 //    }
@@ -53,4 +56,4 @@ import Mockery
 //    func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void) {
 //        invoke(asyncFunction, args: escaping(arg1, completion))
 //    }
-//}
+}

@@ -10,19 +10,19 @@ import Foundation
 
 protocol TestProtocol {
     
-    func functionWithIntResult(arg1: String, arg2: Int) -> Int
-    func functionWithStringResult(arg1: String, arg2: Int) -> String
-    func functionWithStructResult(arg1: String, arg2: Int) -> User
-    func functionWithClassResult(arg1: String, arg2: Int) -> Thing
-    
-    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int?
-    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String?
-    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User?
-    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing?
-    
-    func functionWithVoidResult(arg1: String, arg2: Int)
-    
-    func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void)
+//    func functionWithIntResult(arg1: String, arg2: Int) -> Int
+//    func functionWithStringResult(arg1: String, arg2: Int) -> String
+//    func functionWithStructResult(arg1: String, arg2: Int) -> User
+//    func functionWithClassResult(arg1: String, arg2: Int) -> Thing
+//    
+//    func functionWithOptionalIntResult(arg1: String, arg2: Int) -> Int?
+//    func functionWithOptionalStringResult(arg1: String, arg2: Int) -> String?
+//    func functionWithOptionalStructResult(arg1: String, arg2: Int) -> User?
+//    func functionWithOptionalClassResult(arg1: String, arg2: Int) -> Thing?
+//    
+//    func functionWithVoidResult(arg1: String, arg2: Int)
+//    
+//    func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void)
 }
 
 struct User: Equatable {

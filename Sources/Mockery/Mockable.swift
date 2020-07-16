@@ -101,8 +101,8 @@ public extension Mockable {
     
     func registerResult<Arguments, Result>(
         for ref: MockReference<Arguments, Result>,
-        resultBlock: @escaping (Arguments) throws -> Result) {
-        mock.registeredResults[ref.id] = resultBlock
+        result: @escaping (Arguments) throws -> Result) {
+        mock.registeredResults[ref.id] = result
     }
 }
 
