@@ -118,28 +118,26 @@ public extension Mockable {
      crash if no return value has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
+        _ ref: MockReference<Arguments, Result>,
         args: Arguments,
         file: StaticString = #file,
         line: UInt = #line,
-        functionCall: StaticString = #function) rethrows -> Result {
-        let address = self.address(of: function)
+        functionCall: StaticString = #function) throws -> Result {
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            registerInvokation(MockInvokation(arguments: args, result: void), at: address)
+            let inv = MockInvokation(arguments: args, result: void)
+            registerInvokation(inv, for: ref)
             return void
         }
         
-        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
-        guard let result = try? closure?(args) else {
-            let message = """
-            '\(functionCall)' has no registered result.
-            You must register one with `registerResult(for:)` before calling this function.
-            """
+        let resultBlock = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
+        guard let result = try? resultBlock?(args) else {
+            let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
         }
-        registerInvokation(MockInvokation(arguments: args, result: result), at: address)
+        let inv = MockInvokation(arguments: args, result: result)
+        registerInvokation(inv, for: ref)
         return result
     }
     
@@ -150,12 +148,12 @@ public extension Mockable {
      crash if no return value has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
+        _ ref: MockReference<Arguments, Result>,
         args: Arguments!,
         file: StaticString = #file,
         line: UInt = #line,
-        functionCall: StaticString = #function) rethrows -> Result {
-        try invoke(function, args: args, file: file, line: line, functionCall: functionCall)
+        functionCall: StaticString = #function) throws -> Result {
+        try invoke(ref, args: args, file: file, line: line, functionCall: functionCall)
     }
     
     /**
@@ -166,13 +164,12 @@ public extension Mockable {
      the provided fallback if no value has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
+        _ ref: MockReference<Arguments, Result>,
         args: Arguments,
-        fallback: @autoclosure () -> Result) rethrows -> Result {
-        let address = self.address(of: function)
-        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
+        fallback: @autoclosure () -> Result) throws -> Result {
+        let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result
         let result = (try? closure?(args)) ?? fallback()
-        registerInvokation(MockInvokation(arguments: args, result: result), at: address)
+        registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
     
@@ -184,10 +181,10 @@ public extension Mockable {
      the provided fallback if no result has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result,
+        _ ref: MockReference<Arguments, Result>,
         args: Arguments!,
-        fallback: @autoclosure () -> Result) rethrows -> Result {
-        try invoke(function, args: args, fallback: fallback())
+        fallback: @autoclosure () -> Result) throws -> Result {
+        try invoke(ref, args: args, fallback: fallback())
     }
 
     /**
@@ -197,12 +194,11 @@ public extension Mockable {
      `nil` if no return value has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result?,
-        args: Arguments) rethrows -> Result? {
-        let address = self.address(of: function)
-        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result?
+        _ ref: MockReference<Arguments, Result?>,
+        args: Arguments) throws -> Result? {
+        let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
-        registerInvokation(MockInvokation(arguments: args, result: result), at: address)
+        registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
     
@@ -213,9 +209,9 @@ public extension Mockable {
      `nil` if no return value has been registered.
     */
     func invoke<Arguments, Result>(
-        _ function: @escaping (Arguments) throws -> Result?,
-        args: Arguments!) rethrows -> Result? {
-        try invoke(function, args: args)
+        _ ref: MockReference<Arguments, Result?>,
+        args: Arguments!) throws -> Result? {
+        try invoke(ref, args: args)
     }
     
     /**

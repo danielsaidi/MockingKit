@@ -16,7 +16,7 @@ import Foundation
 public struct MockInvokation<Arguments, Result>: AnyInvokation {
     
     public let arguments: Arguments
-    public let result: Result
+    public let result: Result?
 }
 
 /**
