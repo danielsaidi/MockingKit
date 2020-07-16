@@ -25,6 +25,6 @@ open class Mock: Mockable {
     
     public var mock: Mock { self }
     
-    var registeredInvokations: [FunctionAddress: [AnyInvokation]] = [:]
-    var registeredResults: [FunctionAddress: Function] = [:]
+    var registeredInvokations: [UUID: [AnyInvokation]] = [:]
+    var registeredResults: [UUID: Function] = [:]
 }

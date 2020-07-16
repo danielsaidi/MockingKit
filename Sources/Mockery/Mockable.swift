@@ -91,7 +91,6 @@ import Foundation
 public protocol Mockable {
     
     typealias Function = Any
-    typealias FunctionAddress = Int
     
     var mock: Mock { get }
 }
@@ -104,7 +103,7 @@ public extension Mockable {
         for function: @escaping (Arguments) throws -> Result,
         resultBlock: @escaping (Arguments) throws -> Result) {
         let address = self.address(of: function)
-        mock.registeredResults[address] = resultBlock
+        mock.registeredResults[UUID()] = resultBlock
     }
 }
 
@@ -133,7 +132,7 @@ public extension Mockable {
             return void
         }
         
-        let closure = mock.registeredResults[address] as? (Arguments) throws -> Result
+        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
         guard let result = try? closure?(args) else {
             let message = """
             '\(functionCall)' has no registered result.
@@ -172,7 +171,7 @@ public extension Mockable {
         args: Arguments,
         fallback: @autoclosure () -> Result) rethrows -> Result {
         let address = self.address(of: function)
-        let closure = mock.registeredResults[address] as? (Arguments) throws -> Result
+        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result
         let result = (try? closure?(args)) ?? fallback()
         register(MockInvokation(arguments: args, result: result), at: address)
         return result
@@ -202,7 +201,7 @@ public extension Mockable {
         _ function: @escaping (Arguments) throws -> Result?,
         args: Arguments) rethrows -> Result? {
         let address = self.address(of: function)
-        let closure = mock.registeredResults[address] as? (Arguments) throws -> Result?
+        let closure = mock.registeredResults[UUID()] as? (Arguments) throws -> Result?
         let result = try? closure?(args)
         register(MockInvokation(arguments: args, result: result), at: address)
         return result
@@ -231,7 +230,7 @@ public extension Mockable {
      Reset all registered invokations.
      */
     func resetInvokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) {
-        mock.registeredInvokations[address(of: function)] = []
+        mock.registeredInvokations[UUID()] = []
     }
 }
 
@@ -262,13 +261,13 @@ private extension Mockable {
      Register a function invokation at a memory address.
      */
     func register<Arguments, Result>(_ invokation: MockInvokation<Arguments, Result>, at address: MemoryAddress) {
-        mock.registeredInvokations[address] = (mock.registeredInvokations[address] ?? []) + [invokation]
+        mock.registeredInvokations[UUID()] = (mock.registeredInvokations[UUID()] ?? []) + [invokation]
     }
     
     /**
      Get all registered function invokation for a certain memory address.
     */
     func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [MockInvokation<Arguments, Result>] {
-        return (mock.registeredInvokations[address] as? [MockInvokation<Arguments, Result>]) ?? []
+        return (mock.registeredInvokations[UUID()] as? [MockInvokation<Arguments, Result>]) ?? []
     }
 }
