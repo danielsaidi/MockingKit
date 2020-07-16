@@ -14,3 +14,6 @@ public extension Mockable {
         invokations(of: function)
     }
 }
+
+@available(*, deprecated, message: "Use MockReference instead")
+typealias MemoryAddress = Int
