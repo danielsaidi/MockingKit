@@ -256,6 +256,7 @@ public extension Mockable {
 
 private extension Mockable {
     
+    // DEPRECATED ****
     /**
      Register a function invokation at a memory address.
      */
@@ -265,18 +266,30 @@ private extension Mockable {
     }
     
     /**
+     Get all registered function invokation for a certain memory address.
+    */
+    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [MockInvokation<Arguments, Result>] {
+        return (mock.registeredInvokations[UUID()] as? [MockInvokation<Arguments, Result>]) ?? []
+    }
+    // DEPRECATED ****
+    
+    
+    /**
      Register a function invokation at a memory address.
      */
     func registerInvokation<Arguments, Result>(
         _ invokation: MockInvokation<Arguments, Result>,
         for ref: MockReference<Arguments, Result>) {
-        mock.registeredInvokations[ref.id] = (mock.registeredInvokations[ref.id] ?? []) + [invokation]
+        let invokations = mock.registeredInvokations[ref.id] ?? []
+        mock.registeredInvokations[ref.id] = invokations + [invokation]
     }
     
     /**
      Get all registered function invokation for a certain memory address.
     */
-    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [MockInvokation<Arguments, Result>] {
-        return (mock.registeredInvokations[UUID()] as? [MockInvokation<Arguments, Result>]) ?? []
+    func registeredInvokations<Arguments, Result>(
+        for ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
+        let invokation = mock.registeredInvokations[ref.id]
+        return (invokation as? [MockInvokation<Arguments, Result>]) ?? []
     }
 }
