@@ -16,11 +16,6 @@ public extension Mockable {
         let pointer = UnsafePointer<Int>(bitPattern: lo + offset)!
         return pointer.pointee
     }
-    
-    @available(*, deprecated, renamed: "invokations(of:)")
-    func executions<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [MockInvokation<Arguments, Result>] {
-        invokations(of: function)
-    }
 }
 
 @available(*, deprecated, message: "Use MockReference instead")

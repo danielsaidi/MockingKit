@@ -235,16 +235,20 @@ public extension Mockable {
 
 public extension Mockable {
     
-    func invokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) -> [MockInvokation<Arguments, Result>] {
-        registeredInvokations(at: address(of: function))
+    func invokations<Arguments, Result>(
+        of ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
+        registeredInvokations(for: ref)
     }
     
-    func hasInvoked<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result) -> Bool {
-        invokations(of: function).count > 0
+    func hasInvoked<Arguments, Result>(
+        _ ref: MockReference<Arguments, Result>) -> Bool {
+        invokations(of: ref).count > 0
     }
     
-    func hasInvoked<Arguments, Result>(_ function: @escaping (Arguments) throws -> Result, numberOfTimes: Int) -> Bool {
-        invokations(of: function).count == numberOfTimes
+    func hasInvoked<Arguments, Result>(
+        _ ref: MockReference<Arguments, Result>,
+        numberOfTimes: Int) -> Bool {
+        invokations(of: ref).count == numberOfTimes
     }
 }
 
@@ -252,24 +256,6 @@ public extension Mockable {
 // MARK: - Private Functions
 
 private extension Mockable {
-    
-    // DEPRECATED ****
-    /**
-     Register a function invokation at a memory address.
-     */
-    func registerInvokation<Arguments, Result>(
-        _ invokation: MockInvokation<Arguments, Result>, at address: MemoryAddress) {
-        mock.registeredInvokations[UUID()] = (mock.registeredInvokations[UUID()] ?? []) + [invokation]
-    }
-    
-    /**
-     Get all registered function invokation for a certain memory address.
-    */
-    func registeredInvokations<Arguments, Result>(at address: MemoryAddress) -> [MockInvokation<Arguments, Result>] {
-        return (mock.registeredInvokations[UUID()] as? [MockInvokation<Arguments, Result>]) ?? []
-    }
-    // DEPRECATED ****
-    
     
     /**
      Register a function invokation at a memory address.
