@@ -224,8 +224,9 @@ public extension Mockable {
     /**
      Reset all registered invokations.
      */
-    func resetInvokations<Arguments, Result>(of function: @escaping (Arguments) throws -> Result) {
-        mock.registeredInvokations[UUID()] = []
+    func resetInvokations<Arguments, Result>(
+        for ref: MockReference<Arguments, Result>) {
+        mock.registeredInvokations[ref.id] = []
     }
 }
 
