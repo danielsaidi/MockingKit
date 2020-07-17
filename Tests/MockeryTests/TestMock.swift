@@ -60,6 +60,6 @@ class TestMock: Mock, TestProtocol {
     }
 
     func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void) {
-        invokeAsync(asyncFunctionRef, args: escaping(arg1, completion))
+        invoke(asyncFunctionRef, args: escaping(arg1, completion))
     }
 }

@@ -15,10 +15,6 @@ import Foundation
  
  To see examples of how to use this protocol, please see the
  main readme and the more detailed `Mockable.md`.
- 
- `TODO` For now, this protocol has no error registration for
- functions that do not return a value. This means that async
- functions can't register custom completion errors.
 */
 public protocol Mockable {
     
@@ -27,10 +23,14 @@ public protocol Mockable {
     var mock: Mock { get }
 }
 
-// MARK: - Result Registration
+
+// MARK: - Registration
 
 public extension Mockable {
     
+    /**
+     Register a result value for a certain mocked function.
+     */
     func registerResult<Arguments, Result>(
         for ref: MockReference<Arguments, Result>,
         result: @escaping (Arguments) throws -> Result) {
@@ -39,20 +39,14 @@ public extension Mockable {
 }
 
 
-// MARK: - Invokes
+// MARK: - Invokation
 
 public extension Mockable {
     
     /**
-     Invoke a function that has a non-optional return value.
-     
-     This will return a registered return value, if any, or
-     crash if no return value has been registered.
-     
-     `IMPORTANT` The class will still compile if this invoke
-     function would be removed, but it would cause the other
-     invoke functions to call themselves over and over. This
-     function is what makes it all work.
+     Invoke a function with a `non-optional` result. It will
+     return any pre-registered result, or crash if no result
+     has been registered.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
@@ -79,11 +73,9 @@ public extension Mockable {
     }
     
     /**
-     Invoke a function that has a non-optional return value,
-     using a fallback value if no value has been registered.
-     
-     This function will return a registered return value or
-     the provided fallback if no value has been registered.
+     Invoke a function with a `non-optional` result. It will
+     return any pre-registered result, or return a `fallback`
+     value if no result has been registered.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
@@ -96,11 +88,9 @@ public extension Mockable {
     }
     
     /**
-     Invoke a function that has a non-optional return value,
-     using a fallback value if no value has been registered.
-     
-     This will return a registered return value, if any, or
-     the provided fallback if no result has been registered.
+     Invoke a function with a `non-optional` result. It will
+     return any pre-registered result, or return a `fallback`
+     value if no result has been registered.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
@@ -110,10 +100,8 @@ public extension Mockable {
     }
 
     /**
-     Invoke a function that has an optional return value.
-     
-     This will return a registered return value, if any, or
-     `nil` if no return value has been registered.
+     Invoke a function with an `optional` result. It returns
+     any pre-registered result, or `nil`.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
@@ -125,30 +113,13 @@ public extension Mockable {
     }
     
     /**
-     Invoke a function that has an optional return value.
-     
-     This will return a registered return value, if any, or
-     `nil` if no return value has been registered.
+     Invoke a function with an `optional` result. It returns
+     any pre-registered result, or `nil`.
     */
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments!) throws -> Result? {
         try invoke(ref, args: args)
-    }
-    
-    /**
-     Invoke a function that has a non-optional return value.
-     
-     This will return a registered return value, if any, or
-     crash if no return value has been registered.
-    */
-    func invokeAsync<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>,
-        args: Arguments!,
-        file: StaticString = #file,
-        line: UInt = #line,
-        functionCall: StaticString = #function) -> Result {
-        invoke(ref, args: args, file: file, line: line, functionCall: functionCall)
     }
     
     /**
