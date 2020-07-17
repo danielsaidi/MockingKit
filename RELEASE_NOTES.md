@@ -1,11 +1,11 @@
 # Release Notes
 
 
-## 0.3.3
+## 0.4.0
 
-This version removes deprecations and updates to latest Quick and Nimble.
+This version replaces the memory address resolve logic with a new `MockReference` approach.
 
-This version also introduces `MockReference`, which replaces the brittle memory address-based approach from previous functions.
+`MockReference`, replaces the brittle memory address-based approach from previous versions and makes invokations much more reliable. This means that it's now possible to use Mockery for more architectures and devices than 64 bit, that mocks can be shared across frameworks etc.
 
 
 ## 0.3.3
