@@ -19,26 +19,27 @@ Mockery is a mocking library for Swift. Mockery lets you `register` function res
 
 ```swift
 protocol MyProtocol {
-    func doStuff(_ value: Int) -> String
+    func doStuff(int: Int, string: String) -> String
 }
 
 class MyMock: Mock, MyProtocol {
 
     lazy var doStuffRef = MockReference(doStuff)  // This has to be lazy
 
-    func doStuff(_ value: Int) -> String {
-        invoke(doStuffRef, arguments: (value))
+    func doStuff(int: Int, string: String) -> String {
+        invoke(doStuffRef, args: (int, string))
     }
 }
 
 let mock = MyMock()
-mock.registerResult(for: doStuffRef) { value in "Hello, world!" }
-let result = mock.doStuff(42)                       // => "Hello, world!"
-let inv = mock.invokations(of: mock.doStuffRef)     // => 1 item
-inv[0].arguments.0                                  // => "Hello!"
-mock.hasInvoked(mock.doStuffRef)                    // => true
-mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)  // => true
-mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)  // => false
+mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
+let result = mock.doStuff(int: 42, string: "message")   // => "Hello, world!"
+let inv = mock.invokations(of: mock.doStuffRef)         // => 1 item
+inv[0].arguments.0                                      // => 42
+inv[0].arguments.1                                      // => "message"
+mock.hasInvoked(mock.doStuffRef)                        // => true
+mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)      // => true
+mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)      // => false
 ```
 
 Mockery supports:
