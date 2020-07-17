@@ -62,8 +62,7 @@ public extension Mockable {
             return void
         }
         
-        let resultBlock = mock.registeredResults[ref.id] as? (Arguments) throws -> Result
-        guard let result = try? resultBlock?(args) else {
+        guard let result = try? registeredResult(for: ref)?(args) else {
             let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
         }
@@ -81,8 +80,7 @@ public extension Mockable {
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
         fallback: @autoclosure () -> Result) -> Result {
-        let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result
-        let result = (try? closure?(args)) ?? fallback()
+        let result = (try? registeredResult(for: ref)?(args)) ?? fallback()
         registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
@@ -106,8 +104,7 @@ public extension Mockable {
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments) -> Result? {
-        let closure = mock.registeredResults[ref.id] as? (Arguments) throws -> Result?
-        let result = try? closure?(args)
+        let result = try? registeredResult(for: ref)?(args)
         registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
@@ -130,7 +127,7 @@ public extension Mockable {
     }
     
     /**
-     Reset all registered invokations.
+     Reset all registered invokations for a certain function.
      */
     func resetInvokations<Arguments, Result>(
         for ref: MockReference<Arguments, Result>) {
@@ -143,16 +140,26 @@ public extension Mockable {
 
 public extension Mockable {
     
+    /**
+     Get all invokations of a certain function.
+     */
     func invokations<Arguments, Result>(
         of ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
         registeredInvokations(for: ref)
     }
     
+    /**
+     Check if a function has been invoked.
+     */
     func hasInvoked<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>) -> Bool {
         invokations(of: ref).count > 0
     }
     
+    /**
+     Check if a function has been invoked a certain number
+     of times.
+     */
     func hasInvoked<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         numberOfTimes: Int) -> Bool {
@@ -165,9 +172,6 @@ public extension Mockable {
 
 private extension Mockable {
     
-    /**
-     Register a function invokation at a memory address.
-     */
     func registerInvokation<Arguments, Result>(
         _ invokation: MockInvokation<Arguments, Result>,
         for ref: MockReference<Arguments, Result>) {
@@ -175,12 +179,14 @@ private extension Mockable {
         mock.registeredInvokations[ref.id] = invokations + [invokation]
     }
     
-    /**
-     Get all registered function invokation for a certain memory address.
-    */
     func registeredInvokations<Arguments, Result>(
         for ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
         let invokation = mock.registeredInvokations[ref.id]
         return (invokation as? [MockInvokation<Arguments, Result>]) ?? []
+    }
+    
+    func registeredResult<Arguments, Result>(
+        for ref: MockReference<Arguments, Result>) -> ((Arguments) throws -> Result)? {
+        mock.registeredResults[ref.id] as? (Arguments) throws -> Result
     }
 }
