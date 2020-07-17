@@ -443,7 +443,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielsaidi/Mockery";
 			requirement = {
-				branch = master;
+				branch = v0.4;
 				kind = branch;
 			};
 		};

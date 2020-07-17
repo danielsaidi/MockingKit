@@ -17,12 +17,15 @@ protocol MyProtocol {
 
 class MyMock: Mock, MyProtocol {
     
+    lazy var funcWithResultRef = MockReference(funcWithResult)
+    lazy var funcWithoutResultRef = MockReference(funcWithoutResult)
+    
     func funcWithResult(arg: String) -> String {
-        return invoke(funcWithResult, args: (arg))
+        invoke(funcWithResultRef, args: (arg))
     }
     
     func funcWithoutResult(arg: String) {
-        invoke(funcWithoutResult, args: (arg))
+        invoke(funcWithoutResultRef, args: (arg))
     }
 }
 
@@ -30,11 +33,14 @@ class MyMockViewController: UIViewController, MyProtocol {
     
     let recorder = Mock()
     
+    lazy var funcWithResultRef = MockReference(funcWithResult)
+    lazy var funcWithoutResultRef = MockReference(funcWithoutResult)
+    
     func funcWithResult(arg: String) -> String {
-        return recorder.invoke(funcWithResult, args: (arg))
+        recorder.invoke(funcWithResultRef, args: (arg))
     }
     
     func funcWithoutResult(arg: String) {
-        recorder.invoke(funcWithoutResult, args: (arg))
+        recorder.invoke(funcWithoutResultRef, args: (arg))
     }
 }
