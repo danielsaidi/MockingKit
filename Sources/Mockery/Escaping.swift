@@ -2,9 +2,6 @@
 //  Escaping.swift
 //  Mockery
 //
-//  Created by Daniel Saidi on 2019-04-16.
-//  Copyright © 2019 Daniel Saidi. All rights reserved.
-//
 
 /*
  These functions are used to wrap invoke arguments where one

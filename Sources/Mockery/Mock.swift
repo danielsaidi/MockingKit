@@ -9,13 +9,17 @@
 import Foundation
 
 /**
- This class can be inherited by mock classes that don't have
- to inherit another base class.
+ This class can be inherited by your mocks and provides them
+ with full `Mockable` capabilities.
  
- Classes that must inherit another base class (e.g. a mocked
- system class) should implement `Mockable` and create a mock
- instance instead. This class implements `Mockable` by using
- itself as the mock.
+ It's basically just a convenience layer on top of `Mockable`
+ and implements `Mockable` by providing itself as a mock. It
+ saves you a little code and just makes things...nicer.
+ 
+ If your mock can't inherit this class (e.g. when creating a
+ `MockedUserDefaults` that must inherit `UserDefaults`), you
+ just have to implement `Mockable` instead then add a custom
+ `mock` to it. The rest is identical.
  
  See `Mockable` for more information about what mocks can do.
  */
