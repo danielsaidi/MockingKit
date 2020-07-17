@@ -5,12 +5,12 @@ default_platform :ios
 
 platform :ios do
 
-  # Dependencies ***********************
 
-  desc "Resolve External Dependencies (the shell script makes Bitrise work)"
-  lane :resolve_dependencies do
-    sh("cd .. && xcodebuild -showBuildSettings -project Mockery.xcodeproj -scheme Mockery")
-    spm(command: "resolve")
+  # Linting ====================
+
+  desc "Run SwiftLint"
+  lane :lint do
+    swiftlint(strict: true)
   end
 
 
@@ -18,9 +18,12 @@ platform :ios do
   
   desc "Run unit tests"
   lane :test do
-    swiftlint(strict: true)
-    resolve_dependencies
-    run_tests(scheme: "Mockery")
+    # Since Quick/Nimble doesn't work for macOS and I do not
+    # know how to make `swift test` use iOS, I just do this:
+    confirm = prompt(text: "Have you successfully run all unit tests? [y/n]: ")
+    if confirm != "y"
+        UI.user_error!("You must run all unit tests before releasing a new version!")
+    end
   end
 
 
@@ -30,7 +33,8 @@ platform :ios do
   lane :version do |options|
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
-    # test
+    lint
+    test
 
     bump_type = options[:type]
     if bump_type == nil or bump_type.empty?
@@ -38,7 +42,6 @@ platform :ios do
     end
     
     version = version_bump_podspec(path: "Mockery.podspec", bump_type: bump_type)
-    increment_version_number(version_number: version)
   
     git_commit(
       path: "*",
