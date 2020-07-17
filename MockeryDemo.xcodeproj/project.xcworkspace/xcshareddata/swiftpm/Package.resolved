@@ -5,8 +5,8 @@
         "package": "Mockery",
         "repositoryURL": "https://github.com/danielsaidi/Mockery",
         "state": {
-          "branch": "v0.4",
-          "revision": "c806b8d19eab16c6230fe8448a29b473a7fd7130",
+          "branch": "master",
+          "revision": "20418158c07f859011c0755b0dfd27d9a83329c5",
           "version": null
         }
       },
