@@ -20,10 +20,10 @@ To create a mocked `Printer`, you just have to inherit `Mock` and implement `Pri
 ```swift
 class MockPrinter: Mock, Printer {
 
-    lazy var invokeRef = MockReference(invoke)  // Must be lazy
+    lazy var printRef = MockReference(print)  // Must be lazy
 
     func print(_ text: String) {
-        invoke(invokeRef, arguments: (text))
+        invoke(printRef, args: (text))
     }
 }
 ```
@@ -39,7 +39,7 @@ When a mock calls `invoke`, it basically records the call so that you can inspec
 let printer = MockPrinter()
 printer.print("Hello!")
 let inv = printer.invokations(of: printer.printRef)     // => 1 item
-inv[0].arguments.0                                      // => "Hello!"
+inv[0].arguments                                        // => "Hello!"
 printer.hasInvoked(printer.printRef)                    // => true
 printer.hasInvoked(printer.printRef, numberOfTimes: 1)  // => true
 printer.hasInvoked(printer.printRef, numberOfTimes: 2)  // => false
@@ -62,7 +62,7 @@ class MockConverter: Mock, Converter {
     lazy var convertRef = MockReference(convert)
 
     func convert(_ text: String) -> String {
-        invoke(convertRef, arguments: (text))
+        invoke(convertRef, args: (text))
     }
 }
 ```
@@ -70,16 +70,12 @@ class MockConverter: Mock, Converter {
 If your function returns a non-optional result, you must register a return value before calling it. If you don't, Mockery will intentionally crash with a precondition failure.
 
 ```swift
-let converter = MockStringConverter()
-let result = converter.convert("banana") // => Crash!
-converter.registerResult(for: convert) { input in input.reversed() }
-let result = converter.convert("banana") // => Returns "ananab"
+let mock = MockConverter()
+let result = mock.convert("banana") // => Crash!
+converter.registerResult(for: mock.convertRef) { input in String(input.reversed()) }
+let result = mock.convert("banana") // => Returns "ananab"
 ```
 
 This is not needed for optional return values. Not registering a value before calling the function will just make the function return `nil`.
 
 Note how the result block takes the same arguments as the actual function. This means that you can vary the return value depending on the input arguments.
-
-
-[Quick]: https://github.com/Quick/Quick
-[Nimble]: https://github.com/Quick/Nimble

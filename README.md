@@ -33,10 +33,11 @@ class MyMock: Mock, MyProtocol {
 
 let mock = MyMock()
 mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
-let result = mock.doStuff(int: 42, string: "message")   // => "Hello, world!"
+let result = mock.doStuff(int: 42, string: "string")    // => "gnirts"
 let inv = mock.invokations(of: mock.doStuffRef)         // => 1 item
 inv[0].arguments.0                                      // => 42
 inv[0].arguments.1                                      // => "message"
+inv[0].result                                           // => "gnirts"
 mock.hasInvoked(mock.doStuffRef)                        // => true
 mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)      // => true
 mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)      // => false

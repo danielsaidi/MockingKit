@@ -1,5 +1,5 @@
 //
-//  MockableTests.swift
+//  ReadmeTests.swift
 //  MockeryTests
 //
 //  Created by Daniel Saidi on 2020-07-17.
@@ -14,7 +14,7 @@ class ReadmeTests: QuickSpec {
 
     override func spec() {
         
-        describe("README example") {
+        describe("README code") {
             
             it("works") {
                 let mock = MyMock()
@@ -25,6 +25,7 @@ class ReadmeTests: QuickSpec {
                 expect(inv.count).to(equal(1))
                 expect(inv[0].arguments.0).to(equal(42))
                 expect(inv[0].arguments.1).to(equal("string"))
+                expect(inv[0].result).to(equal("gnirts"))
                 expect(mock.hasInvoked(mock.doStuffRef)).to(beTrue())
                 expect(mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)).to(beTrue())
                 expect(mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)).to(beFalse())
