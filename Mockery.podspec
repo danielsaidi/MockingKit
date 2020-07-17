@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Mockery'
-  s.version          = '0.3.3'
+  s.version          = '0.4.0'
   s.swift_versions   = ['5.1']
   s.summary          = 'Mockery is a mocking library for Swift.'
   s.description      = 'Mockery contains mocking utilities for Swift.'
