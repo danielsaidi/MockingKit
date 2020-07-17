@@ -15,7 +15,7 @@
 
 ## <a name="about"></a>About Mockery
 
-Mockery is a mocking library for Swift. Mockery lets you `invoke` method calls, `register` function results and `inspect` function invokations.
+Mockery is a mocking library for Swift. Mockery lets you `register` function results, `invoke` method calls and `inspect` invokations.
 
 Example:
 
@@ -26,21 +26,30 @@ protocol Printer {
  
 // Inheriting `Mock`
 class MockPrinter: Mock, Printer {
+
+    lazy var printRef = MockReference(print)          // This has to be lazy
+
     func print(_ text: String) {
-        invoke(print, arguments: (text))
+        invoke(printRef, arguments: (text))
     }
 }
 
 let printer = MockPrinter()
 printer.print("Hello!")
-let inv = printer.invokations(of: printer.print)    // => 1 item
-inv[0].arguments.0                                  // => "Hello!"
-printer.hasInvoked(printer.print)                   // => true
-printer.hasInvoked(printer.print, numberOfTimes: 1) // => true
-printer.hasInvoked(printer.print, numberOfTimes: 2) // => false
+let inv = printer.invokations(of: printer.printRef)    // => 1 item
+inv[0].arguments.0                                     // => "Hello!"
+printer.hasInvoked(printer.printRef)                   // => true
+printer.hasInvoked(printer.printRef, numberOfTimes: 1) // => true
+printer.hasInvoked(printer.printRef, numberOfTimes: 2) // => false
 ```
 
-Mockery supports mocking functions with `void`, `optional` and `non-optional` results. It supports `values`, `structs`, `classes` and `enums` and doesn't put any restrains on the code you write.
+Mockery supports:
+
+* synchronous and asynchronous functions.
+* mocking functions with `void`, `optional` and `non-optional` results. 
+* `values`, `structs`, `classes` and `enums`.
+
+Mockery also doesn't put any restrains on your code or require you to structure it in any way. Just create a mock when you want to mock a protocol and you're good to go.
 
 
 ## <a name="installation"></a>Installation
@@ -57,16 +66,12 @@ https://github.com/danielsaidi/Mockery.git
 pod 'Mockery'
 ```
 
-### <a name="carthage"></a>Carthage
-
-```
-github "danielsaidi/Mockery"
-```
-
 
 ## Demo App
 
-This repository contains a demo app that invokes various mock functions. To try it out, open and run the `Mockery.xcodeproj` project.
+This repository contains a demo app that demonstrates how to use Mockery. The unit tests are also thorough.
+
+To run the demo project, just open and run `MockeryDemo.xcodeproj`.
 
 
 ## Creating a mock
@@ -76,43 +81,49 @@ Consider that you have the following protocol:
 ```swift
 protocol TestProtocol {
     
-    func functionWithResult(arg1: String, arg2: Int) -> Int
+    func functionWithIntResult(arg1: String, arg2: Int) -> Int
     func functionWithOptionalResult(arg1: String, arg2: Int) -> Int?
     func functionWithVoidResult(arg: String)
 }
 ```
 
-To mock `TestProtocol`, just create a class that inherits `Mock` and implements `TestProtocol`:
+To create a mock of this protocol, just create a class that inherits `Mock` and implements `TestProtocol`:
 
 ```swift
 class TestMock: Mock, TestProtocol {
+
+    lazy var functionWithIntResultRef = MockReference(functionWithIntResult)
+    lazy var functionWithOptionalResultRef = MockReference(functionWithOptionalResult)
+    lazy var functionWithVoidResultRef = MockReference(functionWithVoidResult)
     
-    func functionWithResult(arg1: String, arg2: Int) -> Int {
-        invoke(functionWithResult, args: (arg1, arg2))
+    func functionWithIntResult(arg1: String, arg2: Int) -> Int {
+        invoke(functionWithIntResultRef, args: (arg1, arg2))
     }
 
     func functionWithOptionalResult(arg1: String, arg2: Int) -> Int? {
-        invoke(functionWithOptionalResult, args: (arg1, arg2))
+        invoke(functionWithOptionalResultRef, args: (arg1, arg2))
     }
     
     func functionWithVoidResult(arg: String) {
-        invoke(functionWithVoidResult, args: (arg))
+        invoke(functionWithVoidResultRef, args: (arg))
     }
 }
 ```
 
-If your test class must inherit another class and therefore can't inherit `Mock`, you can let it implement `Mockable` instead. The rest is identical to using `Mock`.
+The mock will now record the function calls and return any pre-registered return values (or crash if you haven't registered any return values for non-optional functions).
 
-The mock will now record the function calls and return any registered return values (or crash if you haven't registered any return values for non-optional functions).
+If your mock must inherit another class (e.g. if you mock `UserDefaults`) and therefore can't inherit `Mock`, you can just let it implement `Mockable` instead and provide it with a custom `Mock` instance. The rest is identical to using `Mock`. `Mock` is actually just a `Mockable` that uses itself.
 
 
 ## Registering return values
+
+If you mock a function that returns a value, you must register a value for the mock before calling the function in your tests. If you don't, Mockery will intentionally crash with a precondition failure.
 
 You can register return values by calling `registerResult(for:)`:
 
 ```swift
 let mock = TestMock()
-mock.registerResult(for: mock.functionWithIntResult) { _ in return 123 }
+mock.registerResult(for: mock.functionWithIntResultRef) { _ in return 123 }
 ```
 
 The result block takes the same arguments as the actual function, so you can adjust the function logic depending on the input arguments.
@@ -128,7 +139,7 @@ Use `invokations(of:)` to inspect a mock's performed invokations. An invokation 
 _ = mock.functionWithResult(arg1: "abc", arg2: 123)
 _ = mock.functionWithResult(arg1: "abc", arg2: 456)
 
-let inv = mock.invokations(of: mock.functionWithResult)
+let inv = mock.invokations(of: mock.functionWithIntResultRef)
 expect(inv.count).to(equal(2))
 expect(inv[0].arguments.0).to(equal("abc"))
 expect(inv[0].arguments.1).to(equal(123))
@@ -136,17 +147,12 @@ expect(inv[1].arguments.0).to(equal("abc"))
 expect(inv[1].arguments.1).to(equal(456))
 ```
 
-The syntax above uses [Quick/Nimble][Quick]. You can use any test framework you like.
+The syntax above uses [Quick/Nimble][Quick], but you can naturally use any test framework you like.
 
 
 ## Registering and throwing errors
 
 There is currently no support for registering and throwing errors, which means that async functions can't (yet) register custom return values.
-
-
-## Device limitations
-
-Mockery uses unsafe bit casts to get the memory address of mocked functions. This only works on 64-bit devices, which means that mock-based unit tests will not work on old devices or simulators like iPad 2, iPad Retina etc.
 
 
 ## Contact me
