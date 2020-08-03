@@ -1,6 +1,6 @@
 //
 //  MockableTests.swift
-//  MockeryTests
+//  Mockery
 //
 //  Created by Daniel Saidi on 2019-11-25.
 //  Copyright © 2020 Daniel Saidi. All rights reserved.

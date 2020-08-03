@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.4.1
+
+This version adds a new `MockUserDefaults` util class, which can be used if you want to mock `UserDefaults`.
+
+
 ## 0.4.0
 
 This version replaces the memory address resolve logic with a new `MockReference` approach.
