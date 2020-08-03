@@ -23,7 +23,7 @@ class MockUserDefaultsTests: QuickSpec {
         
         describe("mock user defaults") {
             
-            context("getter functions") {
+            context("getter functions") {
                 
                 it("can mock array") {
                     defaults.registerResult(for: defaults.arrayRef) { _ in [1, 2, 3] }
@@ -128,17 +128,3 @@ class MockUserDefaultsTests: QuickSpec {
         }
     }
 }
-
-private protocol Converter {
-    func convert(_ text: String) -> String
-}
-
-private class MockConverter: Mock, Converter {
-
-    lazy var convertRef = MockReference(convert)
-
-    func convert(_ text: String) -> String {
-        invoke(convertRef, args: (text))
-    }
-}
-

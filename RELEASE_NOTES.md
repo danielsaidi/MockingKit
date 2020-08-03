@@ -3,7 +3,10 @@
 
 ## 0.4.1
 
-This version adds a new `MockUserDefaults` util class, which can be used if you want to mock `UserDefaults`.
+This version adds mock classes that lets you commonly used `Foundation` classes:
+
+* `MockNotificationCenter`
+* `MockUserDefaults`
 
 
 ## 0.4.0
