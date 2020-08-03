@@ -1,7 +1,7 @@
 # Release Notes
 
 
-## 0.4.1
+## 0.5.0
 
 This version adds mock classes that lets you commonly used `Foundation` classes:
 
