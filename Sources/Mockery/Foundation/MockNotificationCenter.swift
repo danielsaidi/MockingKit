@@ -34,7 +34,7 @@ open class MockNotificationCenter: NotificationCenter, Mockable {
         mockPostNotificationName(name: aName, object: anObject, userInfo: nil)
     }
     
-    open override func post(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable : Any]? = nil) {
+    open override func post(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable: Any]? = nil) {
         mockPostNotificationName(name: aName, object: anObject, userInfo: aUserInfo)
     }
     
@@ -65,7 +65,7 @@ private extension MockNotificationCenter {
         invoke(postNotificationRef, args: (notification))
     }
     
-    func mockPostNotificationName(name aName: NSNotification.Name, object: Any?, userInfo: [AnyHashable : Any]?) {
+    func mockPostNotificationName(name aName: NSNotification.Name, object: Any?, userInfo: [AnyHashable: Any]?) {
         invoke(postNotificationNameRef, args: (aName, object, userInfo))
     }
     
