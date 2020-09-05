@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.6.0
+
+This version adds improved support for watchOS, tvOS and macOS.
+
+
 ## 0.5.0
 
 This version adds mock classes that lets you commonly used `Foundation` classes:
