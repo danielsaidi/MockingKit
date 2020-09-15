@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.6.1
+
+This version supports macOS 10.10 instead of 10.15.
+
+
 ## 0.6.0
 
 This version adds improved support for watchOS, tvOS and macOS.
