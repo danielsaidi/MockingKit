@@ -36,11 +36,11 @@ final class DemoAppearance {
 private extension DemoAppearance {
     
     static var titleAttributes: [NSAttributedString.Key: Any] {
-        [.font: UIFont.systemFont(ofSize: 20, weight: .light), .foregroundColor: UIColor.white, .shadow: shadow]
+        [.font: UIFont(name: "Knewave-Regular", size: 20)!, .foregroundColor: UIColor.white, .shadow: shadow]
     }
     
     static var largeTitleAttributes: [NSAttributedString.Key: Any] {
-        [.font: UIFont.systemFont(ofSize: 40, weight: .thin), .foregroundColor: UIColor.white, .shadow: shadow]
+        [.font: UIFont(name: "Knewave-Regular", size: 40)!, .foregroundColor: UIColor.white, .shadow: shadow]
     }
     
     static var shadow: NSShadow {

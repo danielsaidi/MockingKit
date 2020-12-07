@@ -11,20 +11,57 @@
 		A9827A3E257ED48A0006D64F /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2A257ED4880006D64F /* DemoApp.swift */; };
 		A9827A3F257ED48A0006D64F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2B257ED4880006D64F /* ContentView.swift */; };
 		A9827A40257ED48A0006D64F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2B257ED4880006D64F /* ContentView.swift */; };
-		A9827A41257ED48A0006D64F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9827A2C257ED48A0006D64F /* Assets.xcassets */; };
-		A9827A42257ED48A0006D64F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9827A2C257ED48A0006D64F /* Assets.xcassets */; };
 		A9827A4F257ED4BC0006D64F /* DemoAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */; };
 		A9827A50257ED4BC0006D64F /* DemoAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */; };
 		A9827A56257ED4E60006D64F /* Color+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A54257ED4E60006D64F /* Color+Demo.swift */; };
 		A9827A57257ED4E60006D64F /* Color+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A54257ED4E60006D64F /* Color+Demo.swift */; };
 		A9827A58257ED4E60006D64F /* Image+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A55257ED4E60006D64F /* Image+Demo.swift */; };
 		A9827A59257ED4E60006D64F /* Image+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A55257ED4E60006D64F /* Image+Demo.swift */; };
+		A9827A6F257ED9BB0006D64F /* DemoListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6A257ED9BB0006D64F /* DemoListButton.swift */; };
+		A9827A70257ED9BB0006D64F /* DemoListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6A257ED9BB0006D64F /* DemoListButton.swift */; };
+		A9827A71257ED9BB0006D64F /* DemoListLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6B257ED9BB0006D64F /* DemoListLink.swift */; };
+		A9827A72257ED9BB0006D64F /* DemoListLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6B257ED9BB0006D64F /* DemoListLink.swift */; };
+		A9827A73257ED9BB0006D64F /* DemoListText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6C257ED9BB0006D64F /* DemoListText.swift */; };
+		A9827A74257ED9BB0006D64F /* DemoListText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6C257ED9BB0006D64F /* DemoListText.swift */; };
+		A9827A75257ED9BB0006D64F /* DemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6D257ED9BB0006D64F /* DemoList.swift */; };
+		A9827A76257ED9BB0006D64F /* DemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6D257ED9BB0006D64F /* DemoList.swift */; };
+		A9827A77257ED9BB0006D64F /* DemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6E257ED9BB0006D64F /* DemoListItem.swift */; };
+		A9827A78257ED9BB0006D64F /* DemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A6E257ED9BB0006D64F /* DemoListItem.swift */; };
+		A9827A81257EDA990006D64F /* Knewave-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9827A80257EDA990006D64F /* Knewave-Regular.ttf */; };
+		A9827A82257EDA990006D64F /* Knewave-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9827A80257EDA990006D64F /* Knewave-Regular.ttf */; };
+		A9827A88257EDAA10006D64F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9827A87257EDAA10006D64F /* Assets.xcassets */; };
+		A9827A89257EDAA10006D64F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9827A87257EDAA10006D64F /* Assets.xcassets */; };
+		A9827A90257EDBD10006D64F /* MockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A8F257EDBD10006D64F /* MockScreen.swift */; };
+		A9827A91257EDBD10006D64F /* MockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A8F257EDBD10006D64F /* MockScreen.swift */; };
+		A9827A95257EDBDB0006D64F /* MockableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A94257EDBDB0006D64F /* MockableScreen.swift */; };
+		A9827A96257EDBDB0006D64F /* MockableScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A94257EDBDB0006D64F /* MockableScreen.swift */; };
+		A9827A9B257EDC1A0006D64F /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A9A257EDC1A0006D64F /* TestProtocol.swift */; };
+		A9827A9C257EDC1A0006D64F /* TestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A9A257EDC1A0006D64F /* TestProtocol.swift */; };
+		A9827AA7257EDC760006D64F /* TestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AA6257EDC760006D64F /* TestMock.swift */; };
+		A9827AA8257EDC760006D64F /* TestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AA6257EDC760006D64F /* TestMock.swift */; };
+		A9827AB5257EDC830006D64F /* MockReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAD257EDC830006D64F /* MockReference.swift */; };
+		A9827AB6257EDC830006D64F /* MockReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAD257EDC830006D64F /* MockReference.swift */; };
+		A9827AB7257EDC830006D64F /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAE257EDC830006D64F /* Escaping.swift */; };
+		A9827AB8257EDC830006D64F /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAE257EDC830006D64F /* Escaping.swift */; };
+		A9827AB9257EDC830006D64F /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAF257EDC830006D64F /* Mockable.swift */; };
+		A9827ABA257EDC830006D64F /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AAF257EDC830006D64F /* Mockable.swift */; };
+		A9827ABB257EDC830006D64F /* MockInvokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB0257EDC830006D64F /* MockInvokation.swift */; };
+		A9827ABC257EDC830006D64F /* MockInvokation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB0257EDC830006D64F /* MockInvokation.swift */; };
+		A9827ABD257EDC830006D64F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB1257EDC830006D64F /* Mock.swift */; };
+		A9827ABE257EDC830006D64F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB1257EDC830006D64F /* Mock.swift */; };
+		A9827ABF257EDC830006D64F /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB3257EDC830006D64F /* MockUserDefaults.swift */; };
+		A9827AC0257EDC830006D64F /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB3257EDC830006D64F /* MockUserDefaults.swift */; };
+		A9827AC1257EDC830006D64F /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB4257EDC830006D64F /* MockNotificationCenter.swift */; };
+		A9827AC2257EDC830006D64F /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AB4257EDC830006D64F /* MockNotificationCenter.swift */; };
+		A9827AC8257EDCFD0006D64F /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AC7257EDCFD0006D64F /* TestMockable.swift */; };
+		A9827AC9257EDCFD0006D64F /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AC7257EDCFD0006D64F /* TestMockable.swift */; };
+		A9827ACD257EDFD10006D64F /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827ACC257EDFD10006D64F /* AboutScreen.swift */; };
+		A9827ACE257EDFD10006D64F /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827ACC257EDFD10006D64F /* AboutScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A9827A2A257ED4880006D64F /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		A9827A2B257ED4880006D64F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A9827A2C257ED48A0006D64F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9827A31257ED48A0006D64F /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9827A34257ED48A0006D64F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9827A39257ED48A0006D64F /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +79,26 @@
 		A9827A65257ED7B20006D64F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		A9827A66257ED7B20006D64F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A9827A67257ED7BA0006D64F /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = ../fastlane/Fastfile; sourceTree = "<group>"; };
+		A9827A6A257ED9BB0006D64F /* DemoListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListButton.swift; sourceTree = "<group>"; };
+		A9827A6B257ED9BB0006D64F /* DemoListLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListLink.swift; sourceTree = "<group>"; };
+		A9827A6C257ED9BB0006D64F /* DemoListText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListText.swift; sourceTree = "<group>"; };
+		A9827A6D257ED9BB0006D64F /* DemoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoList.swift; sourceTree = "<group>"; };
+		A9827A6E257ED9BB0006D64F /* DemoListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListItem.swift; sourceTree = "<group>"; };
+		A9827A80257EDA990006D64F /* Knewave-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Knewave-Regular.ttf"; sourceTree = "<group>"; };
+		A9827A87257EDAA10006D64F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9827A8F257EDBD10006D64F /* MockScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScreen.swift; sourceTree = "<group>"; };
+		A9827A94257EDBDB0006D64F /* MockableScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockableScreen.swift; sourceTree = "<group>"; };
+		A9827A9A257EDC1A0006D64F /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
+		A9827AA6257EDC760006D64F /* TestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMock.swift; sourceTree = "<group>"; };
+		A9827AAD257EDC830006D64F /* MockReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReference.swift; sourceTree = "<group>"; };
+		A9827AAE257EDC830006D64F /* Escaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
+		A9827AAF257EDC830006D64F /* Mockable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		A9827AB0257EDC830006D64F /* MockInvokation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockInvokation.swift; sourceTree = "<group>"; };
+		A9827AB1257EDC830006D64F /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		A9827AB3257EDC830006D64F /* MockUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		A9827AB4257EDC830006D64F /* MockNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
+		A9827AC7257EDCFD0006D64F /* TestMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMockable.swift; sourceTree = "<group>"; };
+		A9827ACC257EDFD10006D64F /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +133,12 @@
 		A9827A29257ED4880006D64F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A9827A53257ED4CE0006D64F /* Resources */,
 				A9827A4D257ED4AF0006D64F /* Demo */,
-				A9827A2B257ED4880006D64F /* ContentView.swift */,
+				A9827AA3257EDC610006D64F /* Mocks */,
+				A9827A99257EDC040006D64F /* Protocols */,
+				A9827A53257ED4CE0006D64F /* Resources */,
+				A9827A8E257EDBC80006D64F /* Screens */,
+				A9827AAB257EDC830006D64F /* Sources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -112,8 +172,14 @@
 		A9827A4D257ED4AF0006D64F /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				A9827A2B257ED4880006D64F /* ContentView.swift */,
 				A9827A2A257ED4880006D64F /* DemoApp.swift */,
 				A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */,
+				A9827A6D257ED9BB0006D64F /* DemoList.swift */,
+				A9827A6A257ED9BB0006D64F /* DemoListButton.swift */,
+				A9827A6E257ED9BB0006D64F /* DemoListItem.swift */,
+				A9827A6B257ED9BB0006D64F /* DemoListLink.swift */,
+				A9827A6C257ED9BB0006D64F /* DemoListText.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -121,7 +187,8 @@
 		A9827A53257ED4CE0006D64F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A9827A2C257ED48A0006D64F /* Assets.xcassets */,
+				A9827A87257EDAA10006D64F /* Assets.xcassets */,
+				A9827A7F257EDA990006D64F /* Fonts */,
 				A9827A54257ED4E60006D64F /* Color+Demo.swift */,
 				A9827A55257ED4E60006D64F /* Image+Demo.swift */,
 			);
@@ -142,6 +209,72 @@
 				A9827A60257ED7B20006D64F /* RELEASE_NOTES.md */,
 			);
 			name = "Project Files";
+			sourceTree = "<group>";
+		};
+		A9827A7F257EDA990006D64F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A9827A80257EDA990006D64F /* Knewave-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A9827A8E257EDBC80006D64F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A9827ACC257EDFD10006D64F /* AboutScreen.swift */,
+				A9827A94257EDBDB0006D64F /* MockableScreen.swift */,
+				A9827A8F257EDBD10006D64F /* MockScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A9827A99257EDC040006D64F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A9827A9A257EDC1A0006D64F /* TestProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A9827AA3257EDC610006D64F /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A9827AA6257EDC760006D64F /* TestMock.swift */,
+				A9827AC7257EDCFD0006D64F /* TestMockable.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A9827AAB257EDC830006D64F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A9827AAC257EDC830006D64F /* Mockery */,
+			);
+			name = Sources;
+			path = ../../Sources;
+			sourceTree = "<group>";
+		};
+		A9827AAC257EDC830006D64F /* Mockery */ = {
+			isa = PBXGroup;
+			children = (
+				A9827AAD257EDC830006D64F /* MockReference.swift */,
+				A9827AAE257EDC830006D64F /* Escaping.swift */,
+				A9827AAF257EDC830006D64F /* Mockable.swift */,
+				A9827AB0257EDC830006D64F /* MockInvokation.swift */,
+				A9827AB1257EDC830006D64F /* Mock.swift */,
+				A9827AB2257EDC830006D64F /* Foundation */,
+			);
+			path = Mockery;
+			sourceTree = "<group>";
+		};
+		A9827AB2257EDC830006D64F /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				A9827AB3257EDC830006D64F /* MockUserDefaults.swift */,
+				A9827AB4257EDC830006D64F /* MockNotificationCenter.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +322,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = "Daniel Saidi";
 				TargetAttributes = {
 					A9827A30257ED48A0006D64F = {
 						CreatedOnToolsVersion = 12.2;
@@ -222,7 +356,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9827A41257ED48A0006D64F /* Assets.xcassets in Resources */,
+				A9827A88257EDAA10006D64F /* Assets.xcassets in Resources */,
+				A9827A81257EDA990006D64F /* Knewave-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9827A42257ED48A0006D64F /* Assets.xcassets in Resources */,
+				A9827A89257EDAA10006D64F /* Assets.xcassets in Resources */,
+				A9827A82257EDA990006D64F /* Knewave-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,10 +377,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9827A6F257ED9BB0006D64F /* DemoListButton.swift in Sources */,
+				A9827AB5257EDC830006D64F /* MockReference.swift in Sources */,
 				A9827A58257ED4E60006D64F /* Image+Demo.swift in Sources */,
+				A9827AB7257EDC830006D64F /* Escaping.swift in Sources */,
 				A9827A4F257ED4BC0006D64F /* DemoAppearance.swift in Sources */,
+				A9827A90257EDBD10006D64F /* MockScreen.swift in Sources */,
+				A9827ABF257EDC830006D64F /* MockUserDefaults.swift in Sources */,
+				A9827AC8257EDCFD0006D64F /* TestMockable.swift in Sources */,
+				A9827AC1257EDC830006D64F /* MockNotificationCenter.swift in Sources */,
+				A9827A73257ED9BB0006D64F /* DemoListText.swift in Sources */,
+				A9827A95257EDBDB0006D64F /* MockableScreen.swift in Sources */,
+				A9827AB9257EDC830006D64F /* Mockable.swift in Sources */,
+				A9827A9B257EDC1A0006D64F /* TestProtocol.swift in Sources */,
+				A9827ACD257EDFD10006D64F /* AboutScreen.swift in Sources */,
+				A9827AA7257EDC760006D64F /* TestMock.swift in Sources */,
+				A9827A71257ED9BB0006D64F /* DemoListLink.swift in Sources */,
+				A9827A77257ED9BB0006D64F /* DemoListItem.swift in Sources */,
 				A9827A3F257ED48A0006D64F /* ContentView.swift in Sources */,
+				A9827ABD257EDC830006D64F /* Mock.swift in Sources */,
 				A9827A56257ED4E60006D64F /* Color+Demo.swift in Sources */,
+				A9827ABB257EDC830006D64F /* MockInvokation.swift in Sources */,
+				A9827A75257ED9BB0006D64F /* DemoList.swift in Sources */,
 				A9827A3D257ED48A0006D64F /* DemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,10 +407,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9827A70257ED9BB0006D64F /* DemoListButton.swift in Sources */,
+				A9827AB6257EDC830006D64F /* MockReference.swift in Sources */,
 				A9827A59257ED4E60006D64F /* Image+Demo.swift in Sources */,
+				A9827AB8257EDC830006D64F /* Escaping.swift in Sources */,
 				A9827A50257ED4BC0006D64F /* DemoAppearance.swift in Sources */,
+				A9827A91257EDBD10006D64F /* MockScreen.swift in Sources */,
+				A9827AC0257EDC830006D64F /* MockUserDefaults.swift in Sources */,
+				A9827AC9257EDCFD0006D64F /* TestMockable.swift in Sources */,
+				A9827AC2257EDC830006D64F /* MockNotificationCenter.swift in Sources */,
+				A9827A74257ED9BB0006D64F /* DemoListText.swift in Sources */,
+				A9827A96257EDBDB0006D64F /* MockableScreen.swift in Sources */,
+				A9827ABA257EDC830006D64F /* Mockable.swift in Sources */,
+				A9827A9C257EDC1A0006D64F /* TestProtocol.swift in Sources */,
+				A9827ACE257EDFD10006D64F /* AboutScreen.swift in Sources */,
+				A9827AA8257EDC760006D64F /* TestMock.swift in Sources */,
+				A9827A72257ED9BB0006D64F /* DemoListLink.swift in Sources */,
+				A9827A78257ED9BB0006D64F /* DemoListItem.swift in Sources */,
 				A9827A40257ED48A0006D64F /* ContentView.swift in Sources */,
+				A9827ABE257EDC830006D64F /* Mock.swift in Sources */,
 				A9827A57257ED4E60006D64F /* Color+Demo.swift in Sources */,
+				A9827ABC257EDC830006D64F /* MockInvokation.swift in Sources */,
+				A9827A76257ED9BB0006D64F /* DemoList.swift in Sources */,
 				A9827A3E257ED48A0006D64F /* DemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
