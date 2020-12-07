@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 0.7.0
+
+This version's podspec has been adjusted to support macOS 10.10.
+
+There is also a new demo app with more demos and examples. 
+
+
 ## 0.6.1
 
 This version supports macOS 10.10 instead of 10.15.
