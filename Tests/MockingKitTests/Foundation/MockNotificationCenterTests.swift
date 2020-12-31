@@ -1,6 +1,6 @@
 //
 //  MockNotificationCenterTests.swift
-//  Mockery
+//  MockingKit
 //
 //  Created by Daniel Saidi on 2020-08-03.
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import Quick
 import Nimble
-import Mockery
+import MockingKit
 
 private class TestClass: NSObject {
     

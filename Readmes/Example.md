@@ -1,8 +1,10 @@
 #  Example
 
-To create a mock, you just have to implement `Mockable`, which is the main protocol in `Mockery`. It lets your class record function calls and return any pre-registered return values.
+To create a mock in MockingKit, you just have to inherit `Mock` and implement any protocol tha you want to mock.
 
-If your mock doesn't have to inherit another class (which is needed when mocking classes, e.g. `UserDefaults`), you can just inherit `Mock`, which implements `Mockable` by using itself as a mock.
+`Mock` can record function calls, return any pre-registered return values and inspect how it's mocked functions have been called.
+
+If your mock has to inherit another class (e.g. when mocking `UserDefaults`), you can just implement `Mockable` instead and provide a custom `mock`. `Mock` is basically just a `Mockable` that returns itself as `mock`.
 
 
 ## Invoking function calls
@@ -67,7 +69,7 @@ class MockConverter: Mock, Converter {
 }
 ```
 
-If your function returns a non-optional result, you must register a return value before calling it. If you don't, Mockery will intentionally crash with a precondition failure.
+If your function returns a non-optional result, you must register a return value before calling it. If you don't, MockingKit is a Swift mocking library that makes it easy to mock protocol implementations for unit tests and not yet implemented functionality. will intentionally crash with a precondition failure.
 
 ```swift
 let mock = MockConverter()

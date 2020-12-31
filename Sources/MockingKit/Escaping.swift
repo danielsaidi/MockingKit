@@ -1,6 +1,6 @@
 //
 //  Escaping.swift
-//  Mockery
+//  MockingKit
 //
 
 /*

@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.8.0
+
+This version renames Mockery to MockingKit.
+
+
 ## 0.7.0
 
 This version's podspec has been adjusted to support macOS 10.10.

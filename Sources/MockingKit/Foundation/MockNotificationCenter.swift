@@ -1,6 +1,6 @@
 //
 //  MockNotificationCenter.swift
-//  Mockery
+//  MockingKit
 //
 //  Created by Daniel Saidi on 2020-08-03.
 //  Copyright © 2020 Daniel Saidi. All rights reserved.

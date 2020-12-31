@@ -1,6 +1,6 @@
 //
 //  TestProtocol.swift
-//  Mockery
+//  MockingKit
 //
 //  Created by Daniel Saidi on 2019-04-16.
 //  Copyright © 2019 Daniel Saidi. All rights reserved.

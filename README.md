@@ -1,8 +1,8 @@
-<h1>Mockery</h1>
+<h1>MockingKit</h1>
 
 <p align="center">
-    <img src ="Resources/Logo.png" alt="Mockery Logo" /><br/>
-    <img src="https://img.shields.io/github/v/release/danielsaidi/Mockery?color=%2300550&sort=semver" alt="Version" />
+    <img src ="Resources/Logo.png" alt="MockingKit Logo" /><br/>
+    <img src="https://img.shields.io/github/v/release/danielsaidi/MockingKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-5.3-orange.svg" alt="Swift 5.3" />
     <img src="https://img.shields.io/github/license/danielsaidi/KeyboardKit" alt="MIT License" />
     <a href="https://twitter.com/danielsaidi">
@@ -11,9 +11,11 @@
 </p>
 
 
-## <a name="about"></a>About Mockery
+## <a name="about"></a>About MockingKit
 
-Mockery is a mocking library for Swift. Mockery lets you `register` function results, `invoke` method calls and `inspect` invokations:
+MockingKit is a Swift mocking library that makes it easy to mock protocol implementations for unit tests and not yet implemented functionality. 
+
+MockingKit lets you `register` function results, `invoke` method calls and `inspect` invokations:
 
 ```swift
 protocol MyProtocol {
@@ -41,7 +43,7 @@ mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)      // => true
 mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)      // => false
 ```
 
-Mockery supports:
+MockingKit supports:
 
 * mocking protocols
 * mocking classes (using [`Mockable`][Mockable])
@@ -50,7 +52,7 @@ Mockery supports:
 * `void`, `optional` and `non-optional` result values.
 * argument-based, variable result values.
 
-Mockery doesn't put any restrains on your code or require you to structure it in any way. Just create a mock when you want to mock a protocol and you're good to go.
+MockingKit doesn't put any restrains on your code or require you to structure it in any way. Just create a mock when you want to mock a protocol and you're good to go.
 
 For more information, have a look at this [detailed example][Example].
 
@@ -60,18 +62,20 @@ For more information, have a look at this [detailed example][Example].
 ### <a name="spm"></a>Swift Package Manager
 
 ```
-https://github.com/danielsaidi/Mockery.git
+https://github.com/danielsaidi/MockingKit.git
 ```
 
 ### <a name="cocoapods"></a>CocoaPods
 
 ```ruby
-pod 'Mockery'
+pod 'MockingKit'
 ```
 
 ## Demo App
 
-This repository contains a demo app that shows you how to use Mockery. To run it, just open and run `MockeryDemo.xcodeproj`.
+This repository contains a demo app that shows you how to use MockingKit. 
+
+To run it, just open and run `Demo/Demo.xcodeproj`.
 
 
 ## Contact me
@@ -85,22 +89,26 @@ Feel free to reach out if you have questions or if you want to contribute in any
 
 ## Acknowledgements
 
-Mockery is inspired by [Stubber][Stubber], and would not have been possible without it. However, Stubber uses global functions, which requires you to reset the global state every now and then. Mockery moves this logic to each mock, which means that any recorded exeuctions are automatically reset when the mock is disposed. Mockery also adds some extra functionality, like support for optional and void results and convenient inspection utilities.
+MockingKit is inspired by [Stubber][Stubber], and would not have been possible without it. 
+
+However, while Stubber uses global state, MockingKit moves this state to each mock. This means that recorded exeuctions are automatically reset when a mock is disposed. 
+
+MockingKit also adds some extra functionality, like support for optional and void results and convenient inspection utilities.
 
 
 ## License
 
-Mockery is available under the MIT license. See the [LICENSE][License] file for more info.
+MockingKit is available under the MIT license. See the [LICENSE][License] file for more info.
 
 
 [Email]: mailto:daniel.saidi@gmail.com
 [Twitter]: http://www.twitter.com/danielsaidi
 [Website]: http://www.danielsaidi.com
 
-[Example]: https://github.com/danielsaidi/Mockery/blob/master/Readmes/Example.md
+[Example]: https://github.com/danielsaidi/MockingKit/blob/master/Readmes/Example.md
 
 [CocoaPods]: http://cocoapods.org
-[GitHub]: https://github.com/danielsaidi/Mockery
-[Pod]: http://cocoapods.org/pods/Mockery
+[GitHub]: https://github.com/danielsaidi/MockingKit
+[Pod]: http://cocoapods.org/pods/MockingKit
 [Stubber]: https://github.com/devxoul/Stubber
-[License]: https://github.com/danielsaidi/Mockery/blob/master/LICENSE
+[License]: https://github.com/danielsaidi/MockingKit/blob/master/LICENSE

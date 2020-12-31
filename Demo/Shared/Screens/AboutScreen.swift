@@ -11,10 +11,12 @@ import SwiftUI
 struct AboutScreen: View {
     
     var body: some View {
-        DemoList("About Mockery") {
+        DemoList("About MockingKit") {
             DemoListText(
                 """
-Mockery basically consists of two things: the Mock base class and the Mockable protocol.
+MockingKit is a Swift mocking library that makes it easy to mock protocol implementations for unit tests and not yet implemented functionality.
+
+MockingKit basically consists of two things: the Mock base class and the Mockable protocol.
 
 Use Mock when your mock doesn't have to inherit another class (most cases).
 

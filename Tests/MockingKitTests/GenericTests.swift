@@ -1,6 +1,6 @@
 //
 //  MockableTests.swift
-//  Mockery
+//  MockingKit
 //
 //  Created by Daniel Saidi on 2020-07-17.
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import Mockery
+@testable import MockingKit
 
 class GenericTests: QuickSpec {
     

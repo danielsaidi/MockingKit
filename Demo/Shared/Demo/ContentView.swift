@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Shared
+//  Demo
 //
 //  Created by Daniel Saidi on 2020-12-07.
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
@@ -12,9 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            DemoList("Mockery") {
+            DemoList("MockingKit") {
                 Section(header: Text("About")) {
-                    DemoListLink("About Mockery", .about, AboutScreen())   
+                    DemoListLink("About MockingKit", .about, AboutScreen())
                 }
                 
                 Section(header: Text("Mocks")) {
