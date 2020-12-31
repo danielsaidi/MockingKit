@@ -2,11 +2,9 @@
 
 <p align="center">
     <img src ="Resources/Logo.png" alt="Mockery Logo" /><br/>
-    <a href="https://github.com/danielsaidi/Mockery">
-        <img src="https://badge.fury.io/gh/danielsaidi%2FMockery.svg?style=flat" alt="Version" />
-    </a>
-    <img src="https://img.shields.io/badge/Swift-5.1-orange.svg" alt="Swift 5.0" />
-    <img src="https://badges.frapsoft.com/os/mit/mit.svg?style=flat&v=102" alt="License" />
+    <img src="https://img.shields.io/github/v/release/danielsaidi/Mockery?color=%2300550&sort=semver" alt="Version" />
+    <img src="https://img.shields.io/badge/Swift-5.3-orange.svg" alt="Swift 5.3" />
+    <img src="https://img.shields.io/github/license/danielsaidi/KeyboardKit" alt="MIT License" />
     <a href="https://twitter.com/danielsaidi">
         <img src="https://img.shields.io/badge/contact-@danielsaidi-blue.svg?style=flat" alt="Twitter: @danielsaidi" />
     </a>
