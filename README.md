@@ -24,7 +24,7 @@ protocol MyProtocol {
 
 class MyMock: Mock, MyProtocol {
 
-    lazy var doStuffRef = MockReference(doStuff)  // This has to be lazy
+    lazy var doStuffRef = MockReference(doStuff)        // Must be lazy 
 
     func doStuff(int: Int, string: String) -> String {
         invoke(doStuffRef, args: (int, string))
@@ -46,13 +46,13 @@ mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)      // => false
 MockingKit supports:
 
 * mocking protocols
-* mocking classes (using [`Mockable`][Mockable])
-* mocking synchronous and asynchronous functions.
-* mocking non-returning and returning functions.
-* `void`, `optional` and `non-optional` result values.
-* argument-based, variable result values.
+* mocking classes
+* mocking synchronous and asynchronous functions
+* mocking non-returning and returning functions
+* `void`, `optional` and `non-optional` result values
+* argument-based, variable result values
 
-MockingKit doesn't put any restrains on your code or require you to structure it in any way. Just create a mock when you want to mock a protocol and you're good to go.
+MockingKit doesn't put any restrains on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
 
 For more information, have a look at this [detailed example][Example].
 
