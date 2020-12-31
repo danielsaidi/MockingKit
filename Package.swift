@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Mockery",
+    name: "MockingKit",
     platforms: [
         .iOS(.v9),
         .tvOS(.v13),
@@ -12,8 +12,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Mockery",
-            targets: ["Mockery"]),
+            name: "MockingKit",
+            targets: ["MockingKit"]),
     ],
     dependencies: [
         .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "3.0.0")),
@@ -21,10 +21,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Mockery",
+            name: "MockingKit",
             dependencies: []),
         .testTarget(
-            name: "MockeryTests",
-            dependencies: ["Mockery", "Quick", "Nimble"]),
+            name: "MockingKitTests",
+            dependencies: ["MockingKit", "Quick", "Nimble"]),
     ]
 )
