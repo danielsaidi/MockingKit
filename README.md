@@ -13,9 +13,7 @@
 
 ## <a name="about"></a>About MockingKit
 
-MockingKit is a Swift mocking library that makes it easy to mock protocol implementations for unit tests and not yet implemented functionality. 
-
-MockingKit lets you `register` function results, `invoke` method calls and `inspect` invokations:
+MockingKit is a Swift mocking library that makes it easy to mock protocol implementations and classes. It lets you `invoke` method calls, `inspect` invokations and `register` function results:
 
 ```swift
 protocol MyProtocol {
