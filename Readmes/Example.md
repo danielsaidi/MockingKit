@@ -1,8 +1,6 @@
 #  Example
 
-To create a mock in MockingKit, you just have to inherit `Mock` and implement any protocol tha you want to mock.
-
-`Mock` can record function calls, return any pre-registered return values and inspect how it's mocked functions have been called.
+To create a mock in MockingKit, you just have to inherit `Mock` and implement any protocol that you want to mock. `Mock` can record function calls, register return values and inspect how it's mocked functions have been called.
 
 If your mock has to inherit another class (e.g. when mocking `UserDefaults`), you can just implement `Mockable` instead and provide a custom `mock`. `Mock` is basically just a `Mockable` that returns itself as `mock`.
 
