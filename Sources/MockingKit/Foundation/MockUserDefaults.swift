@@ -18,6 +18,7 @@ open class MockUserDefaults: UserDefaults, Mockable {
     public lazy var integerRef = MockReference(integer)
     public lazy var objectRef = MockReference(object)
     public lazy var stringRef = MockReference(string)
+    public lazy var stringArrayRef = MockReference(stringArray)
     public lazy var urlRef = MockReference(url)
     
     public lazy var setBoolRef = MockReference(set as (Bool, String) -> Void)
@@ -62,10 +63,13 @@ open class MockUserDefaults: UserDefaults, Mockable {
         mock.invoke(stringRef, args: defaultName)
     }
     
+    open override func stringArray(forKey defaultName: String) -> [String]? {
+        mock.invoke(stringArrayRef, args: defaultName)
+    }
+    
     open override func url(forKey defaultName: String) -> URL? {
         mock.invoke(urlRef, args: defaultName)
     }
-    
     
     open override func set(_ value: Bool, forKey defaultName: String) {
         mock.invoke(self.setBoolRef, args: (value, defaultName))

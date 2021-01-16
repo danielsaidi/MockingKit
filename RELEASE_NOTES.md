@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.8.1
+
+This version adds `stringArray` support to `MockUserDefaults`.
+
+
 ## 0.8.0
 
 This version renames Mockery to MockingKit.
