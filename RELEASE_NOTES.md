@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.8.2
+
+This version adds a `MockPasteboard` and a `MockTextDocumentProxy`.
+
+
 ## 0.8.1
 
 This version adds `stringArray` support to `MockUserDefaults`.
