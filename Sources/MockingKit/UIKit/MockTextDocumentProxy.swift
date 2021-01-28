@@ -9,43 +9,43 @@
 #if os(iOS)
 import UIKit
 
-class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
+open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     
-    lazy var adjustTextPositionRef = MockReference(adjustTextPosition)
-    lazy var deleteBackwardRef = MockReference(deleteBackward as () -> Void)
-    lazy var insertTextRef = MockReference(insertText)
-    lazy var setMarkedTextRef = MockReference(setMarkedText)
-    lazy var unmarkTextRef = MockReference(unmarkText)
+    public lazy var adjustTextPositionRef = MockReference(adjustTextPosition)
+    public lazy var deleteBackwardRef = MockReference(deleteBackward as () -> Void)
+    public lazy var insertTextRef = MockReference(insertText)
+    public lazy var setMarkedTextRef = MockReference(setMarkedText)
+    public lazy var unmarkTextRef = MockReference(unmarkText)
     
-    let mock = Mock()
+    public let mock = Mock()
     
-    var hasText: Bool = false
+    public var hasText: Bool = false
     
-    var autocapitalizationType: UITextAutocapitalizationType = .none
-    var documentContextBeforeInput: String?
-    var documentContextAfterInput: String?
-    var selectedText: String?
-    var documentInputMode: UITextInputMode?
-    var documentIdentifier: UUID = UUID()
+    public var autocapitalizationType: UITextAutocapitalizationType = .none
+    public var documentContextBeforeInput: String?
+    public var documentContextAfterInput: String?
+    public var selectedText: String?
+    public var documentInputMode: UITextInputMode?
+    public var documentIdentifier: UUID = UUID()
     
-    func adjustTextPosition(byCharacterOffset offset: Int) {
+    public func adjustTextPosition(byCharacterOffset offset: Int) {
         invoke(adjustTextPositionRef, args: (offset))
     }
     
-    func deleteBackward() {
+    public func deleteBackward() {
         documentContextBeforeInput?.removeLast()
         invoke(deleteBackwardRef, args: ())
     }
     
-    func insertText(_ text: String) {
+    public func insertText(_ text: String) {
         invoke(insertTextRef, args: (text))
     }
     
-    func setMarkedText(_ markedText: String, selectedRange: NSRange) {
+    public func setMarkedText(_ markedText: String, selectedRange: NSRange) {
         invoke(setMarkedTextRef, args: (markedText, selectedRange))
     }
     
-    func unmarkText() {
+    public func unmarkText() {
         invoke(unmarkTextRef, args: ())
     }
 }

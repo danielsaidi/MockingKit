@@ -9,13 +9,13 @@
 #if os(iOS)
 import UIKit
 
-class MockPasteboard: UIPasteboard, Mockable {
+open class MockPasteboard: UIPasteboard, Mockable {
     
-    lazy var setDataRef = MockReference(setData)
+    public lazy var setDataRef = MockReference(setData)
 
-    let mock = Mock()
+    public let mock = Mock()
     
-    override func setData(_ data: Data, forPasteboardType pasteboardType: String) {
+    open override func setData(_ data: Data, forPasteboardType pasteboardType: String) {
         invoke(setDataRef, args: (data, pasteboardType))
     }
 }
