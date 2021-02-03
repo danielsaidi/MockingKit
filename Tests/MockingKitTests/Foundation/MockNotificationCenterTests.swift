@@ -39,7 +39,7 @@ class MockNotificationCenterTests: QuickSpec {
                 let queue = OperationQueue.current
                 center.registerResult(for: center.addObserverForNameRef) { _ in observer }
                 let result = center.addObserver(forName: name, object: obj, queue: queue, using: block)
-                let inv = center.invokations(of: center.addObserverForNameRef).first
+                let inv = center.calls(to: center.addObserverForNameRef).first
                 expect(inv?.arguments.0).to(equal(name))
                 expect(inv?.arguments.1).to(be(obj))
                 expect(inv?.arguments.2).to(be(queue))
@@ -52,7 +52,7 @@ class MockNotificationCenterTests: QuickSpec {
             it("can mock adding observer with selector") {
                 let observer = TestClass()
                 center.addObserver(observer, selector: #selector(observer.testFunc), name: name, object: obj)
-                let inv = center.invokations(of: center.addObserverWithSelectorRef).first
+                let inv = center.calls(to: center.addObserverWithSelectorRef).first
                 expect(inv?.arguments.0).to(be(observer))
                 expect(inv?.arguments.1).toNot(beNil())
                 expect(inv?.arguments.2).to(equal(name))
@@ -61,7 +61,7 @@ class MockNotificationCenterTests: QuickSpec {
             
             it("can mock posting notification") {
                 center.post(Notification(name: name))
-                let inv = center.invokations(of: center.postNotificationRef).first
+                let inv = center.calls(to: center.postNotificationRef).first
                 expect(inv?.arguments.name).to(equal(name))
             }
             
@@ -70,7 +70,7 @@ class MockNotificationCenterTests: QuickSpec {
                 center.post(name: name, object: obj)
                 center.post(name: name, object: obj, userInfo: nil)
                 center.post(name: name, object: obj, userInfo: info)
-                let inv = center.invokations(of: center.postNotificationNameRef)
+                let inv = center.calls(to: center.postNotificationNameRef)
                 
                 expect(inv.count).to(equal(4))
                 
@@ -97,7 +97,7 @@ class MockNotificationCenterTests: QuickSpec {
             center.removeObserver(observer)
             center.removeObserver(observer, name: name, object: obj)
             
-            let inv = center.invokations(of: center.removeObserverRef)
+            let inv = center.calls(to: center.removeObserverRef)
             
             expect(inv.count).to(equal(2))
             

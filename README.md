@@ -25,7 +25,7 @@ class MyMock: Mock, MyProtocol {
     lazy var doStuffRef = MockReference(doStuff)        // Must be lazy 
 
     func doStuff(int: Int, string: String) -> String {
-        invoke(doStuffRef, args: (int, string))
+        call(doStuffRef, args: (int, string))
     }
 }
 

@@ -21,14 +21,14 @@ class ReadmeTests: QuickSpec {
                 mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
                 let result = mock.doStuff(int: 42, string: "string")
                 expect(result).to(equal("gnirts"))
-                let inv = mock.invokations(of: mock.doStuffRef)
+                let inv = mock.calls(to: mock.doStuffRef)
                 expect(inv.count).to(equal(1))
                 expect(inv[0].arguments.0).to(equal(42))
                 expect(inv[0].arguments.1).to(equal("string"))
                 expect(inv[0].result).to(equal("gnirts"))
-                expect(mock.hasInvoked(mock.doStuffRef)).to(beTrue())
-                expect(mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)).to(beTrue())
-                expect(mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)).to(beFalse())
+                expect(mock.hasCalled(mock.doStuffRef)).to(beTrue())
+                expect(mock.hasCalled(mock.doStuffRef, times: 1)).to(beTrue())
+                expect(mock.hasCalled(mock.doStuffRef, times: 2)).to(beFalse())
             }
         }
     }

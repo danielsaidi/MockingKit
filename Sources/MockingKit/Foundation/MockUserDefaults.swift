@@ -32,63 +32,63 @@ open class MockUserDefaults: UserDefaults, Mockable {
     
     
     open override func array(forKey defaultName: String) -> [Any]? {
-        mock.invoke(arrayRef, args: defaultName)
+        mock.call(arrayRef, args: defaultName)
     }
     
     open override func bool(forKey defaultName: String) -> Bool {
-        mock.invoke(boolRef, args: defaultName)
+        mock.call(boolRef, args: defaultName)
     }
     
     open override func data(forKey defaultName: String) -> Data? {
-        mock.invoke(dataRef, args: defaultName)
+        mock.call(dataRef, args: defaultName)
     }
     
     open override func double(forKey defaultName: String) -> Double {
-        mock.invoke(doubleRef, args: defaultName)
+        mock.call(doubleRef, args: defaultName)
     }
     
     open override func float(forKey defaultName: String) -> Float {
-        mock.invoke(floatRef, args: defaultName)
+        mock.call(floatRef, args: defaultName)
     }
     
     open override func integer(forKey defaultName: String) -> Int {
-        mock.invoke(integerRef, args: defaultName)
+        mock.call(integerRef, args: defaultName)
     }
     
     open override func object(forKey defaultName: String) -> Any? {
-        mock.invoke(objectRef, args: defaultName)
+        mock.call(objectRef, args: defaultName)
     }
     
     open override func string(forKey defaultName: String) -> String? {
-        mock.invoke(stringRef, args: defaultName)
+        mock.call(stringRef, args: defaultName)
     }
     
     open override func stringArray(forKey defaultName: String) -> [String]? {
-        mock.invoke(stringArrayRef, args: defaultName)
+        mock.call(stringArrayRef, args: defaultName)
     }
     
     open override func url(forKey defaultName: String) -> URL? {
-        mock.invoke(urlRef, args: defaultName)
+        mock.call(urlRef, args: defaultName)
     }
     
     open override func set(_ value: Bool, forKey defaultName: String) {
-        mock.invoke(self.setBoolRef, args: (value, defaultName))
+        mock.call(self.setBoolRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Double, forKey defaultName: String) {
-        mock.invoke(self.setDoubleRef, args: (value, defaultName))
+        mock.call(self.setDoubleRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Float, forKey defaultName: String) {
-        mock.invoke(self.setFloatRef, args: (value, defaultName))
+        mock.call(self.setFloatRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Int, forKey defaultName: String) {
-        mock.invoke(self.setIntegerRef, args: (value, defaultName))
+        mock.call(self.setIntegerRef, args: (value, defaultName))
     }
     
     open override func set(_ url: URL?, forKey defaultName: String) {
-        mock.invoke(self.setUrlRef, args: (url, defaultName))
+        mock.call(self.setUrlRef, args: (url, defaultName))
     }
     
     open override func set(_ value: Any?, forKey defaultName: String) {
@@ -103,6 +103,6 @@ open class MockUserDefaults: UserDefaults, Mockable {
 private extension MockUserDefaults {
     
     func setValueWithInstance(_ value: Any?, forKey key: String) {
-        mock.invoke(self.setValueRef, args: (value, key))
+        mock.call(self.setValueRef, args: (value, key))
     }
 }

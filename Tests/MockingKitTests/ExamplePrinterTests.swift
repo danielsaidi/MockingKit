@@ -19,12 +19,12 @@ class ExamplePrinterTests: QuickSpec {
             it("works") {
                 let printer = MockPrinter()
                 printer.print("Hello!")
-                let inv = printer.invokations(of: printer.printRef)
+                let inv = printer.calls(to: printer.printRef)
                 expect(inv.count).to(equal(1))
                 expect(inv[0].arguments).to(equal("Hello!"))
-                expect(printer.hasInvoked(printer.printRef)).to(beTrue())
-                expect(printer.hasInvoked(printer.printRef, numberOfTimes: 1)).to(beTrue())
-                expect(printer.hasInvoked(printer.printRef, numberOfTimes: 2)).to(beFalse())
+                expect(printer.hasCalled(printer.printRef)).to(beTrue())
+                expect(printer.hasCalled(printer.printRef, times: 1)).to(beTrue())
+                expect(printer.hasCalled(printer.printRef, times: 2)).to(beFalse())
             }
         }
     }
@@ -39,6 +39,6 @@ private class MockPrinter: Mock, Printer {
     lazy var printRef = MockReference(print)
 
     func print(_ text: String) {
-        invoke(printRef, args: (text))
+        call(printRef, args: (text))
     }
 }

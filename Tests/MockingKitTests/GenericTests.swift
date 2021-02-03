@@ -19,7 +19,7 @@ class GenericTests: QuickSpec {
             it("should work") {
                 let mock = GenericMock<Int>()
                 mock.doit(with: 42)
-                let inv = mock.invokations(of: mock.doitRef)
+                let inv = mock.calls(to: mock.doitRef)
                 expect(inv.count).to(equal(1))
                 expect(inv[0].arguments).to(equal(42))
             }

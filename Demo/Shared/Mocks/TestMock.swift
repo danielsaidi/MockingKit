@@ -18,10 +18,10 @@ class TestMock: Mock, TestProtocol {
     lazy var doStuffWithArgsRef = MockReference(doStuffWithArgs)
     
     func doStuff() {
-        invoke(doStuffRef, args: ())
+        call(doStuffRef, args: ())
     }
     
     func doStuffWithArgs(name: String, age: Int) {
-        invoke(doStuffWithArgsRef, args: (name, age))
+        call(doStuffWithArgsRef, args: (name, age))
     }
 }
