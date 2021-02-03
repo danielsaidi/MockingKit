@@ -31,7 +31,7 @@ class MockableTests: QuickSpec {
             }
         }
         
-        describe("invoking function with non-optional result") {
+        describe("calling a function with non-optional result") {
             
             it("fails with precondition failure if no result is registered") {
                 expect { _ = mock.functionWithIntResult(arg1: "abc", arg2: 123) }.to(throwAssertion())
@@ -61,7 +61,7 @@ class MockableTests: QuickSpec {
                 expect(mock.functionWithStringResult(arg1: "def", arg2: 123)).to(equal("def"))
             }
             
-            it("it registers invokations") {
+            it("it registers calls") {
                 mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
                 mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
                 
@@ -88,7 +88,7 @@ class MockableTests: QuickSpec {
             }
         }
         
-        describe("invoking function with optional result") {
+        describe("calling a function with optional result") {
             
             it("doesn't fail with precondition failure if no result is registered") {
                 expect(mock.functionWithOptionalIntResult(arg1: "abc", arg2: 123)).to(beNil())
@@ -121,7 +121,7 @@ class MockableTests: QuickSpec {
                 expect(mock.functionWithOptionalStringResult(arg1: "def", arg2: 123)).to(equal("def"))
             }
             
-            it("it registers invokations") {
+            it("it registers calls") {
                 mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _, arg2 in arg2 }
                 mock.registerResult(for: mock.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
                 
@@ -148,7 +148,7 @@ class MockableTests: QuickSpec {
             }
         }
         
-        describe("invoking function with fallback") {
+        describe("calling a function with fallback") {
             
             it("returns default value if no value is registered") {
                 expect(mock.call(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)).to(equal(456))
@@ -163,13 +163,13 @@ class MockableTests: QuickSpec {
             }
         }
         
-        describe("invoking function with void result") {
+        describe("calling a function with void result") {
             
             it("doesn't fail with precondition failure if no result is registered") {
                 expect(mock.functionWithVoidResult(arg1: "abc", arg2: 123)).to(beVoid())
             }
             
-            it("it registers invokations") {
+            it("it registers calls") {
                 mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _, arg2 in arg2 }
                 mock.registerResult(for: mock.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
                 
@@ -177,39 +177,39 @@ class MockableTests: QuickSpec {
                 mock.functionWithVoidResult(arg1: "abc", arg2: 456)
                 mock.functionWithVoidResult(arg1: "abc", arg2: 789)
                 
-                let invokations = mock.calls(to: mock.functionWithVoidResultRef)
-                expect(invokations.count).to(equal(3))
-                expect(invokations[0].arguments.0).to(equal("abc"))
-                expect(invokations[0].arguments.1).to(equal(123))
-                expect(invokations[1].arguments.0).to(equal("abc"))
-                expect(invokations[1].arguments.1).to(equal(456))
-                expect(invokations[2].arguments.0).to(equal("abc"))
-                expect(invokations[2].arguments.1).to(equal(789))
+                let calls = mock.calls(to: mock.functionWithVoidResultRef)
+                expect(calls.count).to(equal(3))
+                expect(calls[0].arguments.0).to(equal("abc"))
+                expect(calls[0].arguments.1).to(equal(123))
+                expect(calls[1].arguments.0).to(equal("abc"))
+                expect(calls[1].arguments.1).to(equal(456))
+                expect(calls[2].arguments.0).to(equal("abc"))
+                expect(calls[2].arguments.1).to(equal(789))
             }
         }
         
-        describe("invoking async function") {
+        describe("calling a async function") {
             
-            it("it registers invokations") {
+            it("it registers calls") {
                 mock.asyncFunction(arg1: "async", completion: { _ in })
                 
-                let invokations = mock.calls(to: mock.asyncFunctionRef)
-                expect(invokations.count).to(equal(1))
-                expect(invokations[0].arguments.0).to(equal("async"))                
+                let calls = mock.calls(to: mock.asyncFunctionRef)
+                expect(calls.count).to(equal(1))
+                expect(calls[0].arguments.0).to(equal("async"))
             }
         }
         
-        describe("inspecting invokations") {
+        describe("inspecting calls") {
             
-            it("registers all invokations") {
+            it("registers all calls") {
                 mock.functionWithVoidResult(arg1: "abc", arg2: 123)
                 mock.functionWithVoidResult(arg1: "abc", arg2: 456)
                 mock.functionWithVoidResult(arg1: "abc", arg2: 789)
-                let invokations = mock.calls(to: mock.functionWithVoidResultRef)
-                expect(invokations.count).to(equal(3))
+                let calls = mock.calls(to: mock.functionWithVoidResultRef)
+                expect(calls.count).to(equal(3))
             }
             
-            it("can verify if at least one invokation has been made") {
+            it("can verify if at least one call has been made") {
                 expect(mock.hasCalled(mock.functionWithVoidResultRef)).to(beFalse())
                 mock.functionWithVoidResult(arg1: "abc", arg2: 123)
                 expect(mock.hasCalled(mock.functionWithVoidResultRef)).to(beTrue())
@@ -217,7 +217,7 @@ class MockableTests: QuickSpec {
                 expect(mock.hasCalled(mock.functionWithVoidResultRef)).to(beTrue())
             }
             
-            it("can verify if an exact number or invokations have been made") {
+            it("can verify if an exact number or calls have been made") {
                 expect(mock.hasCalled(mock.functionWithVoidResultRef, times: 2)).to(beFalse())
                 mock.functionWithVoidResult(arg1: "abc", arg2: 123)
                 expect(mock.hasCalled(mock.functionWithVoidResultRef, times: 2)).to(beFalse())
@@ -226,9 +226,9 @@ class MockableTests: QuickSpec {
             }
         }
         
-        describe("resetting invokations") {
+        describe("resetting calls") {
             
-            it("can reset all invokations") {
+            it("can reset all calls") {
                 mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
                 mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
                 _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
@@ -238,7 +238,7 @@ class MockableTests: QuickSpec {
                 expect(mock.hasCalled(mock.functionWithStringResultRef)).to(beFalse())
             }
             
-            it("can reset all invokations for a certain function") {
+            it("can reset all calls for a certain function") {
                 mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
                 mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
                 _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)

@@ -80,49 +80,49 @@ class MockUserDefaultsTests: QuickSpec {
                 
                 it("can mock Bool value setter") {
                     defaults.set(true, forKey: "abc")
-                    let inv = defaults.calls(to: defaults.setBoolRef).first
-                    expect(inv?.arguments.0).to(equal(true))
-                    expect(inv?.arguments.1).to(equal("abc"))
+                    let calls = defaults.calls(to: defaults.setBoolRef).first
+                    expect(calls?.arguments.0).to(equal(true))
+                    expect(calls?.arguments.1).to(equal("abc"))
                 }
                 
                 it("can mock Double value setter") {
                     defaults.set(123 as Double, forKey: "abc")
-                    let inv = defaults.calls(to: defaults.setDoubleRef).first
-                    expect(inv?.arguments.0).to(equal(123))
-                    expect(inv?.arguments.1).to(equal("abc"))
+                    let calls = defaults.calls(to: defaults.setDoubleRef).first
+                    expect(calls?.arguments.0).to(equal(123))
+                    expect(calls?.arguments.1).to(equal("abc"))
                 }
                 
                 it("can mock Float value setter") {
                     defaults.set(123 as Float, forKey: "abc")
-                    let inv = defaults.calls(to: defaults.setFloatRef).first
-                    expect(inv?.arguments.0).to(equal(123))
-                    expect(inv?.arguments.1).to(equal("abc"))
+                    let calls = defaults.calls(to: defaults.setFloatRef).first
+                    expect(calls?.arguments.0).to(equal(123))
+                    expect(calls?.arguments.1).to(equal("abc"))
                 }
                 
                 it("can mock Int value setter") {
                     defaults.set(123, forKey: "abc")
-                    let inv = defaults.calls(to: defaults.setIntegerRef).first
-                    expect(inv?.arguments.0).to(equal(123))
-                    expect(inv?.arguments.1).to(equal("abc"))
+                    let calls = defaults.calls(to: defaults.setIntegerRef).first
+                    expect(calls?.arguments.0).to(equal(123))
+                    expect(calls?.arguments.1).to(equal("abc"))
                 }
                 
                 it("can mock URL value setter") {
                     let url = URL(string: "http://test.com")!
                     defaults.set(url, forKey: "abc")
-                    let inv = defaults.calls(to: defaults.setUrlRef).first
-                    expect(inv?.arguments.0).to(equal(url))
-                    expect(inv?.arguments.1).to(equal("abc"))
+                    let calls = defaults.calls(to: defaults.setUrlRef).first
+                    expect(calls?.arguments.0).to(equal(url))
+                    expect(calls?.arguments.1).to(equal("abc"))
                 }
                 
                 it("can mock Any value setters") {
                     let value = "123"
                     defaults.set(value, forKey: "abc")
                     defaults.setValue(value, forKey: "def")
-                    let inv = defaults.calls(to: defaults.setValueRef)
-                    expect(inv.first?.arguments.0).to(be(value))
-                    expect(inv.first?.arguments.1).to(equal("abc"))
-                    expect(inv.last?.arguments.0).to(be(value))
-                    expect(inv.last?.arguments.1).to(equal("def"))
+                    let calls = defaults.calls(to: defaults.setValueRef)
+                    expect(calls.first?.arguments.0).to(be(value))
+                    expect(calls.first?.arguments.1).to(equal("abc"))
+                    expect(calls.last?.arguments.0).to(be(value))
+                    expect(calls.last?.arguments.1).to(equal("def"))
                 }
             }
         }

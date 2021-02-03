@@ -19,9 +19,9 @@ class ExamplePrinterTests: QuickSpec {
             it("works") {
                 let printer = MockPrinter()
                 printer.print("Hello!")
-                let inv = printer.calls(to: printer.printRef)
-                expect(inv.count).to(equal(1))
-                expect(inv[0].arguments).to(equal("Hello!"))
+                let calls = printer.calls(to: printer.printRef)
+                expect(calls.count).to(equal(1))
+                expect(calls[0].arguments).to(equal("Hello!"))
                 expect(printer.hasCalled(printer.printRef)).to(beTrue())
                 expect(printer.hasCalled(printer.printRef, times: 1)).to(beTrue())
                 expect(printer.hasCalled(printer.printRef, times: 2)).to(beFalse())

@@ -10,7 +10,7 @@ import SwiftUI
 
 /**
  This screen demonstrates how to trigger a mock and make use
- of the resulting invokation information.
+ of the resulting call information.
  */
 struct MockScreen: View {
     
@@ -22,19 +22,19 @@ struct MockScreen: View {
     
     private let matchCount = 5
     
-    @State private var hasInvoked = false
-    @State private var hasInvokedCount = 0
-    @State private var hasInvokedMatch = false
-    @State private var hasInvokedWithArgs = false
-    @State private var hasInvokedWithArgsCount = 0
-    @State private var hasInvokedWithArgsMatch = false
-    @State private var hasInvokedWithArgsName = ""
-    @State private var hasInvokedWithArgsAge = 0
+    @State private var hasCalled = false
+    @State private var hasCalledCount = 0
+    @State private var hasCalledMatch = false
+    @State private var hasCalledWithArgs = false
+    @State private var hasCalledWithArgsCount = 0
+    @State private var hasCalledWithArgsMatch = false
+    @State private var hasCalledWithArgsName = ""
+    @State private var hasCalledWithArgsAge = 0
     
     var body: some View {
         DemoList("Mock") {
             Section(header: Text("About")) {
-                DemoListText("This demo uses a TestMock to show how you can trigger funcs and inspect the resulting invokations.")
+                DemoListText("This demo uses a TestMock to show how you can trigger funcs and inspect the resulting calls.")
             }
             
             Section(header: Text("Actions")) {
@@ -43,18 +43,18 @@ struct MockScreen: View {
             }
             
             Section(header: Text("Result: doStuff")) {
-                DemoListText("Has invoked? \(hasInvoked ? "Yes" : "No")")
-                DemoListText("Has invoked \(hasInvokedCount) times")
-                DemoListText("Has invoked \(matchCount) times? \(hasInvokedMatch ? "Yes" : "No")")
+                DemoListText("Has called? \(hasCalled ? "Yes" : "No")")
+                DemoListText("Has called \(hasCalledCount) times")
+                DemoListText("Has called \(matchCount) times? \(hasCalledMatch ? "Yes" : "No")")
             }
             
             Section(header: Text("Result: doStuffWithArguments")) {
-                DemoListText("Has invoked: \(hasInvokedWithArgs ? "Yes" : "No")")
-                DemoListText("Has invoked \(hasInvokedWithArgsCount) times")
-                DemoListText("Has invoked \(matchCount) times? \(hasInvokedWithArgsMatch ? "Yes" : "No")")
-                if hasInvokedWithArgs {
-                    DemoListText("Last name arg: \(hasInvokedWithArgsName)")
-                    DemoListText("Last age arg: \(hasInvokedWithArgsAge)")
+                DemoListText("Has called: \(hasCalledWithArgs ? "Yes" : "No")")
+                DemoListText("Has called \(hasCalledWithArgsCount) times")
+                DemoListText("Has called \(matchCount) times? \(hasCalledWithArgsMatch ? "Yes" : "No")")
+                if hasCalledWithArgs {
+                    DemoListText("Last name arg: \(hasCalledWithArgsName)")
+                    DemoListText("Last age arg: \(hasCalledWithArgsAge)")
                 }
             }
         }
@@ -65,21 +65,21 @@ private extension MockScreen {
     
     func doStuff() {
         mock.doStuff()
-        hasInvoked = mock.hasInvoked(mock.doStuffRef)
-        hasInvokedCount = mock.invokations(of: mock.doStuffRef).count
-        hasInvokedMatch = mock.hasInvoked(mock.doStuffRef, numberOfTimes: matchCount)
+        hasCalled = mock.hasCalled(mock.doStuffRef)
+        hasCalledCount = mock.calls(to: mock.doStuffRef).count
+        hasCalledMatch = mock.hasCalled(mock.doStuffRef, numberOfTimes: matchCount)
     }
     
     func doStuffWithArgs() {
         let name = "Member #\(Int.random(in: 1_000...9_999))"
         let age = Int.random(in: 18...100)
         mock.doStuffWithArgs(name: name, age: age)
-        let inv = mock.invokations(of: mock.doStuffWithArgsRef)
-        hasInvokedWithArgs = mock.hasInvoked(mock.doStuffWithArgsRef)
-        hasInvokedWithArgsCount = inv.count
-        hasInvokedWithArgsMatch = mock.hasInvoked(mock.doStuffWithArgsRef, numberOfTimes: matchCount)
-        hasInvokedWithArgsName = inv.last?.arguments.0 ?? ""
-        hasInvokedWithArgsAge = inv.last?.arguments.1 ?? -1
+        let calls = mock.callsokations(of: mock.doStuffWithArgsRef)
+        hasCalledWithArgs = mock.hasCalled(mock.doStuffWithArgsRef)
+        hasCalledWithArgsCount = calls.count
+        hasCalledWithArgsMatch = mock.hasCalled(mock.doStuffWithArgsRef, numberOfTimes: matchCount)
+        hasCalledWithArgsName = calls.last?.arguments.0 ?? ""
+        hasCalledWithArgsAge = calls.last?.arguments.1 ?? -1
     }
 }
 

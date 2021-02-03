@@ -35,6 +35,6 @@ private class MockConverter: Mock, Converter {
     lazy var convertRef = MockReference(convert)
 
     func convert(_ text: String) -> String {
-        invoke(convertRef, args: (text))
+        call(convertRef, args: (text))
     }
 }

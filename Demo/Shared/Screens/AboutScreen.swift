@@ -24,7 +24,7 @@ Use Mockable when your mock has to inherit another class (e.g. a mock Notificati
 
 The only difference between Mock and Mockable is that a Mockable must have a "mock" property. Mock is just a Mockable that uses itself as "mock".
 
-To create a mock implementation of a protocol, create a class that either inherits Mock or implements Mockable, then create references to the functions you want to mock. You can then invoke the functions references to "record" all function calls.
+To create a mock implementation of a protocol, create a class that either inherits Mock or implements Mockable, then create references to the functions you want to mock. You can then call the functions references to "record" all function calls.
 """
             )
         }

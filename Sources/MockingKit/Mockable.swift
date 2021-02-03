@@ -53,8 +53,8 @@ public extension Mockable {
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            let inv = MockCall(arguments: args, result: void)
-            registerCall(inv, for: ref)
+            let call = MockCall(arguments: args, result: void)
+            registerCall(call, for: ref)
             return void
         }
         
@@ -62,8 +62,8 @@ public extension Mockable {
             let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
         }
-        let inv = MockCall(arguments: args, result: result)
-        registerCall(inv, for: ref)
+        let call = MockCall(arguments: args, result: result)
+        registerCall(call, for: ref)
         return result
     }
     
@@ -167,16 +167,16 @@ public extension Mockable {
 private extension Mockable {
     
     func registerCall<Arguments, Result>(
-        _ invokation: MockCall<Arguments, Result>,
+        _ call: MockCall<Arguments, Result>,
         for ref: MockReference<Arguments, Result>) {
-        let invokations = mock.registeredCalls[ref.id] ?? []
-        mock.registeredCalls[ref.id] = invokations + [invokation]
+        let calls = mock.registeredCalls[ref.id] ?? []
+        mock.registeredCalls[ref.id] = calls + [call]
     }
     
     func registeredCalls<Arguments, Result>(
         for ref: MockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
-        let invokation = mock.registeredCalls[ref.id]
-        return (invokation as? [MockCall<Arguments, Result>]) ?? []
+        let calls = mock.registeredCalls[ref.id]
+        return (calls as? [MockCall<Arguments, Result>]) ?? []
     }
     
     func registeredResult<Arguments, Result>(
