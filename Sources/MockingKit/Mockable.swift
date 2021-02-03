@@ -54,7 +54,7 @@ public extension Mockable {
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
             let inv = MockInvokation(arguments: args, result: void)
-            registerInvokation(inv, for: ref)
+            registerCall(inv, for: ref)
             return void
         }
         
@@ -63,7 +63,7 @@ public extension Mockable {
             preconditionFailure(message, file: file, line: line)
         }
         let inv = MockInvokation(arguments: args, result: result)
-        registerInvokation(inv, for: ref)
+        registerCall(inv, for: ref)
         return result
     }
     
@@ -77,7 +77,7 @@ public extension Mockable {
         args: Arguments,
         fallback: @autoclosure () -> Result) -> Result {
         let result = (try? registeredResult(for: ref)?(args)) ?? fallback()
-        registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
+        registerCall(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
     
@@ -101,7 +101,7 @@ public extension Mockable {
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments) -> Result? {
         let result = try? registeredResult(for: ref)?(args)
-        registerInvokation(MockInvokation(arguments: args, result: result), for: ref)
+        registerCall(MockInvokation(arguments: args, result: result), for: ref)
         return result
     }
     
@@ -141,7 +141,7 @@ public extension Mockable {
      */
     func invokations<Arguments, Result>(
         of ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
-        registeredInvokations(for: ref)
+        registeredCalls(for: ref)
     }
     
     /**
@@ -168,17 +168,17 @@ public extension Mockable {
 
 private extension Mockable {
     
-    func registerInvokation<Arguments, Result>(
-        _ invokation: MockInvokation<Arguments, Result>,
+    func registerCall<Arguments, Result>(
+        _ invokation: MockCall<Arguments, Result>,
         for ref: MockReference<Arguments, Result>) {
         let invokations = mock.registeredCalls[ref.id] ?? []
         mock.registeredCalls[ref.id] = invokations + [invokation]
     }
     
-    func registeredInvokations<Arguments, Result>(
-        for ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
+    func registeredCalls<Arguments, Result>(
+        for ref: MockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
         let invokation = mock.registeredCalls[ref.id]
-        return (invokation as? [MockInvokation<Arguments, Result>]) ?? []
+        return (invokation as? [MockCall<Arguments, Result>]) ?? []
     }
     
     func registeredResult<Arguments, Result>(
