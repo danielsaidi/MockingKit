@@ -123,7 +123,7 @@ public extension Mockable {
      Reset all registered invokations.
      */
     func resetInvokations() {
-        mock.registeredInvokations = [:]
+        mock.registeredCalls = [:]
     }
     
     /**
@@ -131,7 +131,7 @@ public extension Mockable {
      */
     func resetInvokations<Arguments, Result>(
         for ref: MockReference<Arguments, Result>) {
-        mock.registeredInvokations[ref.id] = []
+        mock.registeredCalls[ref.id] = []
     }
 }
 
@@ -175,13 +175,13 @@ private extension Mockable {
     func registerInvokation<Arguments, Result>(
         _ invokation: MockInvokation<Arguments, Result>,
         for ref: MockReference<Arguments, Result>) {
-        let invokations = mock.registeredInvokations[ref.id] ?? []
-        mock.registeredInvokations[ref.id] = invokations + [invokation]
+        let invokations = mock.registeredCalls[ref.id] ?? []
+        mock.registeredCalls[ref.id] = invokations + [invokation]
     }
     
     func registeredInvokations<Arguments, Result>(
         for ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
-        let invokation = mock.registeredInvokations[ref.id]
+        let invokation = mock.registeredCalls[ref.id]
         return (invokation as? [MockInvokation<Arguments, Result>]) ?? []
     }
     
