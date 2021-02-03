@@ -9,6 +9,9 @@
 #if os(iOS)
 import UIKit
 
+/**
+ This class can be used as a mocked `UIPasteboard`.
+ */
 open class MockPasteboard: UIPasteboard, Mockable {
     
     public lazy var setDataRef = MockReference(setData)
@@ -16,7 +19,7 @@ open class MockPasteboard: UIPasteboard, Mockable {
     public let mock = Mock()
     
     open override func setData(_ data: Data, forPasteboardType pasteboardType: String) {
-        invoke(setDataRef, args: (data, pasteboardType))
+        call(setDataRef, args: (data, pasteboardType))
     }
 }
 #endif

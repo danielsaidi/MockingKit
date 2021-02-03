@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ This class can be used as a mocked `NotificationCenter`.
+ */
 open class MockNotificationCenter: NotificationCenter, Mockable {
     
     public lazy var addObserverForNameRef = MockReference(mockAddObserverForName)
@@ -54,22 +57,22 @@ open class MockNotificationCenter: NotificationCenter, Mockable {
 private extension MockNotificationCenter {
     
     func mockAddObserverForName(_ name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
-        invoke(addObserverForNameRef, args: (name, obj, queue, block))
+        call(addObserverForNameRef, args: (name, obj, queue, block))
     }
     
     func mockAddObserverWithSelector(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?) {
-        invoke(addObserverWithSelectorRef, args: (observer, aSelector, aName, anObject))
+        call(addObserverWithSelectorRef, args: (observer, aSelector, aName, anObject))
     }
     
     func mockPostNotification(_ notification: Notification) {
-        invoke(postNotificationRef, args: (notification))
+        call(postNotificationRef, args: (notification))
     }
     
     func mockPostNotificationName(name aName: NSNotification.Name, object: Any?, userInfo: [AnyHashable: Any]?) {
-        invoke(postNotificationNameRef, args: (aName, object, userInfo))
+        call(postNotificationNameRef, args: (aName, object, userInfo))
     }
     
     func mockRemoveObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
-        invoke(removeObserverRef, args: (observer, aName, anObject))
+        call(removeObserverRef, args: (observer, aName, anObject))
     }
 }

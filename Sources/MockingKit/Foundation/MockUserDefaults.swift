@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ This class can be used as a mocked `UserDefaults`.
+ */
 open class MockUserDefaults: UserDefaults, Mockable {
     
     public lazy var boolRef = MockReference(bool)

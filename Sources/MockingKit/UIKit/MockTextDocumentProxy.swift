@@ -9,6 +9,9 @@
 #if os(iOS)
 import UIKit
 
+/**
+ This class can be used as a mocked `UITextDocumentProxy`.
+ */
 open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     
     public lazy var adjustTextPositionRef = MockReference(adjustTextPosition)
@@ -29,24 +32,24 @@ open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     public var documentIdentifier: UUID = UUID()
     
     public func adjustTextPosition(byCharacterOffset offset: Int) {
-        invoke(adjustTextPositionRef, args: (offset))
+        call(adjustTextPositionRef, args: (offset))
     }
     
     public func deleteBackward() {
         documentContextBeforeInput?.removeLast()
-        invoke(deleteBackwardRef, args: ())
+        call(deleteBackwardRef, args: ())
     }
     
     public func insertText(_ text: String) {
-        invoke(insertTextRef, args: (text))
+        call(insertTextRef, args: (text))
     }
     
     public func setMarkedText(_ markedText: String, selectedRange: NSRange) {
-        invoke(setMarkedTextRef, args: (markedText, selectedRange))
+        call(setMarkedTextRef, args: (markedText, selectedRange))
     }
     
     public func unmarkText() {
-        invoke(unmarkTextRef, args: ())
+        call(unmarkTextRef, args: ())
     }
 }
 #endif
