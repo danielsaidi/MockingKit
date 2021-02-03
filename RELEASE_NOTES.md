@@ -1,6 +1,21 @@
 # Release Notes
 
 
+## 0.9.0
+
+This version renames `Invocation` to `Call`  to make the code more compact and less technical:
+
+* `AnyInvokation` → `AnyCall`
+* `MockInvokation` → `MockCall`
+* `Mock` `registeredInvokations` → `registeredCalls`
+* `Mockable` `hasInvoked(_)` → `hasCalled(_)`
+* `Mockable` `hasInvoked(_, numberOfTimes:)` → `hasCalled(_, times:)`
+* `Mockable` `invoke` → `call`
+* `Mockable` `invokations(of:)` → `calls(to:)`
+* `Mockable` `resetInvokations` → `resetCalls`
+* `Mockable` `resetInvokations(for:)` → `resetCalls(to:)`
+
+
 ## 0.8.2
 
 This version adds a `MockPasteboard` and a `MockTextDocumentProxy`.
