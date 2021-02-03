@@ -35,16 +35,16 @@ public extension Mockable {
 }
 
 
-// MARK: - Invokation
+// MARK: - Calls
 
 public extension Mockable {
     
     /**
-     Invoke a function with a `non-optional` result. It will
-     return any pre-registered result, or crash if no result
-     has been registered.
+     Call a function with a `non-optional` result. This will
+     return a pre-registered result or crash if no result is
+     registered.
     */
-    func invoke<Arguments, Result>(
+    func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
         file: StaticString = #file,
@@ -53,7 +53,7 @@ public extension Mockable {
         
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
-            let inv = MockInvokation(arguments: args, result: void)
+            let inv = MockCall(arguments: args, result: void)
             registerCall(inv, for: ref)
             return void
         }
@@ -62,71 +62,71 @@ public extension Mockable {
             let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
         }
-        let inv = MockInvokation(arguments: args, result: result)
+        let inv = MockCall(arguments: args, result: result)
         registerCall(inv, for: ref)
         return result
     }
     
     /**
-     Invoke a function with a `non-optional` result. It will
-     return any pre-registered result, or return a `fallback`
-     value if no result has been registered.
+     Call a function with a `non-optional` result. This will
+     return a pre-registered result or a `fallback` value if
+     no result has been registered.
     */
-    func invoke<Arguments, Result>(
+    func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
         fallback: @autoclosure () -> Result) -> Result {
         let result = (try? registeredResult(for: ref)?(args)) ?? fallback()
-        registerCall(MockInvokation(arguments: args, result: result), for: ref)
+        registerCall(MockCall(arguments: args, result: result), for: ref)
         return result
     }
     
     /**
-     Invoke a function with a `non-optional` result. It will
-     return any pre-registered result, or return a `fallback`
-     value if no result has been registered.
+     Call a function with a `non-optional` result. This will
+     return a pre-registered result or a `fallback` value if
+     no result has been registered.
     */
-    func invoke<Arguments, Result>(
+    func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments!,
         fallback: @autoclosure () -> Result) throws -> Result {
-        try invoke(ref, args: args, fallback: fallback())
+        try call(ref, args: args, fallback: fallback())
     }
 
     /**
-     Invoke a function with an `optional` result. It returns
-     any pre-registered result, or `nil`.
+     Call a function with an `optional` result. This returns
+     a pre-registered result or `nil`.
     */
-    func invoke<Arguments, Result>(
+    func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments) -> Result? {
         let result = try? registeredResult(for: ref)?(args)
-        registerCall(MockInvokation(arguments: args, result: result), for: ref)
+        registerCall(MockCall(arguments: args, result: result), for: ref)
         return result
     }
     
     /**
-     Invoke a function with an `optional` result. It returns
-     any pre-registered result, or `nil`.
+     Call a function with an `optional` result. This returns
+     a pre-registered result or `nil`.
     */
-    func invoke<Arguments, Result>(
+    func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments!) throws -> Result? {
-        try invoke(ref, args: args)
+        try call(ref, args: args)
     }
     
     /**
-     Reset all registered invokations.
+     Reset all registered calls.
      */
-    func resetInvokations() {
+    func resetCalls() {
         mock.registeredCalls = [:]
     }
     
     /**
-     Reset all registered invokations for a certain function.
+     Reset all registered calls to a certain function.
      */
-    func resetInvokations<Arguments, Result>(
-        for ref: MockReference<Arguments, Result>) {
+    func resetCalls<Arguments, Result>(
+        to ref: MockReference<Arguments, Result>) {
         mock.registeredCalls[ref.id] = []
     }
 }
@@ -137,29 +137,27 @@ public extension Mockable {
 public extension Mockable {
     
     /**
-     Get all invokations of a certain function.
+     Get all calls to a certain function.
      */
-    func invokations<Arguments, Result>(
-        of ref: MockReference<Arguments, Result>) -> [MockInvokation<Arguments, Result>] {
+    func calls<Arguments, Result>(
+        to ref: MockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
         registeredCalls(for: ref)
     }
     
     /**
-     Check if a function has been invoked.
+     Check if a function has been called.
      */
-    func hasInvoked<Arguments, Result>(
+    func hasCalled<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>) -> Bool {
-        invokations(of: ref).count > 0
+        calls(to: ref).count > 0
     }
     
     /**
-     Check if a function has been invoked a certain number
-     of times.
+     Check if a function has been called a number of times.
      */
-    func hasInvoked<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>,
-        numberOfTimes: Int) -> Bool {
-        invokations(of: ref).count == numberOfTimes
+    func hasCalled<Arguments, Result>(
+        _ ref: MockReference<Arguments, Result>, times: Int) -> Bool {
+        calls(to: ref).count == times
     }
 }
 
