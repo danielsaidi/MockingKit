@@ -10,16 +10,12 @@ import Foundation
 
 /**
  This class can be inherited by your mocks and provides them
- with full `Mockable` capabilities.
+ with full mocking capabilities.
  
- It's basically just a convenience layer on top of `Mockable`
- and implements `Mockable` by providing itself as a mock. It
- saves you a little code and just makes things...nicer.
- 
- If your mock can't inherit this class (e.g. when creating a
- `MockedUserDefaults` that must inherit `UserDefaults`), you
- just have to implement `Mockable` instead then add a custom
- `mock` to it. The rest is identical.
+ The class implements `Mockable` by using itself as mock. It
+ saves you some code and makes things...nicer. If a mock has
+ to inherit another class, just implement `Mockable` instead
+ and add a `mock` property to it. The rest is identical.
  
  See `Mockable` for more information about what mocks can do.
  */
@@ -29,6 +25,6 @@ open class Mock: Mockable {
     
     public var mock: Mock { self }
     
-    var registeredCalls: [UUID: [AnyInvokation]] = [:]
+    var registeredCalls: [UUID: [AnyCall]] = [:]
     var registeredResults: [UUID: Function] = [:]
 }

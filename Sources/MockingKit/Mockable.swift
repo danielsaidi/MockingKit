@@ -10,11 +10,7 @@ import Foundation
 
 /**
  This protocol can be implemented by any mock that should be
- able to record function calls and return any pre-registered
- return values.
- 
- To see examples of how to use this protocol, please see the
- main readme and the more detailed `Mockable.md`.
+ able to record calls and return pre-registered results.
 */
 public protocol Mockable {
     

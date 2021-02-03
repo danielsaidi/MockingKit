@@ -2,12 +2,12 @@
 //  Escaping.swift
 //  MockingKit
 //
+//  Original implementation: https://github.com/devxoul/Stubber
+//
 
 /*
- These functions are used to wrap invoke arguments where one
- or several arguments are escaping blocks.
- 
- Original implementation: https://github.com/devxoul/Stubber
+ These functions are used by mock calls where one or several
+ arguments are escaping blocks.
  */
 
 import Foundation
