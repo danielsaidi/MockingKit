@@ -31,8 +31,36 @@ class ReadmeTests: QuickSpec {
                 expect(mock.hasCalled(mock.doStuffRef, times: 2)).to(beFalse())
             }
         }
+        
+        describe("Example code") {
+            
+            it("inspection works") {
+                let printer = MockPrinter()
+                printer.print("Hello!")
+                let calls = printer.calls(to: printer.printRef)
+                expect(calls[0].arguments).to(equal("Hello!"))
+                expect(printer.hasCalled(printer.printRef)).to(beTrue())
+                expect(printer.hasCalled(printer.printRef, times: 1)).to(beTrue())
+                expect(printer.hasCalled(printer.printRef, times: 2)).to(beFalse())
+            }
+            
+            it("registering works") {
+                let converter = MockConverter()
+                
+                expect(converter.tryConvert("banana")).to(beNil())
+                converter.registerResult(for: converter.tryConvertRef) { input in String(input.reversed()) }
+                expect(converter.tryConvert("banana")).to(equal("ananab"))
+
+                //  expect(converter.convert("banana")).to(CRASH())
+                converter.registerResult(for: converter.convertRef) { input in String(input.reversed()) }
+                expect(converter.convert("banana")).to(equal("ananab"))
+            }
+        }
     }
 }
+
+
+// MARK: - Readme
 
 private protocol MyProtocol {
     func doStuff(int: Int, string: String) -> String
@@ -40,9 +68,45 @@ private protocol MyProtocol {
 
 private class MyMock: Mock, MyProtocol {
 
-    lazy var doStuffRef = MockReference(doStuff)  // This has to be lazy
+    lazy var doStuffRef = MockReference(doStuff)            // References must be lazy
 
     func doStuff(int: Int, string: String) -> String {
-        calls(doStuffRef, args: (int, string))
+        call(doStuffRef, args: (int, string))
+    }
+}
+
+
+// MARK: - Example
+
+private protocol Printer {
+    func print(_ text: String)
+}
+
+private class MockPrinter: Mock, Printer {
+
+    lazy var printRef = MockReference(print)                // References must be lazy
+
+    func print(_ text: String) {
+        call(printRef, args: (text))
+    }
+}
+
+private protocol Converter {
+    
+    func convert(_ text: String) -> String
+    func tryConvert(_ text: String) -> String?
+}
+
+private class MockConverter: Mock, Converter {
+
+    lazy var convertRef = MockReference(convert)
+    lazy var tryConvertRef = MockReference(tryConvert)
+
+    func convert(_ text: String) -> String {
+        call(convertRef, args: (text))
+    }
+    
+    func tryConvert(_ text: String) -> String? {
+        call(tryConvertRef, args: (text))
     }
 }

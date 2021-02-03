@@ -1,81 +1,101 @@
 #  Example
 
-To create a mock in MockingKit, you just have to inherit `Mock` and implement any protocol that you want to mock. `Mock` can record function calls, register return values and inspect how it's mocked functions have been called.
+To create a mock in MockingKit, you either:
 
-If your mock has to inherit another class (e.g. when mocking `UserDefaults`), you can just implement `Mockable` instead and provide a custom `mock`. `Mock` is basically just a `Mockable` that returns itself as `mock`.
+* Inherit `Mock` and implement any protocol that you want to mock.
+* Implement `Mockable` and inherit any class that you want to mock.
+
+`Mock` is basically just a `Mockable` implementation that returns itself as `mock`.  You can use it as long as the mock doesn't have to inherit another class.
+
+Mocks can register return values, record function calls and inspect how functions have been called. 
 
 
-## Invoking function calls
+## Calling mocked functions
 
-Let's look at how easy it is to create a mock. Let's say that we have a `Printer` protocol:
+Let's look at how to create a mock. Let's say that we have a `Printer` protocol:
 
 ```swift
 protocol Printer {
+
     func print(_ text: String)
 }
 ```
 
-To create a mocked `Printer`, you just have to inherit `Mock` and implement `Printer` like this:
+To create a mocked `Printer`, just inherit `Mock` and implement `Printer` like this:
 
 ```swift
 class MockPrinter: Mock, Printer {
 
-    lazy var printRef = MockReference(print)  // Must be lazy
+    lazy var printRef = MockReference(print)  // References must be lazy
 
     func print(_ text: String) {
-        invoke(printRef, args: (text))
+        call(printRef, args: (text))
     }
 }
 ```
 
-Note the lazy reference (it must be lazy for the signature to become correct), which is needed to keep track of how the mock is used.
+In the code above, we create a `function reference`, which is used as a pointer to the function. You use these references when you register function results and inspect function calls.
+
+Note the `lazy` reference! Function references must be lazy for the signature to become correct.
 
 
-## Inspect invokations
+## Inspecting function calls
 
-When a mock calls `invoke`, it basically records the call so that you can inspect it later:
+When a mock receives a `call`, it records the call so you can inspect it later:
 
 ```swift
 let printer = MockPrinter()
 printer.print("Hello!")
-let inv = printer.invokations(of: printer.printRef)     // => 1 item
-inv[0].arguments                                        // => "Hello!"
-printer.hasInvoked(printer.printRef)                    // => true
-printer.hasInvoked(printer.printRef, numberOfTimes: 1)  // => true
-printer.hasInvoked(printer.printRef, numberOfTimes: 2)  // => false
+let calls = printer.calls(to: printer.printRef) // => 1 item
+calls[0].arguments                              // => "Hello!"
+printer.hasCalled(printer.printRef)             // => true
+printer.hasCalled(printer.printRef, times: 1)   // => true
+printer.hasCalled(printer.printRef, times: 2)   // => false
 ```
 
 Note how you call the function as normal, then use the reference to inspect the mock.
 
 
-## Return values
+## Registering function results
 
-If your mocked function returns a value, you can register a return value with `registerResult(for:result:)`. `invoke` will then return the pre-registered value:
+You can pre-register function results before calling your mock:
+
+* Functions that don't return anything doesn't support registering a return value.
+* Functions that returns an `optional` result don't require you to register a value before using  `call`.
+* Functions that returns a `non-optional` result requires you to register a value before using  `call`.
+
+You register return values with `registerResult(for:result:)`:
 
 ```swift
 protocol Converter {
+
     func convert(_ text: String) -> String
+    func tryConvert(_ text: String) -> String?
 }
 
 class MockConverter: Mock, Converter {
 
     lazy var convertRef = MockReference(convert)
+    lazy var tryConvertRef = MockReference(tryConvert)
 
     func convert(_ text: String) -> String {
-        invoke(convertRef, args: (text))
+        call(convertRef, args: (text))
+    }
+    
+    func tryConvert(_ text: String) -> String? {
+        call(tryConvertRef, args: (text))
     }
 }
+
+let converter = MockConverter()
+
+converter.tryConvert("banana") // => nil
+converter.registerResult(for: converter.tryConvertRef) { input in String(input.reversed()) }
+converter.tryConvert("banana") // => "ananab"
+
+converter.convert("banana") // => Crash!
+converter.registerResult(for: converter.convertRef) { input in String(input.reversed()) }
+converter.convert("banana") // => "ananab"
 ```
-
-If your function returns a non-optional result, you must register a return value before calling it. If you don't, MockingKit is a Swift mocking library that makes it easy to mock protocol implementations for unit tests and not yet implemented functionality. will intentionally crash with a precondition failure.
-
-```swift
-let mock = MockConverter()
-let result = mock.convert("banana") // => Crash!
-converter.registerResult(for: mock.convertRef) { input in String(input.reversed()) }
-let result = mock.convert("banana") // => Returns "ananab"
-```
-
-This is not needed for optional return values. Not registering a value before calling the function will just make the function return `nil`.
 
 Note how the result block takes the same arguments as the actual function. This means that you can vary the return value depending on the input arguments.

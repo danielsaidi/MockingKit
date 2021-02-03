@@ -13,7 +13,7 @@
 
 ## <a name="about"></a>About MockingKit
 
-MockingKit is a Swift mocking library that makes it easy to mock protocol implementations and classes. It lets you `invoke` method calls, `inspect` invokations and `register` function results:
+MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes. It lets you `register` function results, `call` functions and `inspect` calls:
 
 ```swift
 protocol MyProtocol {
@@ -22,7 +22,7 @@ protocol MyProtocol {
 
 class MyMock: Mock, MyProtocol {
 
-    lazy var doStuffRef = MockReference(doStuff)        // Must be lazy 
+    lazy var doStuffRef = MockReference(doStuff)  // References must be lazy
 
     func doStuff(int: Int, string: String) -> String {
         call(doStuffRef, args: (int, string))
@@ -32,23 +32,22 @@ class MyMock: Mock, MyProtocol {
 let mock = MyMock()
 mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
 let result = mock.doStuff(int: 42, string: "string")    // => "gnirts"
-let inv = mock.invokations(of: mock.doStuffRef)         // => 1 item
-inv[0].arguments.0                                      // => 42
-inv[0].arguments.1                                      // => "message"
-inv[0].result                                           // => "gnirts"
-mock.hasInvoked(mock.doStuffRef)                        // => true
-mock.hasInvoked(mock.doStuffRef, numberOfTimes: 1)      // => true
-mock.hasInvoked(mock.doStuffRef, numberOfTimes: 2)      // => false
+let calls = mock.calls(to: mock.doStuffRef)             // => 1 item
+calls[0].arguments.0                                    // => 42
+calls[0].arguments.1                                    // => "string"
+calls[0].result                                         // => "gnirts"
+mock.hasCalled(mock.doStuffRef)                         // => true
+mock.hasCalled(mock.doStuffRef, times: 1)               // => true
+mock.hasCalled(mock.doStuffRef, times: 2)               // => false
 ```
 
 MockingKit supports:
-
 * mocking protocols
 * mocking classes
-* mocking synchronous and asynchronous functions
 * mocking non-returning and returning functions
+* mocking synchronous and asynchronous functions
 * `void`, `optional` and `non-optional` result values
-* argument-based, variable result values
+* argument-based results
 
 MockingKit doesn't put any restrains on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
 
@@ -87,11 +86,7 @@ Feel free to reach out if you have questions or if you want to contribute in any
 
 ## Acknowledgements
 
-MockingKit is inspired by [Stubber][Stubber], and would not have been possible without it. 
-
-However, while Stubber uses global state, MockingKit moves this state to each mock. This means that recorded exeuctions are automatically reset when a mock is disposed. 
-
-MockingKit also adds some extra functionality, like support for optional and void results and convenient inspection utilities.
+MockingKit is based on [Stubber][Stubber], and would not have been possible without it. 
 
 
 ## License
