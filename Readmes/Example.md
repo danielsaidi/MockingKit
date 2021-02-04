@@ -46,11 +46,11 @@ When a mock receives a `call`, it records the call so you can inspect it later:
 ```swift
 let printer = MockPrinter()
 printer.print("Hello!")
-let calls = printer.calls(to: printer.printRef) // => 1 item
-calls[0].arguments                              // => "Hello!"
-printer.hasCalled(printer.printRef)             // => true
-printer.hasCalled(printer.printRef, times: 1)   // => true
-printer.hasCalled(printer.printRef, times: 2)   // => false
+let calls = printer.calls(to: printer.printRef)         // => 1 item
+calls[0].arguments                                      // => "Hello!"
+printer.hasCalled(printer.printRef)                     // => true
+printer.hasCalled(printer.printRef, numberOfTimes: 1)   // => true
+printer.hasCalled(printer.printRef, numberOfTimes: 2)   // => false
 ```
 
 Note how you call the function as normal, then use the reference to inspect the mock.

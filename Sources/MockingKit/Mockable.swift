@@ -156,8 +156,8 @@ public extension Mockable {
      Check if a function has been called a number of times.
      */
     func hasCalled<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>, times: Int) -> Bool {
-        calls(to: ref).count == times
+        _ ref: MockReference<Arguments, Result>, numberOfTimes: Int) -> Bool {
+        calls(to: ref).count == numberOfTimes
     }
 }
 

@@ -218,11 +218,11 @@ class MockTests: QuickSpec {
             }
             
             it("can verify if an exact number or calls have been made") {
-                expect(mock.hasCalled(mock.functionWithVoidResultRef, times: 2)).to(beFalse())
+                expect(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2)).to(beFalse())
                 mock.functionWithVoidResult(arg1: "abc", arg2: 123)
-                expect(mock.hasCalled(mock.functionWithVoidResultRef, times: 2)).to(beFalse())
+                expect(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2)).to(beFalse())
                 mock.functionWithVoidResult(arg1: "abc", arg2: 456)
-                expect(mock.hasCalled(mock.functionWithVoidResultRef, times: 2)).to(beTrue())
+                expect(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2)).to(beTrue())
             }
         }
         

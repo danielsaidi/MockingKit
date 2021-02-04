@@ -37,8 +37,8 @@ calls[0].arguments.0                                    // => 42
 calls[0].arguments.1                                    // => "string"
 calls[0].result                                         // => "gnirts"
 mock.hasCalled(mock.doStuffRef)                         // => true
-mock.hasCalled(mock.doStuffRef, times: 1)               // => true
-mock.hasCalled(mock.doStuffRef, times: 2)               // => false
+mock.hasCalled(mock.doStuffRef, numberOfTimes: 1)       // => true
+mock.hasCalled(mock.doStuffRef, numberOfTimes: 2)       // => false
 ```
 
 MockingKit supports:

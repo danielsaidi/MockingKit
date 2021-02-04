@@ -9,7 +9,7 @@ This version renames `Invocation` to `Call`  to make the code more compact and l
 * `MockInvokation` → `MockCall`
 * `Mock` `registeredInvokations` → `registeredCalls`
 * `Mockable` `hasInvoked(_)` → `hasCalled(_)`
-* `Mockable` `hasInvoked(_, numberOfTimes:)` → `hasCalled(_, times:)`
+* `Mockable` `hasInvoked(_, numberOfTimes:)` → `hasCalled(_, numberOfTimes:)`
 * `Mockable` `invoke` → `call`
 * `Mockable` `invokations(of:)` → `calls(to:)`
 * `Mockable` `resetInvokations` → `resetCalls`

@@ -57,8 +57,8 @@ public extension Mockable {
         hasCalled(ref)
     }
     
-    @available(*, deprecated, renamed: "hasCalled(times:)")
+    @available(*, deprecated, renamed: "hasCalled(numberOfTimes:)")
     func hasInvoked<Arguments, Result>(_ ref: MockReference<Arguments, Result>, numberOfTimes: Int) -> Bool {
-        hasCalled(ref, times: numberOfTimes)
+        hasCalled(ref, numberOfTimes: numberOfTimes)
     }
 }

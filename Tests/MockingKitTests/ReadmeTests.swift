@@ -27,8 +27,8 @@ class ReadmeTests: QuickSpec {
                 expect(calls[0].arguments.1).to(equal("string"))
                 expect(calls[0].result).to(equal("gnirts"))
                 expect(mock.hasCalled(mock.doStuffRef)).to(beTrue())
-                expect(mock.hasCalled(mock.doStuffRef, times: 1)).to(beTrue())
-                expect(mock.hasCalled(mock.doStuffRef, times: 2)).to(beFalse())
+                expect(mock.hasCalled(mock.doStuffRef, numberOfTimes: 1)).to(beTrue())
+                expect(mock.hasCalled(mock.doStuffRef, numberOfTimes: 2)).to(beFalse())
             }
         }
         
@@ -40,8 +40,8 @@ class ReadmeTests: QuickSpec {
                 let calls = printer.calls(to: printer.printRef)
                 expect(calls[0].arguments).to(equal("Hello!"))
                 expect(printer.hasCalled(printer.printRef)).to(beTrue())
-                expect(printer.hasCalled(printer.printRef, times: 1)).to(beTrue())
-                expect(printer.hasCalled(printer.printRef, times: 2)).to(beFalse())
+                expect(printer.hasCalled(printer.printRef, numberOfTimes: 1)).to(beTrue())
+                expect(printer.hasCalled(printer.printRef, numberOfTimes: 2)).to(beFalse())
             }
             
             it("registering works") {
