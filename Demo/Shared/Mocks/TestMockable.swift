@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MockingKit
 
 /**
  Implement the `Mockable` protocol if your mock must inherit

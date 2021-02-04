@@ -6,6 +6,7 @@
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
 //
 
+import MockingKit
 import SwiftUI
 
 /**
@@ -74,7 +75,7 @@ private extension MockScreen {
         let name = "Member #\(Int.random(in: 1_000...9_999))"
         let age = Int.random(in: 18...100)
         mock.doStuffWithArgs(name: name, age: age)
-        let calls = mock.callsokations(of: mock.doStuffWithArgsRef)
+        let calls = mock.calls(to: mock.doStuffWithArgsRef)
         hasCalledWithArgs = mock.hasCalled(mock.doStuffWithArgsRef)
         hasCalledWithArgsCount = calls.count
         hasCalledWithArgsMatch = mock.hasCalled(mock.doStuffWithArgsRef, numberOfTimes: matchCount)

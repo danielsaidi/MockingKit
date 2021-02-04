@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MockingKit",
+        "repositoryURL": "https://github.com/danielsaidi/MockingKit.git",
+        "state": {
+          "branch": "master",
+          "revision": "047e7743f1d6c46547e129e0565229a86f1dff43",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

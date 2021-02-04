@@ -6,7 +6,7 @@
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
 //
 
-import Foundation
+import MockingKit
 
 /**
  Inherit `Mock` if your mock doesn't have to inherit another
