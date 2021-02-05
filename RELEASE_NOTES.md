@@ -3,7 +3,7 @@
 
 ## 0.9.0
 
-This version renames `Invocation` to `Call`  to make the code more compact and less technical:
+This version renames invoke/invocation to call/calls to make the code cleaner and less technical:
 
 * `AnyInvokation` → `AnyCall`
 * `MockInvokation` → `MockCall`
@@ -14,6 +14,10 @@ This version renames `Invocation` to `Call`  to make the code more compact and l
 * `Mockable` `invokations(of:)` → `calls(to:)`
 * `Mockable` `resetInvokations` → `resetCalls`
 * `Mockable` `resetInvokations(for:)` → `resetCalls(to:)`
+
+This also solves that with my Swedish eyes spelled invocation as invokation, which is how it's spelled here :)   
+
+The old invoke/invokation parts are marked as deprecated and will be removed in 1.0. 
 
 
 ## 0.8.2
