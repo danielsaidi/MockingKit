@@ -18,12 +18,7 @@ platform :ios do
   
   desc "Run unit tests"
   lane :test do
-    # Since Quick/Nimble doesn't work for macOS and I do not
-    # know how to make `swift test` use iOS, I just do this:
-    confirm = prompt(text: "Have you successfully run all unit tests? [y/n]: ")
-    if confirm != "y"
-        UI.user_error!("You must run all unit tests before releasing a new version!")
-    end
+    sh("swift test")
   end
 
 
