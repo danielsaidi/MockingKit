@@ -6,7 +6,7 @@ let package = Package(
     name: "MockingKit",
     platforms: [
         .iOS(.v9),
-        .tvOS(.v13),
+        .tvOS(.v9),
         .watchOS(.v6),
         .macOS(.v10_10)
     ],

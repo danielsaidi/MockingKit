@@ -2,6 +2,7 @@ import Foundation
 
 public extension Mockable {
     
+    @available(*, deprecated, renamed: "call()")
     func invoke<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
