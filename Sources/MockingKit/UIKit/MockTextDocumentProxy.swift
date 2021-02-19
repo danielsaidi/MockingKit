@@ -27,9 +27,10 @@ open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     public var autocapitalizationType: UITextAutocapitalizationType = .none
     public var documentContextBeforeInput: String?
     public var documentContextAfterInput: String?
-    public var selectedText: String?
-    public var documentInputMode: UITextInputMode?
     public var documentIdentifier: UUID = UUID()
+    public var documentInputMode: UITextInputMode?
+    public var keyboardAppearance: UIKeyboardAppearance = .light
+    public var selectedText: String?
     
     public func adjustTextPosition(byCharacterOffset offset: Int) {
         call(adjustTextPositionRef, args: (offset))

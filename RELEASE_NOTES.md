@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 0.9.2
+
+`MockTexstDocumentProxy` has a new `keyboardAppearance` property.
+
+
 ## 0.9.1
 
 Thanks to [@jinuman](https://github.com/jinuman) this version fixes the incorrectly high deployment targets.
