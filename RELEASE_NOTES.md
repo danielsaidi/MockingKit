@@ -3,7 +3,9 @@
 
 ## 0.9.1
 
-This version fixes the incorrectly high deployment targets and sets them way down.
+Thanks to [@jinuman](https://github.com/jinuman) this version fixes the incorrectly high deployment targets.
+
+This version also annotates another invoke function as deprecated.
 
 
 ## 0.9.0
