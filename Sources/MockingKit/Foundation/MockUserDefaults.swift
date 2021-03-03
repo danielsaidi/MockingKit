@@ -75,22 +75,27 @@ open class MockUserDefaults: UserDefaults, Mockable {
     }
     
     open override func set(_ value: Bool, forKey defaultName: String) {
+        mock.registerResult(for: boolRef) { _ in value }
         mock.call(self.setBoolRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Double, forKey defaultName: String) {
+        mock.registerResult(for: doubleRef) { _ in value }
         mock.call(self.setDoubleRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Float, forKey defaultName: String) {
+        mock.registerResult(for: floatRef) { _ in value }
         mock.call(self.setFloatRef, args: (value, defaultName))
     }
     
     open override func set(_ value: Int, forKey defaultName: String) {
+        mock.registerResult(for: integerRef) { _ in value }
         mock.call(self.setIntegerRef, args: (value, defaultName))
     }
     
     open override func set(_ url: URL?, forKey defaultName: String) {
+        mock.registerResult(for: urlRef) { _ in url }
         mock.call(self.setUrlRef, args: (url, defaultName))
     }
     
