@@ -1,9 +1,14 @@
 # Release Notes
 
 
+## 0.9.3
+
+`MockTextDocumentProxy` no longer modifies its state when calling its functions.
+
+
 ## 0.9.2
 
-`MockTexstDocumentProxy` has a new `keyboardAppearance` property.
+`MockTextDocumentProxy` has a new `keyboardAppearance` property.
 
 
 ## 0.9.1

@@ -37,7 +37,6 @@ open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     }
     
     public func deleteBackward() {
-        documentContextBeforeInput?.removeLast()
         call(deleteBackwardRef, args: ())
     }
     
