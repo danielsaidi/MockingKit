@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## 0.9.4
+
+This version replaces the accidental SSH dependencies to Quick and Nimble with HTTPS ones.
+
+Big thanks to Dave Verwer and SPI for noticing this!
+
+
 ## 0.9.3
 
 `MockTextDocumentProxy` no longer modifies its state when calling its functions.

@@ -34,7 +34,9 @@ class MockableTests: QuickSpec {
         describe("calling a function with non-optional result") {
             
             it("fails with precondition failure if no result is registered") {
+                #if os(iOS)
                 expect { _ = mock.functionWithIntResult(arg1: "abc", arg2: 123) }.to(throwAssertion())
+                #endif
             }
             
             it("it supports different result types") {
