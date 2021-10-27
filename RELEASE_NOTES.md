@@ -1,11 +1,16 @@
 # Release Notes
 
 
+## 1.0
+
+This version removes previously deprecated parts of the library.
+
+
 ## 0.9.4
 
 This version replaces the accidental SSH dependencies to Quick and Nimble with HTTPS ones.
 
-Big thanks to Dave Verwer and SPI for noticing this!
+Big thanks to Dave Verwer and [SPI](https://swiftpackageindex.com) for noticing this!
 
 
 ## 0.9.3
