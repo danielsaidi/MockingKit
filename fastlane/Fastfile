@@ -22,6 +22,14 @@ platform :ios do
   end
 
 
+  # Docs =======================
+  
+  desc "Build documentation"
+  lane :documentation do
+    sh('cd .. && fastlane/build-documentation.sh')
+  end
+
+
   # Version ================
 
   desc "Create a new version"
