@@ -3,5 +3,5 @@ import XCTest
 import MockingKitTests
 
 var tests = [XCTestCaseEntry]()
-//tests += MockingKitTests.allTests()
+// tests += MockingKitTests.allTests()
 XCTMain(tests)

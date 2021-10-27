@@ -24,7 +24,7 @@ class MockableTests: QuickSpec {
             
             it("registers function with reference id") {
                 let ref = mock.functionWithIntResultRef
-                let result: (String, Int) throws -> Int = { str, int in int * 2 }
+                let result: (String, Int) throws -> Int = { _, int in int * 2 }
                 mock.registerResult(for: ref, result: result)
                 let obj = mock.mock.registeredResults[ref.id]
                 expect(obj).toNot(beNil())
