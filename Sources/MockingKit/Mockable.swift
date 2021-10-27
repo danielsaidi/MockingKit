@@ -82,18 +82,6 @@ public extension Mockable {
     }
     
     /**
-     Call a function with a `non-optional` result. This will
-     return a pre-registered result or a `fallback` value if
-     no result has been registered.
-    */
-    func call<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>,
-        args: Arguments!,
-        fallback: @autoclosure () -> Result) throws -> Result {
-        try call(ref, args: args, fallback: fallback())
-    }
-
-    /**
      Call a function with an `optional` result. This returns
      a pre-registered result or `nil`.
     */
@@ -103,16 +91,6 @@ public extension Mockable {
         let result = try? registeredResult(for: ref)?(args)
         registerCall(MockCall(arguments: args, result: result), for: ref)
         return result
-    }
-    
-    /**
-     Call a function with an `optional` result. This returns
-     a pre-registered result or `nil`.
-    */
-    func call<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result?>,
-        args: Arguments!) throws -> Result? {
-        try call(ref, args: args)
     }
     
     /**
