@@ -39,6 +39,7 @@ platform :ios do
     
     lint
     test
+    documentation
 
     bump_type = options[:type]
     if bump_type == nil or bump_type.empty?
