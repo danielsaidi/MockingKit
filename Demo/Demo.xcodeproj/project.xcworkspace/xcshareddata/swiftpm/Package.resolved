@@ -5,9 +5,9 @@
         "package": "MockingKit",
         "repositoryURL": "https://github.com/danielsaidi/MockingKit.git",
         "state": {
-          "branch": "master",
-          "revision": "047e7743f1d6c46547e129e0565229a86f1dff43",
-          "version": null
+          "branch": null,
+          "revision": "eee43230c648991cc2d14fa290d01e561c3adc5a",
+          "version": "1.0.0"
         }
       }
     ]

@@ -20,34 +20,16 @@ final class DemoAppearance {
         if #available(iOS 13.0, *) {
             let navbar = UINavigationBar.appearance()
             let navbarAppearance = UINavigationBarAppearance()
-            navbarAppearance.configureWithOpaqueBackground()
-            navbarAppearance.backgroundColor = .accent
-            navbarAppearance.titleTextAttributes = titleAttributes
-            navbarAppearance.largeTitleTextAttributes = largeTitleAttributes
-            navbar.tintColor = .white
+            var titleTextAttributes = navbarAppearance.titleTextAttributes
+            titleTextAttributes[.font] = UIFont(name: "Knewave-Regular", size: 20)!
+            navbarAppearance.titleTextAttributes = titleTextAttributes
+            
+            var largeTitleTextAttributes = navbarAppearance.largeTitleTextAttributes
+            largeTitleTextAttributes[.font] =  UIFont(name: "Knewave-Regular", size: 40)!
+            navbarAppearance.largeTitleTextAttributes = largeTitleTextAttributes
+            
             navbar.standardAppearance = navbarAppearance
-            navbar.scrollEdgeAppearance = navbarAppearance
         }
         #endif
     }
 }
-
-#if os(iOS)
-private extension DemoAppearance {
-    
-    static var titleAttributes: [NSAttributedString.Key: Any] {
-        [.font: UIFont(name: "Knewave-Regular", size: 20)!, .foregroundColor: UIColor.white, .shadow: shadow]
-    }
-    
-    static var largeTitleAttributes: [NSAttributedString.Key: Any] {
-        [.font: UIFont(name: "Knewave-Regular", size: 40)!, .foregroundColor: UIColor.white, .shadow: shadow]
-    }
-    
-    static var shadow: NSShadow {
-        let shadow = NSShadow()
-        shadow.shadowBlurRadius = 5
-        shadow.shadowColor = UIColor.clear
-        return shadow
-    }
-}
-#endif
