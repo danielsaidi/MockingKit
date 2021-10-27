@@ -81,6 +81,13 @@ mock.hasCalled(mock.doStuffRef, numberOfTimes: 2)       // => false
 This can be used when unit testing, mock not yet implemented functionality etc.
 
 
+## Documentation
+
+The [MockingKit documentation][Documentation] contains curated and structured information that makes it easy to overview the various parts of the library, see how the various parts connect to each other etc.
+
+Just download the documentation, extract the zip file and double-tap the `MockingKit.doccarchive` file to view the documentation directly in Xcode.
+
+
 ## Capabilities
 
 MockingKit supports
@@ -146,7 +153,7 @@ MockingKit is available under the MIT license. See the [LICENSE][License] file f
 [Website]: http://www.danielsaidi.com
 [Sponsors]: https://github.com/sponsors/danielsaidi
 
-[Example]: https://github.com/danielsaidi/MockingKit/blob/master/Readmes/Example.md
+[Documentation]: https://github.com/danielsaidi/MockingKit/raw/master/Docs/MockingKit.doccarchive.zip
 
 [CocoaPods]: http://cocoapods.org
 [GitHub]: https://github.com/danielsaidi/MockingKit
