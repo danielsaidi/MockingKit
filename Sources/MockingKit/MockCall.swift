@@ -10,8 +10,8 @@ import Foundation
 
 /**
  This struct represents a "recorded" mock function call with
- information about the provided `arguments` and the optional
- returned `result`.
+ information about the provided ``arguments`` and ``result``,
+ if any.
  
  Functions that don't return anything have a `Void` result.
 */
