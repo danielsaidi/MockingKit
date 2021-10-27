@@ -9,13 +9,12 @@
 import Foundation
 
 /**
- This class can be inherited by your mocks and provides them
- with full mocking capabilities.
+ This class can be inherited any classes that should be used
+ as mock implementation, e.g. when unit testing.
  
- The class implements `Mockable` by using itself as mock. It
- saves you some code and makes things...nicer. If a mock has
- to inherit another class, just implement `Mockable` instead
- and add a `mock` property to it. The rest is identical.
+ The class implements `Mockable` by using itself as a `mock`.
+ Use it instead of `Mockable` whenever possible, since it is
+ saving you a little bit of code for each mock.
  
  See `Mockable` for more information about what mocks can do.
  */

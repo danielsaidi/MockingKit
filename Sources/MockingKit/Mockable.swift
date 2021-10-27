@@ -9,8 +9,24 @@
 import Foundation
 
 /**
- This protocol can be implemented by any mock that should be
- able to record calls and return pre-registered results.
+ This protocol can be implemented by any type that should be
+ used as a mock, e.g. when unit testing.
+ 
+ To implement this protocol, just provide a `mock` property:
+ 
+ ```
+ class MyMock: Mockable {
+ 
+     let mock = Mock()
+ }
+ ```
+ 
+ You can then use the type as a mock and call mock functions,
+ which are recorded, register mock results etc.
+ 
+ Only implement this protocol when you cannot inherit `Mock`,
+ e.g. when mocking structs or when a mock class must inherit
+ a base class, e.g. when mocking classes like `UserDefaults`.
 */
 public protocol Mockable {
     

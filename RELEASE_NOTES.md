@@ -5,6 +5,8 @@
 
 This version removes previously deprecated parts of the library.
 
+This version also removes `call` functions with implicitly unwrapped args.
+
 
 ## 0.9.4
 

@@ -11,8 +11,9 @@ import Foundation
 /**
  This struct represents a "recorded" mock function call with
  information about the provided `arguments` and the optional
- returned `result`. A functions that doesn't return anything
- has a `Void` result.
+ returned `result`.
+ 
+ Functions that don't return anything have a `Void` result.
 */
 public struct MockCall<Arguments, Result>: AnyCall {
     
