@@ -3,9 +3,9 @@
 
 ## 1.0
 
-This version removes previously deprecated parts of the library.
+This version bumps the package Swift version to 5.5 to enable extended DocC support.
 
-This version also removes `call` functions with implicitly unwrapped args.
+It also removes previously deprecated parts of the library and removes `call` functions with implicitly unwrapped args.
 
 
 ## 0.9.4
