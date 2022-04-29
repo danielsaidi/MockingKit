@@ -1,33 +1,18 @@
+# SPM defaults
 .DS_Store
 /.build
 /Packages
-xcuserdata/
+.swiftpm/
 
-build/
-DerivedData/
+# Documentation
+Docs
+documentation
+downloads
+videos
 
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata/
-
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
-
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
-
-.build/
-Carthage
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
+# Fastlane
+Fastlane/report.xml
+Fastlane/Preview.html
+Fastlane/screenshots
+Fastlane/test_output
+Fastlane/README.md
