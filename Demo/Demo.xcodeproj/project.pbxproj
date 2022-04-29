@@ -11,8 +11,6 @@
 		A9827A3E257ED48A0006D64F /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2A257ED4880006D64F /* DemoApp.swift */; };
 		A9827A3F257ED48A0006D64F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2B257ED4880006D64F /* ContentView.swift */; };
 		A9827A40257ED48A0006D64F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A2B257ED4880006D64F /* ContentView.swift */; };
-		A9827A4F257ED4BC0006D64F /* DemoAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */; };
-		A9827A50257ED4BC0006D64F /* DemoAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */; };
 		A9827A56257ED4E60006D64F /* Color+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A54257ED4E60006D64F /* Color+Demo.swift */; };
 		A9827A57257ED4E60006D64F /* Color+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A54257ED4E60006D64F /* Color+Demo.swift */; };
 		A9827A58257ED4E60006D64F /* Image+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827A55257ED4E60006D64F /* Image+Demo.swift */; };
@@ -41,9 +39,8 @@
 		A9827AA8257EDC760006D64F /* TestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AA6257EDC760006D64F /* TestMock.swift */; };
 		A9827AC8257EDCFD0006D64F /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AC7257EDCFD0006D64F /* TestMockable.swift */; };
 		A9827AC9257EDCFD0006D64F /* TestMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827AC7257EDCFD0006D64F /* TestMockable.swift */; };
-		A9827ACD257EDFD10006D64F /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827ACC257EDFD10006D64F /* AboutScreen.swift */; };
-		A9827ACE257EDFD10006D64F /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9827ACC257EDFD10006D64F /* AboutScreen.swift */; };
-		A9C4D46925CBDF990056DDA7 /* MockingKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9C4D46825CBDF990056DDA7 /* MockingKit */; };
+		A9CD2C93281C33F90044E20E /* MockingKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9CD2C92281C33F90044E20E /* MockingKit */; };
+		A9CD2C95281C33FD0044E20E /* MockingKit in Frameworks */ = {isa = PBXBuildFile; productRef = A9CD2C94281C33FD0044E20E /* MockingKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +51,6 @@
 		A9827A39257ED48A0006D64F /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9827A3B257ED48A0006D64F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9827A3C257ED48A0006D64F /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAppearance.swift; sourceTree = "<group>"; };
 		A9827A54257ED4E60006D64F /* Color+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Demo.swift"; sourceTree = "<group>"; };
 		A9827A55257ED4E60006D64F /* Image+Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+Demo.swift"; sourceTree = "<group>"; };
 		A9827A5F257ED7B20006D64F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
@@ -77,7 +73,7 @@
 		A9827A9A257EDC1A0006D64F /* TestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 		A9827AA6257EDC760006D64F /* TestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMock.swift; sourceTree = "<group>"; };
 		A9827AC7257EDCFD0006D64F /* TestMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMockable.swift; sourceTree = "<group>"; };
-		A9827ACC257EDFD10006D64F /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		A9CD2C90281C33D20044E20E /* mockingkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = mockingkit; path = ..; sourceTree = "<group>"; };
 		A9DAE5FF259DE55C00ADA604 /* MockingKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = MockingKit.podspec; path = ../MockingKit.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9C4D46925CBDF990056DDA7 /* MockingKit in Frameworks */,
+				A9CD2C93281C33F90044E20E /* MockingKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CD2C95281C33FD0044E20E /* MockingKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,11 +100,13 @@
 		A9827A24257ED4880006D64F = {
 			isa = PBXGroup;
 			children = (
+				A9CD2C8F281C33D20044E20E /* Packages */,
 				A9827A33257ED48A0006D64F /* iOS */,
 				A9827A3A257ED48A0006D64F /* macOS */,
 				A9827A29257ED4880006D64F /* Shared */,
 				A9827A32257ED48A0006D64F /* Products */,
 				A9827A5E257ED7900006D64F /* Project Files */,
+				A9CD2C91281C33F90044E20E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,7 +153,6 @@
 			children = (
 				A9827A2B257ED4880006D64F /* ContentView.swift */,
 				A9827A2A257ED4880006D64F /* DemoApp.swift */,
-				A9827A4E257ED4BC0006D64F /* DemoAppearance.swift */,
 				A9827A6D257ED9BB0006D64F /* DemoList.swift */,
 				A9827A6A257ED9BB0006D64F /* DemoListButton.swift */,
 				A9827A6E257ED9BB0006D64F /* DemoListItem.swift */,
@@ -202,7 +200,6 @@
 		A9827A8E257EDBC80006D64F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				A9827ACC257EDFD10006D64F /* AboutScreen.swift */,
 				A9827A94257EDBDB0006D64F /* MockableScreen.swift */,
 				A9827A8F257EDBD10006D64F /* MockScreen.swift */,
 			);
@@ -226,6 +223,21 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		A9CD2C8F281C33D20044E20E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A9CD2C90281C33D20044E20E /* mockingkit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		A9CD2C91281C33F90044E20E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,7 +256,7 @@
 			);
 			name = "Demo (iOS)";
 			packageProductDependencies = (
-				A9C4D46825CBDF990056DDA7 /* MockingKit */,
+				A9CD2C92281C33F90044E20E /* MockingKit */,
 			);
 			productName = "Demo (iOS)";
 			productReference = A9827A31257ED48A0006D64F /* Demo.app */;
@@ -263,6 +275,9 @@
 			dependencies = (
 			);
 			name = "Demo (macOS)";
+			packageProductDependencies = (
+				A9CD2C94281C33FD0044E20E /* MockingKit */,
+			);
 			productName = "Demo (macOS)";
 			productReference = A9827A39257ED48A0006D64F /* Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -295,7 +310,6 @@
 			);
 			mainGroup = A9827A24257ED4880006D64F;
 			packageReferences = (
-				A9C4D46725CBDF990056DDA7 /* XCRemoteSwiftPackageReference "MockingKit" */,
 			);
 			productRefGroup = A9827A32257ED48A0006D64F /* Products */;
 			projectDirPath = "";
@@ -356,13 +370,11 @@
 			files = (
 				A9827A6F257ED9BB0006D64F /* DemoListButton.swift in Sources */,
 				A9827A58257ED4E60006D64F /* Image+Demo.swift in Sources */,
-				A9827A4F257ED4BC0006D64F /* DemoAppearance.swift in Sources */,
 				A9827A90257EDBD10006D64F /* MockScreen.swift in Sources */,
 				A9827AC8257EDCFD0006D64F /* TestMockable.swift in Sources */,
 				A9827A73257ED9BB0006D64F /* DemoListText.swift in Sources */,
 				A9827A95257EDBDB0006D64F /* MockableScreen.swift in Sources */,
 				A9827A9B257EDC1A0006D64F /* TestProtocol.swift in Sources */,
-				A9827ACD257EDFD10006D64F /* AboutScreen.swift in Sources */,
 				A9827AA7257EDC760006D64F /* TestMock.swift in Sources */,
 				A9827A71257ED9BB0006D64F /* DemoListLink.swift in Sources */,
 				A9827A77257ED9BB0006D64F /* DemoListItem.swift in Sources */,
@@ -379,13 +391,11 @@
 			files = (
 				A9827A70257ED9BB0006D64F /* DemoListButton.swift in Sources */,
 				A9827A59257ED4E60006D64F /* Image+Demo.swift in Sources */,
-				A9827A50257ED4BC0006D64F /* DemoAppearance.swift in Sources */,
 				A9827A91257EDBD10006D64F /* MockScreen.swift in Sources */,
 				A9827AC9257EDCFD0006D64F /* TestMockable.swift in Sources */,
 				A9827A74257ED9BB0006D64F /* DemoListText.swift in Sources */,
 				A9827A96257EDBDB0006D64F /* MockableScreen.swift in Sources */,
 				A9827A9C257EDC1A0006D64F /* TestProtocol.swift in Sources */,
-				A9827ACE257EDFD10006D64F /* AboutScreen.swift in Sources */,
 				A9827AA8257EDC760006D64F /* TestMock.swift in Sources */,
 				A9827A72257ED9BB0006D64F /* DemoListLink.swift in Sources */,
 				A9827A78257ED9BB0006D64F /* DemoListItem.swift in Sources */,
@@ -635,21 +645,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A9C4D46725CBDF990056DDA7 /* XCRemoteSwiftPackageReference "MockingKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielsaidi/MockingKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		A9C4D46825CBDF990056DDA7 /* MockingKit */ = {
+		A9CD2C92281C33F90044E20E /* MockingKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A9C4D46725CBDF990056DDA7 /* XCRemoteSwiftPackageReference "MockingKit" */;
+			productName = MockingKit;
+		};
+		A9CD2C94281C33FD0044E20E /* MockingKit */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = MockingKit;
 		};
 /* End XCSwiftPackageProductDependency section */

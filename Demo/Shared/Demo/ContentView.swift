@@ -13,10 +13,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             DemoList("MockingKit") {
-                Section(header: Text("About")) {
-                    DemoListLink("About MockingKit", .about, AboutScreen())
-                }
-                
                 Section(header: Text("Mocks")) {
                     DemoListLink("Mock", .circleDashedFilled, MockScreen())
                     DemoListLink("Mockable", .circleDashed, MockableScreen())
