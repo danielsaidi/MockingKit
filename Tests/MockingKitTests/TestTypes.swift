@@ -25,6 +25,21 @@ protocol TestProtocol {
     func asyncFunction(arg1: String, completion: @escaping (Error?) -> Void)
 }
 
+protocol AsyncTestProtocol {
+
+    func functionWithIntResult(arg1: String, arg2: Int) async -> Int
+    func functionWithStringResult(arg1: String, arg2: Int) async -> String
+    func functionWithStructResult(arg1: String, arg2: Int) async -> User
+    func functionWithClassResult(arg1: String, arg2: Int) async -> Thing
+
+    func functionWithOptionalIntResult(arg1: String, arg2: Int) async -> Int?
+    func functionWithOptionalStringResult(arg1: String, arg2: Int) async -> String?
+    func functionWithOptionalStructResult(arg1: String, arg2: Int) async -> User?
+    func functionWithOptionalClassResult(arg1: String, arg2: Int) async -> Thing?
+
+    func functionWithVoidResult(arg1: String, arg2: Int) async
+}
+
 struct User: Equatable {
     
     var name: String

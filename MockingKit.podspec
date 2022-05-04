@@ -9,11 +9,11 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'NONE', :file => 'LICENSE' }
   s.author           = { 'Daniel Saidi' => 'daniel.saidi@gmail.com' }
   s.source           = { :git => 'https://github.com/danielsaidi/MockingKit.git', :tag => s.version.to_s }
-
-  s.swift_version = '5.0'
-  s.ios.deployment_target = '9.0'
-  s.tvos.deployment_target = '9.0'
-  s.macos.deployment_target = '10.10'
+  
+  s.swift_version = '5.6'
+  s.ios.deployment_target = '13.0'
+  s.tvos.deployment_target = '13.0'
+  s.macos.deployment_target = '10.15'
   s.watchos.deployment_target = '6.0'
   
   s.source_files = 'Sources/MockingKit/**/*.swift'
