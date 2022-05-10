@@ -41,7 +41,11 @@ public protocol Mockable {
 public extension Mockable {
     
     /**
-     Register a result value for a certain mocked function.
+     Register a result value for a mock reference.
+
+     - Parameters:
+       - ref: The mock reference to register a result for.
+       - result: What to return when the function is called.
      */
     func registerResult<Arguments, Result>(
         for ref: MockReference<Arguments, Result>,
@@ -50,7 +54,11 @@ public extension Mockable {
     }
 
     /**
-     Register a result value for a certain mocked async function.
+     Register a result value for an async mock reference.
+
+     - Parameters:
+       - ref: The mock reference to register a result for.
+       - result: What to return when the function is called.
      */
     func registerResult<Arguments, Result>(
         for ref: AsyncMockReference<Arguments, Result>,
@@ -65,9 +73,17 @@ public extension Mockable {
 public extension Mockable {
     
     /**
-     Call a function with a `non-optional` result. This will
-     return a pre-registered result or crash if no result is
-     registered.
+     Call a mock reference with `non-optional` result.
+
+     This will return any pre-registered result, or crash if
+     no result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
     */
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
@@ -75,7 +91,7 @@ public extension Mockable {
         file: StaticString = #file,
         line: UInt = #line,
         functionCall: StaticString = #function) -> Result {
-        
+
         if Result.self == Void.self {
             let void = unsafeBitCast((), to: Result.self)
             let call = MockCall(arguments: args, result: void)
@@ -93,9 +109,17 @@ public extension Mockable {
     }
 
     /**
-     Call an async function with a `non-optional` result. This will
-     return a pre-registered result or crash if no result is
-     registered.
+     Call an async mock reference with `non-optional` result.
+
+     This will return any pre-registered result, or crash if
+     no result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
     */
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result>,
@@ -111,7 +135,7 @@ public extension Mockable {
             return void
         }
 
-            guard let result = try? await registeredResult(for: ref)?(args) else {
+        guard let result = try? await registeredResult(for: ref)?(args) else {
             let message = "You must register a result for '\(functionCall)' with `registerResult(for:)` before calling this function."
             preconditionFailure(message, file: file, line: line)
         }
@@ -121,9 +145,18 @@ public extension Mockable {
     }
     
     /**
-     Call a function with a `non-optional` result. This will
-     return a pre-registered result or a `fallback` value if
-     no result has been registered.
+     Call a mock reference with `non-optional` result.
+
+     This will return a pre-registered result or a `fallback`
+     value if no result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
+       - fallback: The value to return if no result has been registered.
     */
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
@@ -135,9 +168,18 @@ public extension Mockable {
     }
 
     /**
-     Call an async function with a `non-optional` result. This will
-     return a pre-registered result or a `fallback` value if
-     no result has been registered.
+     Call an async mock reference with `non-optional` result.
+
+     This will return a pre-registered result or a `fallback`
+     value if no result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
+       - fallback: The value to return if no result has been registered.
     */
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result>,
@@ -149,8 +191,17 @@ public extension Mockable {
     }
     
     /**
-     Call a function with an `optional` result. This returns
-     a pre-registered result or `nil`.
+     Call a mock reference with `optional` result.
+
+     This will return a pre-registered result or `nil` if no
+     result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
     */
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
@@ -161,8 +212,17 @@ public extension Mockable {
     }
 
     /**
-     Call an async function with an `optional` result. This returns
-     a pre-registered result or `nil`.
+     Call an async mock reference with `optional` result.
+
+     This will return a pre-registered result or `nil` if no
+     result has been registered.
+
+     Note that this function should only be used by the mock
+     itself and not called from the outside.
+
+     - Parameters:
+       - ref: The mock reference to call.
+       - args: The arguments to call the functions with.
     */
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result?>,
@@ -180,7 +240,10 @@ public extension Mockable {
     }
     
     /**
-     Reset all registered calls to a certain function.
+     Reset all registered calls for a mock reference.
+
+     - Parameters:
+       - ref: The mock reference to reset any calls for.
      */
     func resetCalls<Arguments, Result>(
         to ref: MockReference<Arguments, Result>) {
@@ -188,7 +251,10 @@ public extension Mockable {
     }
 
     /**
-     Reset all registered calls to a certain asnyc function.
+     Reset all registered calls for an async mock reference.
+
+     - Parameters:
+       - ref: The mock reference to reset any calls for.
      */
     func resetCalls<Arguments, Result>(
         to ref: AsyncMockReference<Arguments, Result>) {
@@ -202,7 +268,10 @@ public extension Mockable {
 public extension Mockable {
     
     /**
-     Get all calls to a certain function.
+     Get all calls to a certain mock reference.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func calls<Arguments, Result>(
         to ref: MockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
@@ -210,7 +279,10 @@ public extension Mockable {
     }
 
     /**
-     Get all calls to a certain async function.
+     Get all calls to a certain async mock reference.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func calls<Arguments, Result>(
         to ref: AsyncMockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
@@ -218,7 +290,10 @@ public extension Mockable {
     }
     
     /**
-     Check if a function has been called.
+     Check if a mock reference has been called.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func hasCalled<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>) -> Bool {
@@ -226,7 +301,10 @@ public extension Mockable {
     }
 
     /**
-     Check if an async function has been called.
+     Check if an async mock reference has been called.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func hasCalled<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result>) -> Bool {
@@ -234,18 +312,32 @@ public extension Mockable {
     }
     
     /**
-     Check if a function has been called a number of times.
+     Check if a mock reference has been called.
+
+     For this to return true the actual number of calls must
+     match the provided `numberOfCalls`.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func hasCalled<Arguments, Result>(
-        _ ref: MockReference<Arguments, Result>, numberOfTimes: Int) -> Bool {
+        _ ref: MockReference<Arguments, Result>,
+        numberOfTimes: Int) -> Bool {
         calls(to: ref).count == numberOfTimes
     }
 
     /**
-     Check if an async function has been called a number of times.
+     Check if an async mock reference has been called.
+
+     For this to return true the actual number of calls must
+     match the provided `numberOfCalls`.
+
+     - Parameters:
+       - ref: The mock reference to check calls for.
      */
     func hasCalled<Arguments, Result>(
-        _ ref: AsyncMockReference<Arguments, Result>, numberOfTimes: Int) -> Bool {
+        _ ref: AsyncMockReference<Arguments, Result>,
+        numberOfTimes: Int) -> Bool {
         calls(to: ref).count == numberOfTimes
     }
 }

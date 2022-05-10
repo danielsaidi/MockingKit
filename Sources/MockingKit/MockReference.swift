@@ -9,7 +9,11 @@
 import Foundation
 
 /**
- This struct is used to get a unique reference to a function.
+ This struct can be used to create a mock function reference
+ for non-async functions.
+
+ Mock function references get unique IDs, which means that a
+ mock reference instance can be uniquely identifier.
  */
 public struct MockReference<Arguments, Result>: Identifiable {
     

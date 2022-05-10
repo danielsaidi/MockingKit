@@ -18,16 +18,15 @@ class MockableAsyncTests: XCTestCase {
 
     func testRegisteringResult_registersFunctionWithReferenceId() {
         let ref = mock.functionWithIntResultRef
-        let result: (String, Int) throws -> Int = { _, int in int * 2 }
-        mock.registerResult(for: ref, result: result)
+        mock.registerResult(for: ref) { _, int in int * 2 }
         let obj = mock.mock.registeredResults[ref.id]
         expect(obj).toNot(beNil())
     }
 
     func testCallingAFunctionWithNonOptionalResult_itSupportsDifferentResultTypes() async {
-
         let user = User(name: "a user")
         let thing = Thing(name: "a thing")
+
         mock.registerResult(for: mock.functionWithIntResultRef) { _ in 123 }
         mock.registerResult(for: mock.functionWithStringResultRef) { _ in "a string" }
         mock.registerResult(for: mock.functionWithStructResultRef) { _ in user }
@@ -49,14 +48,14 @@ class MockableAsyncTests: XCTestCase {
         mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
 
         let intResult = await mock.functionWithIntResult(arg1: "abc", arg2: 123)
-        let int2Result = await mock.functionWithIntResult(arg1: "abc", arg2: 456)
+        let intResult2 = await mock.functionWithIntResult(arg1: "abc", arg2: 456)
         let stringResult = await mock.functionWithStringResult(arg1: "abc", arg2: 123)
-        let string2Result = await mock.functionWithStringResult(arg1: "def", arg2: 123)
+        let stringResult2 = await mock.functionWithStringResult(arg1: "def", arg2: 123)
 
         expect(intResult).to(equal(123))
-        expect(int2Result).to(equal(456))
+        expect(intResult2).to(equal(456))
         expect(stringResult).to(equal("abc"))
-        expect(string2Result).to(equal("def"))
+        expect(stringResult2).to(equal("def"))
     }
 
     func testCallingAFunctionWithNonOptionalResult_itRegistersCalls() async {
@@ -71,6 +70,7 @@ class MockableAsyncTests: XCTestCase {
 
         let intCalls = mock.calls(to: mock.functionWithIntResultRef)
         let strCalls = mock.calls(to: mock.functionWithStringResultRef)
+
         expect(intCalls.count).to(equal(3))
         expect(strCalls.count).to(equal(2))
         expect(intCalls[0].arguments.0).to(equal("abc"))
@@ -100,6 +100,7 @@ class MockableAsyncTests: XCTestCase {
     func testCallingAFunctionWithOptionalResult_itSupportsDifferentResultTypes() async {
         let user = User(name: "a user")
         let thing = Thing(name: "a thing")
+
         mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _ in 123 }
         mock.registerResult(for: mock.functionWithOptionalStringResultRef) { _ in "a string" }
         mock.registerResult(for: mock.functionWithOptionalStructResultRef) { _ in user }
@@ -142,6 +143,7 @@ class MockableAsyncTests: XCTestCase {
 
         let intCalls = mock.calls(to: mock.functionWithOptionalIntResultRef)
         let strCalls = mock.calls(to: mock.functionWithOptionalStringResultRef)
+
         expect(intCalls.count).to(equal(3))
         expect(strCalls.count).to(equal(2))
         expect(intCalls[0].arguments.0).to(equal("abc"))
@@ -188,6 +190,7 @@ class MockableAsyncTests: XCTestCase {
         await mock.functionWithVoidResult(arg1: "abc", arg2: 789)
 
         let calls = mock.calls(to: mock.functionWithVoidResultRef)
+
         expect(calls.count).to(equal(3))
         expect(calls[0].arguments.0).to(equal("abc"))
         expect(calls[0].arguments.1).to(equal(123))
@@ -202,7 +205,9 @@ class MockableAsyncTests: XCTestCase {
         await mock.functionWithVoidResult(arg1: "abc", arg2: 123)
         await mock.functionWithVoidResult(arg1: "abc", arg2: 456)
         await mock.functionWithVoidResult(arg1: "abc", arg2: 789)
+
         let calls = mock.calls(to: mock.functionWithVoidResultRef)
+
         expect(calls.count).to(equal(3))
     }
 
@@ -225,9 +230,12 @@ class MockableAsyncTests: XCTestCase {
     func testResettingCalls_CanResetAllCalls() async {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
         mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+
         _ = await mock.functionWithIntResult(arg1: "abc", arg2: 123)
         _ = await mock.functionWithStringResult(arg1: "abc", arg2: 123)
+
         mock.resetCalls()
+
         expect(self.mock.hasCalled(self.mock.functionWithIntResultRef)).to(beFalse())
         expect(self.mock.hasCalled(self.mock.functionWithStringResultRef)).to(beFalse())
     }
@@ -235,13 +243,17 @@ class MockableAsyncTests: XCTestCase {
     func testResettingCalls_canResetAllCallsForACertainFunction() async {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
         mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+
         _ = await mock.functionWithIntResult(arg1: "abc", arg2: 123)
         _ = await mock.functionWithStringResult(arg1: "abc", arg2: 123)
+
         mock.resetCalls(to: mock.functionWithIntResultRef)
+
         expect(self.mock.hasCalled(self.mock.functionWithIntResultRef)).to(beFalse())
         expect(self.mock.hasCalled(self.mock.functionWithStringResultRef)).to(beTrue())
     }
 }
+
 private class TestClass: AsyncTestProtocol, Mockable {
 
     var mock = Mock()
@@ -271,7 +283,6 @@ private class TestClass: AsyncTestProtocol, Mockable {
     func functionWithClassResult(arg1: String, arg2: Int) async -> Thing {
         await call(functionWithClassResultRef, args: (arg1, arg2))
     }
-
 
     func functionWithOptionalIntResult(arg1: String, arg2: Int) async -> Int? {
         await call(functionWithOptionalIntResultRef, args: (arg1, arg2))

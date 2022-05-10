@@ -52,6 +52,7 @@ MockingKit is available under the MIT license.
 - ``Mockable``
 - ``MockCall``
 - ``MockReference``
+- ``AsyncMockReference``
 
 ### Foundation Mocks
 
