@@ -58,8 +58,3 @@ MockingKit is available under the MIT license.
 
 - ``MockNotificationCenter``
 - ``MockUserDefaults``
-
-### UIKit Mocks
-
-- ``MockPasteboard``
-- ``MockTextDocumentProxy``
