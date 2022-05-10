@@ -16,6 +16,7 @@ let package = Package(
             targets: ["MockingKit"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
         .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "5.0.0")),
         .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "10.0.0")),
     ],
