@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## 1.1
+
+This version adds support for Swift concurrency and `async` functions.
+
+
 ## 1.0
 
 This version bumps the package Swift version to 5.5 to enable extended DocC support.
