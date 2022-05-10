@@ -193,7 +193,19 @@ If you however for some reason want to inspect how a property is called, modifie
 
 ## Async functions
 
-Async functions are just void return functions and its completion blocks are just arguments like any others. You must however manually call the completions from within your mocks.
+MockingKit supports Swift concurrency and lets you mock any `async` function.
+
+Mocking `async` functions works exactly like mocking non-async functions. No additional code is required.
+
+
+
+## Completion blocks
+
+Functions with completion blocks are just `Void` return functions where the completion block is just arguments like any others.
+
+Mocking these kind of functions works exactly like mocking any other functions. No additional code is required. 
+
+You must however manually call the completions from within your mocks if you want them to trigger.
 
 
 
