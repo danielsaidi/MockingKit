@@ -119,9 +119,9 @@ class MockUserDefaultsTests: QuickSpec {
                     defaults.set(value, forKey: "abc")
                     defaults.setValue(value, forKey: "def")
                     let calls = defaults.calls(to: defaults.setValueRef)
-                    expect(calls.first?.arguments.0).to(be(value))
+                    expect(calls.first?.arguments.0 as? String).to(equal(value))
                     expect(calls.first?.arguments.1).to(equal("abc"))
-                    expect(calls.last?.arguments.0).to(be(value))
+                    expect(calls.last?.arguments.0 as? String).to(equal(value))
                     expect(calls.last?.arguments.1).to(equal("def"))
                 }
             }

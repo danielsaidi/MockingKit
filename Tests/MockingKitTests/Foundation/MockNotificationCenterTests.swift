@@ -12,6 +12,8 @@ import Nimble
 import MockingKit
 
 private class TestClass: NSObject {
+
+    let id = UUID()
     
     @objc func testFunc() {}
 }
@@ -29,6 +31,10 @@ class MockNotificationCenterTests: QuickSpec {
         beforeEach {
             center = MockNotificationCenter()
         }
+
+        func value(_ value: Any?, is obj: TestClass) -> Bool {
+            (value as? TestClass)?.id == obj.id
+        }
         
         describe("mock notification center") {
             
@@ -41,7 +47,7 @@ class MockNotificationCenterTests: QuickSpec {
                 let result = center.addObserver(forName: name, object: obj, queue: queue, using: block)
                 let calls = center.calls(to: center.addObserverForNameRef).first
                 expect(calls?.arguments.0).to(equal(name))
-                expect(calls?.arguments.1).to(be(obj))
+                expect(value(calls?.arguments.1, is: obj)).to(beTrue())
                 expect(calls?.arguments.2).to(be(queue))
                 calls?.arguments.3(Notification(name: name))
                 expect(blockExecution?.name).to(equal(name))
@@ -52,11 +58,11 @@ class MockNotificationCenterTests: QuickSpec {
             it("can mock adding observer with selector") {
                 let observer = TestClass()
                 center.addObserver(observer, selector: #selector(observer.testFunc), name: name, object: obj)
-                let calls = center.calls(to: center.addObserverWithSelectorRef).first
-                expect(calls?.arguments.0).to(be(observer))
-                expect(calls?.arguments.1).toNot(beNil())
-                expect(calls?.arguments.2).to(equal(name))
-                expect(calls?.arguments.3).to(be(obj))
+                let call = center.calls(to: center.addObserverWithSelectorRef).first
+                expect(value(call?.arguments.0, is: observer)).to(beTrue())
+                expect(call?.arguments.1).toNot(beNil())
+                expect(call?.arguments.2).to(equal(name))
+                expect(value(call?.arguments.3, is: obj)).to(beTrue())
             }
             
             it("can mock posting notification") {
@@ -79,15 +85,15 @@ class MockNotificationCenterTests: QuickSpec {
                 expect(calls[0].arguments.2).to(beNil())
                 
                 expect(calls[1].arguments.0).to(equal(name))
-                expect(calls[1].arguments.1).to(be(obj))
+                expect(value(calls[1].arguments.1, is: obj)).to(beTrue())
                 expect(calls[1].arguments.2).to(beNil())
                 
                 expect(calls[2].arguments.0).to(equal(name))
-                expect(calls[2].arguments.1).to(be(obj))
+                expect(value(calls[1].arguments.1, is: obj)).to(beTrue())
                 expect(calls[2].arguments.2).to(beNil())
                 
                 expect(calls[3].arguments.0).to(equal(name))
-                expect(calls[3].arguments.1).to(be(obj))
+                expect(value(calls[1].arguments.1, is: obj)).to(beTrue())
                 expect(calls[3].arguments.2?["key"] as? String).to(equal("value"))
             }
         }
@@ -100,14 +106,14 @@ class MockNotificationCenterTests: QuickSpec {
             let calls = center.calls(to: center.removeObserverRef)
             
             expect(calls.count).to(equal(2))
-            
-            expect(calls[0].arguments.0).to(be(observer))
+
+            expect(value(calls[0].arguments.0, is: observer)).to(beTrue())
             expect(calls[0].arguments.1).to(beNil())
             expect(calls[0].arguments.2).to(beNil())
             
-            expect(calls[1].arguments.0).to(be(observer))
+            expect(value(calls[1].arguments.0, is: observer)).to(beTrue())
             expect(calls[1].arguments.1).to(equal(name))
-            expect(calls[1].arguments.2).to(be(obj))
+            expect(value(calls[1].arguments.2, is: obj)).to(beTrue())
         }
     }
 }
