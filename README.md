@@ -52,7 +52,7 @@ To get started with MockingKit, have a look at [this getting started guide][Gett
 
 ## Documentation
 
-The [online documentation][Documentation] contains more information, code examples, etc., and makes it easy to overview the various parts of the library.
+The [online documentation][Documentation] contains more information, code examples, and makes it easy to overview the various parts of the library.
 
 
 
