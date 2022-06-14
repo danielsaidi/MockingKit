@@ -14,9 +14,9 @@
 
 ## About MockingKit
 
-MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes, for instance when unit testing or mocking not yet implemented functionality.
+MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes, for instance when unit testing or mocking is not yet implemented functionality.
 
-MockingKit lets you `register` function results, `invoke` functions and `inspect` calls.
+MockingKit lets you `register` function results, `invoke` functions, and `inspect` calls.
 
 MockingKit doesn't put any restrains on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
 
@@ -52,7 +52,7 @@ To get started with MockingKit, have a look at [this getting started guide][Gett
 
 ## Documentation
 
-The [online documentation][Documentation] contains more information, code examples etc. and makes it easy to overview the various parts of the library.
+The [online documentation][Documentation] contains more information, code examples, etc., and makes it easy to overview the various parts of the library.
 
 
 
