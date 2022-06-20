@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mattgallagher/CwlCatchException.git",
       "state" : {
-        "revision" : "f809deb30dc5c9d9b78c872e553261a61177721a",
-        "version" : "2.0.0"
+        "revision" : "35f9e770f54ce62dd8526470f14c6e137cef3eea",
+        "version" : "2.1.1"
       }
     },
     {
@@ -21,19 +21,19 @@
     {
       "identity" : "nimble",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Quick/Nimble.git",
+      "location" : "https://github.com/danielsaidi/Nimble.git",
       "state" : {
-        "revision" : "1f3bde57bde12f5e7b07909848c071e9b73d6edc",
-        "version" : "10.0.0"
+        "branch" : "main",
+        "revision" : "f76b83c051fb3e6c120a33ebac200efba883065a"
       }
     },
     {
       "identity" : "quick",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Quick/Quick.git",
+      "location" : "https://github.com/danielsaidi/Quick.git",
       "state" : {
-        "revision" : "f9d519828bb03dfc8125467d8f7b93131951124c",
-        "version" : "5.0.1"
+        "branch" : "main",
+        "revision" : "1efe9551db0ad6a6e979f33366969750123d14d9"
       }
     },
     {
