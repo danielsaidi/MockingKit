@@ -19,7 +19,11 @@ This version adds a mock pasteboard for macOS and adjusts the documentation setu
 
 ### ✨ New Features
 
-This version adds support for Swift concurrency and `async` functions.
+* This version adds support for Swift concurrency and `async` functions.
+
+### 💥 Breaking Changes
+
+* Since Swift Concurrency requires iOS 13 and tvOS and later, the minimum platform versions for this library have been bumped.
 
 
 
