@@ -1,7 +1,18 @@
 # Release Notes
 
 
+## 1.1.1
+
+This version adds a mock pasteboard for macOS.
+
+### ✨ New Features
+
+* `MockPasteboard` now supports macOS as well.
+
+
 ## 1.1
+
+### ✨ New Features
 
 This version adds support for Swift concurrency and `async` functions.
 

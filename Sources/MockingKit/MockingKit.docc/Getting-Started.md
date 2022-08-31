@@ -3,22 +3,6 @@
 This article describes how you get started with MockingKit.
 
 
-
-## Installation
-
-MockingKit can be installed with the Swift Package Manager:
-
-```
-https://github.com/danielsaidi/MockingKit.git
-``` 
-
-or with CocoaPods:
-
-```
-pod MockingKit
-```
-
-
 ## Terminology
 
 Before we continue, let's clarify what this means in detail.

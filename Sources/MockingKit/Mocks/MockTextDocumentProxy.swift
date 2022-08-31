@@ -11,6 +11,10 @@ import UIKit
 
 /**
  This class can be used as a mocked `UITextDocumentProxy`.
+
+ This class mocks many functions, but not all. If you miss a
+ certain function, you can subclass this class and mock more
+ functionality in the subclass.
  */
 open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     
@@ -52,4 +56,15 @@ open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
         call(unmarkTextRef, args: ())
     }
 }
+#else
+import Foundation
+
+/**
+ This class can be used to mock a text document proxy.
+
+ This mock doesn't do anything, since this platform does not
+ have a text proxy. It's only here for documentation harmony.
+ */
+open class MockTextDocumentProxy: Mock {}
 #endif
+

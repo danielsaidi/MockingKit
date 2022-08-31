@@ -33,6 +33,15 @@ or with CocoaPods:
 pod MockingKit
 ```
 
+You can also clone the repository and build the library locally.
+
+
+
+## About this documentation
+
+The online documentation is currently iOS-specific. To generate documentation for other platforms, open the package in Xcode, select a simulator then run `Product/Build Documentation`.
+
+
 
 ## License
 
@@ -46,7 +55,7 @@ MockingKit is available under the MIT license.
 
 - <doc:Getting-Started>
 
-### Mocks
+### Foundation
 
 - ``Mock``
 - ``Mockable``
@@ -54,7 +63,9 @@ MockingKit is available under the MIT license.
 - ``MockReference``
 - ``AsyncMockReference``
 
-### Foundation Mocks
+### System Mocks
 
 - ``MockNotificationCenter``
+- ``MockPasteboard``
+- ``MockTextDocumentProxy``
 - ``MockUserDefaults``
