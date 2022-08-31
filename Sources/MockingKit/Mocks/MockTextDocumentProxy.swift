@@ -67,4 +67,3 @@ import Foundation
  */
 open class MockTextDocumentProxy: Mock {}
 #endif
-
