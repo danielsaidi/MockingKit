@@ -3,11 +3,15 @@
 
 ## 1.1.1
 
-This version adds a mock pasteboard for macOS.
+This version adds a mock pasteboard for macOS and adjusts the documentation setup.
 
 ### ✨ New Features
 
 * `MockPasteboard` now supports macOS as well.
+
+### 💡 Behavior changes
+
+* MockingKit no longer uses the DocC documentation plugin.
 
 
 ## 1.1
