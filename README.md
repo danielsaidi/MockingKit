@@ -24,7 +24,7 @@ MockingKit doesn't put any restrains on your code or require you to structure it
 
 ## Supported Platforms
 
-MockingKit supports `iOS 9`, `macOS 10.10`, `tvOS 9` and `watchOS 6`.
+MockingKit supports `iOS 13`, `macOS 10.15`, `tvOS 13` and `watchOS 6`.
 
 
 
@@ -57,7 +57,6 @@ The online documentation has a [getting-started guide][Getting-Started] that wil
 The [online documentation][Documentation] has articles, code examples etc. that let you overview the various parts of the library.
 
 The online documentation is currently iOS-specific. To generate documentation for other platforms, open the package in Xcode, select a simulator then run `Product/Build Documentation`. 
-
 
 
 

@@ -1,6 +1,16 @@
 # Release Notes
 
 
+## 1.1.2
+
+This version adds a mock pasteboard for macOS and adjusts the documentation setup.
+
+### 📦 Dependencies
+
+* MockingKit no longer uses Quick and Nimble.
+
+
+
 ## 1.1.1
 
 This version adds a mock pasteboard for macOS and adjusts the documentation setup.

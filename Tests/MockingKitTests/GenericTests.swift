@@ -6,24 +6,18 @@
 //  Copyright © 2020 Daniel Saidi. All rights reserved.
 //
 
-import Quick
-import Nimble
-@testable import MockingKit
+import Foundation
+import MockingKit
+import XCTest
 
-class GenericTests: QuickSpec {
+final class GenericTests: XCTestCase {
     
-    override func spec() {
-        
-        describe("generic mocks") {
-            
-            it("should work") {
-                let mock = GenericMock<Int>()
-                mock.doit(with: 42)
-                let call = mock.calls(to: mock.doitRef)
-                expect(call.count).to(equal(1))
-                expect(call[0].arguments).to(equal(42))
-            }
-        }
+    func testCanMockGettingArray() {
+        let mock = GenericMock<Int>()
+        mock.doit(with: 42)
+        let call = mock.calls(to: mock.doitRef)
+        XCTAssertEqual(call.count, 1)
+        XCTAssertEqual(call[0].arguments, 42)
     }
 }
 

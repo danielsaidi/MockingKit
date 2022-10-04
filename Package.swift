@@ -15,16 +15,13 @@ let package = Package(
             name: "MockingKit",
             targets: ["MockingKit"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/danielsaidi/Quick.git", branch: "main"),
-        .package(url: "https://github.com/danielsaidi/Nimble.git", branch: "main")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "MockingKit",
             dependencies: []),
         .testTarget(
             name: "MockingKitTests",
-            dependencies: ["MockingKit", "Quick", "Nimble"]),
+            dependencies: ["MockingKit"]),
     ]
 )

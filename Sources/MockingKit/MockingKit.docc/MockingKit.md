@@ -15,7 +15,7 @@ MockingKit doesn't put any restrains on your code or require you to structure it
 
 ## Supported Platforms
 
-MockingKit supports `iOS 9`, `macOS 10.10`, `tvOS 9` and `watchOS 6`.
+MockingKit supports `iOS 13`, `macOS 10.15`, `tvOS 13` and `watchOS 6`.
 
 
 
