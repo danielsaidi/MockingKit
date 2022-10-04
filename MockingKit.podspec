@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MockingKit'
-  s.version          = '1.1.1'
+  s.version          = '1.2.0'
   s.swift_versions   = ['5.6']
   s.summary          = 'MockingKit is a mocking library for Swift.'
   s.description      = 'MockingKit contains protocol mocking utilities for Swift. MockingKit makes it easy to mock protocol implementations for unit tests and to fake functionality in your Swift-based systems.'
