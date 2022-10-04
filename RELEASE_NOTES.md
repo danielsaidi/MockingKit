@@ -1,9 +1,9 @@
 # Release Notes
 
 
-## 1.1.2
+## 1.2
 
-This version adds a mock pasteboard for macOS and adjusts the documentation setup.
+This version removes all external dependencies.
 
 ### 📦 Dependencies
 
