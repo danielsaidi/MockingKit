@@ -54,6 +54,20 @@ public extension Mockable {
     }
 
     /**
+     Register a result value for a mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to register a result for.
+       - result: What to return when the function is called.
+     */
+    func registerResult<Arguments, Result>(
+        for refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>,
+        result: @escaping (Arguments) throws -> Result) {
+        let ref = self[keyPath: refKeyPath]
+        mock.registeredResults[ref.id] = result
+    }
+
+    /**
      Register a result value for an async mock reference.
 
      - Parameters:
@@ -63,6 +77,20 @@ public extension Mockable {
     func registerResult<Arguments, Result>(
         for ref: AsyncMockReference<Arguments, Result>,
         result: @escaping (Arguments) async throws -> Result) {
+        mock.registeredResults[ref.id] = result
+    }
+
+    /**
+     Register a result value for an async mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to register a result for.
+       - result: What to return when the function is called.
+     */
+    func registerResult<Arguments, Result>(
+        for refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>,
+        result: @escaping (Arguments) async throws -> Result) {
+        let ref = self[keyPath: refKeyPath]
         mock.registeredResults[ref.id] = result
     }
 }
@@ -251,6 +279,18 @@ public extension Mockable {
     }
 
     /**
+     Reset all registered calls for a mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to reset any calls for.
+     */
+    func resetCalls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>) {
+        let ref = self[keyPath: refKeyPath]
+        mock.registeredCalls[ref.id] = []
+    }
+
+    /**
      Reset all registered calls for an async mock reference.
 
      - Parameters:
@@ -258,6 +298,18 @@ public extension Mockable {
      */
     func resetCalls<Arguments, Result>(
         to ref: AsyncMockReference<Arguments, Result>) {
+        mock.registeredCalls[ref.id] = []
+    }
+
+    /**
+     Reset all registered calls for an async mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to reset any calls for.
+     */
+    func resetCalls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>) {
+        let ref = self[keyPath: refKeyPath]
         mock.registeredCalls[ref.id] = []
     }
 }
@@ -279,6 +331,18 @@ public extension Mockable {
     }
 
     /**
+     Get all calls to a certain mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func calls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>) -> [MockCall<Arguments, Result>] {
+        let ref = self[keyPath: refKeyPath]
+        return registeredCalls(for: ref)
+    }
+
+    /**
      Get all calls to a certain async mock reference.
 
      - Parameters:
@@ -288,7 +352,19 @@ public extension Mockable {
         to ref: AsyncMockReference<Arguments, Result>) -> [MockCall<Arguments, Result>] {
         registeredCalls(for: ref)
     }
-    
+
+    /**
+     Get all calls to a certain async mock reference.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func calls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>) -> [MockCall<Arguments, Result>] {
+        let ref = self[keyPath: refKeyPath]
+        return registeredCalls(for: ref)
+    }
+
     /**
      Check if a mock reference has been called.
 
@@ -301,6 +377,18 @@ public extension Mockable {
     }
 
     /**
+     Check if a mock reference has been called.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func hasCalled<Arguments, Result>(
+        _ refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>) -> Bool {
+        let ref = self[keyPath: refKeyPath]
+        return calls(to: ref).count > 0
+    }
+
+    /**
      Check if an async mock reference has been called.
 
      - Parameters:
@@ -310,7 +398,19 @@ public extension Mockable {
         _ ref: AsyncMockReference<Arguments, Result>) -> Bool {
         calls(to: ref).count > 0
     }
-    
+
+    /**
+     Check if an async mock reference has been called.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func hasCalled<Arguments, Result>(
+        _ refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>) -> Bool {
+        let ref = self[keyPath: refKeyPath]
+        return calls(to: ref).count > 0
+    }
+
     /**
      Check if a mock reference has been called.
 
@@ -327,6 +427,22 @@ public extension Mockable {
     }
 
     /**
+     Check if a mock reference has been called.
+
+     For this to return true the actual number of calls must
+     match the provided `numberOfCalls`.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func hasCalled<Arguments, Result>(
+        _ refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>,
+        numberOfTimes: Int) -> Bool {
+        let ref = self[keyPath: refKeyPath]
+        return calls(to: ref).count == numberOfTimes
+    }
+
+    /**
      Check if an async mock reference has been called.
 
      For this to return true the actual number of calls must
@@ -339,6 +455,22 @@ public extension Mockable {
         _ ref: AsyncMockReference<Arguments, Result>,
         numberOfTimes: Int) -> Bool {
         calls(to: ref).count == numberOfTimes
+    }
+
+    /**
+     Check if an async mock reference has been called.
+
+     For this to return true the actual number of calls must
+     match the provided `numberOfCalls`.
+
+     - Parameters:
+       - refKeyPath: A key path to the mock reference to check calls for.
+     */
+    func hasCalled<Arguments, Result>(
+        _ refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>,
+        numberOfTimes: Int) -> Bool {
+        let ref = self[keyPath: refKeyPath]
+        return calls(to: ref).count == numberOfTimes
     }
 }
 
