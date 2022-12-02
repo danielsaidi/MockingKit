@@ -1,6 +1,16 @@
 # Release Notes
 
 
+## 1.3
+
+This version adds support for keypaths, which makes using mocks much cleaner.
+
+### ✨ New Features
+
+* `Mockable` now supports keypaths for all functions except `call`.
+
+
+
 ## 1.2
 
 This version removes all external dependencies.
