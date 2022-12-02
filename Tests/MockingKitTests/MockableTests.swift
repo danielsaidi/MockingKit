@@ -30,8 +30,8 @@ class MockableTests: XCTestCase {
 
         mock.registerResult(for: mock.functionWithIntResultRef) { _ in 123 }
         mock.registerResult(for: mock.functionWithStringResultRef) { _ in "a string" }
-        mock.registerResult(for: mock.functionWithStructResultRef) { _ in user }
-        mock.registerResult(for: mock.functionWithClassResultRef) { _ in thing }
+        mock.registerResult(for: \.functionWithStructResultRef) { _ in user }
+        mock.registerResult(for: \.functionWithClassResultRef) { _ in thing }
 
         let intResult = mock.functionWithIntResult(arg1: "abc", arg2: 123)
         let stringResult = mock.functionWithStringResult(arg1: "abc", arg2: 123)
@@ -46,7 +46,7 @@ class MockableTests: XCTestCase {
 
     func testCanCallFunctionWithNonOptionalResultAndDifferentReturnValuesForDifferentArgumentValues() {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithStringResultRef) { arg1, _ in arg1 }
 
         let intResult = mock.functionWithIntResult(arg1: "abc", arg2: 123)
         let intResult2 = mock.functionWithIntResult(arg1: "abc", arg2: 456)
@@ -61,7 +61,7 @@ class MockableTests: XCTestCase {
 
     func testCallingFunctionWithNonOptionalResultRegistersCalls() {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithStringResultRef) { arg1, _ in arg1 }
 
         _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
         _ = mock.functionWithIntResult(arg1: "abc", arg2: 456)
@@ -104,8 +104,8 @@ class MockableTests: XCTestCase {
 
         mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _ in 123 }
         mock.registerResult(for: mock.functionWithOptionalStringResultRef) { _ in "a string" }
-        mock.registerResult(for: mock.functionWithOptionalStructResultRef) { _ in user }
-        mock.registerResult(for: mock.functionWithOptionalClassResultRef) { _ in thing }
+        mock.registerResult(for: \.functionWithOptionalStructResultRef) { _ in user }
+        mock.registerResult(for: \.functionWithOptionalClassResultRef) { _ in thing }
 
         let intResult = mock.functionWithOptionalIntResult(arg1: "abc", arg2: 123)
         let stringResult = mock.functionWithOptionalStringResult(arg1: "abc", arg2: 123)
@@ -120,7 +120,7 @@ class MockableTests: XCTestCase {
 
     func testCallingFunctionWithOptionalResultCanRegisterDifferentReturnValuesForDifferentArgumentValues() {
         mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
 
         let intResult = mock.functionWithOptionalIntResult(arg1: "abc", arg2: 123)
         let int2Result = mock.functionWithOptionalIntResult(arg1: "abc", arg2: 456)
@@ -132,9 +132,10 @@ class MockableTests: XCTestCase {
         XCTAssertEqual(stringResult, "abc")
         XCTAssertEqual(string2Result, "def")
     }
+
     func testCallingFunctionWithOptionalResultRegistersCalls() {
         mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
 
         _ = mock.functionWithOptionalIntResult(arg1: "abc", arg2: 123)
         _ = mock.functionWithOptionalIntResult(arg1: "abc", arg2: 456)
@@ -143,7 +144,7 @@ class MockableTests: XCTestCase {
         _ = mock.functionWithOptionalStringResult(arg1: "def", arg2: 123)
 
         let intCalls = mock.calls(to: mock.functionWithOptionalIntResultRef)
-        let strCalls = mock.calls(to: mock.functionWithOptionalStringResultRef)
+        let strCalls = mock.calls(to: \.functionWithOptionalStringResultRef)
 
         XCTAssertEqual(intCalls.count, 3)
         XCTAssertEqual(strCalls.count, 2)
@@ -160,19 +161,19 @@ class MockableTests: XCTestCase {
     }
 
     func testCallingFunctionWithFallbackReturnsDefaultValueIfNoValueIsRegistered() {
-        let intResult = mock.call(self.mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)
-        let stringResult = mock.call(self.mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")
+        let intResult = mock.call(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)
+        let stringResult = mock.call(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")
 
         XCTAssertEqual(intResult, 456)
         XCTAssertEqual(stringResult, "def")
     }
 
     func testCallingFunctionWithFallbackReturnsRegisteredValueIfAValueIsRegistered() {
-        mock.registerResult(for: self.mock.functionWithIntResultRef) { _ in 123 }
-        mock.registerResult(for: self.mock.functionWithStringResultRef) { _ in "a string" }
+        mock.registerResult(for: mock.functionWithIntResultRef) { _ in 123 }
+        mock.registerResult(for: \.functionWithStringResultRef) { _ in "a string" }
 
-        let intResult = mock.call(self.mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)
-        let stringResult = mock.call(self.mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")
+        let intResult = mock.call(mock.functionWithIntResultRef, args: ("abc", 123), fallback: 456)
+        let stringResult = mock.call(mock.functionWithStringResultRef, args: ("abc", 123), fallback: "def")
 
         XCTAssertEqual(intResult, 123)
         XCTAssertEqual(stringResult, "a string")
@@ -184,7 +185,7 @@ class MockableTests: XCTestCase {
 
     func testCallingFunctionWithVoidResultRegistersCalls() {
         mock.registerResult(for: mock.functionWithOptionalIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithOptionalStringResultRef) { arg1, _ in arg1 }
 
         mock.functionWithVoidResult(arg1: "abc", arg2: 123)
         mock.functionWithVoidResult(arg1: "abc", arg2: 456)
@@ -208,50 +209,52 @@ class MockableTests: XCTestCase {
         mock.functionWithVoidResult(arg1: "abc", arg2: 789)
 
         let calls = mock.calls(to: mock.functionWithVoidResultRef)
+        let callsKeypath = mock.calls(to: \.functionWithVoidResultRef)
 
         XCTAssertEqual(calls.count, 3)
+        XCTAssertEqual(callsKeypath.count, 3)
     }
 
     func testInspectingCalls_canVerifyIfAtLeastOneCallHasBeenMade() {
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithVoidResultRef))
+        XCTAssertFalse(mock.hasCalled(mock.functionWithVoidResultRef))
         mock.functionWithVoidResult(arg1: "abc", arg2: 123)
-        XCTAssertTrue(self.mock.hasCalled(self.mock.functionWithVoidResultRef))
+        XCTAssertTrue(mock.hasCalled(\.functionWithVoidResultRef))
         mock.functionWithVoidResult(arg1: "abc", arg2: 456)
-        XCTAssertTrue(self.mock.hasCalled(self.mock.functionWithVoidResultRef))
+        XCTAssertTrue(mock.hasCalled(mock.functionWithVoidResultRef))
     }
 
     func testInspectingCalls_CanVerifyIfAnExactNumberOrCallsHaveBeenMade() {
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithVoidResultRef, numberOfTimes: 2))
+        XCTAssertFalse(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2))
         mock.functionWithVoidResult(arg1: "abc", arg2: 123)
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithVoidResultRef, numberOfTimes: 2))
+        XCTAssertFalse(mock.hasCalled(\.functionWithVoidResultRef, numberOfTimes: 2))
         mock.functionWithVoidResult(arg1: "abc", arg2: 456)
-        XCTAssertTrue(self.mock.hasCalled(self.mock.functionWithVoidResultRef, numberOfTimes: 2))
+        XCTAssertTrue(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2))
     }
 
     func testResettingCalls_CanResetAllCalls() {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithStringResultRef) { arg1, _ in arg1 }
 
         _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
         _ = mock.functionWithStringResult(arg1: "abc", arg2: 123)
 
         mock.resetCalls()
 
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithIntResultRef))
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithStringResultRef))
+        XCTAssertFalse(mock.hasCalled(mock.functionWithIntResultRef))
+        XCTAssertFalse(mock.hasCalled(\.functionWithStringResultRef))
     }
 
     func testResettingCalls_canResetAllCallsForACertainFunction() {
         mock.registerResult(for: mock.functionWithIntResultRef) { _, arg2 in arg2 }
-        mock.registerResult(for: mock.functionWithStringResultRef) { arg1, _ in arg1 }
+        mock.registerResult(for: \.functionWithStringResultRef) { arg1, _ in arg1 }
 
         _ = mock.functionWithIntResult(arg1: "abc", arg2: 123)
         _ = mock.functionWithStringResult(arg1: "abc", arg2: 123)
 
         mock.resetCalls(to: mock.functionWithIntResultRef)
 
-        XCTAssertFalse(self.mock.hasCalled(self.mock.functionWithIntResultRef))
-        XCTAssertTrue(self.mock.hasCalled(self.mock.functionWithStringResultRef))
+        XCTAssertFalse(mock.hasCalled(mock.functionWithIntResultRef))
+        XCTAssertTrue(mock.hasCalled(\.functionWithStringResultRef))
     }
 }
 
