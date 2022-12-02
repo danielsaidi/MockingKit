@@ -3,7 +3,7 @@
 
 ## 1.3
 
-This version adds support for keypaths, which makes using mocks much cleaner.
+Thanks to [Tim Andersson](https://github.com/Boerworz) and the people at BookBeat, MockingKit now supports keypaths.
 
 ### ✨ New Features
 
