@@ -34,7 +34,7 @@ You can now create a mock implementation of the protocol by creating a class tha
 ```swift
 class MyMock: Mock, MyProtocol {
 
-    // You have to define a lazy reference for each function you want to use
+    // You have to define a lazy reference for each function you want to mock
     lazy var doStuffRef = MockReference(doStuff)
 
     // Functions must then call the reference to be recorded
@@ -77,7 +77,7 @@ mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
 // Calling doStuff will now return the pre-registered result
 let result = mock.doStuff(int: 42, string: "string")    // => "gnirts"
 
-// You can then inspect all calls that made to doStuff
+// You can now inspect calls made to doStuff
 let calls = mock.calls(to: mock.doStuffRef)             // => 1 item
 calls[0].arguments.0                                    // => 42
 calls[0].arguments.1                                    // => "string"
@@ -99,7 +99,7 @@ mock.registerResult(for: \.doStuffRef) { args in String(args.1.reversed()) }
 // Calling doStuff will now return the pre-registered result
 let result = mock.doStuff(int: 42, string: "string")    // => "gnirts"
 
-// You can then inspect all calls that made to doStuff
+// You can now inspect calls made to doStuff
 let calls = mock.calls(to: \.doStuffRef)                // => 1 item
 calls[0].arguments.0                                    // => 42
 calls[0].arguments.1                                    // => "string"

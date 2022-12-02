@@ -16,9 +16,9 @@
 
 MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes, for instance when unit testing or mocking not yet implemented functionality.
 
-MockingKit lets you `register` function results, `call` functions and `inspect` the recorded calls.
+MockingKit lets you `register` function results, `call` functions and `inspect` recorded calls.
 
-MockingKit doesn't put any restrains on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
+MockingKit doesn't put any restrictions on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
 
 
 
@@ -48,7 +48,49 @@ You can also clone the repository and build the library locally.
 
 ## Getting started
 
-The online documentation has a [getting-started guide][Getting-Started] that will help you get started with the library.
+In short, MockingKit lets you mock any protocols and classes:
+
+```swift
+protocol MyProtocol {
+
+    func doStuff(int: Int, string: String) -> String
+}
+
+class MyMock: Mock, MyProtocol {
+
+    // You have to define a lazy reference for each function you want to mock
+    lazy var doStuffRef = MockReference(doStuff)
+
+    // Functions must then call the reference to be recorded
+    func doStuff(int: Int, string: String) -> String {
+        call(doStuffRef, args: (int, string))
+    }
+}
+```
+
+You can then use the mock to `register` function results, `call` functions and `inspect` recorded calls.
+
+```swift
+// Create a mock
+let mock = MyMock()
+
+// Register a doStuff result
+mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
+
+// Calling doStuff will now return the pre-registered result
+let result = mock.doStuff(int: 42, string: "string") // => "gnirts"
+
+// You can now inspect calls made to doStuff
+let calls = mock.calls(to: mock.doStuffRef)          // => 1 item
+calls[0].arguments.0                                 // => 42
+calls[0].arguments.1                                 // => "string"
+calls[0].result                                      // => "gnirts"
+mock.hasCalled(\.doStuffRef)                         // => true
+mock.hasCalled(\.doStuffRef, numberOfTimes: 1)       // => true
+mock.hasCalled(\.doStuffRef, numberOfTimes: 2)       // => false
+```
+
+The online documentation has a more thorough [getting-started guide][Getting-Started] that will help you get started with the library. 
 
 
 
