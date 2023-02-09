@@ -1,21 +1,18 @@
 # ``MockingKit``
 
-MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes, for instance when unit testing or mocking not yet implemented functionality.
+MockingKit lets you mock protocols and classes in `Swift`.
+
 
 
 ## Overview
 
 ![MockingKit logo](Logo.png)
 
-MockingKit lets you `register` function results, `call` functions and `inspect` recorded calls.
+Mockinging is useful when unit testing, or to fake functionality that is not yet implemented.
 
-MockingKit doesn't put any restrictions on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
+MockingKit lets you create mocks of any protocol or open class, after which you can `call` functions, `register` results, `record` method invocations, and `inspect` recorded calls.
 
-
-
-## Supported Platforms
-
-MockingKit supports `iOS 13`, `macOS 10.15`, `tvOS 13` and `watchOS 6`.
+MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock and you're good to go.
 
 
 
@@ -27,25 +24,25 @@ MockingKit can be installed with the Swift Package Manager:
 https://github.com/danielsaidi/MockingKit.git
 ```
 
-or with CocoaPods:
-
-```
-pod MockingKit
-```
-
-You can also clone the repository and build the library locally.
+If you prefer to not have external dependencies, you can also just copy the source code into your app.
 
 
 
-## About this documentation
+## Getting started
 
-The online documentation is currently iOS-specific. To generate documentation for other platforms, open the package in Xcode, select a simulator then run `Product/Build Documentation`.
+The <doc:Getting-Started> article helps you get started with ApiKit.
+
+
+
+## Repository
+
+For more information, source code, etc., visit the [project repository][Repository].
 
 
 
 ## License
 
-MockingKit is available under the MIT license.
+ApiKit is available under the MIT license. See the [LICENSE][License] file for more info.
 
 
 
@@ -69,3 +66,8 @@ MockingKit is available under the MIT license.
 - ``MockPasteboard``
 - ``MockTextDocumentProxy``
 - ``MockUserDefaults``
+
+
+
+[License]: https://github.com/danielsaidi/MockingKit/blob/master/LICENSE
+[Repository]: https://github.com/danielsaidi/MockingKit

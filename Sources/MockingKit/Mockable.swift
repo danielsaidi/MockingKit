@@ -9,24 +9,21 @@
 import Foundation
 
 /**
- This protocol can be implemented by any type that should be
- used as a mock, e.g. when unit testing.
+ This protocol can be implemented when creating a mock class
+ that has to inherit another class.
  
- To implement the protocol, just provide a ``mock`` property:
+ To implement this protocol, just inherit the base class and
+ this protocol, then provide a ``mock`` property:
  
  ```
- class MyMock: Mockable {
+ class MyMock: BaseClass, Mockable {
  
      let mock = Mock()
  }
  ```
  
- You can then use it to register function results, call mock
- functions (which are recorded) and inspect function calls.
- 
- Only implement the protocol when you can't inherit ``Mock``,
- e.g. when mocking structs or when a mock class must inherit
- a base class, e.g. when mocking classes like `UserDefaults`.
+ Inherit ``Mock`` instead of implementing this protocol when
+ possible. It saves you a little code for each mock you make.
 */
 public protocol Mockable {
     

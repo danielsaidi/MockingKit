@@ -10,7 +10,7 @@
 import UIKit
 
 /**
- This class can be used as a mocked `UITextDocumentProxy`.
+ This class can be used to mock `UITextDocumentProxy`.
 
  This class mocks many functions, but not all. If you miss a
  certain function, you can subclass this class and mock more

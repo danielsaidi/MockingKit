@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class can be used as a mocked `NotificationCenter`.
+ This class can be used to mock `NotificationCenter`.
  */
 open class MockNotificationCenter: NotificationCenter, Mockable {
     

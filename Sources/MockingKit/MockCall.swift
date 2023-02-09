@@ -10,10 +10,9 @@ import Foundation
 
 /**
  This struct represents a "recorded" mock function call with
- information about the provided ``arguments`` and ``result``,
- if any.
+ information about the provided ``arguments`` and ``result``.
  
- Functions that don't return anything have a `Void` result.
+ A function that doesn't return anything has a `Void` result.
 */
 public struct MockCall<Arguments, Result>: AnyCall {
     

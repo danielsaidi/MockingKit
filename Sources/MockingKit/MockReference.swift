@@ -9,8 +9,7 @@
 import Foundation
 
 /**
- This struct can be used to create a mock function reference
- for non-async functions.
+ This struct can be used to create a mock function reference.
 
  Mock function references get unique IDs, which means that a
  mock reference instance can be uniquely identifier.

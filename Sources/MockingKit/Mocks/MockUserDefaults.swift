@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class can be used as a mocked `UserDefaults`.
+ This class can be used to mock `UserDefaults`.
  */
 open class MockUserDefaults: UserDefaults, Mockable {
     

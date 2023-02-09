@@ -9,15 +9,14 @@
 import Foundation
 
 /**
- This class can be inherited any classes that should be used
- as mock implementation, e.g. when unit testing.
+ This class can be inherited when creating a mock class that
+ doesn't have to inherit another class.
  
- The class implements `Mockable` by using itself as ``mock``.
- Use it instead of implementing `Mockable` whenever possible,
- since it saves you a little code for each mock.
+ The class implements the ``Mockable`` protocol by returning
+ self as the ``mock`` property value.
  
- See ``Mockable`` for information about what a mockable type
- can do.
+ Inherit the class instead of implementing ``Mockable`` when
+ possible. It saves you a little code for each mock you make.
  */
 open class Mock: Mockable {
     

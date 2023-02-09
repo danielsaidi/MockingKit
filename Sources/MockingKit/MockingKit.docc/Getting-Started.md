@@ -5,12 +5,13 @@ This article describes how you get started with MockingKit.
 
 ## Terminology
 
-Before we continue, let's clarify some terms and what they mean.
+Before we continue, let's clarify some terms:
 
-* `Mocking` is to replace functionality with a configurable and inspectable replacement, for instance when writing unit tests. 
-* `Registration` is to register a dynamic return value for a mock function, based on its input arguments.
-* `Call` is to call a mock function in a way that records how many times it has been called, with which arguments, its result etc.
-* `Inspection` is to look at recorded calls, e.g. to verify that a function has been called as expected, with expected arguments etc.
+* `Mock` is a simulated object that mimic the behaviour of real objects in controlled ways. 
+* `Mocking` is to use configurable and inspectable functionality, for instance in unit tests. 
+* `Registration` is to register return values for a mock function, based on its input arguments.
+* `Call/Invoke` is to call a function in a way that records the call, its arguments, the result, etc.
+* `Inspection` is to inspect the recorded calls, e.g. to verify that a function has been called, with what arguments, etc.
 
 Let's have a look at how this works in MockingKit.
 
@@ -18,23 +19,25 @@ Let's have a look at how this works in MockingKit.
 
 ## Creating a mock
 
-MockingKit can be used to mock any protocol or class, for instance when unit testing or to fake not yet implemented functionality.
+MockingKit lets you create mocks of any protocol or open class, after which you can `call` functions, `register` results, `record` method invocations, and `inspect` recorded calls.
 
-For instance, say that you have this protocol:
+For instance, consider this simple protocol:
 
 ```swift
-protocol MyProtocol {
+protocol MyProtocol {
 
     func doStuff(int: Int, string: String) -> String
 }
 ```
 
-You can now create a mock implementation of the protocol by creating a class that inherits the ``Mock`` class and implements `MyProtocol`:
+With MockingKit, you can easily create a mock implementation of this protocol: 
 
 ```swift
-class MyMock: Mock, MyProtocol {
+import MockingKit
 
-    // You have to define a lazy reference for each function you want to mock
+class MyMock: Mock, MyProtocol {
+
+    // Define a lazy reference for each function you want to mock
     lazy var doStuffRef = MockReference(doStuff)
 
     // Functions must then call the reference to be recorded
@@ -44,28 +47,29 @@ class MyMock: Mock, MyProtocol {
 }
 ```
 
-If you can't inherit ``Mock``, e.g. when mocking structs or inheriting another class like `NotificationCenter`, you can implement the ``Mockable`` protocol instead.
-
-``Mockable`` works just like ``Mock``, but requires that you provide a ``Mockable/mock`` property: 
+To mock a class, you just have to subclass the class and implement the ``Mockable`` protocol:
 
 ```swift
-class MyMock: MyBaseClass, Mockable, MyProtocol {
+import MockingKit
 
-    let mock = Mock()
-    
-    // ... the rest is the same. `Mock` just saves you one line of code :)
+class MockUserDefaults: UserDefaults, Mockable {
+
+    // You must provide a mock when implementing Mockable
+    var mock = Mock()
+
+    // You can now create lazy references just like in the protocol mock above
 }
 ```
 
 ``Mock`` is actually just a ``Mockable`` that returns itself as the ``Mockable/mock``.
 
-With the mock in place, you can use it to mock functionality in your unit tests or app.
+With a mock in place, you can now start mocking functionality in your unit tests or app.
 
 
 
 ## Using the mock  
 
-You can now use the mock to register function results, call functions and inspect calls:
+You can now use the mock to `register` function results, `call` functions and `inspect` recorded calls.
 
 ```swift
 // Create a mock
@@ -87,7 +91,7 @@ mock.hasCalled(mock.doStuffRef, numberOfTimes: 1)       // => true
 mock.hasCalled(mock.doStuffRef, numberOfTimes: 2)       // => false
 ```
 
-For more compact code, you can use keypaths to avoid having to specify the mock twice:
+For more compact code, you can use keypaths:
 
 ```swift
 // Create a mock
@@ -109,23 +113,25 @@ mock.hasCalled(\.doStuffRef, numberOfTimes: 1)          // => true
 mock.hasCalled(\.doStuffRef, numberOfTimes: 2)          // => false
 ```
 
-This lets you provide mock implementations instead of real ones when unit testing your code. You can configure the mock in any way you want to change the behavior of your tests, call the mock instead of a real implementation (e.g. a network service, a database etc.) and then inspect the mock to ensure that your code calls the mock as you expect it to.
+You can configure the mock in any way you want to change the behavior of your tests at any time, call the mock instead of a real implementation (e.g. a network service, a database etc.), and inspect the mock to ensure that your code calls it as expected.
 
 
 
 ## Important about registering mock function return values
 
-If a function's return value is non-optional, you must register a return value before calling the function. Calling the function before registering a return value will cause a runtime crash.
+There are some things to consider regarding function return values:
 
-If a function's return value is optional, it's also optional to register a return value before calling the function. Calling the function before registering a return value will just return `nil`.
+* If a function return value is non-optional, you must register a return value before calling the function. Calling it before registering a return value will cause a crash.
+* If a function return value is optional, registering a return value is optional. Calling the function before registering a return value will just return nil and not crash.
 
+You can register new return values at any time, for instance to try many different variations within the same test.
 
 
 ## Multiple function arguments
 
-If a mocked function has multiple arguments, inspection behaves a little different, since arguments are handled as tuples.
+Since mock arguments are handled as tuples, inspection behaves a bit different if a mocked function has multiple arguments.
 
-Say that we have a protocol that looks like this:
+For instance, consider a protocol that looks like this:
 
 ```swift
 protocol MyProtocol {
@@ -147,7 +153,7 @@ class MyMock: Mock, MyProtocol {
 }
 ```
 
-Since function arguments are handled as tuples, you must then use tuple positions to inspect arguments:
+Since arguments are handled as tuples, you must then use tuple positions to inspect them:
 
 ```swift
 let mock = MyMock()
@@ -164,7 +170,9 @@ There is no upper-limit to the number of function arguments you can use in a moc
 
 ## Multiple functions with the same name
 
-Consider a case where a mock has multiple methods with the same name:
+Mock references require some extra considerations when a mock has multiple functions with the same name.
+
+For instance, consider a protocol that looks like this:
 
 ```swift
 protocol MyProtocol {
@@ -174,7 +182,7 @@ protocol MyProtocol {
 }
 ```
 
-You must then specify the function signature when creating a mock reference:
+You must then specify the function signature when creating the mock references:
 
 ```swift
 class MyMock: Mock, MyProtocol {
@@ -192,15 +200,15 @@ class MyMock: Mock, MyProtocol {
 }
 ```
 
-This gives you a unique references for each unique function.
+This gives you a unique references for every unique function.
 
 
 
 ## Properties
 
-Properties can't currently be mocked with MockingKit, since the reference model requires a function. 
+Properties can't currently be mocked, since the reference model requires a function. 
 
-If you want to inspect how a property is called, you can invoke custom function references in the mock's getter and/or setter.
+If you want to mock properties, you can invoke custom function references in the mock's getter and/or setter.
 
 
 
@@ -214,14 +222,8 @@ Mocking `async` functions works exactly like mocking non-async functions. No add
 
 ## Completion blocks
 
-Functions with completion blocks are just `Void` return functions where the completion block is just arguments like any others.
+Functions with completion blocks are just `Void` functions where the completion block is just an argument.
 
 Mocking these kind of functions works exactly like mocking any other functions. No additional code is required. 
 
-You must however manually call the completions from within your mocks if you want them to trigger.
-
-
-
-## Conclusion
-
-That's about it. Enjoy using this library to mock functionality in Swift!
+You must however manually call the completion from within your mock, if you want them to trigger.

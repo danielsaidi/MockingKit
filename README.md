@@ -1,30 +1,24 @@
 <p align="center">
-    <img src ="Resources/Logo.png" alt="MockingKit Logo" title="MockingKit" width=600 />
+    <img src ="Resources/Logo_GitHub.png" alt="MockingKit Logo" title="MockingKit" />
 </p>
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/danielsaidi/MockingKit?color=%2300550&sort=semver" alt="Version" />
-    <img src="https://img.shields.io/badge/Swift-5.6-orange.svg" alt="Swift 5.6" />
+    <img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift 5.9" />
+    <img src="https://img.shields.io/badge/platform-SwiftUI-blue.svg" alt="Swift UI" title="Swift UI" />
     <img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" />
-    <a href="https://twitter.com/danielsaidi">
-        <img src="https://img.shields.io/badge/contact-@danielsaidi-blue.svg?style=flat" alt="Twitter: @danielsaidi" />
-    </a>
+    <a href="https://twitter.com/danielsaidi"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fdanielsaidi" alt="Twitter: @danielsaidi" title="Twitter: @danielsaidi" /></a>
+    <a href="https://mastodon.social/@danielsaidi"><img src="https://img.shields.io/mastodon/follow/000253346?label=mastodon&style=social" alt="Mastodon: @danielsaidi@mastodon.social" title="Mastodon: @danielsaidi@mastodon.social" /></a>
 </p>
 
 
 ## About MockingKit
 
-MockingKit is a Swift-based mocking library that makes it easy to mock protocols and classes, for instance when unit testing or mocking not yet implemented functionality.
+MockingKit lets you mock protocols and classes in `Swift`. This is useful when unit testing, or to fake functionality that is not yet implemented.
 
-MockingKit lets you `register` function results, `call` functions and `inspect` recorded calls.
+MockingKit lets you create mocks of any protocol or open class, after which you can `call` functions, `register` results, `record` method invocations, and `inspect` recorded calls.
 
-MockingKit doesn't put any restrictions on your code or require you to structure it in any way. You don't need any setup or configuration. Just create a mock and you're good to go.
-
-
-
-## Supported Platforms
-
-MockingKit supports `iOS 13`, `macOS 10.15`, `tvOS 13` and `watchOS 6`.
+MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock and you're good to go.
 
 
 
@@ -36,29 +30,31 @@ MockingKit can be installed with the Swift Package Manager:
 https://github.com/danielsaidi/MockingKit.git
 ```
 
-or with CocoaPods:
-
-```
-pod MockingKit
-```
-
-You can also clone the repository and build the library locally.
+If you prefer to not have external dependencies, you can also just copy the source code into your app.
 
 
 
 ## Getting started
 
-In short, MockingKit lets you mock any protocols and classes:
+MockingKit lets you create mocks of any protocol or open class.
+
+For instance, consider this simple protocol:
 
 ```swift
 protocol MyProtocol {
 
     func doStuff(int: Int, string: String) -> String
 }
+```
+
+With MockingKit, you can easily create a mock implementation of this protocol: 
+
+```swift
+import MockingKit
 
 class MyMock: Mock, MyProtocol {
 
-    // You have to define a lazy reference for each function you want to mock
+    // Define a lazy reference for each function you want to mock
     lazy var doStuffRef = MockReference(doStuff)
 
     // Functions must then call the reference to be recorded
@@ -68,20 +64,20 @@ class MyMock: Mock, MyProtocol {
 }
 ```
 
-You can then use the mock to `register` function results, `call` functions and `inspect` recorded calls.
+You can now use the mock to `register` function results, `call` functions and `inspect` recorded calls.
 
 ```swift
-// Create a mock
+// Create a mock instance
 let mock = MyMock()
 
-// Register a doStuff result
+// Register a result to be returned by doStuff
 mock.registerResult(for: mock.doStuffRef) { args in String(args.1.reversed()) }
 
 // Calling doStuff will now return the pre-registered result
 let result = mock.doStuff(int: 42, string: "string") // => "gnirts"
 
 // You can now inspect calls made to doStuff
-let calls = mock.calls(to: mock.doStuffRef)          // => 1 item
+let calls = mock.calls(to: \.doStuffRef)             // => 1 item
 calls[0].arguments.0                                 // => 42
 calls[0].arguments.1                                 // => "string"
 calls[0].result                                      // => "gnirts"
@@ -90,27 +86,39 @@ mock.hasCalled(\.doStuffRef, numberOfTimes: 1)       // => true
 mock.hasCalled(\.doStuffRef, numberOfTimes: 2)       // => false
 ```
 
-The online documentation has a more thorough [getting-started guide][Getting-Started] that will help you get started with the library. 
+To mock a class, you just have to subclass the class and implement the `Mockable` protocol:
+
+```swift
+import MockingKit
+
+class MockUserDefaults: UserDefaults, Mockable {
+
+    // You must provide a mock when implementing Mockable
+    var mock = Mock()
+
+    // You can now create lazy references just like in the protocol mock above
+}
+```
+
+For more information, please see the [getting started guide][Getting-Started].
 
 
 
 ## Documentation
 
-The [online documentation][Documentation] has articles, code examples etc. that let you overview the various parts of the library.
-
-The online documentation is currently iOS-specific. To generate documentation for other platforms, open the package in Xcode, select a simulator then run `Product/Build Documentation`. 
+The [online documentation][Documentation] has more information, code examples, etc. 
 
 
 
 ## Demo Application
 
-This project contains a demo app that lets you explore MockingKit on iOS and macOS. To run it, just open and run `Demo/Demo.xcodeproj`.
+The demo app lets you explore the library on iOS and macOS. To try it out, just open and run the `Demo` project.
 
 
 
-## Support
+## Support my work 
 
-You can sponsor this project on [GitHub Sponsors][Sponsors] or get in touch for paid support. 
+You can [sponsor me][Sponsors] on GitHub Sponsors or [reach out][Email] for paid support, to help support my [open-source projects][GitHub].
 
 
 
@@ -118,9 +126,10 @@ You can sponsor this project on [GitHub Sponsors][Sponsors] or get in touch for 
 
 Feel free to reach out if you have questions or if you want to contribute in any way:
 
-* E-mail: [daniel.saidi@gmail.com][Email]
+* Website: [danielsaidi.com][Website]
+* Mastodon: [@danielsaidi@mastodon.social][Mastodon]
 * Twitter: [@danielsaidi][Twitter]
-* Web site: [danielsaidi.com][Website]
+* E-mail: [daniel.saidi@gmail.com][Email]
 
 
 
@@ -131,8 +140,10 @@ MockingKit is available under the MIT license. See the [LICENSE][License] file f
 
 
 [Email]: mailto:daniel.saidi@gmail.com
-[Twitter]: http://www.twitter.com/danielsaidi
-[Website]: http://www.danielsaidi.com
+[Website]: https://www.danielsaidi.com
+[GitHub]: https://www.github.com/danielsaidi
+[Twitter]: https://www.twitter.com/danielsaidi
+[Mastodon]: https://mastodon.social/@danielsaidi
 [Sponsors]: https://github.com/sponsors/danielsaidi
 
 [Documentation]: https://danielsaidi.github.io/MockingKit/documentation/mockingkit/
