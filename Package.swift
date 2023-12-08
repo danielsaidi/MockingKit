@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.9
 
 import PackageDescription
 
@@ -13,15 +13,18 @@ let package = Package(
     products: [
         .library(
             name: "MockingKit",
-            targets: ["MockingKit"]),
+            targets: ["MockingKit"]
+        )
     ],
     dependencies: [],
     targets: [
         .target(
             name: "MockingKit",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "MockingKitTests",
-            dependencies: ["MockingKit"]),
+            dependencies: ["MockingKit"]
+        )
     ]
 )
