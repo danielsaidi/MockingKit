@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.4
+
+This version bumps Swift to 5.9.
+
+
+
 ## 1.3
 
 Thanks to [Tim Andersson](https://github.com/Boerworz) and the people at BookBeat, MockingKit now supports keypaths.
