@@ -3,7 +3,7 @@
 //  MockingKit
 //
 //  Created by Tobias Boogh on 2022-05-04.
-//  Copyright © 2022 Daniel Saidi. All rights reserved.
+//  Copyright © 2022-2024 Daniel Saidi. All rights reserved.
 //
 
 import XCTest
