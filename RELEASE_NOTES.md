@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.4.1
+
+The package now supports visionOS.
+
+
+
 ## 1.4
 
 This version bumps Swift to 5.9.
