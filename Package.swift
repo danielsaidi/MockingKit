@@ -21,7 +21,9 @@ let package = Package(
     targets: [
         .target(
             name: "MockingKit",
-            dependencies: []
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
         ),
         .testTarget(
             name: "MockingKitTests",

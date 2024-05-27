@@ -1,9 +1,15 @@
 # Release Notes
 
 
+## 1.4.2
+
+This version adds support for strict concurrency.
+
+
+
 ## 1.4.1
 
-The package now supports visionOS.
+This version adds support for visionOS.
 
 
 
