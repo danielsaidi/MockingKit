@@ -8,16 +8,14 @@
 
 import Foundation
 
-/**
- This class can be inherited when creating a mock class that
- doesn't have to inherit another class.
- 
- The class implements the ``Mockable`` protocol by returning
- self as the ``mock`` property value.
- 
- Inherit the class instead of implementing ``Mockable`` when
- possible. It saves you a little code for each mock you make.
- */
+/// This class can be inherited when you want to create mock
+/// classes that don't have to inherit any other classes.
+///
+/// The class implements ``Mockable`` by returning `self` as
+/// the ``mock`` property.
+///
+/// Inherit this type instead of implementing the ``Mockable``
+/// protocol, to save some code for every mock you create.
 open class Mock: Mockable {
     
     public init() {}

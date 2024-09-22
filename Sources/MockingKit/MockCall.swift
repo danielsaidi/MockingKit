@@ -8,20 +8,16 @@
 
 import Foundation
 
-/**
- This struct represents a "recorded" mock function call with
- information about the provided ``arguments`` and ``result``.
- 
- A function that doesn't return anything has a `Void` result.
-*/
+/// This struct represents function calls, with the provided
+/// ``arguments`` and the returned ``result``.
+///
+/// Function that don't return anything have a `Void` result.
 public struct MockCall<Arguments, Result>: AnyCall {
     
     public let arguments: Arguments
     public let result: Result?
 }
 
-/**
- This protocol represents any kind of mock function call. It
- is used to type erase the generic `MockCall`.
- */
+/// This protocol represents any kind of mock function call.
+/// It's used to type erase the generic `MockCall`.
 public protocol AnyCall {}

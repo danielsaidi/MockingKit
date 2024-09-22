@@ -9,12 +9,10 @@
 #if os(iOS)
 import UIKit
 
-/**
- This class can be used to mock `UIPasteboard`.
-
- The mock only mocks `setData(_:forPasteboardType:)` for now,
- but you can subclass this class and mock more functionality.
- */
+/// This class can be used to mock `UIPasteboard`.
+///
+/// This mock only mocks `setData(_:forPasteboardType:)` for
+/// now, but you can subclass it and mock more functionality.
 open class MockPasteboard: UIPasteboard, Mockable {
     
     public lazy var setDataRef = MockReference(setData)

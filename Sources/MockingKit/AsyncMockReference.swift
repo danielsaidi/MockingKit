@@ -8,12 +8,10 @@
 
 import Foundation
 
-/**
- This struct can be used to create async function references.
-
- Mock function references get unique IDs, which means that a
- mock reference instance can be uniquely identifier.
- */
+/// This type can be used to create mock function references.
+///
+/// Function references get unique IDs, which means that the
+/// mock reference instance can be uniquely identified.
 public struct AsyncMockReference<Arguments, Result>: Identifiable {
 
     public init(_ function: @escaping (Arguments) async throws -> Result) {

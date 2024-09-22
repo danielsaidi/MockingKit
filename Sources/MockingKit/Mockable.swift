@@ -8,23 +8,20 @@
 
 import Foundation
 
-/**
- This protocol can be implemented when creating a mock class
- that has to inherit another class.
- 
- To implement this protocol, just inherit the base class and
- this protocol, then provide a ``mock`` property:
- 
- ```
- class MyMock: BaseClass, Mockable {
- 
-     let mock = Mock()
- }
- ```
- 
- Inherit ``Mock`` instead of implementing this protocol when
- possible. It saves you a little code for each mock you make.
-*/
+/// This class can be inherited when you want to create mock
+/// classes that have to inherit other classes.
+///
+/// To implement this protocol, just inherit your base class
+/// and provide a ``mock`` property:
+///
+/// ```
+/// class MyMock: BaseClass, Mockable {
+///     let mock = Mock()
+/// }
+/// ```
+///
+/// Implement this protocol instead of inheriting the ``Mock``
+/// base class, to save some code for every mock you create.
 public protocol Mockable {
     
     typealias Function = Any

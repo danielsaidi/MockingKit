@@ -9,13 +9,10 @@
 #if os(iOS)
 import UIKit
 
-/**
- This class can be used to mock `UITextDocumentProxy`.
-
- This class mocks many functions, but not all. If you miss a
- certain function, you can subclass this class and mock more
- functionality in the subclass.
- */
+/// This class can be used to mock `UITextDocumentProxy`.
+///
+/// This class mocks many functions, but not everything. You
+/// can subclass it and mock more functions in your subclass.
 open class MockTextDocumentProxy: NSObject, UITextDocumentProxy, Mockable {
     
     public lazy var adjustTextPositionRef = MockReference(adjustTextPosition)

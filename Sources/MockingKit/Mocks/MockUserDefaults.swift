@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- This class can be used to mock `UserDefaults`.
- */
+/// This class can be used to mock `UserDefaults`.
 open class MockUserDefaults: UserDefaults, Mockable {
     
     public lazy var boolRef = MockReference(bool)

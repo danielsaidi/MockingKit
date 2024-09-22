@@ -10,19 +10,14 @@ import Foundation
 
 public extension Mockable {
 
-    /**
-     Call a mock reference with `non-optional` result.
-
-     This will return any pre-registered result, or crash if
-     no result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-    */
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result, or crash
+    /// if no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
@@ -46,19 +41,14 @@ public extension Mockable {
         return result
     }
 
-    /**
-     Call an async mock reference with `non-optional` result.
-
-     This will return any pre-registered result, or crash if
-     no result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-    */
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result, or crash
+    /// if no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result>,
         args: Arguments,
@@ -82,20 +72,15 @@ public extension Mockable {
         return result
     }
 
-    /**
-     Call a mock reference with `non-optional` result.
-
-     This will return a pre-registered result or a `fallback`
-     value if no result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-       - fallback: The value to return if no result has been registered.
-    */
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result or return
+    /// a `fallback` value if no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    ///   - fallback: The value to return if no result has been registered.
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result>,
         args: Arguments,
@@ -106,20 +91,15 @@ public extension Mockable {
         return result
     }
 
-    /**
-     Call an async mock reference with `non-optional` result.
-
-     This will return a pre-registered result or a `fallback`
-     value if no result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-       - fallback: The value to return if no result has been registered.
-    */
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result or return
+    /// a `fallback` value if no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    ///   - fallback: The value to return if no result has been registered.
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result>,
         args: Arguments,
@@ -130,19 +110,14 @@ public extension Mockable {
         return result
     }
 
-    /**
-     Call a mock reference with `optional` result.
-
-     This will return a pre-registered result or `nil` if no
-     result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-    */
+    /// Call a mock reference with an `optional` result.
+    ///
+    /// This will return a pre-registered result or `nil` if
+    /// no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
     func call<Arguments, Result>(
         _ ref: MockReference<Arguments, Result?>,
         args: Arguments
@@ -152,19 +127,14 @@ public extension Mockable {
         return result
     }
 
-    /**
-     Call an async mock reference with `optional` result.
-
-     This will return a pre-registered result or `nil` if no
-     result has been registered.
-
-     Note that this function should only be used by the mock
-     itself and not called from the outside.
-
-     - Parameters:
-       - ref: The mock reference to call.
-       - args: The arguments to call the functions with.
-    */
+    /// Call a mock reference with an `optional` result.
+    ///
+    /// This will return a pre-registered result or `nil` if
+    /// no result has been registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
     func call<Arguments, Result>(
         _ ref: AsyncMockReference<Arguments, Result?>,
         args: Arguments
