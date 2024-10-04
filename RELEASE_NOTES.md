@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## 1.5
+
+This version makes the SDK use Swift 6.
+
+
+
 ## 1.4.2
 
 This version adds support for strict concurrency.
