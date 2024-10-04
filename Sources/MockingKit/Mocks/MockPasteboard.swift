@@ -13,7 +13,7 @@ import UIKit
 ///
 /// This mock only mocks `setData(_:forPasteboardType:)` for
 /// now, but you can subclass it and mock more functionality.
-open class MockPasteboard: UIPasteboard, Mockable {
+open class MockPasteboard: UIPasteboard, Mockable, @unchecked Sendable {
     
     public lazy var setDataRef = MockReference(setData)
 

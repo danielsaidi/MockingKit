@@ -62,5 +62,4 @@ ApiKit is available under the MIT license.
 
 - ``MockNotificationCenter``
 - ``MockPasteboard``
-- ``MockTextDocumentProxy``
 - ``MockUserDefaults``

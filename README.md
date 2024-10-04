@@ -1,20 +1,19 @@
 <p align="center">
-    <img src ="Resources/Logo_GitHub.png" alt="MockingKit Logo" title="MockingKit" />
+    <img src ="Resources/Logo_Rounded.png" alt="MockingKit Logo" title="MockingKit" />
 </p>
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/danielsaidi/MockingKit?color=%2300550&sort=semver" alt="Version" />
-    <img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift 5.9" />
+    <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
     <img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" />
     <a href="https://twitter.com/danielsaidi"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fdanielsaidi" alt="Twitter: @danielsaidi" title="Twitter: @danielsaidi" /></a>
     <a href="https://mastodon.social/@danielsaidi"><img src="https://img.shields.io/mastodon/follow/000253346?label=mastodon&style=social" alt="Mastodon: @danielsaidi@mastodon.social" title="Mastodon: @danielsaidi@mastodon.social" /></a>
 </p>
 
 
-
 ## About MockingKit
 
-MockingKit is a Swift SDK that lets you easily mock protocols and classes in `Swift`. 
+MockingKit is a Swift SDK that lets you easily mock protocols and classes. 
 
 MockingKit lets you create mocks of any protocol or class, after which you can `call` functions, `register` dynamic function results, automatically `record` method invocations, and `inspect` all recorded calls.
 
@@ -81,19 +80,19 @@ calls[0].result                                      // => "gnirts"
 mock.hasCalled(\.doStuffRef)                         // => true
 ```
 
-For more information, please see the [getting started guide][Getting-Started].
+See the online [getting started guide][Getting-Started] for more information.
 
 
 
 ## Documentation
 
-The [online documentation][Documentation] has more information, articles, code examples, etc. 
+The online [documentation][Documentation] has more information, articles, code examples, etc. 
 
 
 
 ## Demo Application
 
-The demo app lets you explore the library. To try it out, just open and run the `Demo` project.
+The `Demo` folder has an app that lets you explore the library and see how mocks behave.
 
 
 

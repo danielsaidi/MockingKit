@@ -9,8 +9,8 @@
 import Foundation
 
 /// This class can be used to mock `NotificationCenter`.
-open class MockNotificationCenter: NotificationCenter, Mockable {
-    
+open class MockNotificationCenter: NotificationCenter, Mockable, @unchecked Sendable {
+
     public lazy var addObserverForNameRef = MockReference(mockAddObserverForName)
     public lazy var addObserverWithSelectorRef = MockReference(mockAddObserverWithSelector)
     public lazy var postNotificationRef = MockReference(mockPostNotification)
