@@ -40,7 +40,7 @@ For more information, source code, etc., visit the [project repository](https://
 
 ## License
 
-ApiKit is available under the MIT license.
+MockingKit is available under the MIT license.
 
 
 

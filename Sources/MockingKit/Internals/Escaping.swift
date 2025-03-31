@@ -5,10 +5,8 @@
 //  Original implementation: https://github.com/devxoul/Stubber
 //
 
-/*
- These functions are used by mock calls where one or several
- arguments are escaping blocks.
- */
+/// These functions are used by mock calls where one or many
+/// arguments are escaping blocks.
 
 import Foundation
 
