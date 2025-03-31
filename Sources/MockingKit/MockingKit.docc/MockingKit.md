@@ -8,11 +8,11 @@ MockingKit is a Swift SDK that lets you easily mock protocols and classes in `Sw
 
 ![MockingKit logo](Logo.png)
 
-MockingKit is a Swift SDK that lets you easily mock protocols and classes in `Swift`. 
+MockingKit is a Swift SDK that lets you create mock versions of any protocol or class. This can be used to mock dependencies in unit tests, and to fake not yet implemented features in your apps.  
 
-MockingKit lets you create mocks of any protocol or class, after which you can `call` functions, `register` dynamic function results, automatically `record` method invocations, and `inspect` all recorded calls.
+MockingKit automatically records every method call, to let you verify that your code behaves as you expect. You can also register register dynamic function results to control your test outcome.
 
-MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock and you're good to go.
+MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock, set up how you want to use and inspect it, and you're good to go.
 
 
 

@@ -1,23 +1,22 @@
 <p align="center">
-    <img src ="Resources/Logo_Rounded.png" alt="MockingKit Logo" title="MockingKit" />
+    <img src="Resources/Icon.png" alt="Project Icon" width="250" />
 </p>
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/danielsaidi/MockingKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
+        <a href="https://danielsaidi.github.io/MockingKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
     <img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" />
-    <a href="https://twitter.com/danielsaidi"><img src="https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fdanielsaidi" alt="Twitter: @danielsaidi" title="Twitter: @danielsaidi" /></a>
-    <a href="https://mastodon.social/@danielsaidi"><img src="https://img.shields.io/mastodon/follow/000253346?label=mastodon&style=social" alt="Mastodon: @danielsaidi@mastodon.social" title="Mastodon: @danielsaidi@mastodon.social" /></a>
 </p>
 
 
-## About MockingKit
+# MockingKit
 
-MockingKit is a Swift SDK that lets you easily mock protocols and classes. 
+MockingKit is a Swift SDK that lets you create mock versions of any protocol or class. This can be used to mock dependencies in unit tests, and to fake not yet implemented features in your apps.  
 
-MockingKit lets you create mocks of any protocol or class, after which you can `call` functions, `register` dynamic function results, automatically `record` method invocations, and `inspect` all recorded calls.
+MockingKit automatically records every method call, to let you verify that your code behaves as you expect. You can also register register dynamic function results to control your test outcome.
 
-MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock and you're good to go.
+MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock, set up how you want to use and inspect it, and you're good to go.
 
 
 
@@ -92,7 +91,7 @@ The online [documentation][Documentation] has more information, articles, code e
 
 ## Demo Application
 
-The `Demo` folder has an app that lets you explore the library and see how mocks behave.
+The `Demo` folder has an app that lets you explore the library and see how its mocks behave.
 
 
 
@@ -110,9 +109,9 @@ Your support makes it possible for me to put more work into these projects and m
 Feel free to reach out if you have questions or if you want to contribute in any way:
 
 * Website: [danielsaidi.com][Website]
-* Mastodon: [@danielsaidi@mastodon.social][Mastodon]
-* Twitter: [@danielsaidi][Twitter]
 * E-mail: [daniel.saidi@gmail.com][Email]
+* Bluesky: [@danielsaidi@bsky.social][Bluesky]
+* Mastodon: [@danielsaidi@mastodon.social][Mastodon]
 
 
 
@@ -123,15 +122,15 @@ MockingKit is available under the MIT license. See the [LICENSE][License] file f
 
 
 [Email]: mailto:daniel.saidi@gmail.com
-
 [Website]: https://www.danielsaidi.com
 [GitHub]: https://www.github.com/danielsaidi
-[Twitter]: https://www.twitter.com/danielsaidi
-[Mastodon]: https://mastodon.social/@danielsaidi
 [OpenSource]: https://danielsaidi.com/opensource
 [Sponsors]: https://github.com/sponsors/danielsaidi
 
+[Bluesky]: https://bsky.app/profile/danielsaidi.bsky.social
+[Mastodon]: https://mastodon.social/@danielsaidi
+[Twitter]: https://www.twitter.com/danielsaidi
+
 [Documentation]: https://danielsaidi.github.io/MockingKit
 [Getting-Started]: https://danielsaidi.github.io/MockingKit/documentation/mockingkit/getting-started
-
 [License]: https://github.com/danielsaidi/MockingKit/blob/master/LICENSE
