@@ -63,3 +63,11 @@ MockingKit is available under the MIT license.
 - ``MockNotificationCenter``
 - ``MockPasteboard``
 - ``MockUserDefaults``
+
+
+
+[Email]: mailto:daniel.saidi@gmail.com
+[Website]: https://danielsaidi.com
+[GitHub]: https://github.com/danielsaidi
+[OpenSource]: https://danielsaidi.com/opensource
+[Sponsors]: https://github.com/sponsors/danielsaidi
