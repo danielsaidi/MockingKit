@@ -22,7 +22,7 @@ import Foundation
 ///
 /// Implement this protocol instead of inheriting the ``Mock``
 /// base class, to save some code for every mock you create.
-public protocol Mockable {
+public protocol Mockable: Sendable {
     
     typealias Function = Any
     

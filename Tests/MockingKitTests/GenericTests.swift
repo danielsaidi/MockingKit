@@ -21,7 +21,7 @@ final class GenericTests: XCTestCase {
     }
 }
 
-private class GenericMock<T>: Mock {
+private class GenericMock<T>: Mock, @unchecked Sendable {
     
     lazy var doitRef = MockReference(doit)
     

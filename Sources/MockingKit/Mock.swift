@@ -16,7 +16,7 @@ import Foundation
 ///
 /// Inherit this type instead of implementing the ``Mockable``
 /// protocol, to save some code for every mock you create.
-open class Mock: Mockable {
+open class Mock: Mockable, @unchecked Sendable {
     
     public init() {}
     

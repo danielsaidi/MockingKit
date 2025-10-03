@@ -32,7 +32,7 @@ import AppKit
  This mock only mocks `setValue(_:forKey:)` for now, but you
  can subclass this class and mock more functionality.
  */
-public class MockPasteboard: NSPasteboard, Mockable {
+public class MockPasteboard: NSPasteboard, Mockable, @unchecked Sendable {
 
     public lazy var setValueForKeyRef = MockReference(setValueForKey)
 
