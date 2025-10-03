@@ -24,4 +24,5 @@ open class Mock: Mockable, @unchecked Sendable {
     
     var registeredCalls: [UUID: [AnyCall]] = [:]
     var registeredResults: [UUID: Function] = [:]
+    let registeredCallsLock = NSLock()
 }
