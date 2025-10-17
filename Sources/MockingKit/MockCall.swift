@@ -8,8 +8,7 @@
 
 import Foundation
 
-/// This struct represents function calls, with the provided
-/// ``arguments`` and the returned ``result``.
+/// This struct represents a mocked function calls.
 ///
 /// Function that don't return anything have a `Void` result.
 public struct MockCall<Arguments, Result>: AnyCall {

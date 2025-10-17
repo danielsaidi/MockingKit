@@ -12,8 +12,7 @@ public extension Mockable {
 
     /// Call a mock reference with a `non-optional` result.
     ///
-    /// This will return any pre-registered result, or crash
-    /// if no result has been registered.
+    /// This will return any pre-registered result, or crash if no result is registered.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.
@@ -43,8 +42,7 @@ public extension Mockable {
 
     /// Call a mock reference with a `non-optional` result.
     ///
-    /// This will return any pre-registered result, or crash
-    /// if no result has been registered.
+    /// This will return any pre-registered result, or crash if no result is registered.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.
@@ -74,8 +72,7 @@ public extension Mockable {
 
     /// Call a mock reference with a `non-optional` result.
     ///
-    /// This will return any pre-registered result or return
-    /// a `fallback` value if no result has been registered.
+    /// This will return any pre-registered result, else the provided `fallback`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.
@@ -93,8 +90,7 @@ public extension Mockable {
 
     /// Call a mock reference with a `non-optional` result.
     ///
-    /// This will return any pre-registered result or return
-    /// a `fallback` value if no result has been registered.
+    /// This will return any pre-registered result, else the provided `fallback`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.
@@ -112,8 +108,7 @@ public extension Mockable {
 
     /// Call a mock reference with an `optional` result.
     ///
-    /// This will return a pre-registered result or `nil` if
-    /// no result has been registered.
+    /// This will return any pre-registered result, else `nil`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.
@@ -129,8 +124,7 @@ public extension Mockable {
 
     /// Call a mock reference with an `optional` result.
     ///
-    /// This will return a pre-registered result or `nil` if
-    /// no result has been registered.
+    /// This will return any pre-registered result, else `nil`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to call.

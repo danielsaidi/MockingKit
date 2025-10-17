@@ -11,8 +11,8 @@ import UIKit
 
 /// This class can be used to mock `UIPasteboard`.
 ///
-/// This mock only mocks `setData(_:forPasteboardType:)` for
-/// now, but you can subclass it and mock more functionality.
+/// This mock only mocks `setData(_:forPasteboardType:)` for now, but
+/// you can subclass it and mock more functionality.
 open class MockPasteboard: UIPasteboard, Mockable, @unchecked Sendable {
     
     public lazy var setDataRef = MockReference(setData)
@@ -26,12 +26,10 @@ open class MockPasteboard: UIPasteboard, Mockable, @unchecked Sendable {
 #elseif os(macOS)
 import AppKit
 
-/**
- This class can be used to mock `NSPasteboard`.
-
- This mock only mocks `setValue(_:forKey:)` for now, but you
- can subclass this class and mock more functionality.
- */
+/// This class can be used to mock `NSPasteboard`.
+///
+/// This mock only mocks `setData(_:forPasteboardType:)` for now, but
+/// you can subclass it and mock more functionality.
 public class MockPasteboard: NSPasteboard, Mockable, @unchecked Sendable {
 
     public lazy var setValueForKeyRef = MockReference(setValueForKey)
@@ -42,10 +40,10 @@ public class MockPasteboard: NSPasteboard, Mockable, @unchecked Sendable {
         setValueForKey(value, key: key)
     }
 
-    /// This way to work around functions with the same name,
-    /// especially when there are static and class functions
-    /// with the same name, can also be used. Just add a new,
-    /// private function and have it call the reference. The
+    /// This way to work around functions with the same name, especially when
+    /// there are static and class functions with the same name.
+    ///
+    /// To use it, just add a new, private function and let it call the reference. The
     /// real function (as above) can then call this function.
     func setValueForKey(_ value: Any?, key: String) {
         call(setValueForKeyRef, args: (value, key))
@@ -54,11 +52,9 @@ public class MockPasteboard: NSPasteboard, Mockable, @unchecked Sendable {
 #else
 import Foundation
 
-/**
- This class can be used to mock a system pasteboard.
-
- This mock doesn't do anything, since this platform does not
- have a pasteboard. It's only here for documentation harmony.
- */
+/// This class can be used to mock a system pasteboard.
+///
+/// This mock doesn't do anything, since this platform does not have a pasteboard.
+/// It's only here for documentation harmony.
 open class MockPasteboard: Mock {}
 #endif

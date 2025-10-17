@@ -11,6 +11,7 @@ import Foundation
 public extension Mockable {
     
     /// Register a result value for a mock reference.
+    ///
     /// - Parameters:
     ///   - ref: The mock reference to register a result for.
     ///   - result: What to return when the function is called.
@@ -22,6 +23,7 @@ public extension Mockable {
     }
 
     /// Register a result value for a mock reference.
+    ///
     /// - Parameters:
     ///   - refKeyPath: A key path to the mock reference to register a result for.
     ///   - result: What to return when the function is called.
@@ -33,6 +35,7 @@ public extension Mockable {
     }
 
     /// Register a result value for an async mock reference.
+    ///
     /// - Parameters:
     ///   - ref: The mock reference to register a result for.
     ///   - result: What to return when the function is called.
@@ -44,6 +47,7 @@ public extension Mockable {
     }
 
     /// Register a result value for an async mock reference.
+    /// 
     /// - Parameters:
     ///   - refKeyPath: A key path to the mock reference to register a result for.
     ///   - result: What to return when the function is called.

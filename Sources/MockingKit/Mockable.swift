@@ -8,11 +8,10 @@
 
 import Foundation
 
-/// This class can be inherited when you want to create mock
-/// classes that have to inherit other classes.
+/// This protocol can be implemented to create custom mock types.
 ///
-/// To implement this protocol, just inherit your base class
-/// and provide a ``mock`` property:
+/// To implement this protocol, just implement the protocol or inherit the class that
+/// you want to mock, then provide a ``mock`` property:
 ///
 /// ```
 /// class MyMock: BaseClass, Mockable {
@@ -20,8 +19,8 @@ import Foundation
 /// }
 /// ```
 ///
-/// Implement this protocol instead of inheriting the ``Mock``
-/// base class, to save some code for every mock you create.
+/// You can inherit the ``Mock`` base class to automatically set up a ``mock``,
+/// if your mock doesn't have to inherit another type.
 public protocol Mockable: Sendable {
     
     typealias Function = Any

@@ -8,14 +8,10 @@
 
 import Foundation
 
-/// This class can be inherited when you want to create mock
-/// classes that don't have to inherit any other classes.
+/// This class can be used to create mock classes without inheritance.
 ///
-/// The class implements ``Mockable`` by returning `self` as
-/// the ``mock`` property.
-///
-/// Inherit this type instead of implementing the ``Mockable``
-/// protocol, to save some code for every mock you create.
+/// The class implements ``Mockable`` and returns `self` as the ``mock``,
+/// to let you write less code for every mock you create.
 open class Mock: Mockable, @unchecked Sendable {
     
     public init() {}

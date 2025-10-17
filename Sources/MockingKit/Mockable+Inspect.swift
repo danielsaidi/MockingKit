@@ -92,8 +92,7 @@ public extension Mockable {
 
     /// Check if a mock reference has been called.
     ///
-    /// For this function to return `true` the actual number
-    /// of calls must match the provided `numberOfCalls`.
+    /// For this to return `true` the number of calls must match `numberOfCalls`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to check calls for.
@@ -107,8 +106,7 @@ public extension Mockable {
 
     /// Check if a mock reference has been called.
     ///
-    /// For this function to return `true` the actual number
-    /// of calls must match the provided `numberOfCalls`.
+    /// For this to return `true` the number of calls must match `numberOfCalls`.
     ///
     /// - Parameters:
     ///   - refKeyPath: A key path to the mock reference to check calls for.
@@ -122,8 +120,7 @@ public extension Mockable {
 
     /// Check if an async mock reference has been called.
     ///
-    /// For this function to return `true` the actual number
-    /// of calls must match the provided `numberOfCalls`.
+    /// For this to return `true` the number of calls must match `numberOfCalls`.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to check calls for.
@@ -136,8 +133,7 @@ public extension Mockable {
 
     /// Check if an async mock reference has been called.
     ///
-    /// For this function to return `true` the actual number
-    /// of calls must match the provided `numberOfCalls`.
+    /// For this to return `true` the number of calls must match `numberOfCalls`.
     ///
     /// - Parameters:
     ///   - refKeyPath: A key path to the mock reference to check calls for.

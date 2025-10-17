@@ -48,10 +48,8 @@ open class MockNotificationCenter: NotificationCenter, Mockable, @unchecked Send
     }
 }
 
-/**
- These functions provide more explicit names, which makes it
- easier to create the refs without having to use typealiases.
- */
+/// These functions provide more explicit names, which makes it easier to create
+/// the mock function refs without having to use typealiases.
 private extension MockNotificationCenter {
     
     func mockAddObserverForName(_ name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
