@@ -9,12 +9,7 @@
 import Foundation
 import MockingKit
 
-/**
- Implement the `Mockable` protocol if your mock must inherit
- another class, which e.g. is needed when you want to create
- mock implementations of for instance a `NotificationCenter`.
- */
-class TestMockable: NotificationCenter, Mockable, TestProtocol {
+class TestMockable: NotificationCenter, Mockable, TestProtocol, @unchecked Sendable {
     
     let mock = Mock()
     

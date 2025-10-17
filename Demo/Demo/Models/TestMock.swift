@@ -8,12 +8,10 @@
 
 import MockingKit
 
-/**
- Inherit `Mock` if your mock doesn't have to inherit another
- class, which should be most cases.
- */
-class TestMock: Mock, TestProtocol {
-    
+class TestMock: Mockable, TestProtocol {
+
+    var mock = Mock()
+
     lazy var doStuffRef = MockReference(doStuff)
     lazy var doStuffWithArgsRef = MockReference(doStuffWithArgs)
     

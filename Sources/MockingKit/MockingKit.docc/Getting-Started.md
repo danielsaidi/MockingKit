@@ -18,11 +18,11 @@ This article explains how to get started with MockingKit.
 
 Before we start, let's clarify some terms:
 
-* **Mock** is a simulated object that mimic the behaviour of real objects in controlled ways. 
-* **Mocking** is to use configurable and inspectable functionality, for instance in unit tests. 
-* **Call/Invoke** is calling a function in a way that records the call and its arguments & result.
-* **Registration** is to register dynamic return values for a mock function, based on its arguments.
-* **Inspection** is to inspect a recorded call, e.g. to verify that it has been called, its arguments, etc.
+* **Mock** is an object that mimics another objects in a controlled and inspectable way. 
+* **Mocking** is to use a mock implementation instead of a certain protocol or concrete class. 
+* **Invoking** is calling a mock function in a way that records the call, arguments and result.
+* **Registration** is to register return values for a mock function, based on the input arguments.
+* **Inspection** is to inspect a recorded call to verify that it has been called, its arguments, etc.
 
 Let's have a look at how this works in MockingKit.
 
@@ -32,7 +32,7 @@ Let's have a look at how this works in MockingKit.
 
 MockingKit lets you mock any protocol or open class, after which you can **call** functions, **register** results, **record** method invocations, and **inspect** recorded calls.
 
-For instance, consider this simple protocol:
+For instance, consider that you have this simple protocol:
 
 ```swift
 protocol MyProtocol {
@@ -41,12 +41,15 @@ protocol MyProtocol {
 }
 ```
 
-With MockingKit, you can easily create a mock implementation of this protocol: 
+You can easily create a mock of this protocol by implementing the ``Mockable`` protocol: 
 
 ```swift
 import MockingKit
 
-class MyMock: Mock, MyProtocol {
+class MyMock: Mockable, MyProtocol {
+
+    // Provide a mock that will be used to record function calls.
+    let mock = Mock()
 
     // Define a lazy reference for each function you want to mock
     lazy var doStuffRef = MockReference(doStuff)
@@ -58,7 +61,7 @@ class MyMock: Mock, MyProtocol {
 }
 ```
 
-To mock a class, you instead have to subclass the class and implement the ``Mockable`` protocol:
+To mock a class, you just have to subclass the class and implement ``Mockable``:
 
 ```swift
 import MockingKit
@@ -71,8 +74,6 @@ class MockUserDefaults: UserDefaults, Mockable {
     // You can now create lazy references just like in the protocol mock above
 }
 ```
-
-``Mock`` is actually just a ``Mockable`` that returns itself as its ``Mockable/mock``.
 
 With the mock in place, you can now start mocking functionality in your unit tests or app.
 

@@ -19,8 +19,8 @@ import Foundation
 /// }
 /// ```
 ///
-/// You can inherit the ``Mock`` base class to automatically set up a ``mock``,
-/// if your mock doesn't have to inherit another type.
+/// > Note: Since Sendable conformance can cause actor isolation problem when
+/// inheriting ``Mock``, prefer to implement ``Mockable`` instead.
 public protocol Mockable: Sendable {
     
     typealias Function = Any

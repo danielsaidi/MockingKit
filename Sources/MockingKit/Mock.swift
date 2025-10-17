@@ -12,6 +12,9 @@ import Foundation
 ///
 /// The class implements ``Mockable`` and returns `self` as the ``mock``,
 /// to let you write less code for every mock you create.
+///
+/// > Note: Since Sendable conformance can cause actor isolation problem when
+/// inheriting ``Mock``, prefer to implement ``Mockable`` instead. 
 open class Mock: Mockable, @unchecked Sendable {
     
     public init() {}

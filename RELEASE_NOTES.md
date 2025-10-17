@@ -1,6 +1,14 @@
 # Release Notes
 
 
+## 2.0
+
+This version makes the SDK use Swift 6.1.
+
+Due to actor isolation issues that can come from inheriting `Mock`, prefer to implement `Mockable` instead.
+
+
+
 ## 1.5
 
 This version makes the SDK use Swift 6.
