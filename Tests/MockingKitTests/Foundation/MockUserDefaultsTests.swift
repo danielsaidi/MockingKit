@@ -30,7 +30,7 @@ final class MockUserDefaultsTests: XCTestCase {
     }
 
     func testCanMockGettingData() {
-        let data = "123".data(using: .utf8)
+        let data = Data("123".utf8)
         defaults.registerResult(for: defaults.dataRef) { _ in data }
         XCTAssertEqual(defaults.data(forKey: "abc"), data)
     }

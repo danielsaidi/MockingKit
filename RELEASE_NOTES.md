@@ -7,6 +7,11 @@ This version makes the SDK use Swift 6.1.
 
 Due to actor isolation issues that can come from inheriting `Mock`, prefer to implement `Mockable` instead.
 
+### 💡 Behavior changes
+
+* `Mock` implements `Sendable`.
+* `Mockable` implements `Sendable`.
+
 
 
 ## 1.5
