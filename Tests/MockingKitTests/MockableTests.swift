@@ -256,11 +256,30 @@ class MockableTests: XCTestCase {
         XCTAssertFalse(mock.hasCalled(mock.functionWithIntResultRef))
         XCTAssertTrue(mock.hasCalled(\.functionWithStringResultRef))
     }
+
+    func testMultiThreadedAccess_doesNotCorruptState() {
+        let queueA = DispatchQueue(label: "QueueA")
+        let queueB = DispatchQueue(label: "QueueB")
+
+        let mock = TestClass()
+
+        queueA.async {
+            for index in 0..<100 {
+                mock.functionWithVoidResult(arg1: "Something", arg2: index)
+            }
+        }
+
+        queueB.async {
+            for _ in 0..<100 {
+                _ = mock.hasCalled(\.functionWithIntResultRef)
+            }
+        }
+    }
 }
 
-private class TestClass: AsyncTestProtocol, Mockable {
+private final class TestClass: AsyncTestProtocol, Mockable, @unchecked Sendable {
 
-    var mock = Mock()
+    let mock = Mock()
 
     lazy var functionWithIntResultRef = MockReference(functionWithIntResult)
     lazy var functionWithStringResultRef = MockReference(functionWithStringResult)

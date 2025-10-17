@@ -9,7 +9,7 @@
 import Foundation
 
 /// This class can be used to mock `UserDefaults`.
-open class MockUserDefaults: UserDefaults, Mockable {
+open class MockUserDefaults: UserDefaults, Mockable, @unchecked Sendable {
     
     public lazy var boolRef = MockReference(bool)
     public lazy var arrayRef = MockReference(array)
