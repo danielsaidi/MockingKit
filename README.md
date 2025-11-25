@@ -7,7 +7,6 @@
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
     <a href="https://danielsaidi.github.io/MockingKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
     <img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" />
-    <a href="https://github.com/sponsors/danielsaidi"><img src="https://img.shields.io/badge/sponsor-GitHub-red.svg" alt="Sponsor my work" /></a>
 </p>
 
 
@@ -20,7 +19,6 @@ MockingKit automatically records every method call, to let you verify that your 
 MockingKit doesn't require any setup or build scripts, and puts no restrictions on your code or architecture. Just create a mock, set up how you want to use and inspect it, and you're good to go.
 
 
-
 ## Installation
 
 MockingKit can be installed with the Swift Package Manager:
@@ -28,13 +26,6 @@ MockingKit can be installed with the Swift Package Manager:
 ```
 https://github.com/danielsaidi/MockingKit.git
 ```
-
-
-
-## Support My Work
-
-Maintaining my various [open-source tools][OpenSource] takes significant time and effort. You can [become a sponsor][Sponsors] to help me dedicate more time to creating, maintaining, and improving these projects. Every contribution, no matter the size, makes a real difference in keeping these tools free and actively developed. Thank you for considering!
-
 
 
 ## Getting started
@@ -87,17 +78,19 @@ mock.hasCalled(\.doStuffRef)                         // => true
 See the online [getting started guide][Getting-Started] for more information.
 
 
-
 ## Documentation
 
 The online [documentation][Documentation] has more information, articles, code examples, etc. 
-
 
 
 ## Demo Application
 
 The `Demo` folder has an app that lets you explore the library and see how its mocks behave.
 
+
+## Support My Work
+
+Maintaining my various [open-source tools][OpenSource] takes significant time and effort. You can [become a sponsor][Sponsors] to help me dedicate more time to creating, maintaining, and improving these projects. Every contribution, no matter the size, makes a real difference in keeping these tools free and actively developed. Thank you for considering!
 
 
 ## Contact
@@ -110,11 +103,9 @@ Feel free to reach out if you have questions or if you want to contribute in any
 * Mastodon: [@danielsaidi@mastodon.social][Mastodon]
 
 
-
 ## License
 
 MockingKit is available under the MIT license. See the [LICENSE][License] file for more info.
-
 
 
 [Email]: mailto:daniel.saidi@gmail.com
