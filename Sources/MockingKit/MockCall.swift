@@ -3,7 +3,7 @@
 //  MockingKit
 //
 //  Created by Daniel Saidi on 2019-11-11.
-//  Copyright © 2019-2025 Daniel Saidi. All rights reserved.
+//  Copyright © 2019-2026 Daniel Saidi. All rights reserved.
 //
 
 import Foundation
