@@ -52,7 +52,27 @@ extension Mockable {
             mock.registeredCalls[ref.id] = calls + [call]
         }
     }
-    
+
+    func registerCall<Arguments, Result>(
+        _ call: MockCall<Arguments, Result>,
+        for ref: ThrowingMockReference<Arguments, Result>
+    ) {
+        mock.registeredCallsLock.withLock {
+            let calls = mock.registeredCalls[ref.id] ?? []
+            mock.registeredCalls[ref.id] = calls + [call]
+        }
+    }
+
+    func registerCall<Arguments, Result>(
+        _ call: MockCall<Arguments, Result>,
+        for ref: AsyncThrowingMockReference<Arguments, Result>
+    ) {
+        mock.registeredCallsLock.withLock {
+            let calls = mock.registeredCalls[ref.id] ?? []
+            mock.registeredCalls[ref.id] = calls + [call]
+        }
+    }
+
     func registeredCalls<Arguments, Result>(
         for ref: MockReference<Arguments, Result>
     ) -> [MockCall<Arguments, Result>] {
@@ -64,6 +84,24 @@ extension Mockable {
 
     func registeredCalls<Arguments, Result>(
         for ref: AsyncMockReference<Arguments, Result>
+    ) -> [MockCall<Arguments, Result>] {
+        mock.registeredCallsLock.withLock {
+            let calls = mock.registeredCalls[ref.id]
+            return (calls as? [MockCall<Arguments, Result>]) ?? []
+        }
+    }
+
+    func registeredCalls<Arguments, Result>(
+        for ref: AsyncThrowingMockReference<Arguments, Result>
+    ) -> [MockCall<Arguments, Result>] {
+        mock.registeredCallsLock.withLock {
+            let calls = mock.registeredCalls[ref.id]
+            return (calls as? [MockCall<Arguments, Result>]) ?? []
+        }
+    }
+
+    func registeredCalls<Arguments, Result>(
+        for ref: ThrowingMockReference<Arguments, Result>
     ) -> [MockCall<Arguments, Result>] {
         mock.registeredCallsLock.withLock {
             let calls = mock.registeredCalls[ref.id]
@@ -86,6 +124,22 @@ extension Mockable {
         mock.registeredCallsLock.withLock {
             let result = mock.registeredResults[ref.id] as? (Arguments) async throws -> Result
             return result
+        }
+    }
+
+    func registeredResult<Arguments, Result>(
+        for ref: ThrowingMockReference<Arguments, Result>
+    ) -> ((Arguments) throws -> Result)? {
+        mock.registeredCallsLock.withLock {
+            mock.registeredResults[ref.id] as? (Arguments) throws -> Result
+        }
+    }
+
+    func registeredResult<Arguments, Result>(
+        for ref: AsyncThrowingMockReference<Arguments, Result>
+    ) -> ((Arguments) async throws -> Result)? {
+        mock.registeredCallsLock.withLock {
+            mock.registeredResults[ref.id] as? (Arguments) async throws -> Result
         }
     }
 }

@@ -57,4 +57,48 @@ public extension Mockable {
     ) {
         registerResult(for: self[keyPath: refKeyPath], result: result)
     }
+
+    /// Register a result value for a mock reference.
+    /// - Parameters:
+    ///   - ref: The mock reference to register a result for.
+    ///   - result: What to return when the function is called.
+    func registerResult<Arguments, Result>(
+        for ref: ThrowingMockReference<Arguments, Result>,
+        result: @escaping (Arguments) throws -> Result
+    ) {
+        mock.registeredResults[ref.id] = result
+    }
+
+    /// Register a result value for a mock reference.
+    /// - Parameters:
+    ///   - refKeyPath: A key path to the mock reference to register a result for.
+    ///   - result: What to return when the function is called.
+    func registerResult<Arguments, Result>(
+        for refKeyPath: KeyPath<Self, ThrowingMockReference<Arguments, Result>>,
+        result: @escaping (Arguments) throws -> Result
+    ) {
+        registerResult(for: self[keyPath: refKeyPath], result: result)
+    }
+
+    /// Register a result value for an async mock reference.
+    /// - Parameters:
+    ///   - ref: The mock reference to register a result for.
+    ///   - result: What to return when the function is called.
+    func registerResult<Arguments, Result>(
+        for ref: AsyncThrowingMockReference<Arguments, Result>,
+        result: @escaping (Arguments) async throws -> Result
+    ) {
+        mock.registeredResults[ref.id] = result
+    }
+
+    /// Register a result value for an async mock reference.
+    /// - Parameters:
+    ///   - refKeyPath: A key path to the mock reference to register a result for.
+    ///   - result: What to return when the function is called.
+    func registerResult<Arguments, Result>(
+        for refKeyPath: KeyPath<Self, AsyncThrowingMockReference<Arguments, Result>>,
+        result: @escaping (Arguments) async throws -> Result
+    ) {
+        registerResult(for: self[keyPath: refKeyPath], result: result)
+    }
 }
