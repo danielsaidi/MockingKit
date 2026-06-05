@@ -28,7 +28,7 @@ public extension Mockable {
     /// Reset all registered calls for a mock reference.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to reset any calls for.
+    ///   - refKeyPath: A mock reference key path to reset calls for.
     func resetCalls<Arguments, Result>(
         to refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>
     ) {
@@ -48,7 +48,7 @@ public extension Mockable {
     /// Reset all registered calls for a mock reference.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to reset any calls for.
+    ///   - refKeyPath: A mock reference key path to reset calls for.
     func resetCalls<Arguments, Result>(
         to refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>
     ) {

@@ -8,13 +8,14 @@
 
 import Foundation
 
-/// This class can be used to create mock classes without inheritance.
+/// This class can be used to create mocks that doesn't have
+/// to inherit a base class.
 ///
-/// The class implements ``Mockable`` and returns `self` as the ``mock``,
-/// to let you write less code for every mock you create.
+/// This class implements ``Mockable`` and returns itself as
+/// the ``mock``.
 ///
-/// > Note: Since Sendable conformance can cause actor isolation problem when
-/// inheriting ``Mock``, prefer to implement ``Mockable`` instead. 
+/// > Note: Since the `Sendable` conformance can cause actor
+/// isolation problems, consider implementing ``Mockable``.
 open class Mock: Mockable, @unchecked Sendable {
     
     public init() {}

@@ -25,7 +25,7 @@ public extension Mockable {
     /// Register a result value for a mock reference.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to register a result for.
+    ///   - refKeyPath: A mock reference key path to register a result for.
     ///   - result: What to return when the function is called.
     func registerResult<Arguments, Result>(
         for refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>,
@@ -49,7 +49,7 @@ public extension Mockable {
     /// Register a result value for an async mock reference.
     /// 
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to register a result for.
+    ///   - refKeyPath: A mock reference key path to register a result for.
     ///   - result: What to return when the function is called.
     func registerResult<Arguments, Result>(
         for refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>,

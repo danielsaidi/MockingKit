@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// This protocol can be implemented to create custom mock types.
+/// This protocol can be implemented to create custom mocks.
 ///
-/// To implement this protocol, just implement the protocol or inherit the class that
-/// you want to mock, then provide a ``mock`` property:
+/// To implement this protocol, just implement this protocol
+/// and provide a ``mock`` property:
 ///
 /// ```
 /// class MyMock: BaseClass, Mockable {
@@ -19,8 +19,9 @@ import Foundation
 /// }
 /// ```
 ///
-/// > Note: Since Sendable conformance can cause actor isolation problem when
-/// inheriting ``Mock``, prefer to implement ``Mockable`` instead.
+/// You can inherit any base class that you want to mock, to
+/// create a mockable version that you can inject instead of
+/// the original type. See ``MockUserDefaults`` for examples.
 public protocol Mockable: Sendable {
     
     typealias Function = Any

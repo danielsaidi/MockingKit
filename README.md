@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/github/v/release/danielsaidi/MockingKit?color=%2300550&sort=semver" alt="Version" />
     <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0" />
     <a href="https://danielsaidi.github.io/MockingKit"><img src="https://img.shields.io/badge/documentation-web-blue.svg" alt="Documentation" /></a>
-    <img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" />
+        <a href="https://github.com/danielsaidi/MockingKit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/danielsaidi/MockingKit" alt="MIT License" /></a>
 </p>
 
 
