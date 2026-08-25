@@ -17,15 +17,15 @@ class AsyncThrowingMockReferenceTests: XCTestCase {
     private lazy var mock = TestClass()
 
     func testCanRegisterThrowingErrorsAsResult() async {
-        mock.registerResult(for: \.functionWithIntResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithStringResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithStructResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithClassResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithOptionalIntResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithOptionalStringResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithOptionalStructResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithOptionalClassResultRef) {_,_ in throw MockError.someError }
-        mock.registerResult(for: \.functionWithVoidResultRef) {_,_ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithIntResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithStringResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithStructResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithClassResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithOptionalIntResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithOptionalStringResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithOptionalStructResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithOptionalClassResultRef) { _, _ in throw MockError.someError }
+        mock.registerResult(for: \.functionWithVoidResultRef) { _, _ in throw MockError.someError }
 
         await assertThrowsAsyncError { try await mock.functionWithIntResult(arg1: "abc", arg2: 123) }
         await assertThrowsAsyncError { try await mock.functionWithStringResult(arg1: "abc", arg2: 123) }
@@ -247,7 +247,7 @@ class AsyncThrowingMockReferenceTests: XCTestCase {
     }
 
     func testInspectingCallsCanVerifyIfAnExactNumberOrCallsHaveBeenMade() async throws {
-        mock.registerResult(for: \.functionWithVoidResultRef) { _,_ in }
+        mock.registerResult(for: \.functionWithVoidResultRef) {  _, _ in }
 
         XCTAssertFalse(mock.hasCalled(mock.functionWithVoidResultRef, numberOfTimes: 2))
         try await mock.functionWithVoidResult(arg1: "abc", arg2: 123)
