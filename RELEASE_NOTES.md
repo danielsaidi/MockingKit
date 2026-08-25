@@ -13,6 +13,17 @@ These release notes only cover the current major version.
 
 
 
+## 2.1
+
+Thanks to [sebastianozane](https://github.com/sebastianozane), this version adds support for async throwing operations.
+
+### ✨ Features
+
+* `AsyncThrowingMockReference` is a new mock reference type.
+* `ThrowingMockReference` is a new mock reference type.
+
+
+
 ## 2.0
 
 This version makes the SDK use Swift 6.1.
