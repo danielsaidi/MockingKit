@@ -54,4 +54,44 @@ public extension Mockable {
     ) {
         resetCalls(to: self[keyPath: refKeyPath])
     }
+
+    /// Reset all registered calls for a mock reference.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to reset any calls for.
+    func resetCalls<Arguments, Result>(
+        to ref: ThrowingMockReference<Arguments, Result>
+    ) {
+        mock.registeredCalls[ref.id] = []
+    }
+
+    /// Reset all registered calls for a mock reference.
+    ///
+    /// - Parameters:
+    ///   - refKeyPath: A key path to the mock reference to reset any calls for.
+    func resetCalls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, ThrowingMockReference<Arguments, Result>>
+    ) {
+        resetCalls(to: self[keyPath: refKeyPath])
+    }
+
+    /// Reset all registered calls for a mock reference.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to reset any calls for.
+    func resetCalls<Arguments, Result>(
+        to ref: AsyncThrowingMockReference<Arguments, Result>
+    ) {
+        mock.registeredCalls[ref.id] = []
+    }
+
+    /// Reset all registered calls for a mock reference.
+    ///
+    /// - Parameters:
+    ///   - refKeyPath: A key path to the mock reference to reset any calls for.
+    func resetCalls<Arguments, Result>(
+        to refKeyPath: KeyPath<Self, AsyncThrowingMockReference<Arguments, Result>>
+    ) {
+        resetCalls(to: self[keyPath: refKeyPath])
+    }
 }

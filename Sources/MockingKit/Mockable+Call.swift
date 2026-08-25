@@ -74,6 +74,74 @@ public extension Mockable {
 
     /// Call a mock reference with a `non-optional` result.
     ///
+    /// This will return any pre-registered result, or crash
+    /// if no result is registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    func call<Arguments, Result>(
+        _ ref: ThrowingMockReference<Arguments, Result>,
+        args: Arguments,
+        file: StaticString = #file,
+        line: UInt = #line,
+        functionCall: StaticString = #function
+    ) throws -> Result {
+        guard let registeredResult = registeredResult(for: ref) else {
+            if Result.self == Void.self {
+                let void = unsafeBitCast((), to: Result.self)
+                let call = MockCall(arguments: args, result: void)
+                registerCall(call, for: ref)
+                return void
+            }
+
+            let message = "You must register a result for '\(functionCall)' "
+            + "with `registerResult(for:)` before calling this function."
+            preconditionFailure(message, file: file, line: line)
+        }
+
+        let result = try registeredResult(args)
+        let call = MockCall(arguments: args, result: result)
+        registerCall(call, for: ref)
+        return result
+    }
+
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result, or crash
+    /// if no result is registered.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    func call<Arguments, Result>(
+        _ ref: AsyncThrowingMockReference<Arguments, Result>,
+        args: Arguments,
+        file: StaticString = #file,
+        line: UInt = #line,
+        functionCall: StaticString = #function
+    ) async throws -> Result {
+        guard let registeredResult = registeredResult(for: ref) else {
+            if Result.self == Void.self {
+                let void = unsafeBitCast((), to: Result.self)
+                let call = MockCall(arguments: args, result: void)
+                registerCall(call, for: ref)
+                return void
+            }
+
+            let message = "You must register a result for '\(functionCall)' "
+            + "with `registerResult(for:)` before calling this function."
+            preconditionFailure(message, file: file, line: line)
+        }
+
+        let result = try await registeredResult(args)
+        let call = MockCall(arguments: args, result: result)
+        registerCall(call, for: ref)
+        return result
+    }
+
+    /// Call a mock reference with a `non-optional` result.
+    ///
     /// This will return any pre-registered result, else the
     /// provided `fallback`.
     ///
@@ -110,6 +178,42 @@ public extension Mockable {
         return result
     }
 
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result, else the provided `fallback`.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    ///   - fallback: The value to return if no result has been registered.
+    func call<Arguments, Result>(
+        _ ref: ThrowingMockReference<Arguments, Result>,
+        args: Arguments,
+        fallback: @autoclosure () -> Result
+    ) throws -> Result {
+        let result = try registeredResult(for: ref)?(args) ?? fallback()
+        registerCall(MockCall(arguments: args, result: result), for: ref)
+        return result
+    }
+
+    /// Call a mock reference with a `non-optional` result.
+    ///
+    /// This will return any pre-registered result, else the provided `fallback`.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    ///   - fallback: The value to return if no result has been registered.
+    func call<Arguments, Result>(
+        _ ref: AsyncThrowingMockReference<Arguments, Result>,
+        args: Arguments,
+        fallback: @autoclosure () -> Result
+    ) async throws -> Result {
+        let result = try await registeredResult(for: ref)?(args) ?? fallback()
+        registerCall(MockCall(arguments: args, result: result), for: ref)
+        return result
+    }
+
     /// Call a mock reference with an `optional` result.
     ///
     /// This will return a pre-registered result, else `nil`.
@@ -138,6 +242,38 @@ public extension Mockable {
         args: Arguments
     ) async -> Result? {
         let result = try? await registeredResult(for: ref)?(args)
+        registerCall(MockCall(arguments: args, result: result), for: ref)
+        return result
+    }
+
+    /// Call a mock reference with an `optional` result.
+    ///
+    /// This will return any pre-registered result, else `nil`.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    func call<Arguments, Result>(
+        _ ref: ThrowingMockReference<Arguments, Result?>,
+        args: Arguments
+    ) throws -> Result? {
+        let result = try registeredResult(for: ref)?(args)
+        registerCall(MockCall(arguments: args, result: result), for: ref)
+        return result
+    }
+
+    /// Call a mock reference with an `optional` result.
+    ///
+    /// This will return any pre-registered result, else `nil`.
+    ///
+    /// - Parameters:
+    ///   - ref: The mock reference to call.
+    ///   - args: The arguments to call the functions with.
+    func call<Arguments, Result>(
+        _ ref: AsyncThrowingMockReference<Arguments, Result?>,
+        args: Arguments
+    ) async throws -> Result? {
+        let result = try await registeredResult(for: ref)?(args)
         registerCall(MockCall(arguments: args, result: result), for: ref)
         return result
     }

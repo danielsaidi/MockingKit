@@ -11,6 +11,12 @@ import Foundation
 /// This type can be used to create mock function references.
 public struct AsyncMockReference<Arguments, Result>: Identifiable {
 
+    public init(_ function: @escaping (Arguments) async -> Result) {
+        self.id = UUID()
+        self.function = function
+    }
+
+    @available(*, deprecated, message: "Use AsyncThrowingMockReference for async throwing functions.")
     public init(_ function: @escaping (Arguments) async throws -> Result) {
         self.id = UUID()
         self.function = function
