@@ -23,7 +23,7 @@ public extension Mockable {
     /// Get all calls to a certain mock reference.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func calls<Arguments, Result>(
         to refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>
     ) -> [MockCall<Arguments, Result>] {
@@ -43,7 +43,7 @@ public extension Mockable {
     /// Get all calls to a certain async mock reference.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func calls<Arguments, Result>(
         to refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>
     ) -> [MockCall<Arguments, Result>] {
@@ -103,7 +103,7 @@ public extension Mockable {
     /// Check if a mock reference has been called.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>
     ) -> Bool {
@@ -123,7 +123,7 @@ public extension Mockable {
     /// Check if an async mock reference has been called.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>
     ) -> Bool {
@@ -143,7 +143,7 @@ public extension Mockable {
     /// Check if a mock reference has been called.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, ThrowingMockReference<Arguments, Result>>
     ) -> Bool {
@@ -163,16 +163,15 @@ public extension Mockable {
     /// Check if an async mock reference has been called.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, AsyncThrowingMockReference<Arguments, Result>>
     ) -> Bool {
         hasCalled(self[keyPath: refKeyPath])
     }
 
-    /// Check if a mock reference has been called.
-    ///
-    /// For this to return `true` the number of calls must match `numberOfCalls`.
+    /// Check if a mock reference has been called a specific
+    /// number of times.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to check calls for.
@@ -184,12 +183,11 @@ public extension Mockable {
         calls(to: ref).count == numberOfTimes
     }
 
-    /// Check if a mock reference has been called.
-    ///
-    /// For this to return `true` the number of calls must match `numberOfCalls`.
+    /// Check if a mock reference has been called a specific
+    /// number of times.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     ///   - numberOfTimes: The expected number of calls.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, MockReference<Arguments, Result>>,
@@ -198,9 +196,8 @@ public extension Mockable {
         hasCalled(self[keyPath: refKeyPath], numberOfTimes: numberOfTimes)
     }
 
-    /// Check if an async mock reference has been called.
-    ///
-    /// For this to return `true` the number of calls must match `numberOfCalls`.
+    /// Check if a mock reference has been called a specific
+    /// number of times.
     ///
     /// - Parameters:
     ///   - ref: The mock reference to check calls for.
@@ -211,12 +208,11 @@ public extension Mockable {
         calls(to: ref).count == numberOfTimes
     }
 
-    /// Check if an async mock reference has been called.
-    ///
-    /// For this to return `true` the number of calls must match `numberOfCalls`.
+    /// Check if a mock reference has been called a specific
+    /// number of times.
     ///
     /// - Parameters:
-    ///   - refKeyPath: A key path to the mock reference to check calls for.
+    ///   - refKeyPath: A mock reference key path to inspect.
     func hasCalled<Arguments, Result>(
         _ refKeyPath: KeyPath<Self, AsyncMockReference<Arguments, Result>>,
         numberOfTimes: Int
